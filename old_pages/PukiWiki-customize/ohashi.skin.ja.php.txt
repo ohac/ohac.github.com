@@ -1,0 +1,90 @@
+<?php if (!defined('DATA_DIR')) { exit; } ?>
+<?php header('Content-Type: text/html; charset=EUC-JP') ?>
+<?php echo '<?xml version="1.0" encoding="EUC-JP"?>' ?>
+
+<?php if ($html_transitional) { ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<?php } else { ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<?php } ?>
+<head>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=EUC-JP" />
+ <meta http-equiv="content-style-type" content="text/css" />
+
+<?php if (!$is_read) { ?>
+ <meta name="robots" content="NOINDEX,NOFOLLOW" />
+<?php } ?>
+
+ <title><?php echo "$title - $page_title" ?></title>
+ <link rel="stylesheet" href="skin/ohashi.css" type="text/css" media="screen" charset="Shift_JIS" />
+<?php echo $head_tag ?>
+</head>
+<body>
+
+<table width="600"><tr><td>
+
+<div class="title"><?php echo $title ?></div>
+
+<div id="navigator">
+
+<?php if ($is_page) { ?>
+ [ <a href="<?php echo "$script?plugin=newpage" ?>">New</a>
+ | <a href="<?php echo $link_edit ?>">Edit</a>
+
+ | <a href="<?php echo $link_diff ?>">Diff</a>
+
+<?php   if ((bool)ini_get('file_uploads')) { ?>
+ | <a href="<?php echo $link_upload ?>">Attach</a>
+<?php   } ?>
+
+ ]
+ <br >
+<?php } ?>
+
+ [ <a href="<?php echo $link_top ?>">Top</a>
+ | <a href="<?php echo $link_list ?>">Index</a>
+
+<?php if (arg_check('list')) { ?>
+ | <a href="<?php echo $link_filelist ?>">Files</a>
+<?php } ?>
+
+ | <a href="<?php echo $link_search ?>">Search</a>
+ | <a href="<?php echo $link_whatsnew ?>">Recent</a>
+
+<?php if ($do_backup) { ?>
+ | <a href="<?php echo $link_backup ?>">Backup</a>
+<?php } ?>
+
+ | <a href="<?php echo $link_help ?>">Help</a>
+ ]
+<?php echo $hr ?>
+</div>
+
+
+<div id="body"><?php echo $body ?></div>
+
+
+<?php if ($notes) { ?>
+<div id="note">
+<?php echo $notes ?>
+</div>
+<?php } ?>
+
+
+<?php if ($attaches) { ?>
+<div id="attach">
+<?php echo $hr ?>
+<?php echo $attaches ?>
+</div>
+<?php } ?>
+
+<?php echo $hr ?>
+<?php echo convert_html("#counter"); ?>
+
+</td></tr></table>
+</div>
+
+</body>
+</html>

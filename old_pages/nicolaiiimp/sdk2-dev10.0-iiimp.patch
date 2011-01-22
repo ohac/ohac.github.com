@@ -1,0 +1,355 @@
+diff -u iiimp/KeyMap.c iiimp.nicola/KeyMap.c
+--- iiimp/KeyMap.c	Wed Mar 20 20:41:14 2002
++++ iiimp.nicola/KeyMap.c	Fri Mar 29 20:20:10 2002
+@@ -1,3 +1,4 @@
++#define NICOLA
+ /*
+ Copyright 1985, 1986, 1987, 1991, 1998  The Open Group
+ 
+@@ -41,11 +42,16 @@
+ Sun Microsystems, Inc. or its licensors is granted.
+ 
+ */
++
+ #ifndef XK_KATAKANA
+ #define XK_KATAKANA
+ #endif
+ 
+ #include <ctype.h>
++#ifdef NICOLA
++#include <time.h>
++#include <sys/timeb.h>
++#endif
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
+ #include <X11/keysym.h>
+@@ -492,6 +498,160 @@
+ };
+ #endif
+ 
++#ifdef NICOLA
++static int glb_state;
++#define KC_kana_fullstop 0xff61
++#define KC_kana_openingbracket 0xff62
++#define KC_kana_closingbracket 0xff63
++#define KC_kana_comma 0xff64
++#define KC_kana_conjunctive 0xff65
++#define KC_kana_WO 0xff66
++#define KC_kana_a 0xff67
++#define KC_kana_i 0xff68
++#define KC_kana_u 0xff69
++#define KC_kana_e 0xff6a
++#define KC_kana_o 0xff6b
++#define KC_kana_ya 0xff6c
++#define KC_kana_yu 0xff6d
++#define KC_kana_yo 0xff6e
++#define KC_kana_tsu 0xff6f
++#define KC_prolongedsound 0xff70
++#define KC_kana_A 0xff71
++#define KC_kana_I 0xff72
++#define KC_kana_U 0xff73
++#define KC_kana_E 0xff74
++#define KC_kana_O 0xff75
++#define KC_kana_KA 0xff76
++#define KC_kana_KI 0xff77
++#define KC_kana_KU 0xff78
++#define KC_kana_KE 0xff79
++#define KC_kana_KO 0xff7a
++#define KC_kana_SA 0xff7b
++#define KC_kana_SHI 0xff7c
++#define KC_kana_SU 0xff7d
++#define KC_kana_SE 0xff7e
++#define KC_kana_SO 0xff7f
++#define KC_kana_TA 0xff80
++#define KC_kana_CHI 0xff81
++#define KC_kana_TSU 0xff82
++#define KC_kana_TE 0xff83
++#define KC_kana_TO 0xff84
++#define KC_kana_NA 0xff85
++#define KC_kana_NI 0xff86
++#define KC_kana_NU 0xff87
++#define KC_kana_NE 0xff88
++#define KC_kana_NO 0xff89
++#define KC_kana_HA 0xff8a
++#define KC_kana_HI 0xff8b
++#define KC_kana_FU 0xff8c
++#define KC_kana_HE 0xff8d
++#define KC_kana_HO 0xff8e
++#define KC_kana_MA 0xff8f
++#define KC_kana_MI 0xff90
++#define KC_kana_MU 0xff91
++#define KC_kana_ME 0xff92
++#define KC_kana_MO 0xff93
++#define KC_kana_YA 0xff94
++#define KC_kana_YU 0xff95
++#define KC_kana_YO 0xff96
++#define KC_kana_RA 0xff97
++#define KC_kana_RI 0xff98
++#define KC_kana_RU 0xff99
++#define KC_kana_RE 0xff9a
++#define KC_kana_RO 0xff9b
++#define KC_kana_WA 0xff9c
++#define KC_kana_N 0xff9d
++#define KC_voicedsound 0xff9e
++#define KC_semivoicedsound 0xff9f
++
++#define KC_kana_GA 0xfe76
++#define KC_kana_GI 0xfe77
++#define KC_kana_GU 0xfe78
++#define KC_kana_GE 0xfe79
++#define KC_kana_GO 0xfe7a
++#define KC_kana_ZA 0xfe7b
++#define KC_kana_ZI 0xfe7c
++#define KC_kana_ZU 0xfe7d
++#define KC_kana_ZE 0xfe7e
++#define KC_kana_ZO 0xfe7f
++#define KC_kana_DA 0xfe80
++#define KC_kana_DI 0xfe81
++#define KC_kana_DU 0xfe82
++#define KC_kana_DE 0xfe83
++#define KC_kana_DO 0xfe84
++#define KC_kana_BA 0xfe8a
++#define KC_kana_BI 0xfe8b
++#define KC_kana_BU 0xfe8c
++#define KC_kana_BE 0xfe8d
++#define KC_kana_BO 0xfe8e
++#define KC_kana_PA 0xfd8a
++#define KC_kana_PI 0xfd8b
++#define KC_kana_PU 0xfd8c
++#define KC_kana_PE 0xfd8d
++#define KC_kana_PO 0xfd8e
++#define KC_kana_VU 0xfe73
++
++static struct {
++    long awtKey;
++	long normal;
++	long shift_l;
++	long shift_r;
++} nicola_conv_table[] = {
++    { java_awt_event_KeyEvent_VK_1, '1', '!', '?' },
++    { java_awt_event_KeyEvent_VK_2, '2', '"', '/' },
++    { java_awt_event_KeyEvent_VK_3, '3', '#', '~' },
++    { java_awt_event_KeyEvent_VK_4, '4', '$', KC_kana_openingbracket },
++    { java_awt_event_KeyEvent_VK_5, '5', '%', KC_kana_closingbracket },
++
++    { java_awt_event_KeyEvent_VK_6, '6', '[', '&' },
++    { java_awt_event_KeyEvent_VK_7, '7', ']', '\'' },
++    { java_awt_event_KeyEvent_VK_8, '8', '(', '{' },
++    { java_awt_event_KeyEvent_VK_9, '9', ')', '}' },
++    { java_awt_event_KeyEvent_VK_0, '0', KC_kana_openingbracket, '`' },
++    { '-', '-', KC_kana_closingbracket, '=' },
++    { '~', '^', '"', '~' },
++    { '\\', '\\', '_', '|' },
++
++    { java_awt_event_KeyEvent_VK_Q, KC_kana_fullstop, KC_kana_a, 0 },
++    { java_awt_event_KeyEvent_VK_W, KC_kana_KA, KC_kana_E, KC_kana_GA },
++    { java_awt_event_KeyEvent_VK_E, KC_kana_TA, KC_kana_RI, KC_kana_DA },
++    { java_awt_event_KeyEvent_VK_R, KC_kana_KO, KC_kana_ya, KC_kana_GO },
++    { java_awt_event_KeyEvent_VK_T, KC_kana_SA, KC_kana_RE, KC_kana_ZA },
++    { java_awt_event_KeyEvent_VK_Y, KC_kana_RA, KC_kana_PA, KC_kana_YO },
++    { java_awt_event_KeyEvent_VK_U, KC_kana_CHI, KC_kana_DI, KC_kana_NI },
++    { java_awt_event_KeyEvent_VK_I, KC_kana_KU, KC_kana_GU, KC_kana_RU },
++    { java_awt_event_KeyEvent_VK_O, KC_kana_TSU, KC_kana_DU, KC_kana_MA },
++    { java_awt_event_KeyEvent_VK_P, KC_kana_comma, KC_kana_PI, KC_kana_e },
++    { java_awt_event_KeyEvent_VK_AT, KC_kana_comma, '@', '`' },
++    { java_awt_event_KeyEvent_VK_OPEN_BRACKET, KC_voicedsound, KC_semivoicedsound, 0 },
++
++    { java_awt_event_KeyEvent_VK_A, KC_kana_U, KC_kana_WO, KC_kana_VU },
++    { java_awt_event_KeyEvent_VK_S, KC_kana_SHI, KC_kana_A, KC_kana_ZI },
++    { java_awt_event_KeyEvent_VK_D, KC_kana_TE, KC_kana_NA, KC_kana_DE },
++    { java_awt_event_KeyEvent_VK_F, KC_kana_KE, KC_kana_yu, KC_kana_GE },
++    { java_awt_event_KeyEvent_VK_G, KC_kana_SE, KC_kana_MO, KC_kana_ZE },
++    { java_awt_event_KeyEvent_VK_H, KC_kana_HA, KC_kana_BA, KC_kana_MI },
++    { java_awt_event_KeyEvent_VK_J, KC_kana_TO, KC_kana_DO, KC_kana_O },
++    { java_awt_event_KeyEvent_VK_K, KC_kana_KI, KC_kana_GI, KC_kana_NO },
++    { java_awt_event_KeyEvent_VK_L, KC_kana_I, KC_kana_PO, KC_kana_yo },
++    { java_awt_event_KeyEvent_VK_SEMICOLON, KC_kana_N, '+', KC_kana_tsu },
++    { ':', ':', '*', ';' },
++    { java_awt_event_KeyEvent_VK_CLOSE_BRACKET, ']', '>', '<' },
++
++    { java_awt_event_KeyEvent_VK_Z, '.', KC_kana_u, 0 },
++    { java_awt_event_KeyEvent_VK_X, KC_kana_HI, KC_prolongedsound, KC_kana_BI },
++    { java_awt_event_KeyEvent_VK_C, KC_kana_SU, KC_kana_RO, KC_kana_ZU },
++    { java_awt_event_KeyEvent_VK_V, KC_kana_FU, KC_kana_YA, KC_kana_BU },
++    { java_awt_event_KeyEvent_VK_B, KC_kana_HE, KC_kana_i, KC_kana_BE },
++    { java_awt_event_KeyEvent_VK_N, KC_kana_ME, KC_kana_PU, KC_kana_NU },
++    { java_awt_event_KeyEvent_VK_M, KC_kana_SO, KC_kana_ZO, KC_kana_YU },
++    { java_awt_event_KeyEvent_VK_COMMA, KC_kana_NE, KC_kana_PE, KC_kana_MU },
++    { java_awt_event_KeyEvent_VK_PERIOD, KC_kana_HO, KC_kana_BO, KC_kana_WA },
++    { java_awt_event_KeyEvent_VK_SLASH, KC_kana_conjunctive, 0, KC_kana_o },
++	{ 0, 0, 0, 0 }
++};
++#endif
++
+ static KeymapEntry keymapTable[] = {
+     { java_awt_event_KeyEvent_VK_A, XK_a, TRUE },
+     { java_awt_event_KeyEvent_VK_B, XK_b, TRUE },
+@@ -688,6 +848,11 @@
+     return 0;
+ }
+ 
++#ifdef NICOLA
++int last_ptr = 0;
++struct timeb last_time;
++#endif
++
+ /* for kana */
+ #if kana_table
+ static void getAWTKeyCode2(long keysym, int *keycode, int *keychar) 
+@@ -700,6 +865,25 @@
+         if (kana_normal_keymapTable[i].x11Key == keysym) {
+ 	  *keycode = kana_normal_keymapTable[i].awtKey;
+ 	  *keychar = kana_normal_keymapTable[i].keychar;
++#ifdef NICOLA
++	for (i = 0; nicola_conv_table[i].awtKey != 0; i++) {
++		if (nicola_conv_table[i].awtKey != *keycode) continue;
++		last_ptr = i;
++		ftime(&last_time);
++		// mod4
++		if (glb_state & 0x40) {
++			*keychar = nicola_conv_table[i].shift_l;
++		}
++		// mod3
++		else if (glb_state & 0x20) {
++			*keychar = nicola_conv_table[i].shift_r;
++		}
++		else {
++			*keychar = nicola_conv_table[i].normal;
++		}
++		break;
++	}
++#endif
+ 	  return;
+         }
+     }
+@@ -1036,6 +1220,9 @@
+   first_call = False;
+ 
+   state = ev->state;
++#ifdef NICOLA
++glb_state = ev->state;
++#endif
+ 
+   /* LockMask, NumLockMask, KanaLockMask should be ignored for
+      Java Client compatibility */
+@@ -1211,6 +1398,32 @@
+       break;
+     }
+     if(*keycode_ret) {
++#ifdef NICOLA
++		if (*keycode_ret == java_awt_event_KeyEvent_VK_CONVERT
++				|| *keycode_ret == java_awt_event_KeyEvent_VK_ACCEPT) {
++			struct timeb now;
++			ftime(&now);
++			if ((now.time == last_time.time
++					&& (now.millitm - last_time.millitm < 50))
++					|| (now.time == last_time.time + 1
++					&& (now.millitm + 1000) - last_time.millitm  < 50)) {
++				if (*keycode_ret == java_awt_event_KeyEvent_VK_CONVERT) {
++					*keychar_ret = nicola_conv_table[last_ptr].shift_r;
++				}
++				else {
++					*keychar_ret = nicola_conv_table[last_ptr].shift_l;
++				}
++				*keycode_ret = nicola_conv_table[last_ptr].awtKey;
++				*keychar_ret &= 0xefff;
++				return True;
++			}
++			else {
++				*keycode_ret = 0;
++				*keychar_ret = 0;
++				return False;
++			}
++		}
++#endif
+         return True;
+     }
+ 
+diff -u iiimp/iiimpHandler.c iiimp.nicola/iiimpHandler.c
+--- iiimp/iiimpHandler.c	Wed Mar 20 20:41:14 2002
++++ iiimp.nicola/iiimpHandler.c	Fri Mar 29 20:16:15 2002
+@@ -1,3 +1,4 @@
++#define NICOLA
+ /*
+ Copyright 1985, 1986, 1987, 1991, 1998  The Open Group
+ 
+@@ -2330,14 +2331,22 @@
+   int keycode, keychar, state;
+   XKeyEvent *kev = (XKeyEvent*)ev;
+   int type;
++#ifdef NICOLA
++	int voicesound = 0;
++	char* vptr;
++#endif
+ 
+   if (NULL == ic) {
+     return False;
+   }
+   im = (XimCommon)ic->core.im;
+ 
++#ifndef NICOLA
+   /* IIIMP only takes KeyPress events */
+   if (ev->type != KeyPress) return True;
++#else
++	if (ev->type != KeyPress) return True;
++#endif
+ 
+   total_size = (2 + 2 + 4 + 4 + ((4 * 4) * 1));
+ 	      /* imid + icid + type + len + (key event) */
+@@ -2353,7 +2362,36 @@
+     goto Error;
+   }
+ 
++#ifdef NICOLA
++	vptr = ptr;
++#endif
+   req_put32(ptr, keycode);
++#ifdef NICOLA
++	if ((keychar & 0xf000) == 0xe000) {
++		ptr = vptr;
++		// Back Space
++		req_put32(ptr, 0x08);
++		req_put32(ptr, 0x08);
++		req_put32(ptr, state);
++		req_put32(ptr, kev->time);
++		if (!SendMessage(im, IM_FORWARD_EVENT, data, total_size
++				, IIIMP_ForwardEventReplyCB, ic, NULL)) {
++			status = False;
++			goto Error;
++		}
++		keychar |= 0xf000;
++		ptr = vptr;
++		req_put32(ptr, keycode);
++	}
++	if ((keychar & 0xff00) == 0xfe00) {
++		voicesound = 1;
++		keychar |= 0xff00;
++	}
++	else if ((keychar & 0xff00) == 0xfd00) {
++		voicesound = 2;
++		keychar |= 0xff00;
++	}
++#endif
+   req_put32(ptr, keychar);
+   req_put32(ptr, state);
+   req_put32(ptr, kev->time);
+@@ -2365,6 +2403,19 @@
+     status = False;
+     goto Error;
+   }
++#ifdef NICOLA
++#define KC_voicedsound 0xff9e
++#define KC_semivoicedsound 0xff9f
++	if (voicesound > 0) {
++		req_put32(vptr, keycode);
++		req_put32(vptr, voicesound == 1 ? KC_voicedsound: KC_semivoicedsound);
++		if (!SendMessage(im, IM_FORWARD_EVENT, data, total_size
++				, IIIMP_ForwardEventReplyCB, ic, NULL)) {
++			status = False;
++			goto Error;
++		}
++	}
++#endif
+  Error:
+   if (0 != XIC_IIIMP(ic, key_event_forwarded)) {
+     XIC_IIIMP(ic, key_event_forwarded) = 0;

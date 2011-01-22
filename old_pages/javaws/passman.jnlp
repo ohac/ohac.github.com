@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="Shift_JIS"?> 
+<jnlp spec="0.2 1.0"
+		codebase="http://ohac.pun.jp/old_pages/javaws/"
+		href="passman.jnlp">
+	<information> 
+		<title>Password Manager</title> 
+		<vendor>OhaC's Creative Studio</vendor>
+		<homepage href=".."/>
+		<description>Manage Password.</description>
+		<offline-allowed/> 
+	</information> 
+	<resources>
+		<j2se version="1.3+ 1.2+"/>
+		<jar href="passman.jar" main="true" download="eager"/>
+	</resources>
+	<security>
+		<all-permissions/> 
+	</security>
+	<application-desc main-class="PassManApplet"/>
+</jnlp> 

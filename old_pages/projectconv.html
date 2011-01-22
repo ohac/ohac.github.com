@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h1><a name="label-0" id="label-0">プロジェクト管理ツール</a></h1><!-- RDLabel: "プロジェクト管理ツール" -->
+<h2><a name="label-1" id="label-1">主な特長</a></h2><!-- RDLabel: "主な特長" -->
+<p>現段階での主な特長は以下のようになっています。</p>
+<ul>
+<li>テキストベースで簡単にプロジェクトファイルを編集</li>
+<li>見積もり〜スケジューリング〜日報〜実績の連携処理</li>
+</ul>
+<h2><a name="label-2" id="label-2">ダウンロード</a></h2><!-- RDLabel: "ダウンロード" -->
+<ul>
+<li>ソフトウェア本体
+<ul>
+<li>Windows <a href="projectconv/projectconv-0.04.lzh">projectconv-0.04.lzh</a></li>
+<li>RPM(Linux) <a href="projectconv/projectconv-0.04-0.noarch.rpm">projectconv-0.04-0.noarch.rpm</a></li>
+</ul></li>
+<li>Java2実行環境(インストール済なら不要)</li>
+<li>ソースコード(実行には不要) ( 
+<ul>
+<li><a href="projectconv/projectconv-src-0.04.tar.gz">projectconv-src-0.04.tar.gz</a></li>
+</ul></li>
+</ul>
+<h3><a name="label-3" id="label-3">Windows版について</a></h3><!-- RDLabel: "Windows版について" -->
+<p>このソフトは<a href="javalaunch.html">Javaランチャー</a>に対応してます。
+setup.jarをダブルクリックし、「次へ」を押すとインストール可能です。インストールが完了するとデスクトップにショートカットが生成されます。アンインストーラはありませんので、アンインストールの際は手作業で削除してください。
+実行すると、ダイアログが表示されるので、変換したいソース文書をドラッグ・アンド・ドロップしてください。そのディレクトリに拡張子がhtmlでファイルが生成されます。</p>
+<h3><a name="label-4" id="label-4">Linux版RPMについて</a></h3><!-- RDLabel: "Linux版RPMについて" -->
+<p>Windows版を移植したものなので、以下の点にご注意願います。</p>
+<ul>
+<li>ドラッグ・アンド・ドロップは未対応(つまり、コマンドラインからの変換のみ)</li>
+</ul>
+<h2><a name="label-5" id="label-5">開発状況</a></h2><!-- RDLabel: "開発状況" -->
+<p>ソースコードを公開しております。興味のある方はダウンロードしてみてください。コンパイル及び実行にはJ2DK1.4が必要です。</p>
+<h2><a name="label-6" id="label-6">最近の変更履歴</a></h2><!-- RDLabel: "最近の変更履歴" -->
+<ul>
+<li>2002.5.16(18:00) Ver.0.04</li>
+<li>2001.12.12(18:30) Ver.0.03</li>
+<li>2001.8.30 Ver.0.02</li>
+<li>2001.7 Ver.0.01(未公開)</li>
+<li>2001.7.7 Ver.0.00</li>
+</ul>
+<h2><a name="label-7" id="label-7">要望と問題点</a></h2><!-- RDLabel: "要望と問題点" -->
+<pre>|内容                                                      |対策/対応Ver.|
+|環境(SYSTEM32にjavawがある)によって起動できない不具合対策 |Ver.0.04     |
+|HTML日報部分:ジョブIDと見積もりと実績が未記入時のバグ     |Ver.0.04     |
+|HTML日報部分の見積もりと実績合計がおかしいバグ修正        |Ver.0.03     |
+|ジョブID指定時で項目が足りないときはエラーとする          |Ver.0.03     |
+|ジョブIDの重複でエラーと行番号を表示                      |Ver.0.03     |
+|ジョブIDのチェック機能:英数字以外は警告と行番号           |Ver.0.03     |
+|エラー時はリネーム処理を行わない                          |Ver.0.03     |
+|TABや空白、小数点以下が0、なども保存されるように          |Ver.0.03     |
+|文字コードの指定に対応(コマンドラインオプションのみ)      |Ver.0.02     |
+|linuxに対応(rpm化)                                        |Ver.0.02     |
+|同一ジョブの実績加算処理                                  |Ver.0.01     |
+|公開                                                      |Ver.0.00     |
+|GUI化とJavaランチャー、インストーラ対応                   |Ver.0.00     |
+|ファイルのドラッグアンドドロップに対応                    |Ver.0.00     |
+|行頭のタブをワーニングとする                              |未           |
+|合計の"-"は0と同じ意味にする                              |未           |
+|完了したプロジェクトの管理(方法未定)                      |未           |
+|ファイルのインクルード                                    |未           |
+|すべてのHTMLにリンクする                                  |未           |
+|週別にHTMLを生成                                          |未           |
+|プロジェクトに担当者を表示                                |未           |
+|週報にプロジェクト別の作業時間を表示                      |未           |
+|担当者別長期グラフ表示                                    |未           |
+|プロジェクト別長期グラフ表示                              |未           |
+|どのプロジェクトにも属さないジョブの統計処理              |未           |
+|ジョブIDの自動生成                                        |未           |
+|カレンダの自動生成                                        |未           |</pre>
+
+</body>
+</html>

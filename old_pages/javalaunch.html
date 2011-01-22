@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h1><a name="label-0" id="label-0">Javaランチャー</a></h1><!-- RDLabel: "Javaランチャー" -->
+<h2><a name="label-1" id="label-1">目的</a></h2><!-- RDLabel: "目的" -->
+<p>Javaで作成されたアプリケーションの起動を高速化する。また、複数のアプリケーションを一つのJava仮想マシンで実行することにより、メモリ効率を良くする。</p>
+<h2><a name="label-2" id="label-2">方法</a></h2><!-- RDLabel: "方法" -->
+<p>アプリケーション起動用のJava仮想マシンをあらかじめ常駐しておき、小さな起動用のWin32アプリケーションを実行することにより、ローカルソケット通信によって、Javaアプリケーションのクラスの起動を要求する。</p>
+<h2><a name="label-3" id="label-3">ダウンロード</a></h2><!-- RDLabel: "ダウンロード" -->
+<ul>
+<li>実行ファイル <a href="javalaunch/jlaunch-0.08.lzh">jlaunch-0.08.lzh</a></li>
+<li>Java2実行環境(インストール済なら不要)</li>
+<li>ソースコード <a href="javalaunch/jlaunch-src-0.08.lzh">jlaunch-src-0.08.lzh</a></li>
+</ul>
+<h2><a name="label-4" id="label-4">サンプルアプリケーションのダウンロード</a></h2><!-- RDLabel: "サンプルアプリケーションのダウンロード" -->
+<ul>
+<li>実行ファイル <a href="javalaunch/clock.lzh">clock.lzh</a></li>
+<li>ソースコード <a href="javalaunch/clock-src.lzh">clock-src.lzh</a></li>
+</ul>
+<h2><a name="label-5" id="label-5">使用方法</a></h2><!-- RDLabel: "使用方法" -->
+<p>インストール、実行にはJava2実行環境が必要ですので、こちらを先にダウンロードして、インストールしてください。
+setup.jarをダブルクリックし、「次へ」を押すとインストール可能です。インストールが完了するとデスクトップにショートカットが生成されます。アンインストーラはありませんので、アンインストールの際は手作業で削除してください。
+デスクトップのショートカットをダブルクリックし、Javaランチャーを起動してください。以上で準備は完了です。</p>
+<h2><a name="label-6" id="label-6">対応アプリケーション作成手順</a></h2><!-- RDLabel: "対応アプリケーション作成手順" -->
+<ul>
+<li>Appletを継承したクラスを作成する</li>
+<li>init()やstart()をオーバーライドし、機能を実装する</li>
+<li>このクラスをメインクラスとしてマニフェストファイルを作成する</li>
+<li>jarコマンドでクラスファイルとマニフェストファイルをアーカイブする</li>
+<li>jlauncher.exeの引数として、このjarファイルのフルパス名を設定し、実行する</li>
+</ul>
+<h2><a name="label-7" id="label-7">対応アプリケーションの起動方法</a></h2><!-- RDLabel: "対応アプリケーションの起動方法" -->
+<p>起動したいアプリケーションのJARファイルと同じディレクトリにjlaunch.exeを置いて、引数にJARファイル名を指定して実行する。するとJavaランチャーのウィンドウにアプリケーションが現れる。</p>
+<h2><a name="label-8" id="label-8">最近の変更履歴</a></h2><!-- RDLabel: "最近の変更履歴" -->
+<ul>
+<li>2002.5.14 Ver.0.08</li>
+<li>2001.6.25 Ver.0.07</li>
+<li>2001.6.24 Ver.0.06</li>
+<li>2001.5.28 Ver.0.05</li>
+<li>2001.5.27 Ver.0.04</li>
+<li>2001.5.13 Ver.0.03</li>
+<li>2001.5.11 Ver.0.02</li>
+<li>2001.5.11 Ver.0.01</li>
+<li>2001.5.7 Ver.0.00</li>
+</ul>
+<h2><a name="label-9" id="label-9">要望と問題点</a></h2><!-- RDLabel: "要望と問題点" -->
+<pre>|内容                                                          |対策/対応Ver.|
+|環境(SYSTEM32にjavawがある)によって起動できない不具合対策     |Ver.0.08     |
+|ウィルスバスターのポート番号とぶつかっている(暫定対策)        |Ver.0.07     |
+|javaw.exeが環境によっては起動しないバグを修正                 |Ver.0.06     |
+|パッケージに対応(ていうか、バグフィックス)                    |Ver.0.05     |
+|EXEファイルで実行するように変更                               |Ver.0.05     |
+|ランチャーが起動してなかったら、直接javawを実行するようにした |Ver.0.04     |
+|とりあえずのアイコンを追加                                    |Ver.0.03     |
+|ファイルのドラッグアンドドロップや関連付けにも対応可能に      |Ver.0.02     |
+|jlaunch.iniがあればそこからjarファイル名を読むように変更      |Ver.0.01     |
+|最小化を可能にした, タブに表示される文字列を短くした          |Ver.0.00     |
+|Linuxに対応                                                   |未           |</pre>
+<h2><a name="label-10" id="label-10">参考にしたサイト(すべてリンク切れ)</a></h2><!-- RDLabel: "参考にしたサイト(すべてリンク切れ)" -->
+<ul>
+<li><a href="http://www2s.biglobe.ne.jp/~maekawa/dev/vc/winsock/">WinSock研究</a></li>
+<li><a href="http://www.sys.wakayama-u.ac.jp/~s011020/">Y.Kurihara's Home Page</a></li>
+<li><a href="http://sz.redbit.ne.jp/~mkt/">Chau-Bar room</a> (アイコンのデザイン)</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h1><a name="label-0" id="label-0">iiimp親指シフト化</a></h1><!-- RDLabel: "iiimp親指シフト化" -->
+<h2><a name="label-1" id="label-1">主な特長</a></h2><!-- RDLabel: "主な特長" -->
+<p>Linux用 ATOK Xなどで使用されているライブラリ xiiimp.so.2 を親指シフト(NICOLA配列)にする。</p>
+<h2><a name="label-2" id="label-2">制限事項</a></h2><!-- RDLabel: "制限事項" -->
+<ul>
+<li>JISかなが使えなくなる</li>
+<li>変換・無変換キーを親指シフトキーとしたとき、変換・無変換の機能は使えなくなる</li>
+</ul>
+<h2><a name="label-3" id="label-3">ダウンロード</a></h2><!-- RDLabel: "ダウンロード" -->
+<ul>
+<li>元となるソフト <a href="ftp://ftp.x.org/contrib/i18n/sdk2-dev10.0.tar.gz">&lt;URL:ftp://ftp.x.org/contrib/i18n/sdk2-dev10.0.tar.gz&gt;</a></li>
+<li>差分プログラム(以下のどちらか)
+<ul>
+<li><a href="nicolaiiimp/sdk2-dev10.0-iiimp.patch">sdk2-dev10.0-iiimp.patch</a></li>
+<li><a href="nicolaiiimp/iiimf-nicola-0.1-0.nosrc.rpm">iiimf-nicola-0.1-0.nosrc.rpm</a></li>
+</ul></li>
+</ul>
+<h2><a name="label-4" id="label-4">インストール・設定方法</a></h2><!-- RDLabel: "インストール・設定方法" -->
+<ul>
+<li>patchの場合
+<ul>
+<li>/usr/lib/im/xiiimp.so.2に上書きコピーする</li>
+</ul></li>
+<li>rpmの場合
+<ul>
+<li>rpm --nodeps -i iiimf-nicola-0.1-0.i386.rpm</li>
+</ul></li>
+<li>xmodmap で以下のように設定する
+<ul>
+<li>ひらがなカタカナキーを設定する</li>
+<li>右親指シフトを mod3 に設定する</li>
+<li>左親指シフトを mod4 に設定する</li>
+</ul></li>
+<li>再起動後、日本語入力時にひらがなカタカナキーを押せばNICOLA配列でタイプ可能となる</li>
+</ul>
+<h2><a name="label-5" id="label-5">*設定例</a></h2><!-- RDLabel: "*設定例" -->
+<p>以下のようなxmodmap設定ファイルを用意し、"xmodmap [ファイル名]"で読み込む。</p>
+<pre>keycode 132 = Hiragana_Katakana
+
+keycode 135 = Muhenkan
+clear mod4
+add mod4 = Muhenkan
+
+keycode 134 = Henkan
+clear mod3
+add mod3 = Henkan</pre>
+<ul>
+<li>キーコード(keycode)は環境によって違うので、xevなどで調べてください。</li>
+</ul>
+<h2><a name="label-6" id="label-6">最近の変更履歴</a></h2><!-- RDLabel: "最近の変更履歴" -->
+<ul>
+<li>2002.4.17 Ver.0.00</li>
+</ul>
+<h2><a name="label-7" id="label-7">要望と問題点</a></h2><!-- RDLabel: "要望と問題点" -->
+<pre>|内容                                    |対策/対応Ver.|
+|強引に実装しているので、なんとかしたい  |未           |
+|JISカナと切り替え可能にしたい           |未           |</pre>
+
+</body>
+</html>

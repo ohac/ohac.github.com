@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h1><a name="label-0" id="label-0">KZIK(Kanji Zutto Ii Kanji)</a></h1><!-- RDLabel: "KZIK(Kanji Zutto Ii Kanji)" -->
+<p>skkime用のレジストリファイルを新規追加しました。(New! 2006-08-16)</p>
+<h2><a name="label-1" id="label-1">KZIKの特徴(設計方針)</a></h2><!-- RDLabel: "KZIKの特徴(設計方針)" -->
+<ul>
+<li>Quertyローマ字またはAZIKからの移行がやりやすい。</li>
+<li>AZIKローマ字入力とほぼ互換性がある。</li>
+<li>SKKとの相性がよい。(1ストローク目は必ずアルファベットなど)</li>
+<li>同音異義語の打ち分けを重要視。</li>
+<li>約750文字(2打鍵で約400文字、3打鍵で約350文字)の漢字が入力可能。</li>
+<li>skkimeでの実装(レジストリファイル)がある。</li>
+<li>uim-skkでの実装(パッチ)がある。</li>
+</ul>
+<h2><a name="label-2" id="label-2">ダウンロード</a></h2><!-- RDLabel: "ダウンロード" -->
+<h3><a name="label-3" id="label-3">skkime</a></h3><!-- RDLabel: "skkime" -->
+<p><a href="http://ohac.pun.jp/hg/kzik/file/tip/skkime/">&lt;URL:http://ohac.pun.jp/hg/kzik/file/tip/skkime/&gt;</a></p>
+<h3><a name="label-4" id="label-4">uim</a></h3><!-- RDLabel: "uim" -->
+<ul>
+<li><a href="http://ohac.pun.jp/hg/uim-debian/">&lt;URL:http://ohac.pun.jp/hg/uim-debian/&gt;</a></li>
+<li><a href="http://ohac.pun.jp/hg/uim-debian/.hg/patches/">&lt;URL:http://ohac.pun.jp/hg/uim-debian/.hg/patches/&gt;</a></li>
+<li><a href="http://ohac.pun.jp/hg/uim-trunk/">&lt;URL:http://ohac.pun.jp/hg/uim-trunk/&gt;</a></li>
+<li><a href="http://ohac.pun.jp/hg/uim-trunk/.hg/patches/">&lt;URL:http://ohac.pun.jp/hg/uim-trunk/.hg/patches/&gt;</a></li>
+<li><a href="http://ohac.pun.jp/hg/kzik/file/tip/uim/">&lt;URL:http://ohac.pun.jp/hg/kzik/file/tip/uim/&gt;</a></li>
+</ul>
+<h2><a name="label-5" id="label-5">KZIKの弱点</a></h2><!-- RDLabel: "KZIKの弱点" -->
+<ul>
+<li>未完成である。</li>
+<li>漢字が少ない。(T-Code, TUT-Codeと比べて)</li>
+<li>打ちにくいストロークの漢字が多い。(T-Code, TUT-Codeと比べて)</li>
+</ul>
+<h2><a name="label-6" id="label-6">マッピング案</a></h2><!-- RDLabel: "マッピング案" -->
+<p>左が1ストローク目、上が2ストローク目となる。例えば「思」という字は sg とタイピングする。</p>
+<pre>- w  r  t  y  u  i  s  d  f  g  j  k  ;  z  x  c  v  b  m  ,  .
+s                            思       ■    着 送 空 分 見 ■ ■
+d    対                      大       ■    代    遅 書    ■ ■
+f    件 仕          会       以       ■    点 押 換 付    ■ ■
+g                   行    試          ■    欠 要 用 様    ■ ■
+h    合             方    法          ■    機 移 信 買    ■ ■
+j    重 使          ★       聞       ■    生 身 地 自    ■ ■
+k                   ★                ■    変 開 気 効    ■ ■
+
+- w  r  t  y  u  i  s  d  f  g  j  k  ;  z  x  c  v  b  m  ,  .
+w          ■ ■          ■ ■ ■    ■    ■ ■ ■ ■ ■ ■ ■
+r       力          ★    ■          ■    ■ ■ ■ ■ ■ ■ ■
+t                         強          ■    ■ ■ ■       ■ ■
+y       ■       ■ ■ ■ ■ ■    ■ ■    ■ ■ ■ ■ ■ ■ ■
+p    ■ ■          ★    ■          ■    ■ ■ ■ ■ ■ ■ ■
+
+- w  r  t  y  u  i  s  d  f  g  j  k  ;  z  x  c  v  b  m  ,  .
+z       ■          ■                ■             ■ ■
+x    ■             ■    ■ ■                   ■ ■ ■
+c    ■ ■       ■ ■    ■ ■    ■ ■    ■    ■ ■ ■ ■ ■
+v    ■ ■          ★    返 ■       ■ 帰    ■    ■ ■ ■ ■
+b    ■             ★    ■          ■    ■ ■ ■    ■ ■ ■
+
+★は3ストローク用予備
+■は割り当て可能領域</pre>
+<h2><a name="label-7" id="label-7">タイピング練習用ソフト</a></h2><!-- RDLabel: "タイピング練習用ソフト" -->
+<p>typing.rbとtyping.kzik。./typing.rb typing.kzikという感じで使用する。</p>
+<ul>
+<li><a href="http://ohac.pun.jp/hg/kzik/file/tip/typing/">&lt;URL:http://ohac.pun.jp/hg/kzik/file/tip/typing/&gt;</a></li>
+</ul>
+
+</body>
+</html>

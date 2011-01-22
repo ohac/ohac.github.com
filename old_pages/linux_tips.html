@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h1><a name="label-0" id="label-0">Linux Tips</a></h1><!-- RDLabel: "Linux Tips" -->
+<h2><a name="label-1" id="label-1">はじめに</a></h2><!-- RDLabel: "はじめに" -->
+<p>この文書は RedHat Linux 7.1 でのセットアップメモです。</p>
+<h2><a name="label-2" id="label-2">親指シフト(nicolatter)</a></h2><!-- RDLabel: "親指シフト(nicolatter)" -->
+<p>nicolatterのRPMをインストールし、デフォルトのcanna, kinput2をFreeWnn, nicolatterに変更しました。</p>
+<p>/etc/X11/xinit/xinitrc.d/xinput の XIM を決定する部分に変更が必要でした。$tmplang が ja* のとき、強制的に XML="nicolater" と代入するように変更しました。そして、$XIM の case 文に nicolatter) を追加し、 XIM_PROGRAM=nicolatter と代入するようにしました。</p>
+<p>また nicolatter 用の設定ファイルを用意しました。</p>
+<pre>$ cd ~
+$ mkdir .nicolatter
+$ cd .nicolatter
+$ cp /usr/doc/nicolatter-1.7.1/rc/* .</pre>
+<p>~/.nicolatter/global を以下の部分を変更しました。</p>
+<pre>conversion-server: wnn
+left-shift-key: Muhenkan
+right-shift-key: Henkan_Mode
+keymap-file: /home/username/.nicolatter/nicola.keymap</pre>
+<p>これである程度動作するようになりましたが、標準ではctrl-backslashでIMEをON/OFFしていたので、これを"Ctrl+変換"に変更します。~/.nicolatter/global を "kana-key: ctrl-Henkan_Mode" に変更しました。</p>
+<p>これだけだと、ktermでのIME ON/OFFがShift+Spaceのままなので、~/.Xdefaultsを変更し、"Ctrl+変換"に変更します。</p>
+<pre>KTerm*VT100*translations: #override \
+  Ctrl&lt;Key&gt;Henkan_Mode: open-im(XMODIFIERS)</pre>
+<p>なお、この kterm の設定を行わないと、間違えて Shift+Space を押すと、kterm ごと死んでしまうので要注意です。</p>
+<p>ついでなので、kterm 起動時にIMEを立ち上げるようにしましょう。</p>
+<pre>KTerm*VT100*openIm: true</pre>
+<p>以上で大体のセットアップが完了します。</p>
+<h2><a name="label-3" id="label-3">kterm行間調整</a></h2><!-- RDLabel: "kterm行間調整" -->
+<p>ターミナルでメールやブラウザを扱うとなると、行間を空けて読みやすくしたいものです。~/.Xdefaults を次のように変更。数字は好みで変更しましょう。</p>
+<pre>KTerm*VT100*lineSpace: 6</pre>
+<p>kterm 以外のターミナルも試してみましたが、どうも行間を空ける機能がないのがほとんどのようです。</p>
+<h2><a name="label-4" id="label-4">kterm壁紙透過(工事中)</a></h2><!-- RDLabel: "kterm壁紙透過(工事中)" -->
+<p>ktermもEtermやgnome-terminalのように壁紙を透過させたいので、探してみたところ、kterm-6.2.0-WpBgpImlib という RPM が見つかりました。標準のktermをアンインストールし、これをインストールします。</p>
+<pre>$ su
+Password:
+# rpm -e kterm
+# rpm -ivh kterm*.rpm</pre>
+<p>次に設定を変更します。~/.Xdefaultを次のように変更。</p>
+<pre>KTerm.inheriting: true
+KTerm.inheritingShade: -150
+KTerm.inheritingFade: -70
+KTerm*VT100*background: black
+KTerm*VT100*foreground: white
+KTerm*VT100*cursorColor: white
+KTerm*VT100*scrollBar: true</pre>
+<p>ついでにスクロールバーも表示するようにしました。これで大体OKです。</p>
+<p>ただ、Windowを移動する時の描画処理が非常に遅いのと、lynxでのスクロール時にちらつくなどの不具合が発生します。Etermなどではこのような現象は起きませんでした。とりあえず、今は我慢しています。Etermなどで行間の設定があれば、そっちに乗り換えるのだが...</p>
+<p>後でわかったのだが再描画はウィンドウマネージャsawfishの設定を変更することで、対策できた。</p>
+<h2><a name="label-5" id="label-5">sitecopyとBlackJumboDog</a></h2><!-- RDLabel: "sitecopyとBlackJumboDog" -->
+<p>Windows用プロキシサーバーのBlackJumboDog経由でWebのアップロードする方法です。~/.sitecopyrc は以下の例のように設定します。</p>
+<pre>site ohac
+    server 192.168.0.2                    &lt;-- プロキシサーバーのIPアドレス
+    port 8021                             &lt;-- プロキシサーバーのFTPポート
+    url http://foo.com/~foo/
+    username foo@foo.com                  &lt;-- ユーザー名 @ 転送先アドレス
+    password ********                     &lt;-- 転送先パスワード
+    local ~/www                           &lt;-- ローカルディレクトリ
+    remote /www                           &lt;-- 転送先ディレクトリ
+    ftp nopasv                            &lt;-- Passiveモードにしない
+    exclude *.bak</pre>
+<p>この設定がわかるまで、非常に時間がかかりました。proxy-server とか proxy-port の設定は不要だったのです。</p>
+<h2><a name="label-6" id="label-6">USBマウス(一部調査中)</a></h2><!-- RDLabel: "USBマウス(一部調査中)" -->
+<p>なんか良くわからないが、いろいろやっていて、次の設定でUSBマウスが使えることがわかった。</p>
+<p>/etc/modules.conf に以下を追加。</p>
+<pre>alias usb-controller-1 input
+alias usb-controller-2 keybdev
+alias usb-controller-3 mousedev
+alias usb-controller-4 hid
+alias usb-controller usb-uhci</pre>
+<p>あとは、USBマウスを繋げて、再起動するとkudzuというソフトが認識してくれる。~
+ただ、ノートPCのタッチパッドと両方を使うにはこれだけでは駄目みたい。またそのうち調査します。</p>
+<h2><a name="label-7" id="label-7">USBキーボード(一部調査中)</a></h2><!-- RDLabel: "USBキーボード(一部調査中)" -->
+<p>USBマウスと同じ手順で認識まではOKだが、そのままでは変換キーなどがうまく動作しない。</p>
+<p>/etc/X11/xkb/keycodes/xfree86 の xkb_keycodes "jp106" の部分のうまく認識しないキーのキーコードを xev で調べ、控えておく。</p>
+<p>次に以下のようなファイルを用意しておく。</p>
+<pre>keycode 49 = Alt_R
+keycode 129 =
+keycode 131 = underscore
+keycode 132 = Escape
+keycode 134 = Henkan
+keycode 135 = Muhenkan
+add mod1 = Alt_R
+clear mod3
+add mod3 = Henkan</pre>
+<p>このファイルをxmodmapで処理する。</p>
+<pre>$ xmodmap filename</pre>
+<p>最後にnicolatterをリスタートさせる。</p>
+<pre>$ killall -HUP nicolatter</pre>
+<p>USBキーボードを使うときのみこの作業を行なうとよい。</p>
+<p>ちなみに、Escapeキーを131に割り当てているのは、右親指で打鍵可能な、「カタカナひらがな」キーに割り当てたかったためである。また、アンダースコアはシフトなしで入力可能にしている。</p>
+<p>キーリピートの調整がわからない。さらなる調査が必要だ。</p>
+<h2><a name="label-8" id="label-8">GNOMEのデスクトップ(調査中)</a></h2><!-- RDLabel: "GNOMEのデスクトップ(調査中)" -->
+<p>GNOMEを使っていると /etc/fstab に追加されたデバイスが勝手にデスクトップにショートカットが作成されてしまいます。私はデスクトップをなるべくシンプルにしておきたいので、これを自動生成しない方法を調査中です。</p>
+<h2><a name="label-9" id="label-9">日本語入力キーカスタマイズ(調査中)</a></h2><!-- RDLabel: "日本語入力キーカスタマイズ(調査中)" -->
+<h2><a name="label-10" id="label-10">CapsLockをCTRLキーに割り当て(工事中)</a></h2><!-- RDLabel: "CapsLockをCTRLキーに割り当て(工事中)" -->
+<p>/etc/X11/XF86Config-4 を変更。</p>
+<h2><a name="label-11" id="label-11">vnc(工事中)</a></h2><!-- RDLabel: "vnc(工事中)" -->
+<p>変換キーなどがうまく動作しない。</p>
+<h2><a name="label-12" id="label-12">fetchmail(工事中)</a></h2><!-- RDLabel: "fetchmail(工事中)" -->
+<h2><a name="label-13" id="label-13">procmail(工事中)</a></h2><!-- RDLabel: "procmail(工事中)" -->
+<h2><a name="label-14" id="label-14">mutt(工事中)</a></h2><!-- RDLabel: "mutt(工事中)" -->
+<h2><a name="label-15" id="label-15">mnews(工事中)</a></h2><!-- RDLabel: "mnews(工事中)" -->
+<h2><a name="label-16" id="label-16">lynx(工事中)</a></h2><!-- RDLabel: "lynx(工事中)" -->
+<h2><a name="label-17" id="label-17">vim(工事中)</a></h2><!-- RDLabel: "vim(工事中)" -->
+<h2><a name="label-18" id="label-18">cvs(工事中)</a></h2><!-- RDLabel: "cvs(工事中)" -->
+<h2><a name="label-19" id="label-19">rpmビルド環境(工事中)</a></h2><!-- RDLabel: "rpmビルド環境(工事中)" -->
+
+</body>
+</html>

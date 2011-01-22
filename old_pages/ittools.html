@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h1><a name="label-0" id="label-0">ITツール</a></h1><!-- RDLabel: "ITツール" -->
+<h2><a name="label-1" id="label-1">目的</a></h2><!-- RDLabel: "目的" -->
+<p>IT関連の便利なツール群を提供する。ここでいうITとは、主にインターネットを用いたもので、当面はメールやニュース、WWWブラウザを扱う。</p>
+<h3><a name="label-2" id="label-2">メール・ニュース機能の改善</a></h3><!-- RDLabel: "メール・ニュース機能の改善" -->
+<p>普段、作者はmnews+gn+fetchmailを利用しているが、以下の点について、改善したく思い、開発を開始した。</p>
+<ul>
+<li>メール、ニュース投稿の両方へ同じ内容を送信したい</li>
+<li>添付ファイルの処理がやりにくい</li>
+<li>ブラウザとの連携を1キーで行いたい</li>
+<li>viの操作感により近づける</li>
+</ul>
+<p>当面はmnewsの部分の代わりとなるソフトの開発を行う。完成すれば、自前でメール・ニュースの送受信もサポートしたい。</p>
+<h3><a name="label-3" id="label-3">ブラウザ機能の改善</a></h3><!-- RDLabel: "ブラウザ機能の改善" -->
+<p>普段、作者はw3mを利用しているが、以下の点について、改善したく思い、開発を開始した。</p>
+<ul>
+<li>各コンテントタイプから別アプリの起動(特にJava Web Start)</li>
+<li>HTMLを完全に受信完了する前に仮のレンダリング</li>
+<li>内部キャッシュ・オフラインのサポート</li>
+<li>サイボウズがうまく操作できない(Cookieの問題?)</li>
+<li>viの操作感により近づける</li>
+</ul>
+<h2><a name="label-4" id="label-4">主な特長</a></h2><!-- RDLabel: "主な特長" -->
+<ul>
+<li>コンソールUIを用い、vimなどの好みのエディタでメール、ニュース投稿の編集</li>
+<li>メール、ニュース投稿の両方へ同じ内容を送信可能</li>
+</ul>
+<h2><a name="label-5" id="label-5">ダウンロード</a></h2><!-- RDLabel: "ダウンロード" -->
+<ul>
+<li>ソフトウェア本体</li>
+<li>* Windows <a href="ittools/ittools.lzh">ittools.lzh</a></li>
+<li>* RPM(Linux) <a href="ittools/ittools-0.4-0.noarch.rpm">ittools-0.4-0.noarch.rpm</a></li>
+<li><a href="http://www.omronsoft.co.jp/~yamasita/">gn-1.40</a> (リンク切れ)</li>
+<li><a href="http://www.tuxedo.org/~esr/fetchmail/">fetchmail-5.7.4</a> (リンク切れ)</li>
+<li>Java2実行環境(インストール済なら不要)</li>
+<li>ソースコード(実行には不要)</li>
+<li>* LZH <a href="ittools/ittools_src.lzh">ittools_src.lzh</a> (紛失)</li>
+<li>* tar.gz <a href="ittools/ittools_src.tar.gz">ittools_src.tar.gz</a> (紛失)</li>
+</ul>
+<h3><a name="label-6" id="label-6">Linux版RPMについて</a></h3><!-- RDLabel: "Linux版RPMについて" -->
+<h4><a name="label-7" id="label-7">GNOMEまたはKDEの場合</a></h4><!-- RDLabel: "GNOMEまたはKDEの場合" -->
+<p>ルート(root)でログインし、ファイルマネージャ(gnomeやkdeの場合)でダウンロードしたファイルを右クリックし、"Install..."をクリックしてください。
+アンインストールはシステムメニューにある Gnome RPM (GnoRPM) または「パッケージマネージャ」から行います。インストールと同様にルートでログインしておく必要があります。</p>
+<h4><a name="label-8" id="label-8">ターミナルの場合</a></h4><!-- RDLabel: "ターミナルの場合" -->
+<p>ルート(root)でログイン(su)し、"rpm -ivh ittools-*.rpm" でインストールされます。
+実行するには各コマンドを使用してください。
+アンインストールは "rpm -e ittools" で行います。インストールと同様にルートでログインしておく必要があります。</p>
+<h3><a name="label-9" id="label-9">Windows版について</a></h3><!-- RDLabel: "Windows版について" -->
+<p>開発中です。参考にダウンロードできるようにしています。</p>
+<h2><a name="label-10" id="label-10">開発状況</a></h2><!-- RDLabel: "開発状況" -->
+<p>ソースコードを公開しております。興味のある方はダウンロードしてみてください。コンパイル及び実行にはJ2DK1.3が必要です。</p>
+<h2><a name="label-11" id="label-11">最近の変更履歴</a></h2><!-- RDLabel: "最近の変更履歴" -->
+<ul>
+<li>2001.12.11(13:00) Ver.0.4</li>
+<li>2001.11.21(19:30) Ver.0.3</li>
+<li>2001.11.21(19:00) Ver.0.2</li>
+<li>2001.11.19 Ver.0.1</li>
+<li>2001.11.17 Ver.0.0</li>
+</ul>
+<h2><a name="label-12" id="label-12">要望と問題点</a></h2><!-- RDLabel: "要望と問題点" -->
+<pre>|内容                                                         |対策/対応Ver.|
+|本文の空行にヘッダーが混じるバグ修正                         |Ver.0.4      |
+|添付ファイルのContent-Type自動設定                           |Ver.0.4      |
+|日本語、英語混じりの宛先変換機能                             |Ver.0.4      |
+|自動添付ファイルboundaryのバグ修正                           |Ver.0.3      |
+|自動添付ファイル                                             |Ver.0.2      |
+|日本語件名の変換機能                                         |Ver.0.2      |
+|文字コードがJISじゃなかったバグ修正                          |Ver.0.1      |
+|新規メール作成支援                                           |Ver.0.0      |
+|メール用エディタ起動                                         |Ver.0.0      |
+|gnspool用ディレクトリにコピー機能(NewsとMail両方)            |Ver.0.0      |
+|スプールディレクトリ設定(~/.gnrcから読みとる)                |Ver.0.0      |
+|ユーザー名設定                                               |Ver.0.0      |
+|ユーザーアドレス設定                                         |Ver.0.0      |
+|エディタ設定                                                 |Ver.0.0      |
+|自動署名                                                     |-            |
+|NewsとMail両方への転送時の本文への追記                       |-            |
+|Bccをニュースグループに見せるかどうかの設定                  |-            |
+|受信MailのNewsへの転送支援                                   |-            |
+|メール返信・転送支援                                         |-            |
+|メール・ニュース閲覧                                         |-            |
+|メールアドレス、ニュースグループ自動補間                     |-            |
+|メールアドレス、ニュースグループ管理                         |-            |
+|草稿の管理                                                   |-            |
+|メール送受信(gnspool, fetchmailを使わない)                   |-            |
+|メール振り分け                                               |-            |
+|ニュース送受信(gnspoolを使わない)                            |-            |
+|メールアドレス、ニュースグループ管理強化(最新順、送受信回数) |-            |
+|自動添付ファイル圧縮                                         |-            |
+|Windows/Mac向けGUI                                           |-            |
+|内部メールエディタ実装                                       |-            |
+|不足ヘッダ補間機能                                           |-            |
+|gnspool起動機能                                              |-            |
+|fetchmail定期起動機能                                        |-            |
+|複数の接続条件設定                                           |-            |
+|マルチアカウント                                             |-            |
+|GPG対応(PGP/MIME)                                            |-            |</pre>
+
+</body>
+</html>

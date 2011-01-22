@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>jsgoban</title>
+<link href="css/go.css" type="text/css" rel="stylesheet" title="Unknown" />
+<link href="css/ie.css" type="text/css" rel="alternate stylesheet" title="IE" />
+<link href="css/opera.css" type="text/css" rel="alternate stylesheet"
+	title="Opera" />
+<link href="css/webkit.css" type="text/css" rel="alternate stylesheet"
+	title="WebKit" />
+<link href="css/gecko.css" type="text/css" rel="alternate stylesheet"
+	title="Gecko" />
+<link href="css/mobile_safari.css" type="text/css" rel="alternate stylesheet"
+	title="MobileSafari" />
+<script type="text/javascript" src="prototype.js"></script>
+<script type="text/javascript" src="gears_init.js"></script>
+<script type="text/javascript" src="skins.js"></script>
+<script type="text/javascript" src="skins/skin_g.js"></script>
+<script type="text/javascript" src="skins/skin_en.js"></script>
+<script type="text/javascript" src="skins/skin_jp.js"></script>
+<script type="text/javascript" src="msgs.js"></script>
+<script type="text/javascript" src="msgs/msgs_en.js"></script>
+<script type="text/javascript" src="msgs/msgs_ja.js"></script>
+<script type="text/javascript" src="go.js"></script>
+<script type="text/javascript" src="use_gears.js"></script>
+</head>
+<body onload="start(); gogear_init()">
+
+<div id="mainarea">
+<div id="1_board">
+</div>
+<div id="1_url">
+</div>
+<div id="1_nanourl">
+</div>
+<a href="#" onclick="jsgoban.nanourl_req(); this.blur(); return false;">Update NanoURL</a>
+</div>
+
+<div id="sidebar">
+<div id="1_sequence_selecter">
+</div>
+<hr />
+<div id="1_skin_selecter">
+</div>
+<hr />
+<div id="1_boardsize_selecter">
+</div>
+<hr />
+<div id="1_msg_selecter">
+</div>
+</div>
+
+<div id="footer">
+<hr />
+<form action="#" id="1_form">
+<input type="radio" id="1_mb" name="mode" value="stone_black" checked="checked"
+/><label for='1_mb' id='1_lbl_black'></label>
+<input type="radio" id="1_mw" name="mode" value="stone_white" /><label for='1_mw' id='1_lbl_white'></label>
+<input type="radio" id="1_mn" name="mode" value="null" /><label for='1_mn' id='1_lbl_capture'></label><br />
+<textarea id="1_sgf" name="sgf" cols="59" rows="6">
+</textarea>
+</form>
+<hr />
+<div id="1_browser_info">
+</div>
+<button onclick="gogear_capture()">Capture</button>
+<button onclick="gogear_uncapture()">Uncapture</button>
+<button onclick="gogear_db()">Load</button>
+<br>
+Powered by <a href="http://gears.google.com/">Google Gears (BETA)</a><br>
+<div id="gears_status"></div>
+</div>
+
+</body>
+</html>

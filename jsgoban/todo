@@ -1,0 +1,56 @@
+= TODO / Roadmap
+
+== version 0.1.2 (bug fixes)
+
+== version 0.2 (basic functions)
+* import sgf
+* print version
+* empathize last stone mode
+* print colored sequence number mode
+  * you can choose the number of sequences until current stone
+
+== version 0.3 (convenient functions)
+* support formatting stones for counting each area when game is finished
+  * if stone is clicked, then it will be captured.
+  * if empty grid is clicked, then one of the captured stones will be placed.
+* users skin and message templates
+* edit my name and opponent name
+* typical comment output
+* undo
+* redo
+* judge 'Kou' algorithm
+
+== version 0.4 (save and load)
+* save preferences to cookies
+* save status to cookies
+* save reference URL (game BBS etc)
+
+== version 0.5 (documentation)
+* document
+  * how to use
+  * FAQ
+  * license
+  * contributers
+
+== version 0.6 (look & feel)
+* small stone images
+
+== version 1.0 (difficult to implement or test)
+* support more browsers
+  * Windows Opera
+  * MacOS X IE
+  * iPhone(iPod touch) MobileSafari
+  * other minor browsers support
+* compressed printable sgf output (gzip | compress? + uuencode(base64?))
+  * But JavaScript doesn't have such libraries?
+* enable linking to major BBSs (distributed system)
+  * using Greasemonkey?
+* reserved hidden sequences of stones (but how?)
+* simple go server which is able to work with go.js
+* gnugo support
+* support 'Nigiri' which is random number generator
+* comment support
+* hidden comment support
+* multiple board in same HTML
+* can be blog item
+* check forbidden stone move

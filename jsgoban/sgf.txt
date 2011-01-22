@@ -1,0 +1,51 @@
+a SGF short example:
+----
+(;FF[4]GM[1]SZ[19]AP[SGFC:1.13b]
+
+PB[troy]BR[12k*]
+PW[john]WR[11k*]
+KM[0.5]RE[W+12.5]
+DT[1998-06-15]
+TM[600]
+
+;B[pd];W[dp];B[pq];W[dd];B[qk];W[jd];B[fq];W[dj];B[jp];W[jj]
+;B[cn]LB[dn:A][po:B]C[dada: other ideas are 'A' (d6) or 'B' (q5)]
+;W[eo](;B[dl]C[dada: hm - looks troublesome.
+Usually B plays the 3,3 invasion - see variation];W[qo];B[qp]
+...
+;W[sr];B[sk];W[sg];B[pa];W[gc];B[pi];W[ph];B[de];W[ed];B[kn]
+;W[dh];B[eh];W[se];B[sd];W[af];B[ie];W[id];B[hf];W[hd];B[if]
+;W[fp];B[gq];W[qj];B[sj];W[rh];B[sn];W[so];B[sm];W[ep];B[mn])
+...
+(;W[dq]N[wrong direction];B[qo];W[qp]))
+----
+
+FF[4]: SGF file format
+GM[1]: game mode (1 = Go)
+SZ[19]: board size
+AP[SGFC:1.13b]: the name and version number of the application
+PB[troy]BR[12k*]: black: player name and rank
+PW[john]WR[11k*]: white: player name and rank
+KM[0.5]: Score adjustment (Komi)
+RE[W+12.5]: game result. W+ means White win +12.5 is score
+DT[1998-06-15]: Date
+TM[600]: playing time
+C[foo: bar]: comment
+N[foo]: node name
+LB[dn:A][po:B]: comment on the board
+
+----
+
+a SGF simple example for this application:
+----
+(;FF[4]GM[1]SZ[19]AP[go-js:0.2]
+
+PB[player1]
+PW[player2]
+KM[0.5]
+DT[1998-06-15]
+
+;B[pd];W[dp];B[pq];W[dd];B[qk];W[jd];B[fq];W[dj];B[jp];W[jj]
+...
+;B[gq];W[qj];B[sj];W[rh];B[sn];W[so];B[sm];W[ep];B[mn])
+----

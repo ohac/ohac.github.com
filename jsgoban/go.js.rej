@@ -1,0 +1,41 @@
+--- go.js
++++ go.js
+@@ -539,25 +539,21 @@ var JSGoban = Class.create({
+ 	},
+ 
+ 	nanourl_req: function() {
+-		var href = window.location.href;
+-		var baseurl = href.match(/http:\/\/[^\/]*/);
+-		var ajax = new Ajax.Request(baseurl + '/nanourl/',
+-			{ method:'post', parameters: 'url=' + escape(this.current_url),
+-			onComplete: this.nanourl_get });
+-	},
+-
+-	nanourl_get: function(res) {
+-		var restxt = res.responseText;
+-		var ret = restxt.match(/a href="[^"]*/);
+-		var nanourl = ret[0].substr(8);
+-		// FIXME how can I access this.prefix?
+-//		$(this.prefix + 'nanourl').innerHTML = '<a href="' + nanourl + '">' +
+-//			nanourl + '</a>';
+-		$('1_nanourl').innerHTML = '<a href="' + nanourl + '">' +
+-			nanourl + '</a>';
+-	}
++		var v = this.current_url;
++		var s = document.createElement('script');
++		s.setAttribute('src',
++		'http://ohac.s3.zmx.jp/jsgoban/tinyurl2json.cgi?url=' + v);
++		document.body.appendChild(s);
++	},
+ 
+ });
++
++function tinyurl2json_callback(url) {
++	// FIXME how can I access this.prefix?
++//	$(this.prefix + 'nanourl').innerHTML =
++	$('1_nanourl').innerHTML =
++	'<a href="' + url + '">' + url + '</a>';
++}
+ 
+ var jsgoban = null;
+ var jsgobans = {};

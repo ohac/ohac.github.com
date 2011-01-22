@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20060801</a></h2><!-- RDLabel: "20060801" -->
+<h3><a name="label-1" id="label-1">[c]fopenのappendモードとfseek</a></h3><!-- RDLabel: "[c]fopenのappendモードとfseek" -->
+<p>"a"や"a+"でオープンするとfseekが機能しないようだ。これがANSIの仕様とのこと。知らんかった。30分ぐらい悩んだ。man 2 fopenやfseekで見てもそんなこと書いてないし...</p>
+<h3><a name="label-2" id="label-2">[linux]ld.so.conf</a></h3><!-- RDLabel: "[linux]ld.so.conf" -->
+<p>LD_LIBRARY_PATHの代わりに/etc/ld.so.confというのがあるらしい。(Anthy-dev MLより)</p>
+<h2><a name="label-3" id="label-3">20060815</a></h2><!-- RDLabel: "20060815" -->
+<h3><a name="label-4" id="label-4">[im][windows]skkime</a></h3><!-- RDLabel: "[im][windows]skkime" -->
+<p>自宅メインPCがWindowsになったのでskkimeを使っているのだが、AZIK配列じゃないから激しく打ち間違える。チャットでこんなに打つのが遅いとタイピングが下手だと思われかねない。ということで、こんなのを見つけた。 http://kemasoft.pya.jp/pukiwiki/index.php?%CE%A2%C1%EB%2Fskkime-azik 。試してみると、結構便利。 http://www.tatari-sakamoto.jp/~tatari/skkime.jis.html によると「ローマ字仮名ルールをレジストリから読み込む上限を 8192 に変更しました。」というのがある。これならもっとAZIKらしくできるかもしれない。またKZIKの実装も可能かも。しかし、レジストリの内容がよく分からん。</p>
+<h3><a name="label-5" id="label-5">[diary]firefoxでCtrl+hをBSに</a></h3><!-- RDLabel: "[diary]firefoxでCtrl+hをBSに" -->
+<p>http://www.kncn.net/blog/item/388 http://wildlifesanctuary.blog38.fc2.com/blog-category-3.html これらが参考になりそう。ほほう、 chrome://global/content/platformHTMLBindings.xml で現在の設定が見られるのかぁ。 /usr/share/firefox/chrome/toolkit/content/global/platformHTMLBindings.xml を編集したらいいのかな。 http://www.mozilla-japan.org/unix/customizing.html ここの方が参考になるかな。いろいろ試してみて、一応実現はできたけど、アップグレードするたびに変更が必要なのはちょっとまずいな。もうしばらく待とう。</p>
+<h3><a name="label-6" id="label-6">[im]SKKで使ってないキーストロークを利用した漢字変換</a></h3><!-- RDLabel: "[im]SKKで使ってないキーストロークを利用した漢字変換" -->
+<p>例えば、「OMu」を「思う」、「KanE」(AZIKなら「KzE」)を「考え」とかどうだろう。しかし、「KanE」はうまくいくが、「OMu」は「思うむ」になってしまいうまくいかないな。送り仮名の置換機能があればいいのかも。</p>
+<h2><a name="label-7" id="label-7">20060816</a></h2><!-- RDLabel: "20060816" -->
+<h3><a name="label-8" id="label-8">[im]skkimeカスタマイズAZIK/KZIK完全対応</a></h3><!-- RDLabel: "[im]skkimeカスタマイズAZIK/KZIK完全対応" -->
+<p>とりあえず skkimeのAZIKカスタマイズページからレジストリファイルをダウンロードしてきて、重要そうな部分をデコードするところまでコーディングした。download.shしてからreverse.rbで変換となっています。 http://ohac.sytes.net/cgi-bin/viewcvs.cgi/kzik/skkime/ あら? ViewCVSで見えない。なぜだ。「NOTE: There are 2 files, but none match the current selection criteria.」って何? cvsコマンドを使えば問題ないのに。それと「Commit Identifier:」って何? こんなの今まであったっけ。</p>
+
+</body>
+</html>

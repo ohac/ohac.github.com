@@ -1,0 +1,93 @@
+#!/usr/bin/ruby
+rdfname = ARGV[0]
+pagetitle = ARGV[1]
+
+puts <<HEADER
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<script src="prototype.js"></script>
+<script src="activelist.js"></script>
+<link href="/hg/cross/cross.css" type="text/css" rel="stylesheet" />
+<style type="text/css">
+li { list-style: none; }
+a:link {text-decoration: none; color: black; }
+a:visited {text-decoration: none; color: black; }
+a:active {text-decoration: none; color: black; }
+a:hover {text-decoration: none; color: black; background: #eeeee0; }
+.box { color: #666666; font-size: xx-small;
+border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0; cursor:pointer; }
+</style>
+<title>#{pagetitle}</title>
+</head>
+<body onload="start()">
+<h1>#{pagetitle}</h1>
+<ul>
+<li><a href="index.html">back</a></li>
+</ul>
+<hr>
+<ul>
+HEADER
+
+level = 0
+id_ary = [ 0 ]
+next_str = nil
+next_str2 = nil
+open(rdfname) { |fh|
+	fh.each_line { |line|
+		pos = line.index("*")
+		next if pos == nil # FIXME
+		break if (pos % 2) == 1 # FIXME
+		line.chop!
+		nlevel = pos / 2
+		if level < nlevel
+			puts next_str if next_str
+			puts "<ul>"
+			id_ary[nlevel] = 1
+		elsif level > nlevel
+			puts next_str2 if next_str2
+			(level - nlevel).times { puts "</ul>" }
+			id_ary = id_ary[0..nlevel]
+			id_ary[nlevel] += 1
+		else
+			puts next_str2 if next_str2
+			id_ary[level] += 1
+		end
+		line = line[(pos + 2)..-1]
+		id = 'l' + id_ary.join('_')
+next_str = <<STR
+<li id="#{id}">
+<a href="#" onclick="hide_folder('#{id}')" id="#{id}_h" class="box">-</a>
+<a href="#" onclick="show_folder('#{id}')" id="#{id}_s" class="box">+</a>
+#{line}
+<a href="#" onclick="rm_folder('#{id}')" class="box">x</a>
+</li>
+STR
+next_str2 = <<STR
+<li id="#{id}">
+<span class="box">o</span>
+#{line}
+<a href="#" onclick="rm_folder('#{id}')" class="box">x</a>
+</li>
+STR
+		level = nlevel
+	}
+}
+puts next_str2 if next_str2
+level.times { puts "</ul>" }
+
+puts <<FOOTER
+</ul>
+
+<hr>
+<ul>
+<li><a href="index.html">back</a></li>
+</ul>
+
+</body>
+</html>
+FOOTER

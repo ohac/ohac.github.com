@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">2007-06-15</a></h2><!-- RDLabel: "2007-06-15" -->
+<h3><a name="label-1" id="label-1">Mercurial links into trac or redMine</a></h3><!-- RDLabel: "Mercurial links into trac or redMine" -->
+<p>Mercurialのソースコード(及びPython)の勉強中。まだリリースには遠い。</p>
+<pre>diff -r 29ec36fb50a3 mercurial/hgweb/hgweb_mod.py
+--- a/mercurial/hgweb/hgweb_mod.py	Thu Jun 14 12:58:05 2007 +0900
++++ b/mercurial/hgweb/hgweb_mod.py	Fri Jun 15 22:09:16 2007 +0900
+@@ -318,6 +318,11 @@ class hgweb(object):
+         def diff(**map):
+             yield self.diff(p1, n, None)
+
++        tickets = []
++        baseurl = "http://hoge/"
++        tickets.append(self.t("ticketlink", node="12", baseurl=baseurl))
++        tickets.append(self.t("ticketlink", node="13", baseurl=baseurl))
++
+         yield self.t('changeset',
+                      diff=diff,
+                      rev=ctx.rev(),
+@@ -328,6 +333,7 @@ class hgweb(object):
+                      author=ctx.user(),
+                      desc=ctx.description(),
+                      date=ctx.date(),
++                     tickets=tickets,
+                      files=files,
+                      archives=self.archivelist(hex(n)),
+                      tags=self.nodetagsdict(n),
+diff -r 29ec36fb50a3 templates/changeset.tmpl
+--- a/templates/changeset.tmpl	Thu Jun 14 12:58:05 2007 +0900
++++ b/templates/changeset.tmpl	Fri Jun 15 21:57:20 2007 +0900
+@@ -36,6 +36,10 @@
+  &lt;th class="description"&gt;description:&lt;/th&gt;
+  &lt;td class="description"&gt;#desc|strip|escape|addbreaks#&lt;/td&gt;
+ &lt;/tr&gt;
++&lt;tr&gt;
++ &lt;th class="tickets"&gt;tickets:&lt;/th&gt;
++ &lt;td class="tickets"&gt;#tickets#&lt;/td&gt;
++&lt;/tr&gt;
+ &lt;/table&gt;
+
+ &lt;div id="changesetDiff"&gt;
+diff -r 29ec36fb50a3 templates/map
+--- a/templates/map	Thu Jun 14 12:58:05 2007 +0900
++++ b/templates/map	Fri Jun 15 22:09:48 2007 +0900
+@@ -54,3 +54,4 @@ error = error.tmpl
+ error = error.tmpl
+ urlparameter = '#separator##name#=#value|urlescape#'
+ hiddenformentry = '&lt;input type="hidden" name="#name#" value="#value|escape#" /&gt;'
++ticketlink = '&lt;a href="#baseurl##node|short#"&gt;##node|escape#&lt;/a&gt; '</pre>
+<h3><a name="label-2" id="label-2">redMine links into Mercurial repository</a></h3><!-- RDLabel: "redMine links into Mercurial repository" -->
+<p>こんなの作ってみました。</p>
+<pre>Index: app/helpers/application_helper.rb
+===================================================================
+--- app/helpers/application_helper.rb	(revision 564)
++++ app/helpers/application_helper.rb	(working copy)
+@@ -137,6 +137,12 @@
+     #   [[link|title]] -&gt; "title":link
+     text = text.gsub(/\[\[([^\]\|]+)(\|([^\]\|]+))?\]\]/) {|m| "\"#{$3 || $1}\":" + format_wiki_link.call(Wiki.titleize($1)) }
+
++    # turn Mercurial links into textile links: 
++    # example:
++    #   hg:tip -&gt; "hg:tip":http://foo/hoge/rev/tip
++    urlbase = "http://foo/hoge/rev/"
++    text = text.gsub(/hg:([^\s]+)/) { |m| "\"hg:#{$1}\":#{urlbase}" + $1 }
++
+     # turn issue ids into links
+     # example:
+     #   #52 -&gt; &lt;a href="/issues/show/52"&gt;#52&lt;/a&gt;</pre>
+
+</body>
+</html>

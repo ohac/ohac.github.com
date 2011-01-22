@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">2007-03-04</a></h2><!-- RDLabel: "2007-03-04" -->
+<h3><a name="label-1" id="label-1">wodim</a></h3><!-- RDLabel: "wodim" -->
+<p>cdrecordはなくなってwodimというのになったようだ。</p>
+<ul>
+<li>wodim -scanbus</li>
+<li>genisoimage -o foo.iso dirname</li>
+<li>wodim foo.iso</li>
+</ul>
+<p>全部ユーザーモードでできた。えらい簡単だな。
+/etc/group のdiskに自ユーザーを追加していたからかもしれない。</p>
+<p>と思ったらmount /media/cdromでマウントできない。</p>
+<ul>
+<li>wodim blank=all でDVD-RWを消去。やたら時間がかかる。allにしたのが間違いか?</li>
+</ul>
+<p>ううむ。</p>
+<ul>
+<li>wodim -dummy -v speed=2 -pad foo.iso</li>
+</ul>
+<p>これでどうだ? むむダメか。-dummyはテスト用かな?</p>
+<ul>
+<li>wodim -v speed=2 -pad foo.iso</li>
+</ul>
+<p>今度こそどうだ? いやダメみたい。</p>
+<ul>
+<li>wodim blank=fast で消して...</li>
+</ul>
+<p>debianのisoイメージでやってみよう。</p>
+<ul>
+<li>wodim -v speed=2 -pad ~/azureus/debian-31r5-i386-businesscard.iso</li>
+</ul>
+<p>-daoか-saoがいるのかも。</p>
+<ul>
+<li>wodim -v speed=2 -dao ~/azureus/debian-31r5-i386-businesscard.iso</li>
+</ul>
+<p>ダメだ...</p>
+<p>driver=mmc_mdvd
+ダメ...</p>
+<p>CD-RWなら問題なく焼けた。DVD-RWは何か特殊なのかな。</p>
+<h3><a name="label-2" id="label-2">cryptmount</a></h3><!-- RDLabel: "cryptmount" -->
+<p>なんとか暗号化ファイルシステムの構築に成功。
+iceweaselのパスワード保存ファイルとかgnupgとかsshの鍵とかを入れて、
+シンボリックリンクにしてみた。</p>
+<p>鍵とループバック用ファイルをUSBメモリ、HDD等の3箇所以上に分散させて、
+Mercurialで同期させることで紛失・故障時の対策としている。</p>
+<h3><a name="label-3" id="label-3">起動直後のalsaが変</a></h3><!-- RDLabel: "起動直後のalsaが変" -->
+<p>なぜか毎回 alsaconf の再実行を行わないといけない。
+とりあえずsudoで実行可能にして、fluxbox/menuにalsaconfを追加しておいた。</p>
+<h3><a name="label-4" id="label-4">USB 80GB HDD購入</a></h3><!-- RDLabel: "USB 80GB HDD購入" -->
+<p>音楽データを入れて、IO DataのDVDプレーヤーのUSB端子に接続して使用する予定。
+あとバックアップ用にも使う。</p>
+<h3><a name="label-5" id="label-5">LOST シーズン3</a></h3><!-- RDLabel: "LOST シーズン3" -->
+<p>AXNで5月から放送開始らしい。
+そして来週からシーズン1,2を平日に毎日放送する。
+シーズン2は見たけど1がまだなので見ようと思う。</p>
+
+</body>
+</html>

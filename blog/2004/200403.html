@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20040306</a></h2><!-- RDLabel: "20040306" -->
+<h3><a name="label-1" id="label-1">[日記] PukiWikiでリニューアル</a></h3><!-- RDLabel: "[日記] PukiWikiでリニューアル" -->
+<p>かなり久しぶりにサイトのメンテナンスをした。
+メインのコンテンツが古いので、整理していきたい。</p>
+<h3><a name="label-2" id="label-2">[PukiWiki] blog2とcalendar_viewer改造</a></h3><!-- RDLabel: "[PukiWiki] blog2とcalendar_viewer改造" -->
+<p>h1やh2などの部分にリンクができてしまい、色が変になるのがいやだったので次のように変更した。</p>
+<pre>calendar_viewer.inc.php
+//  $link = "&lt;a href=\"$script?cmd=edit&amp;amp;page=$r_page\"&gt;$s_page&lt;/a&gt;";
+    $link = "$s_page";
+
+blog2viewer.inc.php
+//    $source = preg_replace("/\*(.+)\n/", "*[[$1&gt;$pagename]]\n", $source);</pre>
+<p>リンクがなくなってしまったので、h1やh2の部分以外でリンク部分を作りたい。</p>
+<ul>
+<li>calendar_viewerではなくblog2viewerを使うのが正しいようだ。知らなかった。というわけで、make_pagelink($m[1]) の部分を$m[1]に変更することで無事完了。 -- ohac 2004-03-06 (土) 17:14:25</li>
+<li>blog2プラグイン作者のページ &gt; http://noldor.info/ -- ohac 2004-03-06 (土) 17:16:56</li>
+</ul>
+<h3><a name="label-3" id="label-3">[PukiWiki] トラックバックのテスト</a></h3><!-- RDLabel: "[PukiWiki] トラックバックのテスト" -->
+<p>トラックバックのテストをさせていただきます。
+トラックバックのテスト。トラックバックのテスト。
+トラックバックのテスト。トラックバックのテスト。
+トラックバックのテスト。トラックバックのテスト。
+トラックバックのテスト。トラックバックのテスト。</p>
+<ul>
+<li>NG
+<ul>
+<li>ttp://t.blockblog.jp/trackback.php/sandbox/174/ </li>
+<li>ttp://app.cocolog-nifty.com/t/trackback/83221</li>
+</ul></li>
+<li>OK
+<ul>
+<li>ttp://blog.livedoor.jp/blog_guide/archives/25218.html </li>
+<li>ttp://trackbackyaro.cocolog-nifty.com/trackbackyaro/2004/01/2004.html</li>
+<li>ttp://sandbox.bblog.jp/entry/174/</li>
+</ul></li>
+</ul>
+<p>テストが済んだURLはhttpの部分をttpにしています。(2ちゃんみたいだ。)</p>
+<ul>
+<li>うまくいかない。ガクー。 -- ohac 2004-03-06 (土) 15:11:07</li>
+<li>2つめに試したやつはうまくいった。わかったようなわからないような。 -- ohac 2004-03-06 (土) 15:20:55</li>
+<li>なんとなくわかってきた。rdf:RDFのタグのあるページのURLでリンクすればいいみたいだ。 -- ohac 2004-03-06 (土) 15:41:01</li>
+</ul>
+<h2><a name="label-4" id="label-4">20040307</a></h2><!-- RDLabel: "20040307" -->
+<h3><a name="label-5" id="label-5">[PukiWiki] blog2がケータイなどで文字化け</a></h3><!-- RDLabel: "[PukiWiki] blog2がケータイなどで文字化け" -->
+<p>「&amp;#x5b」や「&amp;#x5d」という表示がでてしまうことがあるようなので、blog2.inc.phpを「[ 」、「 ]」に書換えてみた。</p>
+<h3><a name="label-6" id="label-6">[PukiWiki] pw-tools</a></h3><!-- RDLabel: "[PukiWiki] pw-tools" -->
+<p>pw-tools http://pukiwiki.sourceforge.jp/dev/index.php?%CA%DD%BC%E9%A5%C4%A1%BC%A5%EB これは便利そうだ。</p>
+<h3><a name="label-7" id="label-7">[PukiWiki] showrss and tboff plugin</a></h3><!-- RDLabel: "[PukiWiki] showrss and tboff plugin" -->
+<p>http://www.pukiwiki.org/index.php?%E8%B3%AA%E5%95%8F%E7%AE%B1%2F408</p>
+<p>によるとshowrssプラグインを使うときはそのページのトラックバックをOFFにしておかないといけないようだ。tboffプラグインもパッケージ化するときに含めるようにしよう。</p>
+<h3><a name="label-8" id="label-8">[PukiWiki] vim2html</a></h3><!-- RDLabel: "[PukiWiki] vim2html" -->
+<p>vim2htmlプラグイン http://pukiwiki.sourceforge.jp/dev/index.php?cmd=read&amp;page=PukiWiki%2F1.4%2F%BC%AB%BA%EE%A5%D7%A5%E9%A5%B0%A5%A4%A5%F3%2Fvim2html これは面白い。試しに使ってみたい。</p>
+<h3><a name="label-9" id="label-9">[日記] 国内blogサイト</a></h3><!-- RDLabel: "[日記] 国内blogサイト" -->
+<p>どんなのがあるか調べてみた。</p>
+<p>http://internet.watch.impress.co.jp/static/link/2003/12/26/blog.htm</p>
+<p>この記事にいろいろリンクされていた。</p>
+<h2><a name="label-10" id="label-10">20040308</a></h2><!-- RDLabel: "20040308" -->
+<h3><a name="label-11" id="label-11">[PukiWiki] showrss and tboff</a></h3><!-- RDLabel: "[PukiWiki] showrss and tboff" -->
+<p>tboff を使ったページで showrss を使ってみたがうまくいかず、
+結局 plugin_showrss_get_rss() の先頭で global $trackback; $trackback=0;
+とすることにした。実験ではうまくいったけど、まだ外向けへの環境(このサイトなど)
+では試していない。</p>
+<h3><a name="label-12" id="label-12">[日記] 過去ページの整理</a></h3><!-- RDLabel: "[日記] 過去ページの整理" -->
+<ul>
+<li>掲示板
+<ul>
+<li>blogのコメント機能があるので不要と思われるので消した。</li>
+</ul></li>
+<li>トップページ
+<ul>
+<li>ページビューランキングが閉鎖されたので削除。</li>
+<li>からしれんこんランキングも削除手続きし、削除。</li>
+<li>Java Web Ring も削除手続きし、削除。</li>
+</ul></li>
+<li>リンク集より
+<ul>
+<li>アクセス数ログ削除。</li>
+<li>Value Commerce削除。</li>
+<li>リンク切れ。煙の園削除。</li>
+</ul></li>
+</ul>
+<p>休み時間が終ったので続きは後で。</p>
+<p>続き。(17:30より)</p>
+<ul>
+<li>リンク集の掲示板関連、全てリンク切れのようなので削除。
+<ul>
+<li>CHAU-Bar BBS - ttp://sz.redbit.ne.jp/~mkt/bbs/malchbbs/iconbbs.cgi?log</li>
+<li>プログラミング同好会 - ttp://www.lounge3.net/program/</li>
+<li>kajikaji-Board - ttp://cvnweb.bai.ne.jp/~kajikaji/yybbs/yybbs.cgi</li>
+<li>Java BBS - ttp://www11.tok2.com/home/third/cgi-bin/java_bbs/bbs.html</li>
+<li>Ami's Cyberhome - サポート掲示板 - ttp://amifriend.virtualave.net/software/cgi-bin/yybbs/yybbs.cgi</li>
+</ul></li>
+<li>リンク集のYahoo!オークション、別にここにある必要もないので削除。</li>
+<li>リンク集のMYお気に入りコミュニティ、リンク切れなので削除。</li>
+<li>リンク集の検索関連、別にここにある必要もないので削除。</li>
+<li>リンク集のStudio C、The Road To Progr@mer、リンク切れなので削除。</li>
+<li>リンク集のソフト開発者の為のサーチエンジン、リンク切れなので削除。</li>
+</ul>
+<p>とりあえずリンク切れはなくなったぞ。
+ちょっとしたリンクはweblogで紹介するほうがメンテナンスが楽なのでいいよな。
+更新されてるかどうかのチェックはアンテナソフトを導入したほうがいい。
+そのうちやっておこう。</p>
+<h3><a name="label-13" id="label-13">[PukiWiki] 変更点整理</a></h3><!-- RDLabel: "[PukiWiki] 変更点整理" -->
+<p>いろいろ触ったので、diffを取って整理しよう。</p>
+<ul>
+<li>image/bar.gif を追加。(見た目。)</li>
+<li>skin/user.css を調整。(見た目。)</li>
+<li>skin/user.skin.*.php を調整。(見た目。ただし$trackbackと$refererの値がうまく読めていないようなのでtrackbackもrefererも固定で表示されるようにした。)</li>
+<li>trackback/ がなぜかパーミッションが変わっていたので、chmod 777を実行。</li>
+<li>user.ini.php を $trackback = 1, $referer = 1, $autolink = 0, $usefacemark = 0 に。ただし、このやりかただと skin にうまく引き継げていないようだ。調査が必要。</li>
+<li>plugin/blog2.inc.php
+<ul>
+<li>PLUGIN_BLOG2_* を自分用に変更。(ユーザ設定部分は別ファイルでできるようにしたい。)</li>
+<li>&amp;#x5b, &amp;#x5d を [, ] に変更。</li>
+</ul></li>
+<li>plugin/blog2navi.inc.php
+<ul>
+<li>notblog2page のエラーは出ないように変更。</li>
+</ul></li>
+<li>plugin/blog2viewer.inc.php
+<ul>
+<li>make_pagelink($m[1]) を $m[1] に変更。</li>
+<li>preg_replace を以下のように改行を含め、またリンク部分も変更。</li>
+</ul></li>
+</ul>
+<pre>- $source = preg_replace("/\n\*(.+)\n/", "\n*$1 [[*&gt;$pagename]]\n", $source);
++ $source = preg_replace("/\*(.+)\n/", "*[[$1&gt;$pagename]]\n", $source);</pre>
+<ul>
+<li>plugin/referer.inc.php
+<ul>
+<li>referer_ignore_check($url) のときは continue し、表示しないように変更。</li>
+</ul></li>
+</ul>
+<p>あと、気になったのが PukiWiki で diff を取ったときに色で差分が表示されるが、w3m で見ると色がわからない。なんとかしたい。</p>
+<h2><a name="label-14" id="label-14">20040309</a></h2><!-- RDLabel: "20040309" -->
+<h3><a name="label-15" id="label-15">[PukiWiki] tboffがあるときtb_send()を呼ばない</a></h3><!-- RDLabel: "[PukiWiki] tboffがあるときtb_send()を呼ばない" -->
+<p>このパッチでどうだろう。(file.php)</p>
+<pre>+if (!preg_match("/^#tboff/",$postdata)) {
+     tb_send($page,$lines);
++}</pre>
+<h3><a name="label-16" id="label-16">[PukiWiki] vim2htmlよりrefpreプラグイン</a></h3><!-- RDLabel: "[PukiWiki] vim2htmlよりrefpreプラグイン" -->
+<p>vim2htmlよりrefpreの方が良さそう。</p>
+<p>vim2htmlは自動でvimのコマンドが実行され、HTML化されるのかと思っていたのだが、どうやら手動であらかじめHTML化してそれを添付する必要があるようだ。</p>
+<p>課題としては色をもうちょっと見やすくするのと、自動でvimを呼び変換してそれを表示するといったところか。</p>
+<h3><a name="label-17" id="label-17">[日記] リンク集削除</a></h3><!-- RDLabel: "[日記] リンク集削除" -->
+<p>リンク集を削除した。以下がリンクされていたページたち。</p>
+<ul>
+<li>オンラインソフト
+<ul>
+<li>@Nifty http://www.nifty.com/</li>
+<li>Vector http://www.vector.co.jp/</li>
+<li>窓の杜 http://www.forest.impress.co.jp/</li>
+<li>NetDeSoft http://www2s.biglobe.ne.jp/~takao777/</li>
+<li>@ガッテン http://park1.wakwak.com/~gatten/</li>
+</ul></li>
+<li>設計全般
+<ul>
+<li>川村渇真の「知性の泉」 http://www.st.rim.or.jp/~k-kazuma/</li>
+<li>ソフトウェアエンジニアのためのホームページ http://village.infoweb.ne.jp/~fwgf2942/maim2.htm</li>
+</ul></li>
+<li>Java言語
+<ul>
+<li>java.sun.com http://java.sun.com/</li>
+<li>Java House ML http://java-house.etl.go.jp/ml/</li>
+</ul></li>
+<li>プログラマー関連
+<ul>
+<li>パソコン初心者の館(Javaとパズルの世界) http://www.pro.or.jp/~fuji/index.html</li>
+<li>とりあえずホームページ(IconManなど) http://sira.jp/soft/</li>
+</ul></li>
+<li>HTML
+<ul>
+<li>HTMLのチェック http://openlab.ring.gr.jp/k16/htmllint/htmllint.html</li>
+</ul></li>
+</ul>
+<p>リンクが多いとtrackback処理が重いせいか登録に時間がかかるなぁ。 -- ohac 2004-03-09 (火) 17:44:34</p>
+<h2><a name="label-18" id="label-18">20040310</a></h2><!-- RDLabel: "20040310" -->
+<h3><a name="label-19" id="label-19">[PukiWiki] cvs.sourceforge.jp</a></h3><!-- RDLabel: "[PukiWiki] cvs.sourceforge.jp" -->
+<p>sourceforge.jpから最新のソースをチェックアウト。</p>
+<pre>cvs -d:pserver:anonymous@cvs.sourceforge.jp:/cvsroot/pukiwiki login
+# パスワードはナシでOK。
+cvs -z3 -d:pserver:anonymous@cvs.sourceforge.jp:/cvsroot/pukiwiki \
+    co -d sf.pukiwiki pukiwiki
+# sf.pukiwiki というディレクトリにチェックアウトする例。</pre>
+<p>これで cvs diff とか cvs update が使えるので便利になるかも。</p>
+<p>r1_4_2のタグでupdateすれば1.4.2のソースになるのかな。</p>
+<h3><a name="label-20" id="label-20">[PukiWiki] データ部とスクリプト部を分けるには</a></h3><!-- RDLabel: "[PukiWiki] データ部とスクリプト部を分けるには" -->
+<p>ディレクトリを作り、そこに以下のようなphpを作成。</p>
+<pre>&lt;?php
+require('/home/hoge/pukiwiki/pukiwiki.php');
+?&gt;</pre>
+<p>/home/hoge/pukiwiki の部分はpukiwikiの本体のあるディレクトリを指すようにする。</p>
+<p>たとえば /home/hoge/public_html に pw というディレクトリを作成したとすると、
+ここに /home/hoge/public_html/pw/pukiwiki.php のように作ればよい。</p>
+<p>そしてこのディレクトリ pw に attach backup cache counter diff trackback wiki を作成し、chmod 777 を実行。</p>
+<p>pukiwiki.ini.php を pw にコピーし、PLUGIN_DIRを/home/hoge/pukiwiki/pluginに設定。</p>
+<p>/home/hoge/pukiwiki の skin, image, pukiwiki.png, ja.lng を pw にシンボリックリンクする。</p>
+<p>/home/hoge/pukiwiki の init.php, default.ini.php はそれぞれ UA_INI_FILE, SKIN_FILE をパス指定するようにすれば完成。</p>
+<p>これでパッケージ化へとまた一歩進んだ。</p>
+<h2><a name="label-21" id="label-21">20040311</a></h2><!-- RDLabel: "20040311" -->
+<h3><a name="label-22" id="label-22">[日記] ゲームファンタジスタ</a></h3><!-- RDLabel: "[日記] ゲームファンタジスタ" -->
+<p>昨日はゲームファンタジスタ http://www.planning24h.jp/gf/ やファブォリテ http://shaula.hiho.jp/ というサイトの動画を見ていて夜更ししてしまった。おかげで今日は非常に寝むたい。世の中にはすごい(ひまな)人がいるもんだ。</p>
+<h2><a name="label-23" id="label-23">20040312</a></h2><!-- RDLabel: "20040312" -->
+<h3><a name="label-24" id="label-24">[ソフト開発] CVSブランチと日付指定</a></h3><!-- RDLabel: "[ソフト開発] CVSブランチと日付指定" -->
+<p>http://nekop.nondakure.jp/diary/?date=20030717</p>
+<p>ここによると</p>
+<pre>CVSのお話。updateのとき、-rでブランチ指定するとSticky Tagが付く。幹で-Dで日付
+指定をするとSticky Dateが付く。では、ブランチ上の過去のソースを取り出すため両
+方指定したらどうなるかというと、Sticky Tagは付くがSticky Dateは付かない。しか
+し、ちゃんと指定した日付のソースは取得できる。Sticky Dateが付いていないため、
+もう一度cvs updateすると、最新版が落ちてくる。</pre>
+<p>とのこと。大変勉強になりました。</p>
+<h3><a name="label-25" id="label-25">[日記] ガソスタで</a></h3><!-- RDLabel: "[日記] ガソスタで" -->
+<p>ガソスタかガソスタかどっちなのか。というのはさておき。
+ヘッドライトが片方切れていたのを店の人に指摘されたので、交換をお願いした。
+するとどうも車幅灯の片方も切れていることも判明。それも交換してもらう。</p>
+<p>おまけにオイル交換もしたほうがいいと勧められるが、これはしなかった。
+ちなみにほかのガソスタでは水抜きを入れたほうがいいと言われている。
+燃費が落ちてきたので、やらなアカンなあとは思っているのだが...</p>
+<h3><a name="label-26" id="label-26">[PC] 画面がまっくろ</a></h3><!-- RDLabel: "[PC] 画面がまっくろ" -->
+<p>家のPCでなんか画面が紫っぽいのでビデオカードのコネクタあたりを触ってみたら、
+画面が消えてしまった。</p>
+<p>その後、いろいろと触ってみたがBIOSの画面も出ない状態になってしまった。最悪だ。</p>
+<h3><a name="label-27" id="label-27">[日記] 銀河がいっぱい</a></h3><!-- RDLabel: "[日記] 銀河がいっぱい" -->
+<p>昨日、ハッブル宇宙望遠鏡で撮った写真を見てちょっと感動してしまった。</p>
+<p>http://hubblesite.org/newscenter/newsdesk/archive/releases/2004/07/</p>
+<p>Hubble Ultra Deep Field (超深宇宙)というらしい。</p>
+<h3><a name="label-28" id="label-28">[ゲーム] 大阪で6ニムトなどができる施設</a></h3><!-- RDLabel: "[ゲーム] 大阪で6ニムトなどができる施設" -->
+<p>仲間うちで盛り上がるカードゲーム「6ニムト!」であるが、大阪吹田にこれを含んだいろいろなゲームができる施設ができるらしい。</p>
+<p>http://www.famitsu.com/game/news/2004/03/12/103,1079066754,22513,0,0.html</p>
+<p>http://www.watch.impress.co.jp/game/docs/20040312/bee.htm</p>
+<p>http://www.sega.jp/</p>
+<h2><a name="label-29" id="label-29">20040313</a></h2><!-- RDLabel: "20040313" -->
+<h3><a name="label-30" id="label-30">[日記] 友達の輪。(ミクシィとorkut)</a></h3><!-- RDLabel: "[日記] 友達の輪。(ミクシィとorkut)" -->
+<p>ミクシィ http://mixi.jp/ というのに誘われたので入ってみた。
+クチコミで広がる友達ネットワークといった感じか。
+(リアルな友達でもし入ってみたいという人は声をかけてちょうだい。)</p>
+<p>ちなみにorkutというにも誘われたのだが、操作方法が間違っているためかなぜかメールが来ない。</p>
+<h2><a name="label-31" id="label-31">20040314</a></h2><!-- RDLabel: "20040314" -->
+<h3><a name="label-32" id="label-32">[日記] orkutに入る</a></h3><!-- RDLabel: "[日記] orkutに入る" -->
+<p>orkut http://www.orkut.com/ っていうのに参加した。
+知っている人がいないか探してみたがほとんど見つからず。
+やっぱり、コンピュータ関係の仕事をしている人から先に人が増えていくことが多いのだろうか。</p>
+<ul>
+<li>OsakaとJapaneseのコミュニティが面白いな。英語はある程度読めるけど、書くのはほとんどだめなので、残念。もうちょっと修行が必要だ。 -- ohac 2004-03-14 (日) 23:24:15</li>
+</ul>
+<h2><a name="label-33" id="label-33">20040316</a></h2><!-- RDLabel: "20040316" -->
+<h3><a name="label-34" id="label-34">[linux] マルチセッションなCD-R</a></h3><!-- RDLabel: "[linux] マルチセッションなCD-R" -->
+<p>http://www.is.titech.ac.jp/~yuki/memo/cd-r3.html が参考になる。</p>
+<p>cdrecordの-multiオプション。mkisofsの-Cオプションがミソということか。</p>
+<h3><a name="label-35" id="label-35">[日記] モデム死んでいた</a></h3><!-- RDLabel: "[日記] モデム死んでいた" -->
+<p>昨日はモデムが死んでいて、Webにアクセスできませんでした。
+電源切り入りで復旧。</p>
+<p>どうでもいいけど、「電源入り切り」っていうのと「電源切り入り」とどちらが正しいのだろうか。</p>
+<h2><a name="label-36" id="label-36">20040317</a></h2><!-- RDLabel: "20040317" -->
+<h3><a name="label-37" id="label-37">[english] The cream puff</a></h3><!-- RDLabel: "[english] The cream puff" -->
+<p>今日から英語日記を書こうと思う。</p>
+<p>I'm going to write a diary in English from today.</p>
+<p>今日、本屋にいった。
+欲しい本がなかった。
+買ってきたシュークリームがおいしかった。</p>
+<p>I went to the bookstore.
+The book I'm looking for wasn't there.
+The cream puff I bought was really good.</p>
+<h3><a name="label-38" id="label-38">[linux] scの使い方</a></h3><!-- RDLabel: "[linux] scの使い方" -->
+<p>テキストベースの表計算ソフト「sc」を使ってみる。</p>
+<p>http://www.rbt.his.fukui-u.ac.jp/~naniwa/pub/sc.html と
+http://www.asahi-net.or.jp/~AW4T-SGFJ/japana/csv.html と
+http://www.t-kita.net/spreadsheet/sc.html と
+http://senzai07.poly.kit.ac.jp/~iwata/SpreadsheetSc.html 
+が参考になった。</p>
+<p>CSVを読み込むには以下のようにすればいいみたい。</p>
+<pre>psc -d, -k &lt;hoge.csv &gt;hoge.sc
+sc hoge.sc</pre>
+<p>CSVをソートし、全部文字列扱いにして左寄せにするにはこんな感じ。</p>
+<pre>sort -t , -k 4 -k 2 hoge.csv|psc -L -S -d , -k &gt;hoge.sc</pre>
+<p>っていうか、sc本体でのソートのやりかたがわからんのです。"/"を使うのかな?</p>
+<h2><a name="label-39" id="label-39">20040318</a></h2><!-- RDLabel: "20040318" -->
+<h3><a name="label-40" id="label-40">[english] My PC has been broken</a></h3><!-- RDLabel: "[english] My PC has been broken" -->
+<p>これらのブログとウェブサイト(以下)は英語の勉強に役に立ちそうだ。</p>
+<p>These blogs and web sites (as follows) are helpful for me to improve my English skill.</p>
+<ul>
+<li>http://koho.ktplan.jp/blog/mt/</li>
+<li>http://blog.livedoor.jp/english99/</li>
+<li>http://www.eigoden.co.jp/</li>
+<li>http://www.mag2.com/m/0000067218.htm</li>
+</ul>
+<p>今日は車でNHKのラジオ英会話番組を聞いた。
+すでに何回も聞いた内容なので新しいのが聞きたくなった。
+でも、今はPCが壊れているのでMP3プレイヤに転送できない。
+早く修理しないといけないなあ。</p>
+<p>I was listening to the NHK's English conversation program in my car today.
+I wanted to listen to a next program because I've listened many times.
+But I can't transfer it to my MP3 player because my PC has been broken now.
+I have to fix it sooner.</p>
+<h3><a name="label-41" id="label-41">[Ruby] Rubyリファレンス</a></h3><!-- RDLabel: "[Ruby] Rubyリファレンス" -->
+<p>普段あまり使わない言語はすぐに忘れてしまう。
+Rubyのカテゴリを追加して、いろいろとメモしていこう。</p>
+<p>リファレンス http://www.ruby-lang.org/ja/man/</p>
+<p>(ちなみに普段使う言語というのはJavaやC/C++のことです。)</p>
+<h3><a name="label-42" id="label-42">[linux] scの使い方(sortなど)</a></h3><!-- RDLabel: "[linux] scの使い方(sortなど)" -->
+<p>scでソートする方法がわかったのでメモ。</p>
+<p>/s で範囲選択開始。カーソルを移動(#$とタイプすれば全範囲を選択)しTAB で決定。
+"+$C+$B"のような感じでソート方法を指定。('"'もタイプする必要あり)</p>
+<h5><a name="label-43" id="label-43">は昇順、-は降順。$は文字列ソート、#は数値ソート。CやBというのは列の名前。</a></h5><!-- RDLabel: "は昇順、-は降順。$は文字列ソート、#は数値ソート。CやBというのは列の名前。" -->
+<p>その他、いろいろメモ。</p>
+<p>irで行を追加, icで列を追加</p>
+<p>Eで現在のセルの内容を編集(vi風キーバインド)。全角文字は2文字として扱われ、とても不便。</p>
+<p>f 45 0 0 で今の列を45文字に設定。</p>
+<p>TERM=ktermになっていると反転や色がうまく動作しない。
+export TERM=vt100でセットし、ファイルを開けると全角文字が文字化けする。
+kterm上でCTRL+マウス右クリックし「完全リセットを行う」を選択。CTRL+Lで表示される。うーん、なんて面倒なんだろう。</p>
+<h3><a name="label-44" id="label-44">[日記] コーヒー</a></h3><!-- RDLabel: "[日記] コーヒー" -->
+<p>コーヒーについて語って下さい。 http://yukiboh.moo.jp/weblog/archives/000315.html 
+へトラックバック。</p>
+<p>トラックバックって、あんまりやったことないので自信がないが試しにやってみる。</p>
+<p>コーヒーはかなり好きだが、面倒くさいので私はもっぱらモンカフェみたいなインスタントドリップ方式のやつを飲んでいる。ちなみに会社ではコーヒー会員というのがあり、1ヶ月1000円で飲み放題である。しかし、電気ポットに入れているのであまり衛生的ではなさそう。会社では1日に3回ぐらいは飲む。休日は1回ぐらいかな。</p>
+<ul>
+<li>ポットに入ってるコーヒーって煮詰まってるのが多いから最後の方に飲むと胃がムカムカするんですけど、仕事してると息抜きっていうかそんなコーヒーでも飲みたくなるんですよねー。 -- 魚政 2004-03-18 (木) 09:56:07</li>
+<li>そうそう。私はタバコを吸わないので、息抜きというとコーヒーになってしまいます。おいしくなくてもなんとなく落ち着きますよね。 -- ohac 2004-03-18 (木) 12:31:15</li>
+<li>電気ポットですか〜。昔バイトしてたお惣菜やさんでは、煮物とかに使う大鍋にお湯を沸かしてインスタントコーヒーを入れてましたが…ポットも鍋も苦手です（笑） -- ゆき坊 2004-03-18 (木) 16:23:19</li>
+<li>インスタントはあまり飲まないのですが、たまにもらいもののインスタントコーヒーがあったりするので、めんどくさいときはこれも飲むこともありますね。缶コーヒーよりはインスタントの方が好きです。 -- ohac 2004-03-19 (金) 00:40:55</li>
+</ul>
+<h2><a name="label-45" id="label-45">20040319</a></h2><!-- RDLabel: "20040319" -->
+<h3><a name="label-46" id="label-46">[PC] Adobe Reader SpeedUp</a></h3><!-- RDLabel: "[PC] Adobe Reader SpeedUp" -->
+<p>Adobe Reader SpeedUp http://www.forest.impress.co.jp/article/2004/01/13/adobereaderspeedup.html  というソフトがあるらしい。</p>
+<h3><a name="label-47" id="label-47">[english] White huge tower?</a></h3><!-- RDLabel: "[english] White huge tower?" -->
+<p>今日はテレビドラマ「白い巨塔」を観た。
+黒木瞳の演技は良かった。
+ところでごみを捨てに行った。
+だって今日はごみの日だから。</p>
+<p>I watched TV drama "Shiroi Kyotou". (White huge tower?)
+Hitomi KUROKI was pretty good.
+By the way, I took the gabage out.
+Because it is a gabage collection day today.</p>
+<p>間違いを見つけたら訂正してね。</p>
+<p>Please correct a mistake if you found it.</p>
+<h3><a name="label-48" id="label-48">[Ruby] curses.so</a></h3><!-- RDLabel: "[Ruby] curses.so" -->
+<p>RubyでCUIなアプリを作ろうと思う。
+何を作りたいかというと英作文の練習プログラムである。
+和文が表示され、キーを押すと答を1文字ずつ表示するような仕組みがほしいのである。</p>
+<p>画面制御は curses.so というのが使えるようだ。しかし、私のDebian PCには入っていなかったので、</p>
+<pre>apt-get install libcurses-ruby</pre>
+<p>としてインストールした。</p>
+<pre>require 'curses.so'
+Curses.init_screen
+Curses.noecho
+ch = Curses.getch
+Curses.addstr('input ch = ' + ch)</pre>
+<p>みたいな感じで使えるようだ。</p>
+<h3><a name="label-49" id="label-49">[PukiWiki] そうかrss10か</a></h3><!-- RDLabel: "[PukiWiki] そうかrss10か" -->
+<p>mixiで日記一覧がうまく表示されないと思っていたが、PukiWikiの場合どうやら"?cmd=rss"ではなく"?cmd=rss10"にすればいけるみたい。しかし、RSSとかRDFとかややこしいなあ。ようするにバージョンの違いということか。</p>
+<h3><a name="label-50" id="label-50">[ゲーム] カタンがCAPCOMから発売</a></h3><!-- RDLabel: "[ゲーム] カタンがCAPCOMから発売" -->
+<p>カタンがCAPCOMから発売 http://www.watch.impress.co.jp/game/docs/20040317/catan.htm  だそうだ。コンパクトなやつは結構安い。</p>
+<h2><a name="label-51" id="label-51">20040323</a></h2><!-- RDLabel: "20040323" -->
+<h3><a name="label-52" id="label-52">[linux] Debianでリモートプリンタの設定</a></h3><!-- RDLabel: "[linux] Debianでリモートプリンタの設定" -->
+<p>昨日やったことの整理。</p>
+<pre>apt-get -t sarge install gs-ja</pre>
+<p>gs-ja 7.07-4を取ってくる。これにlips4vがある。</p>
+<p>/etc/printcap の rlp のコメントアウトされている部分を有効にし、
+rmにホスト名(IPアドレス)、rpにプリンタ名を設定する。</p>
+<pre>/etc/printcapの例
+
+rlp|Remote printer entry:\
+    :lp=:\
+    :rm=192.168.0.1:\  &lt;--ここと
+    :rp=lpt1:\         &lt;--ここを編集
+    :sd=/var/spool/lpd/remote:\
+    :mx#0:\
+    :sh:</pre>
+<p>lpr -Prlp filename でテキストを印刷すればとりあえず何か出力される。
+このとき /var/spool/lpd/remote を見ると状況がわかる。</p>
+<p>さて、職場のプリンタは Canon LIPS IV なのだが、どうしたものか。
+いろいろググってみてとりあえず /usr/bin/gsfilter というのを作成する。</p>
+<pre>#!/bin/sh
+gs-ja -q -dNOPAUSE -sDEVICE=lips4v -sPAPERSIZE=a4 -sOutputFile=- -</pre>
+<p>chmod +x /usr/bin/gsfilter しておく。
+printcapに :if=/usr/bin/gsfilter: を追加して完了か。
+/etc/init.d/lpd restart も実行しておく。</p>
+<p>まずpsを作成しよう。</p>
+<pre>unset MPAGE
+mpage sampletext &gt;sampletext.ps
+gv sampletext.ps</pre>
+<p>で確認したが、日本語が文字化け。</p>
+<p>gv /usr/share/doc/gs/examples/cjk/gscjk_aj.psでも文字化けしているので、これはgvの問題だと判断。</p>
+<pre>apt-get install gsfonts-*
+apt-get install gs-cjk-resource cmap-adobe-japan1 psfontmgr</pre>
+<p>を実行。(gsfonts-* は関係ないかもしれない。)
+gscjk_aj.psは正常に表示されるようになった。
+しかし、mpageで変換したやつはまだ文字化けしている。</p>
+<p>Vine Linuxのときはテキストをpsに変換するのにmpageを使っていたが、debianのmpageはなぜかうまくいかないのかも。と思い、a2psとa2ps-perl-jaを取ってくる。</p>
+<pre>apt-get install a2ps-perl-ja a2ps</pre>
+<p>これでa2psjで変換したpsは日本語が表示された。a2psの方は文字化け。
+これを先程のgsfilterに通してみる。</p>
+<pre>gsfilter &lt;sampletext.ps &gt;sampletext.lips
+lpr -Prlp sampletext.lips</pre>
+<p>ようやく印字ができた。
+しかし、これでは不便なので入力フィルタを自動的に通すようにしたい。
+いろいろやってみたが上手くいかない。
+どうもリモートプリンタの場合、printcapの :if=/usr/bin/gsfilter: が
+無視されるようだ。:lpr_bounce: を追加してもダメだった。</p>
+<p>結局、以下のようなprintcapとgsfilterの組み合わせでなんとかなった。</p>
+<pre>lp|Generic dot-matrix printer entry:\
+        :lp=/dev/null:\
+        :sd=/var/spool/lpd/lp:\
+        :mx#0:\
+        :sh:\
+        :if=/usr/bin/gsfilter:
+
+rlp|Remote printer entry:\
+        :lp=:\
+        :rm=pr930ex:\
+        :rp=lpt1:\
+        :sd=/var/spool/lpd/remote:\
+        :mx#0:\
+        :sh:
+
+#!/bin/sh
+/usr/bin/gs-ja -q -dNOPAUSE -sDEVICE=lips4v -sPAPERSIZE=a4 -sOutputFile=- - \
+              | lpr -P rlp</pre>
+<p>ようやく lpr sampletext.ps で印字できるようになった。</p>
+<p>今後の課題:</p>
+<ul>
+<li>magicfilterとは何なのか。</li>
+<li>a2psjの使い方。</li>
+<li>lpr より lprng の方がいいのか。</li>
+</ul>
+<h3><a name="label-53" id="label-53">[linux] sortの使い方</a></h3><!-- RDLabel: "[linux] sortの使い方" -->
+<p>sortの使い方。</p>
+<p>tオプションでセパレータを指定できる。たとえばCSVの場合、-t ',' みたいなオプションを付ける。</p>
+<p>kオプションでどこからどこまでをキーにするかを指定。たとえば2つ目以降をキーにするときは、-k 2とする。2つ目から3つ目までのときは-k 2,3、2つ目だけのときは-k 2,2とする。キー文字列の前後の空白を除く場合はbを付け、たとえば-k 2b,2bのように指定する。</p>
+<p>kオプションは複数指定可能。-k 2b,2b -k 4b,4b のようにすれば2つ目、4つ目の順にソートする。</p>
+<pre>sort -t ',' -k 3b,3b -k 5b,5b inputfile &gt;outputfile</pre>
+<p>みたいな感じである。</p>
+<h3><a name="label-54" id="label-54">[vim] ファイルの再オープン</a></h3><!-- RDLabel: "[vim] ファイルの再オープン" -->
+<dl>
+<dt><a name="label-55" id="label-55">e で今のファイルを再オープンすることができる。</a></dt><!-- RDLabel: "e で今のファイルを再オープンすることができる。" -->
+</dl>
+<p>文字コードや改行コードを指定してから:eを実行すると便利。</p>
+<pre>例
+:set fileformats=mac
+:set fileencodings=sjis
+:e</pre>
+<h2><a name="label-56" id="label-56">20040323</a></h2><!-- RDLabel: "20040323" -->
+<h3><a name="label-57" id="label-57">[vim] 文字コードの指定</a></h3><!-- RDLabel: "[vim] 文字コードの指定" -->
+<p>vimのfileencodingやfileencodingsでは iconv --list で表示される文字コードが
+指定可能。以下にいくつか例を。</p>
+<pre>set fileencodings=iso-2022-jp,utf-8,cp932 (or windows-31j)</pre>
+<p>SJISの機種依存文字が扱える。しかし、「〜」などが文字化けする。
+文字が少ないとEUCファイルを半角カタカナだと判断されてしまうことがある。</p>
+<pre>set fileencodings=iso-2022-jp,utf-8,sjis</pre>
+<p>SJISの機種依存文字が扱えない。「〜」などは正常に扱える。
+文字が少ないとEUCファイルを半角カタカナだと判断されてしまうことがある。</p>
+<pre>set fileencodings=iso-2022-jp,utf-8</pre>
+<p>SJISが扱えない。
+そのかわり文字が少ないEUCファイルを変にSJISとして扱うことはなくなる。
+私は現在はこれを使っている。</p>
+<ul>
+<li>あ、いい忘れてたけどこれはlinuxでのvimの話です。 -- ohac 2004-03-23 (火) 12:46:56</li>
+</ul>
+<h2><a name="label-58" id="label-58">20040326</a></h2><!-- RDLabel: "20040326" -->
+<h3><a name="label-59" id="label-59">[PC] PC復活</a></h3><!-- RDLabel: "[PC] PC復活" -->
+<p>AGPのビデオカードが抜けかかっていたようだ。
+そもそもmicro ATXのケースにATXのマザーを無理矢理入れていることに問題がある。
+買い間違えた私が悪いのですけどね。
+マザーはケースの中で宙ぶらり状態である。
+あまり衝撃を与えるとまた接触不良になるかもしれないので注意が必要だ。</p>
+<h3><a name="label-60" id="label-60">[linux] j2se-package</a></h3><!-- RDLabel: "[linux] j2se-package" -->
+<p>Java開発環境の j2sdk を debian のパッケージにしてしまうツール mpkg-j2sdk が j2se-package という名前に変わっているようだ。
+Web ページも移動したのか/etc/apt/sources.listを次のように変更した。</p>
+<pre>#deb http://www.stud.uni-karlsruhe.de/~ude2 debian/ &lt;-- これが元のURL
+deb http://nosid.de/z42 debian/                     &lt;-- これが新しい方
+#deb-src http://nosid.de/z42 debian/                &lt;-- これが新しい方(src)</pre>
+<p>apt-get update, apt-get install j2se-package でインストール。</p>
+<p>その後、j2se-package の引数に Sun の j2sdk を指定すればパッケージの完成。
+(いろいろ聞かれるが、適当に答えるとよい。)</p>
+<h3><a name="label-61" id="label-61">[linux] mozillaとsylpheedをverup</a></h3><!-- RDLabel: "[linux] mozillaとsylpheedをverup" -->
+<p>mozilla を Debian/sarge のやつにした。</p>
+<pre>apt-get -t sarge install mozilla-locale-ja</pre>
+<p>mozillaを立ち上げ、日本語の設定をして再起動。
+メニューが日本語になり、Googleの検索バーも日本語が使えるようになった。</p>
+<p>sylpheedもsargeのものにupgradeした。
+プレビューしただけでは既読マークが付かないようにする設定が増えていたのでこれを設定した。</p>
+<p>sylpheed-claws ってのもあるな。これはなんだろうか。</p>
+<h3><a name="label-62" id="label-62">[linux] マウスのスクロール用ボタン</a></h3><!-- RDLabel: "[linux] マウスのスクロール用ボタン" -->
+<p>/etc/X11/XF86Config-4 を以下のように変更したらいけるようになった。</p>
+<pre>Section "InputDevice"
+Identifier  "Mouse0"
+Driver      "mouse"
+Option      "Protocol" "IMPS/2"           &lt;--- ここと
+Option      "Device" "/dev/input/mice"
+Option      "Button" "5"                  &lt;--- ここと
+Option      "ZAxisMapping" "4 5"          &lt;--- ここが重要みたい
+EndSection</pre>
+<h2><a name="label-63" id="label-63">20040327</a></h2><!-- RDLabel: "20040327" -->
+<h3><a name="label-64" id="label-64">[linux] debianセットアップ完了</a></h3><!-- RDLabel: "[linux] debianセットアップ完了" -->
+<p>やっとdebianのセットアップが大体終わった。</p>
+<p>セットアップに苦労したが、あとはapt-getでいろいろな最新ソフトを試せるので楽しみだ。</p>
+<h3><a name="label-65" id="label-65">[日記] mixiがメンテナンス中</a></h3><!-- RDLabel: "[日記] mixiがメンテナンス中" -->
+<p>のようだ。
+23時以降にアクセス可能になるとのこと。</p>
+<h3><a name="label-66" id="label-66">[日記] プラネタリウムソフト</a></h3><!-- RDLabel: "[日記] プラネタリウムソフト" -->
+<p>Debian linuxのKDEにKStarsというアプリがある。
+これを使うと現在の星の位置などが簡単にわかる。</p>
+<p>しかも、星や星雲などを右クリックするとインターネットから写真をダウンロードしてきて表示する機能まである。これはおもしろい。</p>
+<h2><a name="label-67" id="label-67">20040329</a></h2><!-- RDLabel: "20040329" -->
+<h3><a name="label-68" id="label-68">[日記] CD-RW</a></h3><!-- RDLabel: "[日記] CD-RW" -->
+<p>12倍速対応のCD-RWを5枚買った。</p>
+<p>xcdroastを使って試しに書き込んでみた。~
+これまではcdrecordコマンドを使ってたけどやっぱりGUIがあると便利やね。</p>
+<h2><a name="label-69" id="label-69">20040330</a></h2><!-- RDLabel: "20040330" -->
+<h3><a name="label-70" id="label-70">[日記] NHK英語番組</a></h3><!-- RDLabel: "[日記] NHK英語番組" -->
+<p>だいぶNHKのTV英語番組の内容が聞きとれるようになってきた(気がするだけ?)。
+約1年間聞き続けた成果かも。
+しかし、英作文やスピーキングはぜんぜんだめです。</p>
+<p>来週からは新学期(NHKの話)なのでまた1年間はがんばろうと思う。</p>
+<h3><a name="label-71" id="label-71">[linux] 動画を見る</a></h3><!-- RDLabel: "[linux] 動画を見る" -->
+<p>動画もWindowsに頼らずに見れるようにしたいのでいろいろ調べていた。
+KDEのviewerなどで見ると白黒になったりしてどうもよろしくない。
+smpeg-plaympegのパッケージにあるplaympegが安定してそうだ。</p>
+<p>その他のcodecも見たいのでmplayerを試すが途中で挫折。また時間があればチャレンジしたい。</p>
+<p>Real Player8と9も試したが画面が表示された後で固まってしまう。RedHatならちゃんと動くのだろうか...</p>
+<h3><a name="label-72" id="label-72">[linux] 認証の設定ミス(apache)</a></h3><!-- RDLabel: "[linux] 認証の設定ミス(apache)" -->
+<p>知らぬ間に内輪で使用しているページが認証なしでアクセスできるようになっていた。
+やばいやばい。(そんなにやばいものがあるわけではないが。)</p>
+<p>httpd.conf を</p>
+<pre>&lt;Directory /home/*&gt;
+AllowOverride AuthConfig
+&lt;/Directory&gt;</pre>
+<p>のように変更した。
+認証が必要なページを移動したので.htaccessも変更が必要になっていた。</p>
+<pre>AuthUserFile /home/hoge/hoge/passwd
+AuthGroupFile /dev/null
+AuthName "Please enter username and password"
+AuthType Basic
+require valid-user</pre>
+<p>こんな感じ。</p>
+<h3><a name="label-73" id="label-73">[linux] UDFパケットライトCD-RW</a></h3><!-- RDLabel: "[linux] UDFパケットライトCD-RW" -->
+<p>簡単にCD-RWが使えるようにUDF file systemに挑戦しているがうまくいかない。
+keywordはudf.o, mkudffs, cdrwtool, pktsetupなど。</p>
+<h3><a name="label-74" id="label-74">[ソフト開発] coff2bin</a></h3><!-- RDLabel: "[ソフト開発] coff2bin" -->
+<p>http://www.dce.bg/~vladitx/tms320c54x/</p>
+<p>ここにcoff2binがある。TIのcoff2というファイル形式を別のフォーマットに変換するためのツールのようだ。</p>
+<h3><a name="label-75" id="label-75">[linux] dosemu</a></h3><!-- RDLabel: "[linux] dosemu" -->
+<p>apt-get -t sarge install dosemu dosemu-freedos xfonts-dosemu
+xdosemu 又は dosemu で実行。  
+D: に移動すると ~ が見える。 </p>
+<p>xdosemuはxmodmapのキーカスタマイズが効かないのでkterm上でdosemuを使う方が便利そうだ。</p>
+<p>ちなみにTIのDSPコンパイラがdosemu上で動作した。</p>
+<h3><a name="label-76" id="label-76">[ソフト開発] linux on SH-4</a></h3><!-- RDLabel: "[ソフト開発] linux on SH-4" -->
+<p>今日の仕事。</p>
+<p>Linux 2.4.22を自社製のSH-4で動作するようにがんばっている。</p>
+<pre>Linux version 2.4.22 (ohashi@ohashigw) (gcc version 3.0.3) #15 2004 3 30 17:05:15 JST
+On node 0 totalpages: 1024
+&lt;1&gt;bootmem alloc of 45100 bytes failed!
+&lt;0&gt;Kernel panic: Out of memory
+&lt;0&gt;In idle task - not syncing</pre>
+<p>ここまで動いた。</p>
+<p>とりあえずシリアルポートにprintkの出力が確認できるようになったので一安心。</p>
+<h3><a name="label-77" id="label-77">[linux] lsof</a></h3><!-- RDLabel: "[linux] lsof" -->
+<p>lsof で open 中のファイル一覧が見れる。デバッグに便利そうだ。
+umount できないときの調査にも使えるかな。</p>
+<h3><a name="label-78" id="label-78">[linux] netcat(nc)と自動処理</a></h3><!-- RDLabel: "[linux] netcat(nc)と自動処理" -->
+<p>netcat を入れてみた。</p>
+<pre>netcat hostname port</pre>
+<p>telnet のように使うには netcat hostname 23 とする。 </p>
+<pre>(echo 'hoge';sleep 1;echo 'hoge') | nc hostname 23 -q 10</pre>
+<p>のようにすればタイミングを制御しながら文字列を送信できる。
+telnetでも同じようなことはできそうだ。</p>
+<h3><a name="label-79" id="label-79">[java] thread dump</a></h3><!-- RDLabel: "[java] thread dump" -->
+<p>JavaHouse MLより。</p>
+<pre>|Windows NT系|CTRL+Break|
+|linux系     |kill -3   |</pre>
+<p>でスレッドダンプが取れるらしい。
+しらなんだ。</p>
+<h3><a name="label-80" id="label-80">[Ruby] 英作文練習用プログラム</a></h3><!-- RDLabel: "[Ruby] 英作文練習用プログラム" -->
+<ul>
+<li>ruby と libcurses-ruby が必要。</li>
+<li>使い方: ./eisaku.rb filename</li>
+<li>キー操作
+<ul>
+<li>L 1文字ずつ答を見る</li>
+<li>J 次の問題へ</li>
+<li>Q 終了</li>
+</ul></li>
+<li>問題ファイルのフォーマット
+<ul>
+<li>和文、英文、空行という順番にならべる。</li>
+</ul></li>
+</ul>
+<p>問題ファイルの例。</p>
+<pre>これはペンです。
+This is a pen.
+
+疲れた。
+I'm tired.</pre>
+<ul>
+<li>Curses.init_screenでは画面が消えないことがあるな。Curses.clearを使うのが正解かな。 -- ohac 2004-03-31 (水) 00:08:19</li>
+</ul>
+<h2><a name="label-81" id="label-81">20040331</a></h2><!-- RDLabel: "20040331" -->
+<h3><a name="label-82" id="label-82">[linux] CD-Rはイジェクトが必要</a></h3><!-- RDLabel: "[linux] CD-Rはイジェクトが必要" -->
+<p>CD-Rに追記したあとはいったんイジェクトしないとうまくmountできないようだ。</p>
+<p>ちなみに</p>
+<pre>mount -o session=0 /cdrom
+mount -o session=1 /cdrom</pre>
+<p>とかでセッションを選択してmountできる。</p>
+<h3><a name="label-83" id="label-83">[english] wget is helpful</a></h3><!-- RDLabel: "[english] wget is helpful" -->
+<p>「まぐまぐ」のメールマガジンにはいろいろと英語のメールマガジンがある。
+wgetを使えばバックナンバーを一括ダウンロードが可能だ。
+例えば「今日のメール英語表現」の場合は</p>
+<pre>wget -r "http://backno.mag2.com/reader/Back?id=0000067218"</pre>
+<p>と実行すればOKである。</p>
+<p>There are some English educational mail magazine on http://mag2.com/ .
+It is possible to get all backnumbers automatically if you use "wget".
+For example, in case of "kyou no mail eigo hyougen".
+You can do it by using the command below.</p>
+<pre>wget -r "http://backno.mag2.com/reader/Back?id=0000067218"</pre>
+
+</body>
+</html>

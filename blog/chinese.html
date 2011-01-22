@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<script src="prototype.js"></script>
+<script src="activelist.js"></script>
+<link href="/hg/cross/cross.css" type="text/css" rel="stylesheet" />
+<style type="text/css">
+li { list-style: none; }
+a:link {text-decoration: none; color: black; }
+a:visited {text-decoration: none; color: black; }
+a:active {text-decoration: none; color: black; }
+a:hover {text-decoration: none; color: black; background: #eeeee0; }
+.box { color: #666666; font-size: xx-small;
+border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0; cursor:pointer; }
+</style>
+<title></title>
+</head>
+<body onload="start()">
+<h1></h1>
+<ul>
+<li><a href="index.html">back</a></li>
+</ul>
+<hr>
+<ul>
+<li id="l1">
+<a href="#" onclick="hide_folder('l1')" id="l1_h" class="box">-</a>
+<a href="#" onclick="show_folder('l1')" id="l1_s" class="box">+</a>
+ni hao
+<a href="#" onclick="rm_folder('l1')" class="box">x</a>
+</li>
+<ul>
+<li id="l1_1">
+<span class="box">o</span>
+你好
+<a href="#" onclick="rm_folder('l1_1')" class="box">x</a>
+</li>
+</ul>
+<li id="l2">
+<a href="#" onclick="hide_folder('l2')" id="l2_h" class="box">-</a>
+<a href="#" onclick="show_folder('l2')" id="l2_s" class="box">+</a>
+zai jian
+<a href="#" onclick="rm_folder('l2')" class="box">x</a>
+</li>
+<ul>
+<li id="l2_1">
+<span class="box">o</span>
+再见
+<a href="#" onclick="rm_folder('l2_1')" class="box">x</a>
+</li>
+</ul>
+</ul>
+
+<hr>
+<ul>
+<li><a href="index.html">back</a></li>
+</ul>
+
+</body>
+</html>

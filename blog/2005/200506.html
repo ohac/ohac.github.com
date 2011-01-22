@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20050601</a></h2><!-- RDLabel: "20050601" -->
+<h3><a name="label-1" id="label-1">[mlterm][uim]中国語</a></h3><!-- RDLabel: "[mlterm][uim]中国語" -->
+<p>/etc/locale.gen に zh_CN.UTF-8 UTF-8 を追加、locale-genを実行。LANG=zh_CN.UTF-8 mlterm --im=uim:py で中国語入力と表示が可能に。文字が小さくて読めないので、mltermのオプションに -w 18 とか指定してやるといい感じ。</p>
+<h2><a name="label-2" id="label-2">20050613</a></h2><!-- RDLabel: "20050613" -->
+<h3><a name="label-3" id="label-3">[diary]上海</a></h3><!-- RDLabel: "[diary]上海" -->
+<p>出張に行ってきた。ちょっと体調を壊してしまった。碁石を30元で購入。これは安い。</p>
+<h3><a name="label-4" id="label-4">[diary]ヘッドセット</a></h3><!-- RDLabel: "[diary]ヘッドセット" -->
+<p>400円のヘッドセットのマイクは音が悪いということにいまごろ気付く。ちゃんとしたマイクが欲しいな。ちゃんとしすぎているマイクならあるのだが。(Shureの588)</p>
+<h2><a name="label-5" id="label-5">20050615</a></h2><!-- RDLabel: "20050615" -->
+<h3><a name="label-6" id="label-6">[linux]Skypeで中国語</a></h3><!-- RDLabel: "[linux]Skypeで中国語" -->
+<p>うーむ。UTF-8でskypeを起動しているのにフォントが悪いせいか、中国語がちゃんと表示されない。gaimではちゃんと使えているのになぁ。どこでフォントの設定ができるのだろうか。</p>
+<h3><a name="label-7" id="label-7">[linux]会社のPC</a></h3><!-- RDLabel: "[linux]会社のPC" -->
+<p>Skypeを使うと音がひどい。mp3とかは問題なく再生できてるのに。</p>
+<h3><a name="label-8" id="label-8">[linux]mixer</a></h3><!-- RDLabel: "[linux]mixer" -->
+<p>ミキサー関連の操作ソフト。CUIとしてはreximaがなんとなくよさげ。ちなみにALSA用のalsamixerもCUIのようだ。</p>
+<pre>aumix-gtk - Simple mixer control program with GUI and text interfaces
+gom - A generic audio mixer (Base versions)
+gom-x - A generic audio mixer (X version)
+rexima - A nice little ncurses mixer.
+setmixer - A commandline mixer</pre>
+<h3><a name="label-9" id="label-9">[linux]recorder</a></h3><!-- RDLabel: "[linux]recorder" -->
+<p>録音関係。</p>
+<pre>rawrec - Buffered raw audio recorder/player
+sound-recorder - Direct-to-disk recording and play-back programs.</pre>
+<h3><a name="label-10" id="label-10">[linux]ALSA</a></h3><!-- RDLabel: "[linux]ALSA" -->
+<p>OSSだとなぜかマイク入力がなんだかおかしいようなので、ALSAというのをインストールして試してみよう。</p>
+<p>apt-get install alsa-base alsa-oss alsa-modules-2.4.27-2-386 実行後、
+/sbin/alsaconf を実行してみる</p>
+<p>カーネルイメージもバージョンアップされたようだ。ALSAとOSSの切り替えは discover, discover1 というのが関係しているらしい。/etc/discover.dのあたりに設定があるようだ。結果、ちゃんとマイク入力が使えるようになった。めでたし。</p>
+<h2><a name="label-11" id="label-11">20050616</a></h2><!-- RDLabel: "20050616" -->
+<h3><a name="label-12" id="label-12">[diary]AdSense by Google</a></h3><!-- RDLabel: "[diary]AdSense by Google" -->
+<p>やってみた。ちょっと位置とか色とか調整せんとアカンなぁ。</p>
+<h3><a name="label-13" id="label-13">[english]SkypeでEnglish</a></h3><!-- RDLabel: "[english]SkypeでEnglish" -->
+<p>http://www.jyve.com/ こんなのがあるようだ。</p>
+<h3><a name="label-14" id="label-14">[diary]マイク</a></h3><!-- RDLabel: "[diary]マイク" -->
+<p>1500円のマイクはノイズもなく、調子よく動作している。やっぱり400円のヘッドセットはあきません。(こればっかり。)</p>
+<h3><a name="label-15" id="label-15">[debian][linux][java][game]Java Applet で日本語が豆腐に</a></h3><!-- RDLabel: "[debian][linux][java][game]Java Applet で日本語が豆腐に" -->
+<p>http://www5f.biglobe.ne.jp/~nakayamahiroo/orcatools/debian.html これで解決した。これで linux でも Yahoo! Games ができるぞ!</p>
+<h2><a name="label-16" id="label-16">20050617</a></h2><!-- RDLabel: "20050617" -->
+<h3><a name="label-17" id="label-17">[linux]日本語SJISのファイル名</a></h3><!-- RDLabel: "[linux]日本語SJISのファイル名" -->
+<p>http://tyche.pu-toyama.ac.jp/~ko-ji/linux/mount.html ここを参考。codepage=932でOK。codepage=cp932だとだめみたい。</p>
+<h3><a name="label-18" id="label-18">[diary]orkutで日本語</a></h3><!-- RDLabel: "[diary]orkutで日本語" -->
+<p>いつのまにか使えるようになっていた。</p>
+<h3><a name="label-19" id="label-19">[english]HDDレコーダと英語</a></h3><!-- RDLabel: "[english]HDDレコーダと英語" -->
+<p>英語学習にはHDDレコーダがとても便利だ。番組表もインターネットから取ってこれるし、検索も可能だし。ラジオもこんなことができたらいいのになぁ。ちなみに見ているのはNHK教育の英話関連、ライオンたちとイングリッシュ(アメリカの子供向け番組)、スタートレック(まだ追い付いていない)、ER10(これも追い付いていない)、キム・ポッシブル、あとは日本語字幕の映画など。二ヶ国語放送は日本語を聞いてると時間がかかるので、意味がよくわからなくても、英語だけを聞くようにしている。だからストーリーはあんまり理解できていない。</p>
+<h3><a name="label-20" id="label-20">[ruby]here document(ヒアドキュメント)</a></h3><!-- RDLabel: "[ruby]here document(ヒアドキュメント)" -->
+<p>こんな感じで使う。</p>
+<pre>puts &lt;&lt;END
+あれこれ #{hoge} あれこれ
+END</pre>
+<p>"#{hoge}"のようにすることで内部変数などを埋め込むことができる。これは便利。</p>
+<h3><a name="label-21" id="label-21">[game]Yahoo! Games</a></h3><!-- RDLabel: "[game]Yahoo! Games" -->
+<p>会社からだとポートが開いてなくて実行できなかった。残念。</p>
+<h3><a name="label-22" id="label-22">[linux]dig -xでホスト名逆引き</a></h3><!-- RDLabel: "[linux]dig -xでホスト名逆引き" -->
+<p>digはdnsutilsパッケージにある。</p>
+<h2><a name="label-23" id="label-23">20050620</a></h2><!-- RDLabel: "20050620" -->
+<h3><a name="label-24" id="label-24">[linux]Skype qt3-qtconfig</a></h3><!-- RDLabel: "[linux]Skype qt3-qtconfig" -->
+<p>SkypeはQtアプリケーションのようだ。qt3-qtconfigをapt-get installした。qtconfigを実行。適当にフォントを組み合わせて日本語と中国語の両方を表示させようとしてみるが上手くいかない。おしいところまではいくのだが。</p>
+<h3><a name="label-25" id="label-25">[diary]MSNとSkype</a></h3><!-- RDLabel: "[diary]MSNとSkype" -->
+<p>うー、またMSNメッセンジャーが接続に失敗する。やっぱりMSNよりSkypeの方が安定していていいなぁ。</p>
+<h3><a name="label-26" id="label-26">[game]mixi囲碁</a></h3><!-- RDLabel: "[game]mixi囲碁" -->
+<p>2つとも負けました。投了するタイミングが難しいな。今のレベルでは何目差なのか計算ができないし、石が死んでいるのかどうかも自信がない。もっと鍛えねば。</p>
+<h3><a name="label-27" id="label-27">[game][java]Yahoo!大富豪</a></h3><!-- RDLabel: "[game][java]Yahoo!大富豪" -->
+<p>linuxだと日本語入力ができない。別のところで日本語を入力してコピペするといけるようだ。で、大富豪をちょっとやってみたが、誰も会話していなかった。これはこれでゲームに集中できるので面白いかも。</p>
+<h3><a name="label-28" id="label-28">[linux]世界時計</a></h3><!-- RDLabel: "[linux]世界時計" -->
+<p>なんとなく世界時計が必要っぽいのでgworldclockをインストール。 http://homepage1.nifty.com/backpackers/time.html Webならここの時計がわかりやすい。サマータイムには対応していないようだ。ロンドンがGMT/UTCと同じなのか。ちなみにグリニッジ天文台というのがロンドンあったらしい。今は活動を停止しているそうな。</p>
+<h2><a name="label-29" id="label-29">20050621</a></h2><!-- RDLabel: "20050621" -->
+<h3><a name="label-30" id="label-30">[windows]インストーラ</a></h3><!-- RDLabel: "[windows]インストーラ" -->
+<p>http://www.jrsoftware.org/isinfo.php Inno というインストーラ。それにしてもWindowsにはパッケージ管理のソフトはないのか。現状ではCygwinのrpmぐらいしか選択肢がないのかな。</p>
+<h3><a name="label-31" id="label-31">[windows]MSI</a></h3><!-- RDLabel: "[windows]MSI" -->
+<p>Windowsの標準ではMSIというインストーラがあるらしい。キーワードは makecab.exe, msidb.exe。 msidb.exe -d mydatabase.msi -a mycab.cab みたいな感じで1つにまとめるようだ。 http://www.saga-ed.jp/workshop/edq01449/wininst/wininst.htm ここが参考になりそう。マイクロソフトのOrcaというユーティリティーを使うこともできるようだ。</p>
+<h3><a name="label-32" id="label-32">[game]gnugoに初めて勝つ</a></h3><!-- RDLabel: "[game]gnugoに初めて勝つ" -->
+<p>初めてgnugoに勝てました! SGFファイルを残しておこう。Blackが私です。gnugoの起動オプションは /usr/games/gnugo --mode gmp --quiet 。version は 3.6-2、む、ちょっと古いな。</p>
+<pre>(;GM[1]FF[3]
+RU[Japanese]SZ[9]HA[0]KM[5.5]
+PW[White]
+PB[Black]
+GN[White (W) vs. Black (B)]
+DT[2005-06-21]
+SY[Cgoban 1.9.14]TM[-]
+RE[B+0.5]
+;B[cf];W[gc];B[gf];W[ef];B[ee];W[dc];B[eg];W[he];B[hf];W[cd];B[de];
+W[be];B[bf];W[ge];B[fe];W[if];B[ie];W[ig];B[gd];W[hd];B[fd];W[hc];
+B[hg];W[ih];B[hh];W[fc];B[ii];W[af];B[ag];W[ae];B[cg];W[id];B[if];
+W[ce];B[ec];W[eb];B[dd];W[db];B[ed];W[tt];B[tt];
+TW[aa][ba][ca][da][ea][fa][ga][ha][ia][ab][bb][cb][fb][gb][hb][ib][ac][bc][cc][ic][ad][bd]
+TB[df][ef][ff][bg][dg][fg][gg][ig][ah][bh][ch][dh][eh][fh][gh][ih][ai][bi][ci][di][ei][fi][gi][hi]
+C[The game is over.  Final score:
+White = 22 territory + 0 captures + 5.5 komi = 27.5
+Black = 24 territory + 4 captures = 28
+Black wins by 0.5.
+]
+)</pre>
+<h2><a name="label-33" id="label-33">20050622</a></h2><!-- RDLabel: "20050622" -->
+<h3><a name="label-34" id="label-34">[linux]rpm 3 and 4</a></h3><!-- RDLabel: "[linux]rpm 3 and 4" -->
+<p>rpm3のときはrpm -bbとかでパッケージを作成していたが、rpm4の場合、rpmbuild -bbみたいな感じで作成するようだ。--nodirtokensというオプションの説明には "generate package header(s) compatible with (legacy) rpm[23] packaging" とある。もしかして、rpm3 で使えるパッケージが作成できるのかも。今頃発見するなんて遅すぎたかも。とりあえず3.0.3のターゲットにrpm -i --nodeps *.rpmでインストールできることを確認した。--nodepsが必要なのがちょっといやだけど、まあしょうがないか。と、思ったがインストールできているように見えて実はインストールされていないことが判明。やはり、rpm4ではrpm3(3.0.3)のパッケージのビルドは不可能なのかも。</p>
+<h3><a name="label-35" id="label-35">[linux]rpm and ant</a></h3><!-- RDLabel: "[linux]rpm and ant" -->
+<p>antのrpmタスクで--nodirtokensを指定したいときは、commandを"-bb --nodirtokens"に変更すればよい。つまりデフォルトは"-bb"なので、これに"--nodirtokens"を追加した文字列にすればよいということ。</p>
+<h3><a name="label-36" id="label-36">[linux]rpm3 and ant</a></h3><!-- RDLabel: "[linux]rpm3 and ant" -->
+<p>antのrpmタスクでrpmをビルドするコマンドはrpmBuildCommandというアトリビュートを設定できるようだ。このコマンドはrpmのバージョンによっては"rpm"であったり、"rpmbuild"であったりするようなので、このアトリビュートの存在を知っておいた方がいいかもしれない。</p>
+<h3><a name="label-37" id="label-37">[game]gnugoに勝つ(2回目)</a></h3><!-- RDLabel: "[game]gnugoに勝つ(2回目)" -->
+<p>また勝てた。しかも大差(12目半勝ち)で。たぶん最初の4手ぐらいが非常に重要なのではないかと思う。次は9路盤の後手と13路盤の先手で勝つのを目標にがんばろう。</p>
+<pre>(;GM[1]FF[3]
+RU[Japanese]SZ[9]HA[0]KM[5.5]
+PW[White]
+PB[Black]
+GN[White (W) vs. Black (B)]
+DT[2005-06-21]
+SY[Cgoban 1.9.14]TM[-]
+RE[B+12.5]
+;B[gf];W[dg];B[cf];W[cg];B[df];W[ef];B[ee];W[ff];B[fe];W[gg];B[he];
+W[hf];B[ge];W[hg];B[bg];W[bh];B[af];W[ie];B[id];W[if];B[hc];W[ah];
+B[cc];W[ag];B[bf];W[tt];B[tt];
+TW[eg][fg][ig][ch][dh][eh][fh][gh][hh][ih][ai][bi][ci][di][ei][fi][gi][hi][ii]
+TB[aa][ba][ca][da][ea][fa][ga][ha][ia][ab][bb][cb][db][eb][fb][gb][hb][ib][ac][bc][dc][ec][fc][gc][ic][ad][bd][cd][dd][ed][fd][gd][hd][ae][be][ce][de]
+C[The game is over.  Final score:
+White = 19 territory + 0 captures + 5.5 komi = 24.5
+Black = 37 territory + 0 captures = 37
+Black wins by 12.5.
+]
+)</pre>
+<h3><a name="label-38" id="label-38">[game]gnugoに勝つ(3回目)</a></h3><!-- RDLabel: "[game]gnugoに勝つ(3回目)" -->
+<p>後手でも勝てました。これからは13路盤をやろう。</p>
+<pre>(;GM[1]FF[3]
+RU[Japanese]SZ[9]HA[0]KM[5.5]
+PW[White]
+PB[Black]
+GN[White (W) vs. Black (B)]
+DT[2005-06-22]
+SY[Cgoban 1.9.14]TM[-]
+RE[W+5.5]
+;B[ee];W[gf];B[eg];W[fc];B[ge];W[dd];B[ff];W[cf];B[ch];W[hd];B[cc];
+W[dc];B[cd];W[de];B[db];W[eb];B[bb];W[da];B[ca];W[cb];B[ab];W[ba];
+B[hf];W[ae];B[he];W[gd];B[id];W[ic];B[ie];W[hb];B[bg];W[bd];B[bf];
+W[ce];B[be];W[bc];B[af];W[ad];B[cg];W[dg];B[dh];W[df];B[ed];W[fd];
+B[ef];W[ec];B[fe];W[tt];B[tt];
+TW[aa][ca][ea][fa][ga][ha][ia][ab][bb][db][fb][gb][ib][ac][cc][gc][hc][cd]
+TB[gf][if][ag][fg][gg][hg][ig][ah][bh][eh][fh][gh][hh][ih][ai][bi][ci][di][ei][fi][gi][hi][ii]
+C[The game is over.  Final score:
+White = 18 territory + 6 captures + 5.5 komi = 29.5
+Black = 23 territory + 1 captures = 24
+White wins by 5.5.
+]
+)</pre>
+<h2><a name="label-39" id="label-39">20050623</a></h2><!-- RDLabel: "20050623" -->
+<h3><a name="label-40" id="label-40">[diary]サーバPC</a></h3><!-- RDLabel: "[diary]サーバPC" -->
+<p>ノートPCを使っているが、ちょっとHDDが不安な感じなので、なんとかしたいなぁと考えている。デスクトップ機を使った場合、気になるのはやはり音と消費電力、室内温度上昇といった点か。ちょっと調べてみた。EPSON Direct は安価な静音PCを販売しているようだ。NEC は10万円ぐらいの水冷PCがある。Be Silent MS6000というのもあるな ( http://www.e-lets.co.jp/product/pc-ms6000/ )。Be Silentの説明では消費電力 25W で計算している。1ヶ月360円ぐらいとのこと。タワーPCは125Wで計算しているようだ。これだと1ヶ月1800円ぐらいらしい。</p>
+<h2><a name="label-41" id="label-41">20050624</a></h2><!-- RDLabel: "20050624" -->
+<h3><a name="label-42" id="label-42">[diary]アクセス数</a></h3><!-- RDLabel: "[diary]アクセス数" -->
+<p>やたらアクセス数が増える日があるので、調べてみるとただのロボットだった。</p>
+<h3><a name="label-43" id="label-43">[english]Rikai Friends</a></h3><!-- RDLabel: "[english]Rikai Friends" -->
+<p>http://rikai.meta4-group.com/ja_JP/public/home.jhtml</p>
+<h2><a name="label-44" id="label-44">20050626</a></h2><!-- RDLabel: "20050626" -->
+<h3><a name="label-45" id="label-45">[diary]サーバー完成</a></h3><!-- RDLabel: "[diary]サーバー完成" -->
+<p>新しいサーバーPCがほぼ完成したので、記入テストしてみます。</p>
+<h3><a name="label-46" id="label-46">[diary]makerss.rb</a></h3><!-- RDLabel: "[diary]makerss.rb" -->
+<p>新しいサーバーのtdiaryでmakerss.rbのプラグインがうまく動かない。とりあえず外しておく。</p>
+<h2><a name="label-47" id="label-47">20050627</a></h2><!-- RDLabel: "20050627" -->
+<h3><a name="label-48" id="label-48">[diary]今日のにゃんこ</a></h3><!-- RDLabel: "[diary]今日のにゃんこ" -->
+<p>土曜日は今日のわんこだけじゃなくて、にゃんこもやってるらしいぞ、そこの君。</p>
+<h3><a name="label-49" id="label-49">[diary]PRIDE</a></h3><!-- RDLabel: "[diary]PRIDE" -->
+<p>やはりシウバか。それにしても桜庭は痛々しい。</p>
+<h3><a name="label-50" id="label-50">[diary]静音PC お値段</a></h3><!-- RDLabel: "[diary]静音PC お値段" -->
+<p>レシートが手元にないので大ざっぱな値段ですが、こんな感じでした。</p>
+<ul>
+<li>ACアダプタ電源(60W)          ... 約10000円</li>
+<li>M.B. (VIA C3 800MHZ CPU)     ... 約 7000円</li>
+<li>2.5inch HDD(HITACHI-IBM 60GB ... 約 8000円</li>
+<li>メモリ(DDR 256MB)            ... 約 3000円</li>
+<li>2.5inch HDD接続用ケーブル    ... 約 1000円</li>
+</ul>
+<p>家にあるやつを流用したのは</p>
+<ul>
+<li>Micro ATX ケース</li>
+<li>大きめの低回転ファン</li>
+<li>CD-Rドライブ</li>
+<li>キーボード・マウス</li>
+</ul>
+<h3><a name="label-51" id="label-51">[diary]静音PCセットアップメモ</a></h3><!-- RDLabel: "[diary]静音PCセットアップメモ" -->
+<p>Debian sidをインストール。手元にはwoody時代のネットワークインストールCD-RWしかなかったので、とりあえずこれでインストール。途中で音を出すためにALSAをインストールしたが、このときkernelのバージョンが上がり、なぜかLANが使えなくなるトラブルがあった。insmodしてもうまくいかず、しばし悩む。しかし、discoverをinstallすると見事に認識した。オーディオも入出力可能になり一件落着。</p>
+<h3><a name="label-52" id="label-52">[diary]静音PC ACアダプタとCPUファン交換</a></h3><!-- RDLabel: "[diary]静音PC ACアダプタとCPUファン交換" -->
+<p>恐る恐る買ってきたACアダプタ電源に交換してみる。すると何の問題もなく立ち上がった。10000円もする電源なのでこれが一番心配だった。60Wで足りるのかとか。まだCD-Rを動かしたことないけど、なんとなくいけるような気がする。これで気になる動作音はCPUファンのみとなった。HDDはとても静かなので全く気にならない。最初にCPUクロックを133x3に落として、電圧を若干落とし、CPUファンを外してみた。すると70℃ぐらいまで上昇したので、これはさすがにやばいと思い低速の大型ファンをケース内に宙吊りし、CPUに風があたるようにした。これで50℃前後に落ち着いた。蓋を閉めるとかなり静かだ。以下はsensorsの結果。VCoreが妙に高いのが気になるが、まあ動いてるからよしとしよう。</p>
+<pre>$ sensors
+eeprom-i2c-0-50
+Adapter: SMBus Via Pro adapter at 5000
+Memory type:            DDR SDRAM DIMM
+Memory size (MB):       256
+....
+vt1211-isa-6000
+Adapter: ISA adapter
+VCore1:    +2.74 V  (min =  +1.79 V, max =  +1.89 V)   ALARM
++5V:       +4.53 V  (min =  +4.73 V, max =  +5.24 V)   ALARM
++12V:     +11.84 V  (min = +10.77 V, max = +13.15 V)
++3.3V:     +3.17 V  (min =  +3.13 V, max =  +3.45 V)
+fan1:     1883 RPM  (min = 2978 RPM, div = 8)          ALARM
+fan2:        0 RPM  (min = 2978 RPM, div = 8)
+ERROR: Can't get TEMP2 data!
+Proc Temp: +47.5°C  (high =   +65°C, hyst =   +60°C)
+MB2 Temp:  +16.3°C  (high =   +45°C, hyst =   +40°C)
+vid:      +1.850 V  (VRM Version 9.1)</pre>
+<h2><a name="label-53" id="label-53">20050629</a></h2><!-- RDLabel: "20050629" -->
+<h3><a name="label-54" id="label-54">[english]英英辞書</a></h3><!-- RDLabel: "[english]英英辞書" -->
+<p>輸入ものの辞書を買う。1300YENぐらい。紙の質が悪いけど安いのでよい。</p>
+<h3><a name="label-55" id="label-55">[debian]Debian辞典</a></h3><!-- RDLabel: "[debian]Debian辞典" -->
+<p>購入。ちょっと高かったけど役に立ちそうなので。ぱらぱらと読んでみると我流でやっていた方法のdebian流なやり方がいくつかあった。</p>
+<h3><a name="label-56" id="label-56">[diary][linux]VAIOノートのHDD交換</a></h3><!-- RDLabel: "[diary][linux]VAIOノートのHDD交換" -->
+<p>HDDがそろそろ寿命なので交換。VAIOのHDDを取り出すのに苦労する。OSはDebian辞典のちっちゃいCD-ROMでインストール。Vine 2.5とかdebian woodyのときはVAIO Noteの場合、ブート時にkernelへパラメータを指定する必要があったけど、debian sargeのインストーラでは指定する必要なさそう。もしかしたらインストーラではなくlinux kernelが賢くなったのかもしれない。とりあえずX Windowが立ち上がるところまでで終了。続きはまた明日。</p>
+<h3><a name="label-57" id="label-57">[debian]起動時メッセージの確認方法</a></h3><!-- RDLabel: "[debian]起動時メッセージの確認方法" -->
+<p>/etc/default/bootlogd を yesにしたら /var/log/boot に残る。会社のとある人からとある人経由で情報を得た。まだまだ知らないことが多いなぁ。</p>
+<h3><a name="label-58" id="label-58">[diary]USB抜き差し</a></h3><!-- RDLabel: "[diary]USB抜き差し" -->
+<p>あまり頻繁に抜き差ししない方がよさそうだ。</p>
+<h3><a name="label-59" id="label-59">[diary]自宅サーバ反応なし</a></h3><!-- RDLabel: "[diary]自宅サーバ反応なし" -->
+<p>お昼前ぐらいから自宅サーバの反応がない。どうなったのかなぁ。CPU暴走か? それとも飼い猫の仕業か? グローバルIPアドレスが変わったか? 心配だなぁ。</p>
+<h3><a name="label-60" id="label-60">[diary]自宅サーバ反応なし(結果)</a></h3><!-- RDLabel: "[diary]自宅サーバ反応なし(結果)" -->
+<p>ローカルDHCPのIPが更新されてしまったようだ。固定IPへ変更してからDHCPクライアントを止めずにほっといたのが悪かったみたい。予想はすべて外れであった。</p>
+<h3><a name="label-61" id="label-61">[diary]上海からohac.sytes.net</a></h3><!-- RDLabel: "[diary]上海からohac.sytes.net" -->
+<p>違うIPになるなぁ。DDNSの情報がうまく届いていないのかなぁ。上海事務所のDNSサーバがおかしいような気がする。誰に言えばいいの&gt;かな。</p>
+<h3><a name="label-62" id="label-62">[debian]Skype for debian</a></h3><!-- RDLabel: "[debian]Skype for debian" -->
+<p>英語のページにはdebパッケージがあるけど、日本語のページにはdebパッケージがないなぁ。どういうことだ。</p>
+<h2><a name="label-63" id="label-63">20050630</a></h2><!-- RDLabel: "20050630" -->
+<h3><a name="label-64" id="label-64">[diary]自宅サーバ反応なし</a></h3><!-- RDLabel: "[diary]自宅サーバ反応なし" -->
+<p>あかん。また繋がらない。会社からだとどうすることもできないのがつらいなぁ。</p>
+<h3><a name="label-65" id="label-65">[diary]自宅サーバ反応なし(結果)</a></h3><!-- RDLabel: "[diary]自宅サーバ反応なし(結果)" -->
+<p>どうやらY!BBのWAN側IPが変わっていたようだ。no-ipのパッケージをinstallして、no-ip -Cで設定して完了。</p>
+<h3><a name="label-66" id="label-66">[uim]AZIKときゅうり改</a></h3><!-- RDLabel: "[uim]AZIKときゅうり改" -->
+<p>emacs上のanthyでAZIKきゅうり改が使えるようになったらしい。</p>
+<h3><a name="label-67" id="label-67">[diary]comDesk</a></h3><!-- RDLabel: "[diary]comDesk" -->
+<p>http://css.jaist.ac.jp/~miuramo/comdesk/ VNCみたいなソフトらしい。</p>
+<h3><a name="label-68" id="label-68">[linux]読学のススメ</a></h3><!-- RDLabel: "[linux]読学のススメ" -->
+<p>http://hira.main.jp/wiki/pukiwiki.php linux kernelのメモらしい。</p>
+<h3><a name="label-69" id="label-69">[linux]webcam (Logitech QuickCam Notebook Pro)</a></h3><!-- RDLabel: "[linux]webcam (Logitech QuickCam Notebook Pro)" -->
+<p>http://www.logitech.com/index.cfm/products/details/US/EN,CRID=4,CONTENTID=5040 がんばればlinuxで使えるらしい。Logicool の Qcam (QuickCam)シリーズ QV-31 QV-300N とかもいけそう。 http://www.rmatsumoto.org/index.php?Linux%A4%C8Web%A5%AB%A5%E1%A5%E9 お、ここにもいろいろのっているぞ。 Philips製コントローラーを使用した製品で Samsung MPC-C30、Logitech QuickCam 3000 Pro、Creative Labs Webcam 5とかもいけそうかな。</p>
+
+</body>
+</html>

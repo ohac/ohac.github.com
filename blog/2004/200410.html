@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20041004</a></h2><!-- RDLabel: "20041004" -->
+<h3><a name="label-1" id="label-1">[linux] telnetrc</a></h3><!-- RDLabel: "[linux] telnetrc" -->
+<p>telnetで他のlinuxサーバやOS-9サーバに入ったとき、日本語が入力できなかった。</p>
+<p>調べたところ、telnet の -L オプションで解決した。</p>
+<p>ホームに .telnetrc というファイルを以下のように作成すれば -L オプションを省略できる。</p>
+<pre>DEFAULT
+ set outbinary</pre>
+<p>DEFAULTのところはサーバ名でもよいらしい。</p>
+<h2><a name="label-2" id="label-2">20041005</a></h2><!-- RDLabel: "20041005" -->
+<h3><a name="label-3" id="label-3">[IM] Anthy prime sumika</a></h3><!-- RDLabel: "[IM] Anthy prime sumika" -->
+<p>Anthyとprime、sumikaを試す。インプレッションを以下に。</p>
+<ul>
+<li>Anthy
+<ul>
+<li>なかなか使いやすくてよい。SKKユーザじゃない人にはおすすめ。</li>
+<li>AZIKも使える。</li>
+<li>かな入力も使える。(ちなみにuim-skkでは使えないようだ。)</li>
+</ul></li>
+<li>prime
+<ul>
+<li>予測変換が面白い。</li>
+<li>さすがにちょっと重い。</li>
+<li>AZIKは使えないようだ。</li>
+</ul></li>
+<li>sumika
+<ul>
+<li>~/.uimを上書きされてしまうので注意。</li>
+</ul></li>
+</ul>
+<p>やっぱり私にはuim-skkが一番しっくりくるな。</p>
+<p>ところで uim-helper-toolbar-gtk はログアウト時に kill されないのかな。
+とりあえず .xsession に kill uim-helper-toolbar-gtk を入れてみた。
+それと uim-helper-toolbar-gtk-systray をKDE上で使うと今のモードが見えない。
+しかたないのでsystrayじゃない方を使っている。</p>
+<ul>
+<li>killallはうまくいかなかった。KDEの設定でセッションを保存しないようにしたらいけた。 -- ohac 2004-10-05 (火) 18:16:11</li>
+</ul>
+<h3><a name="label-4" id="label-4">[linux] telnetrc改</a></h3><!-- RDLabel: "[linux] telnetrc改" -->
+<p>.telnetrcをさらに変更。これで環境変数も思いのまま。</p>
+<pre>DEFAULT
+ environ define TERM ansi
+ set outbinary</pre>
+<h2><a name="label-5" id="label-5">20041006</a></h2><!-- RDLabel: "20041006" -->
+<h3><a name="label-6" id="label-6">[linux] dotfiles.com</a></h3><!-- RDLabel: "[linux] dotfiles.com" -->
+<p>いろんなサンプル設定ファイルが公開されているサイト。</p>
+<p>http://dotfiles.com/</p>
+<p>うーん。mutt-utf8の日本語環境での設定がわからん。orz</p>
+<h3><a name="label-7" id="label-7">[linux] ssh-agent</a></h3><!-- RDLabel: "[linux] ssh-agent" -->
+<p>む、ssh-agentがいつのまにか自動で立ち上がるようになっている。</p>
+<p>eval `ssh-agent` を実行する必要はなくなったのか。これは便利だ。</p>
+<p>これでssh-addするだけで全ターミナルでsshがログインなしで使える。</p>
+<h2><a name="label-8" id="label-8">20041007</a></h2><!-- RDLabel: "20041007" -->
+<h3><a name="label-9" id="label-9">[linux] mutt+rxvtでcolor</a></h3><!-- RDLabel: "[linux] mutt+rxvtでcolor" -->
+<p>muttで文字が灰色になるのはなぜだろうと調べていたら、
+.XresourcesでRxvt*color7: #a9a9a9と定義していたのが原因だと判った。</p>
+<p>Rxvt*colorは0〜15まで定義しているのだが、muttでは0〜7しか使用できないように思える。</p>
+<h3><a name="label-10" id="label-10">[vim] mutt+vimで文字コード問題</a></h3><!-- RDLabel: "[vim] mutt+vimで文字コード問題" -->
+<p>muttでメールを新規作成するときに文字コードがうまくいかなかったのはどうやらvim側に問題があったようだ。</p>
+<p>vimの設定でfileencodingsにiso-2022-jpやsjisを含めたりするとうまくいかないことがあった。新規作成でiso-2022-jpになり、再編集時はsjisと認識されたりしていた。</p>
+<p>fileencodingを設定しなければ問題ないので、.mutt/muttrcを以下のようにして解決した。</p>
+<pre>set editor="vim --cmd 'set fileencoding=euc-jp'"</pre>
+<p>さらに .vimrc を以下のようにした。</p>
+<pre>if &amp;fileencoding != 'euc-jp'
+  set fileencodings=iso-2022-jp,utf-8,sjis
+endif</pre>
+<p>ちなみにvimの-cや--cmdオプションはvi -c 'hogehoge'という風にはできないようだ。必ず、vim -c 'hogehoge'のようにしなければならない。</p>
+<h2><a name="label-11" id="label-11">20041008</a></h2><!-- RDLabel: "20041008" -->
+<h3><a name="label-12" id="label-12">[mutt] fetchmail procmail</a></h3><!-- RDLabel: "[mutt] fetchmail procmail" -->
+<p>sylpheedからmuttに移行しようと勉強中。</p>
+<p>imgetでメール受信しようと思ったが、ちょっとややこしそうだったので、fetchmail+procmailを久しぶりに使ってみることにした。</p>
+<p>.fetchmailrc はこんな感じ。練習中なのでkeepにしてある。</p>
+<pre>defaults proto pop3
+poll mailserver1
+  user "hogehoge"
+  pass "password"
+  mda "/usr/bin/procmail"
+  keep
+poll mailserver2
+  user "hogehoge"
+  pass "password"
+  mda "/usr/bin/procmail"
+  keep</pre>
+<p>.procmailrc はこんな感じ。</p>
+<pre>LOGFILE=$HOME/MailMutt/procmail.log
+MAILDIR=$HOME/MailMutt/
+DEFAULT=$MAILDIR
+:0 c
+backup/
+:0
+* ^From:.*melma@
+DM/
+:0
+inbox/</pre>
+<p>ディレクトリ名を"/"で終わらせたらMaildir形式となり、newというサブディレクトリに保存されるようだ。前は "inbox/." みたいに設定していた。この場合は MH 形式になるようだ。(つまり inbox/{1,2,3} という感じになる。)</p>
+<h3><a name="label-13" id="label-13">[mutt] muttに移行完了</a></h3><!-- RDLabel: "[mutt] muttに移行完了" -->
+<p>やっとこさmuttに移行完了した。</p>
+<p>操作にもちょっとずつ慣れてきた。</p>
+<p>X-Faceのヘッダを表示できるようにしたいな。sylpheedはx-faceに対応していたのか。そんなこと今まで知らなかった。windowsのメーラーもx-faceに対応しているやつが結構あるみたいだ。</p>
+<p>メールフォルダをgrep -i x-face で検索してみると、x-faceを使っているメールを1通だけ発見!</p>
+<p>その画像はこんなんだった。→ （・∀・）</p>
+<p>わざわざビットマップにしなくてもよいのでは(w</p>
+<h2><a name="label-14" id="label-14">20041009</a></h2><!-- RDLabel: "20041009" -->
+<h3><a name="label-15" id="label-15">[linux] gpg keyserver</a></h3><!-- RDLabel: "[linux] gpg keyserver" -->
+<p>GPG公開鍵の送受信方法。</p>
+<pre>gpg --recv-keys --keyserver hkp://keyserver.noreply.org:80 F9EDA275
+gpg --send-keys --keyserver hkp://keyserver.noreply.org:80 F9EDA275</pre>
+<p>会社の環境だとポート80(HTTP)しか通さないから、このような方法となった。</p>
+<p>ちなみに F9EDA275 は私のIDです。</p>
+<p>Webからだと、 http://keyserver.noreply.org/ で検索が可能。
+11371ポートが空いていなくても大丈夫である。</p>
+<h2><a name="label-16" id="label-16">20041012</a></h2><!-- RDLabel: "20041012" -->
+<h3><a name="label-17" id="label-17">[linux] OpenOfficeでメニューが文字化け</a></h3><!-- RDLabel: "[linux] OpenOfficeでメニューが文字化け" -->
+<p>OpenOfficeでメニューが表示されない問題にずっと悩み続けていたが、ようやく解決した。</p>
+<p>本屋でDebian sargeの本を立ち読みして知ったのだが、KDEなどのフォント設定をちゃんと日本語フォントに設定しておかなくてはならないらしい。</p>
+<p>コントロールパネルで外観メニューのフォントをKochi Gothic 10に設定すると、ちゃんと表示されるようになった。よかったよかった。</p>
+<h3><a name="label-18" id="label-18">[linux] antiword</a></h3><!-- RDLabel: "[linux] antiword" -->
+<p>MS-Word文書をテキストにするコマンド antiword が UTF-8 を扱えるようだ。</p>
+<pre>antiword -m UTF-8.txt hoge.doc | lv -Iu -Oej -k | cat</pre>
+<h3><a name="label-19" id="label-19">[linux] xlhtml</a></h3><!-- RDLabel: "[linux] xlhtml" -->
+<p>xlhtml も UTF-8 を処理できるようだ。</p>
+<pre>xlhtml hoge.xls | w3mmee -T text/html -dump</pre>
+<p>muttで.mailcapで定義したら非常に便利。(かも。)</p>
+<h3><a name="label-20" id="label-20">[linux] 英文法チェッカ Queequeg</a></h3><!-- RDLabel: "[linux] 英文法チェッカ Queequeg" -->
+<p>スペルチェッカを探していたら、こんなん見つけました。</p>
+<p>英文法チェッカ Queequeg</p>
+<p>http://queequeg.sourceforge.net/</p>
+<p>英作文に便利かも。</p>
+<h2><a name="label-21" id="label-21">20041013</a></h2><!-- RDLabel: "20041013" -->
+<h3><a name="label-22" id="label-22">[linux] xlhtml for Excel 5.0</a></h3><!-- RDLabel: "[linux] xlhtml for Excel 5.0" -->
+<p>Excel 5.0/95の添付ファイルメールが届いた。これの対策。</p>
+<pre>xlhtml -m hoge.xls | nkf | w3mmee -T text/html -dump</pre>
+<p>nkf は sid の最新にしておけば、UTF-8 も扱えてよさげ。(-w/Wオプション)</p>
+<h3><a name="label-23" id="label-23">[linux] 自宅サーバをDebianに</a></h3><!-- RDLabel: "[linux] 自宅サーバをDebianに" -->
+<p>VineからDebianに移行した。
+とりあえずテスト書き込みしてみます。</p>
+<h2><a name="label-24" id="label-24">20041014</a></h2><!-- RDLabel: "20041014" -->
+<h3><a name="label-25" id="label-25">[linux] hikiとtDiary</a></h3><!-- RDLabel: "[linux] hikiとtDiary" -->
+<p>Debianに移行した記念にhikiとtDiaryを入れてみた。</p>
+<p>http://ohac.sytes.net/hiki/</p>
+<p>http://ohac.sytes.net/tdiary/</p>
+<p>初心者なもので、よくわからんことが多いな。</p>
+<h2><a name="label-26" id="label-26">20041015</a></h2><!-- RDLabel: "20041015" -->
+<h3><a name="label-27" id="label-27">[日記] 日記移動</a></h3><!-- RDLabel: "[日記] 日記移動" -->
+<p>日記は</p>
+<p>ttp://ohac.sytes.net/tdiary/</p>
+<p>ここに書くことにしたのでよろしく。</p>
+<h2><a name="label-28" id="label-28">20041013</a></h2><!-- RDLabel: "20041013" -->
+<h3><a name="label-29" id="label-29">[tDiary][linux]なるほど</a></h3><!-- RDLabel: "[tDiary][linux]なるほど" -->
+<p>.htaccessを少し変更する必要があったが、なんとか動いた。
+httpd.confとかよくわからんスギ。</p>
+<h3><a name="label-30" id="label-30">[diary]2つ目</a></h3><!-- RDLabel: "[diary]2つ目" -->
+<p>ほほう。</p>
+<h2><a name="label-31" id="label-31">20041014</a></h2><!-- RDLabel: "20041014" -->
+<h3><a name="label-32" id="label-32">[diary]タイトルとこの見出しの違い</a></h3><!-- RDLabel: "[diary]タイトルとこの見出しの違い" -->
+<p>どう使い分けるべきか。
+カテゴライズも考えないといけない。</p>
+<h3><a name="label-33" id="label-33">[linux]PukiWikiのRecentがおかしく</a></h3><!-- RDLabel: "[linux]PukiWikiのRecentがおかしく" -->
+<p>なってしまった。
+おそらくサーバを再インストールしたときにタイムスタンプが消えてしまったものと思われ。</p>
+<h3><a name="label-34" id="label-34">[linux]a2psjよりe2psの方が</a></h3><!-- RDLabel: "[linux]a2psjよりe2psの方が" -->
+<p>よさそうだ。マージンの指定などができるし。</p>
+<h3><a name="label-35" id="label-35">[linux]oooqs-kde</a></h3><!-- RDLabel: "[linux]oooqs-kde" -->
+<p>入れてみた。OpenOfficeの起動が早くなるらしい。</p>
+<h3><a name="label-36" id="label-36">[linux,uim]uim 0.4.4.1-2が動かない</a></h3><!-- RDLabel: "[linux,uim]uim 0.4.4.1-2が動かない" -->
+<p>apt-get で uim をアップグレードしたのはいいが、動かなくなってしまった。
+いろいろ試してみて、以下の方法でなんとかした。</p>
+<ul>
+<li>/etc/locale.gen に ja_JP.UTF-8 UTF-8 を追加し、locale-genを実行。</li>
+<li>~/.uim の vim 用の ESC で日本語入力モードから抜けるパッチをコメントアウト。(これは不便!→パッチを作った!)</li>
+<li>~/.uim に (define default-im-name 'skk) を追加。</li>
+<li>~/.xsession の GTK_IM_MODULE, XMODIFIERS が uim-skk だったのを uim に変更。</li>
+</ul>
+<p>しかし、krxvt で ja_JP.eucJP な環境だと変換候補が文字化けする。
+mozilla-firefox や mlterm なら文字化けしなかった。</p>
+<h3><a name="label-37" id="label-37">[linux]mltermをインストール</a></h3><!-- RDLabel: "[linux]mltermをインストール" -->
+<p>mlterm mlterm-tools, unifont をインストール。 ~/.mlterm/main を以下のように。</p>
+<pre>fg_color=white
+bg_color=black
+fontsize=14
+#use_anti_alias=true</pre>
+<h3><a name="label-38" id="label-38">[tDiary]HTMLタグ</a></h3><!-- RDLabel: "[tDiary]HTMLタグ" -->
+<p>tDiaryって、HTMLタグを書く必要があることに今頃気付く。
+このへんはWikiの方が便利だ。</p>
+<h2><a name="label-39" id="label-39">20041015</a></h2><!-- RDLabel: "20041015" -->
+<h3><a name="label-40" id="label-40">[linux][im]uimでESCキー</a></h3><!-- RDLabel: "[linux][im]uimでESCキー" -->
+<p>Anthy-dev MLへ情報を投げたら、vi用の設定を追加していただけた。ありがたや。
+.uim に (define skk-use-with-vi? #t) と書けばよいとのこと。</p>
+<h3><a name="label-41" id="label-41">[linux]spamassassinを入れてみた</a></h3><!-- RDLabel: "[linux]spamassassinを入れてみた" -->
+<p>.procmailrc に</p>
+<pre>###
+:0fw
+* &lt; 256000
+| spamassassin -P</pre>
+<p>と入れてみた。 :0fw: spamassassin.lock だとなぜかうまくいかなかった。
+spamdって使った方がよいのかな。spamdが走っている場合は spamc というのでチェッ
+クができるようだ。</p>
+<h2><a name="label-42" id="label-42">20041017</a></h2><!-- RDLabel: "20041017" -->
+<h3><a name="label-43" id="label-43">[uim,linux]ビルドできた</a></h3><!-- RDLabel: "[uim,linux]ビルドできた" -->
+<p>uimのdebパッケージのビルドができた。いやーよかったよかった。
+ちなみにこの日記はWindowsからPuTTY(SSH)でDebianサーバーにログインして、そこからw3mを使ってウェブにアクセスし、 uim-fep を立ち上げて書いています。(あー、ややこし。)
+しかし、ノートPCのCTRLキーは押しにくいなぁ。Caps Lockと入れ替えたくなるよ。</p>
+<h2><a name="label-44" id="label-44">20041018</a></h2><!-- RDLabel: "20041018" -->
+<h3><a name="label-45" id="label-45">[java][junit]JUnit対応のテストへ書き換え</a></h3><!-- RDLabel: "[java][junit]JUnit対応のテストへ書き換え" -->
+<p>昔作ったテストケースはJUnitじゃなかったので、この際JUnitに書き換えておく。結構量があるので、しんどいかも。
+ということでテストしてみると1つ重大なバグを発見。不幸中の幸いか、このクラスを使用した装置で出荷済みは1台だけ。こんなことなら早くテストの自動化をやっておけばよかったと後悔。
+助かった。このバグ入りのソフトはどうやら出荷されてなさそうだ。今後はこんなことがないよう注意しよう。</p>
+<h3><a name="label-46" id="label-46">[linux,im]uimの文字化け</a></h3><!-- RDLabel: "[linux,im]uimの文字化け" -->
+<p>svnの最新でdebをビルドしたので早速インストールしてみた。なおってるみたいだ。</p>
+<h2><a name="label-47" id="label-47">20041019</a></h2><!-- RDLabel: "20041019" -->
+<h3><a name="label-48" id="label-48">[linux]SpamAssassin spamd</a></h3><!-- RDLabel: "[linux]SpamAssassin spamd" -->
+<p>spamdを有効にするには /etc/default/spamassassin の ENABLED を 1 にする必要があるようだ。これを有効にして、.procmailrcの方をspamassassin -Pというのをspamcに書き換えた。ちょっと速くなったような気がする。</p>
+<h3><a name="label-49" id="label-49">[linux][im]AZIKと促音(そくおん)</a></h3><!-- RDLabel: "[linux][im]AZIKと促音(そくおん)" -->
+<p>gooの国語辞書によると、「語中において、無声閉鎖音 k ・ t ・ p や無声摩擦音 s の前で一拍分だけ息をとめるものをいう。」とある。ということは、AZIKでのキーシーケンスで問題となるのはkk(きん),tt(たち),pp(ぽう),ss(せい)の4つだけということか。特にttはSKKとの組み合わせで問題になり、特殊拡張に分類されているので、このシーケンスを使わないように設定できる必要があると思う。また、kk,pp,ssについてもAZIKのセミコロンの位置のキーがないような特殊キーボード(Linux Zaurusなど)ではオフにできる方がよい。そのうちuimに取り込みたいと思う。</p>
+<h2><a name="label-50" id="label-50">20041020</a></h2><!-- RDLabel: "20041020" -->
+<h3><a name="label-51" id="label-51">[diary]台風</a></h3><!-- RDLabel: "[diary]台風" -->
+<p>台風なので帰ってもよいということになった。帰ろう。</p>
+<h3><a name="label-52" id="label-52">[c,unittest]check</a></h3><!-- RDLabel: "[c,unittest]check" -->
+<p>debianにcheckというパッケージがあったので試してみた。checkの使い方というより、aclocal/automake/autoconfの使い方がわからなくてハマった。日本語で説明されたページはないものかと調べると次のようなページがあった。
+http://www.02.246.ne.jp/~torutk/softwarebp/zakki20010410.html</p>
+<h3><a name="label-53" id="label-53">[uim,linux]uimで"sq"を"さい"となるように</a></h3><!-- RDLabel: "[uim,linux]uimで"sq"を"さい"となるように" -->
+<p>やっとできた。うれしい。("q"の"ん"を無効にしておく必要あり。それと"q"を"@"で代用するところも無効にすること。)</p>
+<pre>###
+--- skk.scm.orig	2004-10-20 21:09:58.000000000 +0900
++++ skk.scm	2004-10-20 22:06:49.000000000 +0900
+@@ -955,6 +955,22 @@
+ 	     (skk-append-residual-kana sc)
+ 	     #t)
+ 	   #t)
++       ;; Hack to handle "sq" sequence as "さい" for azik.
++       (if (skk-kana-toggle-key? key key-state)
++           (begin
++	     (set! key (to-lower-char key))  
++	     (set! stat (skk-context-state sc))
++	     (set! res
++	           (rk-push-key!
++		    rkc
++		    (charcode-&gt;string key)))
++	     (if (and res
++		      (= stat 'skk-state-kanji)
++		      (or
++		       (list? (car res))
++		       (not (string=? (car res) ""))))
++	         (begin (skk-append-string sc res) #f) #t))
++ 	  #t)
+        (if (skk-kana-toggle-key? key key-state)
+ 	   (begin
+ 	     (skk-append-residual-kana sc)</pre>
+<h2><a name="label-54" id="label-54">20041021</a></h2><!-- RDLabel: "20041021" -->
+<h3><a name="label-55" id="label-55">[linux]SpamAssassinが日本語メールで役に立ってなさそげ</a></h3><!-- RDLabel: "[linux]SpamAssassinが日本語メールで役に立ってなさそげ" -->
+<p>社内のメールがSPAMとして認識されてしまうな。</p>
+<pre>SPAM: Hit! (2.5 points)  Cc: contains similar domains at least 10 times
+SPAM: Hit! (1.0 point)   Subject: contains a question mark
+SPAM: Hit! (0.2 points)  BODY: Contains at least 3 dollar signs in a row
+SPAM: Hit! (0.9 points)  URI: Filename is just a '\#'; probably a JS trick
+SPAM: Hit! (1.8 points)  URI: Uses %-escapes inside a URL's hostname</pre>
+<p>Cc:に一杯列記するから2.5ポイント。日本語件名だと"=?iso-2022"のハテナがカウントされるので1.0ポイント。ISO-2022-JPだとESC+$が入るので0.2ポイント。最後の2つはよくわからんな。たぶん日本語だからダメなんだろう。</p>
+<h2><a name="label-56" id="label-56">20041022</a></h2><!-- RDLabel: "20041022" -->
+<h3><a name="label-57" id="label-57">[linux]SpamAssassin</a></h3><!-- RDLabel: "[linux]SpamAssassin" -->
+<p>ヘッダが化けることがあったり、誤認識が多いのでとりあえず.procmailrcから外しておく。今後に期待といったところか。</p>
+<h3><a name="label-58" id="label-58">[linux]clamav (Clam Anti Virus)</a></h3><!-- RDLabel: "[linux]clamav (Clam Anti Virus)" -->
+<p>会社のメールで大量に変なメールがきた。clamavでチェックしたところ、Worm.SomeFool.AJ だそうな。</p>
+<pre>$ clamscan foo.com
+foo.com: Worm.SomeFool.AJ FOUND
+----------- SCAN SUMMARY -----------
+Known viruses: 24499
+Scanned directories: 0
+Scanned files: 1
+Infected files: 1
+Data scanned: 0.03 MB
+I/O buffer size: 131072 bytes
+Time: 6.290 sec (0 m 6 s)</pre>
+<p>これはNetsky.Bというらしいのだが、ClamAVの方が先に(同時に?)見つけたらしく、全然違う名前になっているようだ。やるじゃないかClamAVめ。</p>
+<h3><a name="label-59" id="label-59">[im,uim]「ん」の入力</a></h3><!-- RDLabel: "[im,uim]「ん」の入力" -->
+<p>AZIKでは"q"で「ん」が入力できる。AZIKでは"an","on"などの子音+"ん"が揃っているので、必要ないんちゃうのって思ってたが、よく考えたら母音+"ん"のときに必要ということがわかった。「アンインストール」とか打つときは"q"があると便利だ。まあこの例だとSKKで"/uninstall"の方が打ちやすいけどね。</p>
+<h3><a name="label-60" id="label-60">[java,junit,unittest]StrutsTestCase</a></h3><!-- RDLabel: "[java,junit,unittest]StrutsTestCase" -->
+<p>Cactus + StrutsTestCase を試してみる。まだちゃんと動いていないが、なんとかして動かすぞ。
+http://homepage2.nifty.com/ymagic/struts/Impressions/ImpressionStrutsTestCase.html (参考ページ)</p>
+<h2><a name="label-61" id="label-61">20041025</a></h2><!-- RDLabel: "20041025" -->
+<h3><a name="label-62" id="label-62">[linux]固定IPの取り方</a></h3><!-- RDLabel: "[linux]固定IPの取り方" -->
+<p>/etc/network/interfacesを以下のようにするらしい。(今までDHCPしか使ってなかったので知らなかった。)</p>
+<pre>auto eth0
+iface eth0 inet static
+  address 192.168.xxx.xxx
+  netmask 255.255.255.0
+  broadcast 192.168.xxx.255
+  gateway 192.168.xxx.xxx</pre>
+<h3><a name="label-63" id="label-63">[unittest]サンプリング割り込みでのテスト</a></h3><!-- RDLabel: "[unittest]サンプリング割り込みでのテスト" -->
+<p>組み込み系のテストではターゲットでのテストが必要である。タイミングなどに変化を与えないように気をつけながらテストコードを書く必要があるし、テストの実行開始や終了条件も色々とあるのでどうしても自作のフレームワークを作る必要がある。まあ、フレームワークといってもたいしたことないのだが、testサブディレクトリにtarget_test.hみたいなのを用意し、TARGET_TEST_1_SETUP_1 とか TARGET_TEST_1_BEGIN や END などを定義し、本体のコードが読みにくくならないように注意しながら本体に組み込むといったものである。テストの結果は TARGET_TEST_1_PRINT_RESULT で定義しておき、任意のタイミングでどこかに表示可能にしておく。このプリント文はテスト実行中なら"Running..."完了なら"Success"または"Failure"と表示させる。</p>
+<h2><a name="label-64" id="label-64">20041026</a></h2><!-- RDLabel: "20041026" -->
+<h3><a name="label-65" id="label-65">[music]ゆず</a></h3><!-- RDLabel: "[music]ゆず" -->
+<p>ゆずの地図という曲、なんかに似ている。ジャクソンファイブかな?
+ググッてみると、曲名は「夢の地図」でやはりジャクソン5に似ているとのこと。パクりかと思ったが、わざとそのようにしているような感じらしい。小林亜星が相手だったらきっと訴えられてたであろう。しかし、アレンジの著作権って、そんなに厳しくないのかな。</p>
+<h3><a name="label-66" id="label-66">[tDiary]曜日</a></h3><!-- RDLabel: "[tDiary]曜日" -->
+<p>tDiaryって、曜日表示できないのかなぁ。</p>
+<h3><a name="label-67" id="label-67">[diary]健康調査CGI</a></h3><!-- RDLabel: "[diary]健康調査CGI" -->
+<p>http://aoki2.si.gunma-u.ac.jp/thi/thi.html でチェックしてみた。</p>
+<pre>パーセンタイル     0.01 0.1    1    5 10 20    50     80 90 95   99   99.9 99.99
+尺度（得点）        +----+-----+----+--+--+-----+------+--+--+----+-----+----+
+多愁訴　　　(35)    :    .     .    .  .  .     .      .@ .  .    .     .    :
+呼吸器　　　(18)    :    .     .    .  .  .     .      @  .  .    .     .    :
+目と皮膚　　(20)    :    .     .    .  .  .     .      .  . @.    .     .    :
+口腔と肛門　(14)    :    .     .    .  .  .     .   @  .  .  .    .     .    :
+消化器　　　(13)    :    .     .    .  .  .     .@     .  .  .    .     .    :
+直情径行性　(17)    :    .     .    .  .  .   @ .      .  .  .    .     .    :
+虚構性　　　(15)    :    .     .    . @.  .     .      .  .  .    .     .    :
+情緒不安定性(25)    :    .     .    .  .  .     .    @ .  .  .    .     .    :
+抑鬱性　　　(13)    :    .     .    .  .  .     @      .  .  .    .     .    :
+攻撃性　　　(11)    :    .     . @  .  .  .     .      .  .  .    .     .    :
+神経質　　　(12)    :    .     .    .@ .  .     .      .  .  .    .     .    :
+生活不規則性(19)    :    .     .    .  .  .     .@     .  .  .    .     .    :
+心身症傾向　(-0.634):    .     .    .  .  .     .     @.  .  .    .     .    :
+神経症傾向　(-3.191):    .     .    .  .  @     .      .  .  .    .     .    :
+尺度（得点）        +----+-----+----+--+--+-----+------+--+--+----+-----+----+
+パーセンタイル     0.01 0.1    1    5 10 20    50     80 90 95   99   99.9 99.99</pre>
+<p>http://aoki2.si.gunma-u.ac.jp/thi/interpret.html</p>
+<h2><a name="label-68" id="label-68">20041027</a></h2><!-- RDLabel: "20041027" -->
+<h3><a name="label-69" id="label-69">[diary,music]青い地球は手のひら</a></h3><!-- RDLabel: "[diary,music]青い地球は手のひら" -->
+<p>かの香織の曲がラジオでかかっていた。ひさしぶりに聴いたが、やっぱりいい曲だと思う。最近どうしているのだろうか。</p>
+<h3><a name="label-70" id="label-70">[music]上原ひろみ(Jazz Piano)</a></h3><!-- RDLabel: "[music]上原ひろみ(Jazz Piano)" -->
+<p>とてもイイ!ピアノもいいが、曲もいい。</p>
+<h3><a name="label-71" id="label-71">[diary]QRコード</a></h3><!-- RDLabel: "[diary]QRコード" -->
+<p>QRコードって、DENSO WAVEっていうところが知的所有権を持っているのかと思っていたが、そうではないらしい。QRコードという名称が登録商標となっているみたいで、いつかはISOやJISなどで仕様が公開されるようなことが書いてある。</p>
+<h3><a name="label-72" id="label-72">[uim]skkで学習が変?</a></h3><!-- RDLabel: "[uim]skkで学習が変?" -->
+<p>になっているようだ。設定の問題かな?</p>
+<h3><a name="label-73" id="label-73">[english]オズの魔法使い</a></h3><!-- RDLabel: "[english]オズの魔法使い" -->
+<p>45%ぐらいまで読んだ。</p>
+<h3><a name="label-74" id="label-74">[diary]orkut</a></h3><!-- RDLabel: "[diary]orkut" -->
+<p>む、w3mからログインできないぞ。どうやらJavaScriptを使っているようだ。ログイン後に http://www.orkut.com/Home.aspx へアクセスすれば問題なさそう。</p>
+<h3><a name="label-75" id="label-75">[linux]LDAP</a></h3><!-- RDLabel: "[linux]LDAP" -->
+<p>LDAPを使ってみる。</p>
+<pre>ldapsearch -h hostname -p portnum -x -b "o=hoge corp,c=jp" -s sub "mail=*"</pre>
+<p>みたいな感じで使えた。sn: 苗字、cn: 氏名、mail: メールアドレスみたいに使うようだ。ん!?なぜか私のエントリが2つもあるぞ。</p>
+<h2><a name="label-76" id="label-76">20041028</a></h2><!-- RDLabel: "20041028" -->
+<h3><a name="label-77" id="label-77">[linux]debian-installer</a></h3><!-- RDLabel: "[linux]debian-installer" -->
+<pre>http://www.debian.org/devel/debian-installer/
+http://cdimage.debian.org/pub/cdimage-testing/sid_d-i/i386/pre-rc2/sarge-i386-netinst.iso
+http://cdimage.debian.org/pub/cdimage-testing/daily/i386/</pre>
+<p>なるほど。初めてsargeのインストーラの場所を知った(w</p>
+<h3><a name="label-78" id="label-78">[linux]cu</a></h3><!-- RDLabel: "[linux]cu" -->
+<p>cu -s 9600 -l /dev/ttyS0 みたいな感じで使えるらしい。後で試してみよう。</p>
+<h3><a name="label-79" id="label-79">[linux]mutt</a></h3><!-- RDLabel: "[linux]mutt" -->
+<p>キーバインドがw3mやviとだいぶ違うので気持ち悪いな。カスタマイズしたい。</p>
+<h3><a name="label-80" id="label-80">[linux]LDAP</a></h3><!-- RDLabel: "[linux]LDAP" -->
+<p>/etc/ldap/ldap.conf に BASE と URI を設定しておけば、ldapsearch -x "mail=hoge*" みたいな感じで使えるようだ。URIはldap://hoge.hoge.jp:portみたいな感じ。</p>
+<h2><a name="label-81" id="label-81">20041029</a></h2><!-- RDLabel: "20041029" -->
+<h3><a name="label-82" id="label-82">[mutt]機種依存文字</a></h3><!-- RDLabel: "[mutt]機種依存文字" -->
+<p>の入ったメールを受信すると文字化けするな。これは困る。というか機種依存文字を使わないで。</p>
+<h3><a name="label-83" id="label-83">[linux]apt-line</a></h3><!-- RDLabel: "[linux]apt-line" -->
+<p>む、社内にdebパッケージが置かれたサーバがあるじゃないか。使わせてもらいます。</p>
+<h3><a name="label-84" id="label-84">[linux].gnomerc</a></h3><!-- RDLabel: "[linux].gnomerc" -->
+<p>gnomeのときは.xsessionsではなくて、.gnomercに書くのか。なるほど。</p>
+<h3><a name="label-85" id="label-85">[uim]今後の開発予定をまとめる</a></h3><!-- RDLabel: "[uim]今後の開発予定をまとめる" -->
+<p>ヤマケンさんからMLに返信があった。まとめなきゃな。</p>
+<h3><a name="label-86" id="label-86">[junit]junitreport</a></h3><!-- RDLabel: "[junit]junitreport" -->
+<p>antでjunitreportを使用するにはjunitタスクがエラーで終了しないようにする必要がある。つまり、haltonfailure="no" にすればよいということか。</p>
+<h3><a name="label-87" id="label-87">[junit]batchtest vs TestSuite</a></h3><!-- RDLabel: "[junit]batchtest vs TestSuite" -->
+<p>TestSuiteよりもAntのbatchtestの方が便利だな。</p>
+<h3><a name="label-88" id="label-88">[uim]BTS</a></h3><!-- RDLabel: "[uim]BTS" -->
+<p>BTSってなんだ? ああ、Bug Tracking Systemか。Bugzillaのアカウントを作る必要があるな。MLに投稿した本文をExcite翻訳で訳して、わかる範囲で修正し、Summaryを適当に書いてSubmitしておいた。英語ができるようになりたいなぁ。</p>
+<h3><a name="label-89" id="label-89">[english]オズの魔法使い</a></h3><!-- RDLabel: "[english]オズの魔法使い" -->
+<p>60% ぐらい読んだ。もうちょっとだけ簡単なやつの方がよかったかな。</p>
+<h3><a name="label-90" id="label-90">[junit]assertEquals(double,double)</a></h3><!-- RDLabel: "[junit]assertEquals(double,double)" -->
+<p>あれー、doubleやfloatの比較ってどうするんだろう。あー、なるほどassertEquals(expected,actual,delta)でdeltaを使って誤差範囲を指定できるのか。</p>
+<h3><a name="label-91" id="label-91">[game]PS2 Compact</a></h3><!-- RDLabel: "[game]PS2 Compact" -->
+<p>そういえばコンパクト版のPS2って、HDDはどうなるんだろう。</p>
+
+</body>
+</html>

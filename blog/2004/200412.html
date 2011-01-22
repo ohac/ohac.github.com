@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20041202</a></h2><!-- RDLabel: "20041202" -->
+<h3><a name="label-1" id="label-1">[linux]apt-file</a></h3><!-- RDLabel: "[linux]apt-file" -->
+<p>便利かも。</p>
+<h3><a name="label-2" id="label-2">[mutt]mime_forward</a></h3><!-- RDLabel: "[mutt]mime_forward" -->
+<p>set mime_forward になっていると転送したときに添付ファイル形式になってしまうな。 適当に設定をコピペしてきたから、全然意識してなかった。添付ファイル形式はいやなので、このsetを外しておく。</p>
+<h3><a name="label-3" id="label-3">[mutt]text/plain</a></h3><!-- RDLabel: "[mutt]text/plain" -->
+<p>text/plainな添付ファイルがmailcapを参照せずに表示されてしまう問題があったが、muttrcにauto_view text/plainと書けばmailcapで定義されたやり方で表示できるようになった。これでSJISのテキストも問題なくなった。関係ないけどメールヘッダの機種依存文字(例えば「(株)」など)が化けるな。これもなんとかしたい。とりあえずw3mでフィルタしておくか。</p>
+<h3><a name="label-4" id="label-4">[linux]ulimit -n</a></h3><!-- RDLabel: "[linux]ulimit -n" -->
+<p>最大ディスクリプタ数を参照・変更できるらしい。</p>
+<h3><a name="label-5" id="label-5">[zaurus]SL-C760購入</a></h3><!-- RDLabel: "[zaurus]SL-C760購入" -->
+<p>ヤフオクでゲット。</p>
+<h2><a name="label-6" id="label-6">20041203</a></h2><!-- RDLabel: "20041203" -->
+<h3><a name="label-7" id="label-7">[diary]アナログデータ圧縮</a></h3><!-- RDLabel: "[diary]アナログデータ圧縮" -->
+<p>あるアナログデータを高速に1/3〜1/4に圧縮するアルゴリズムを考え中。テストプログラムをいろいろ作っているところだが、実現できそうな気がしてきた。さらに不可逆にすればもっと圧縮率を高めたアルゴリズムが考えられるかもしれない。今は有効ビット数を減らすぐらいしか思いつかないが。
+3.5M のとある差分処理をした後のアナログデータをbzip2とgzipで圧縮してみた。bzip2 で 744K(20.8%)、gzip で 877K(24.5%)。高速という点を除けば、独自圧縮は作る必要はないかもしれない。差の取り方をもう少し工夫した後にgzipすれば、よいパフォーマンスの圧縮ができるかもしれないな。今の差の取り方だと周波数変動とかに弱いし。</p>
+<h3><a name="label-8" id="label-8">[diary]Windows XPのライセンス認証</a></h3><!-- RDLabel: "[diary]Windows XPのライセンス認証" -->
+<p>これまたややこしいな。いちいちライセンス認証しないと使えないOSなんてイヤだ。OEM 版はさらにややこしそうだ。なんだか昔のゲームのコピープロテクトとかを思い出すな。不安定セクタとか。</p>
+<h3><a name="label-9" id="label-9">[game]Mr.ドリラー</a></h3><!-- RDLabel: "[game]Mr.ドリラー" -->
+<p>面白いな。さずがナムコ。</p>
+<h2><a name="label-10" id="label-10">20041206</a></h2><!-- RDLabel: "20041206" -->
+<h3><a name="label-11" id="label-11">[linux]debian-users</a></h3><!-- RDLabel: "[linux]debian-users" -->
+<p>MLの講読しておくか。(そのうち)</p>
+<h3><a name="label-12" id="label-12">[zaurus]busyboxのbash</a></h3><!-- RDLabel: "[zaurus]busyboxのbash" -->
+<p>日本語が使えないな。zshのipkならいけるのかな。</p>
+<h3><a name="label-13" id="label-13">[zaurus,uim]uim-skk</a></h3><!-- RDLabel: "[zaurus,uim]uim-skk" -->
+<p>やっとこさ使えた。いろいろハマるポイントがあるので整理しておかなければ。AZIKを使いたいけど、uimのバージョンがちょいと古いな。ビルド環境を構築せねばなるまい。ハードル高し。</p>
+<h3><a name="label-14" id="label-14">[zaurus]ssh</a></h3><!-- RDLabel: "[zaurus]ssh" -->
+<p>sshでログインできないなぁと思っていたら、ユーザ名が違っていただけだった。ssh username@hostname で無事ログインできました。</p>
+<h3><a name="label-15" id="label-15">[zaurus]tcpdump</a></h3><!-- RDLabel: "[zaurus]tcpdump" -->
+<p>家では使うことないと思うけど、仕事で使うかも知れないので入れておくか。</p>
+<h3><a name="label-16" id="label-16">[zaurus,im]T-Code</a></h3><!-- RDLabel: "[zaurus,im]T-Code" -->
+<p>ザウルスのキーボードでT-Codeを打つのは大変だ。理由その1、キー配列が特殊。理由と の2、タッチタイピングでキーストロークを覚えているので、親指で押すとよくわからない。同様の理由でnethackなども少しやりにくい。まあこれは方向キーだけなのでなんとかなるが。</p>
+<h3><a name="label-17" id="label-17">[diary]ズボン</a></h3><!-- RDLabel: "[diary]ズボン" -->
+<p>最近ズボンがきついなぁ、洗濯で縮んできたのかな。</p>
+<h2><a name="label-18" id="label-18">20041207</a></h2><!-- RDLabel: "20041207" -->
+<h3><a name="label-19" id="label-19">[zaurus,uim]チャタリング?</a></h3><!-- RDLabel: "[zaurus,uim]チャタリング?" -->
+<p>ときどきキーが2回押されたことになってしまうな。チャタリングだろうか。これさえな ければ結構使えそうなのだが。KeyHelperのリピート開始時間を遅くすると再現しにくくなったので、KeyHelper側の問題かもしれない。なんとなく想像だけど、リピート開始からの経過時間だけで判断しているのではないだろうか。そのため、ちょっと処理が重くなったときにキーが2回押されたと判断されてしまうのではないか。その処理が行われた回数も見るようにしたら直るのかも。</p>
+<h3><a name="label-20" id="label-20">[linux]libsndfile</a></h3><!-- RDLabel: "[linux]libsndfile" -->
+<p>ADPCM関連の関数が含まれたライブラリらしい。Debianパッケージだと libsndfile0, libsndfile0-dev, libsndfile1, libsndfile1-dev, sndfile-programs あたりか。vox_adpcm.cがそれかな。コメント行を含んで537行か。よく見るとshort,int,float,double用に関数が分けられてあるのでコードが大きくなっているみたい。これなら自前のアルゴリズムを作らなくてもよいかも。</p>
+<h3><a name="label-21" id="label-21">[english]2パラグラフで英字新聞を読もう!</a></h3><!-- RDLabel: "[english]2パラグラフで英字新聞を読もう!" -->
+<p>このメルマガには音声mp3へのリンクがあるのだが、どうやら期間限定らしく、過去の記 事のmp3へのリンクをダウンロードしようとすると「404 Not Found」になってしまう。今後はメルマガが配信されたらすぐにダウンロードしておこうと思う。</p>
+<h2><a name="label-22" id="label-22">20041208</a></h2><!-- RDLabel: "20041208" -->
+<h3><a name="label-23" id="label-23">[zaurus]クロスコンパイル</a></h3><!-- RDLabel: "[zaurus]クロスコンパイル" -->
+<p>http://www.double-h.com/slzaurus/slmemo/crossdevelop.html
+ここを参考に構築してみよう。目標はDungeon CrawlをZaurusで動作させること(ぉぃ。 qtopia-free-1.5.0-1.i386.rpm はダウンロードできなかったので、ftpでサイトをうろうろしてみると、/qtopia/sdk/RedHat9.0/qtopia-free-1.7.0-2rh9.i386.rpm というのがあったのでこれをgetしてみた。おっと、SL-C760はQtopia-1.5系のようだが、1.7でもいけるのかな?</p>
+<h3><a name="label-24" id="label-24">[zaurus]Dungeon Crawl</a></h3><!-- RDLabel: "[zaurus]Dungeon Crawl" -->
+<p>よく調べると http://zauup.hp.infoseek.co.jp/cgi-bin/uploader.html にバイナリがあるな。mangbandやらtomenetとかもあるな。crawlはどうやらzipコマンドも必要みたい。それとなにやらエラーがでたので libstdc++* を探してきて、/usr/libにコピーし、適当にsymlinkすれば一応動いた。しかし、画面が乱れるな。-plainオプションを付けても変わらず。googleの2chのキャッシュに「export TERM=xterm-new にして use_zenkaku をtrueで使用する限りちゃんとゲームが出来るようになりました。」とある、これか。うーん、ちょっとマシになったけど、やはり乱れるなぁ。use_cake = false とかも関係あるのかな。use_cake = trueにしてみると少し状況が変わったな。でもだめぽ。</p>
+<h3><a name="label-25" id="label-25">[zaurus]ネットラジオ</a></h3><!-- RDLabel: "[zaurus]ネットラジオ" -->
+<p>が聞けるようになった。mplayerの-playlistオプションって、すばらしい。ついでに家のサーバにある音楽ファイル(oggやmp3など)のURLを列挙したテキストファイルをmplayer -playlistで指定してやればこれもちゃんと動作した。"&gt;"で次の曲にスキップしたりもできるようだ。これなら家の中なら大容量フラッシュメモリがなくても音楽プレーヤーとして結構使えそうな気がする。</p>
+<h3><a name="label-26" id="label-26">[debian]acroread</a></h3><!-- RDLabel: "[debian]acroread" -->
+<p>PDFを読みたいのでacroreadを入れてみる。 http://debian.fam.cx/index.php?unstable にやりかたが書いてあった。って、フォントのダウンロードに電話番号とか住所とか記入せなアカンのかいな。なんじゃそらadobe。と、思ったら、acroread-asianfontのセットアップで自動でダウンロードしてくれた。あのadobeの記入フォームはなんだったんだろう。まあ、ともかくパッケージ作成者に感謝しつつ使わせてもらおう。</p>
+<h3><a name="label-27" id="label-27">[linux]howm</a></h3><!-- RDLabel: "[linux]howm" -->
+<p>ローカルで動作するwikiみたいなものとのことで紹介してもらったので使ってみた。オリジナルはemacs用らしいが、私はvim使いなので、vim用のスクリプトの方を使うことにしてみた。 plugin/howm-search.vim の silent! setlocal binary noendofline の行を消さないと外部grepがうまく動作しなかった。まだ使いこなせていないが、便利そうだということがだんだんわかってきた。</p>
+<h2><a name="label-28" id="label-28">20041209</a></h2><!-- RDLabel: "20041209" -->
+<h3><a name="label-29" id="label-29">[vim]!cat %</a></h3><!-- RDLabel: "[vim]!cat %" -->
+<p>よく %!sort とかを使っていたが、結果をエディタに取り込まないようにする方法を知らなかった。 !sort % のようにすればよいみたい。%はファイル名に展開される。</p>
+<h3><a name="label-30" id="label-30">[mlterm]color</a></h3><!-- RDLabel: "[mlterm]color" -->
+<p>~/.mlterm/main と ~/.mlterm/color で色を変えてみた。黒を背景にすると、標準の青色は見えにくくて仕方がなかったので明るくしてみた。カーソルはオレンジ色で目立つようにした。</p>
+<h3><a name="label-31" id="label-31">[linux,zaurus]howm TODO</a></h3><!-- RDLabel: "[linux,zaurus]howm TODO" -->
+<p>TODOや予定の使い方がわかってきた。TODOリストという形ではなく、それぞれのメモに分散してTODOを配置できるということですな。zaurusにも入れてみたけど、デスクトップPCと分散してしまうな。ファイル名が日時を元にしていてぶつからないから、マージしてもいけそうな感じがするな。ssh+rsyncでやってみるか。</p>
+<h3><a name="label-32" id="label-32">[game,zaurus]スパイダソリティア</a></h3><!-- RDLabel: "[game,zaurus]スパイダソリティア" -->
+<p>やっとクリアできたよ。そして、ルールもわかってきた。フリーセルより面白いのかどうかはまだよくわからない。</p>
+<h3><a name="label-33" id="label-33">[linux]gvで選択したページのみ印刷</a></h3><!-- RDLabel: "[linux]gvで選択したページのみ印刷" -->
+<p>右クリックでマークして、選択したページのみ印刷ができるようだ。連続ページの印刷がうまくいかないので、とりあえずこれで1ページずつ印刷してみる。</p>
+<h3><a name="label-34" id="label-34">[zaurus]telnetd</a></h3><!-- RDLabel: "[zaurus]telnetd" -->
+<p>telnetで入れるようにしてやった。</p>
+<h2><a name="label-35" id="label-35">20041213</a></h2><!-- RDLabel: "20041213" -->
+<h3><a name="label-36" id="label-36">[game]スパイダ</a></h3><!-- RDLabel: "[game]スパイダ" -->
+<p>2 suitsをだいぶクリアできるようになった。これは面白いな。windows版はundoできるらしいが、zaurusのZソリティアというやつはundoできないから厳しい。今のところ4 suitsはクリアしたことがない。debianではspiderとxpat2というパッケージがあるな。む、どちらも4 suitsしかできないのか、それは今の実力では厳しいな。</p>
+<h3><a name="label-37" id="label-37">[game][nethack]jnethack</a></h3><!-- RDLabel: "[game][nethack]jnethack" -->
+<p>zaurusでcrawlがなかなか動かないのでnethackをやってみた。地下5〜6階ぐらいまでしか行けないなぁ。zaurus版ではHPがメイン画面で見えないのでちょっとやりにくい。それとやはりキーが小さいのでやりにくいな。</p>
+<h3><a name="label-38" id="label-38">[uim][im]scim-skk</a></h3><!-- RDLabel: "[uim][im]scim-skk" -->
+<p>scim-skkというのが開発されつつあるらしい。</p>
+<h3><a name="label-39" id="label-39">[diary]免許更新行かな</a></h3><!-- RDLabel: "[diary]免許更新行かな" -->
+<p>めんどくさー。特別休暇を取ろう。</p>
+<h2><a name="label-40" id="label-40">20041214</a></h2><!-- RDLabel: "20041214" -->
+<h3><a name="label-41" id="label-41">[diary]ADPCM</a></h3><!-- RDLabel: "[diary]ADPCM" -->
+<p>う、vox_adpcm.cのコメントを見ると"It converts from 12 bit linear sample data to a 4 bit ADPCM."と書いてある。データは符号付き線形12bitデータでないとダメみたい。これだとそのままは使えないなぁ。ms_adpcm.cのほうは16bitが使えそうだが、MSって、マイクロソフトのことだよなぁ、LGPLみたいだけどなんか気になるな。</p>
+<h3><a name="label-42" id="label-42">[nethack]倉庫番</a></h3><!-- RDLabel: "[nethack]倉庫番" -->
+<p>5Fから階段を上がると倉庫番のフロアがあった。2面ほどクリアしたが、途中で狼女に変 身してしまい、苦しかった。ダメモトで祈ってみたら、元に戻った。</p>
+<h2><a name="label-43" id="label-43">20041215</a></h2><!-- RDLabel: "20041215" -->
+<h3><a name="label-44" id="label-44">[zaurus]/opt/Embedix/tools</a></h3><!-- RDLabel: "[zaurus]/opt/Embedix/tools" -->
+<p>クロスコンパイラ関連パッケージはこのあたりにインストールされるようだ。bin/arm-linux-gccなどがある。コンソールアプリを作るだけなら、このrpmをdeb変換したものをインストールするだけでもいけそうな気がするな。</p>
+<h3><a name="label-45" id="label-45">[zaurus]crawl</a></h3><!-- RDLabel: "[zaurus]crawl" -->
+<p>無理矢理だが、英語版のcrawlがクロスコンパイルできた。ncursesをコンパイルするのは面倒だったので、debianのarmパッケージのlibncurses5-devにあるlibncurses.aとかlibncurses.soを利用して、適当にmakefile.lnxを書き換えた。liblinux.ccだけCFLAGSに$(INCLUDES)を追加、LIBを「-L /hoge/hoge/lib -lncurses」に変更。あとplayer.ccでconst int armというのがあり、ここがエラーになっていたので適当に変数名を変えた。バイナリはでかいのでstripして小さくした。動かしてみると途中で「Unable to open "/var/games/crawl/ohashi500.00a" for writing!: No such file or directory」と怒られた。ヘッダファイルを適当に/home/zaurus/crawlとかに設定してやって再度チャレンジ。動いた! TERMをrxvtとかに設定してやればカラーで表示される。しかし、saveしようとするとエラーがでるな。tarがbusyboxのtarだからオプションが違うとかそういったたぐいであろう。tar: unrecognized option `--remove-files'みたいなエラーのようだ。</p>
+<h2><a name="label-46" id="label-46">20041216</a></h2><!-- RDLabel: "20041216" -->
+<h3><a name="label-47" id="label-47">[zaurus]crawl</a></h3><!-- RDLabel: "[zaurus]crawl" -->
+<p>AppHdr.hの#ifdef LINUXのところで#define MULTIUSERをコメントアウトしたらsaveもloadもいけた。これで安心して遊べる。でももうちょっとビルド手順を整理して、ipkの作成までやってみたいなぁ。途中でmakefileを書き換えるという手順はあまりにもひどいし(笑)</p>
+<h3><a name="label-48" id="label-48">[crawl]面白い</a></h3><!-- RDLabel: "[crawl]面白い" -->
+<p>やっぱりnethackより面白いな。それに操作がやりやすい。特にzaurusでプレイするとス トローク数やSHIFT、Fnの必要度合いは重要だ。</p>
+<h3><a name="label-49" id="label-49">[linux]autoconfとか</a></h3><!-- RDLabel: "[linux]autoconfとか" -->
+<p>わけわからん。ちゃんと勉強したことないからなぁ。簡単な例から勉強したほうが近道なのかもしれない。</p>
+<h3><a name="label-50" id="label-50">[zaurus][uim]無理矢理</a></h3><!-- RDLabel: "[zaurus][uim]無理矢理" -->
+<p>またまた無理矢理だがuim-fep, libuim.so.0.0.1, uim-helper-serverのビルドに成功し た。はてさて動くのかどうか。</p>
+<h2><a name="label-51" id="label-51">20041217</a></h2><!-- RDLabel: "20041217" -->
+<h3><a name="label-52" id="label-52">[crawl]centaur</a></h3><!-- RDLabel: "[crawl]centaur" -->
+<p>6Fぐらいでcentaurにやられた。</p>
+<h3><a name="label-53" id="label-53">[zaurus][uim]uim-fep</a></h3><!-- RDLabel: "[zaurus][uim]uim-fep" -->
+<p>str.cで無理矢理euc-jpとして処理されるようにしたら、ひらがなとカタカナは打てるよ うになった。変換中の候補が表示されない問題がある。ncurses側の問題かもしれない。zaurus側はlibncurses.so.5.0、debian sargeではlibncurses.so.5.4となっていた。それと、libuim側でうまく変換できなくなったようだ。これは単にSKKの辞書の位置が違っているだけなのかもしれない。</p>
+<h3><a name="label-54" id="label-54">[zaurus]壊してしまった</a></h3><!-- RDLabel: "[zaurus]壊してしまった" -->
+<p>libc.so.6を入れ替えようとしたら大失敗。mvしてからlnしようとするとlibc.so.6がないと怒られる。ln -f 一発で入れ替えないとダメだったか。いや、そういうわけではなさそうだ。LD_LIBRARY_PATHを設定し、別のディレクトリで試してからやればよかったのだ。しかし復旧させるにはどうしたらよいのだろうか。busyboxは使えないし、他のコマンドもほとんど全滅状態。orz しばらくは復旧方法の勉強時間になりそうだ。スキルアップ間違いなし(笑)</p>
+<h3><a name="label-55" id="label-55">[zaurus]一部復旧</a></h3><!-- RDLabel: "[zaurus]一部復旧" -->
+<p>なんとかrootfsを復旧させた。完全フォーマットはしなくても復旧できたので、データは無事であった。それと、ついでにスペシャルカーネルに入れ替えておいた。ブートメッセージが見えるのでわかりやすくてよい。しかし、シャープの提供しているrootfsにはライセンスの関係でQt/EmbeddedとQtopiaは含んでいないとのこと。うー、スパイダができなくなってしまったよ。crawlは英語版だからコンソールでも遊べるな。シャープのサイトのカーネルにはSDドライバは含まれていませんって書いてあるけど、SDカードがちゃんと使えているのはスペシャルカーネルに入れ替えたからかな。有線LANは問題なく使えているな。</p>
+<h2><a name="label-56" id="label-56">20041221</a></h2><!-- RDLabel: "20041221" -->
+<h3><a name="label-57" id="label-57">[diary]免許皆伝</a></h3><!-- RDLabel: "[diary]免許皆伝" -->
+<p>じゃなくて、運転免許更新にいってきた。今回から誕生日プラス1ヶ月と心の余裕ができ るみたい。5年に1回の更新にレベルアップしたいな。</p>
+<h3><a name="label-58" id="label-58">[english]ラジオ英会話</a></h3><!-- RDLabel: "[english]ラジオ英会話" -->
+<p>名古屋に出張だったので、ひたすらラジオ英会話のMP3を聞きまくった。海外ドラマのDVDとかでも(家で)勉強してみたいな。なんかおすすめのドラマとかないかな。</p>
+<h3><a name="label-59" id="label-59">[zaurus]復旧</a></h3><!-- RDLabel: "[zaurus]復旧" -->
+<p>NANDバックアップイメージが置いてあるサイトがあったので、ありがたく使わせてもらって、なんとか最初の状態に戻すことができた。消えてしまったソフトたちをいろいろとインストールし直した。ある程度したらNANDバックアップを取っておいたほうがいいなこれは。カーネルが元に戻ってしまったので、また入れ替えておくか。またdebian sargeのライブラリに入れ替えの続きをチャレンジしてみたいな。</p>
+<h3><a name="label-60" id="label-60">[zaurus]X/Qt</a></h3><!-- RDLabel: "[zaurus]X/Qt" -->
+<p>Qt上でX Serverが動作する。これはすごいな。fluxboxも動く。rxvtで日本語が表示でき るようになったが、uim-ximはなぜかsegmentation violationで落ちる。メモリがかなりきつそうな感じがする。rxvt上でcrawl日本語版が動作した。xmmsも動作するみたいだが結構重そうなので、ogg123かmplayerもしくは標準MP3プレーヤーを使うほうがよさそうな気がする。スペアナ表示が重いのかな。</p>
+<h3><a name="label-61" id="label-61">[uim][vim]uim-fep+vim</a></h3><!-- RDLabel: "[uim][vim]uim-fep+vim" -->
+<p>よく理解していないが、uim-fepにはvimのモードに合わせて動作する機能があるらしい。ぜひ使ってみたいが、どうやれば使えるのかよくわかっていない。</p>
+<h2><a name="label-62" id="label-62">20041222</a></h2><!-- RDLabel: "20041222" -->
+<h3><a name="label-63" id="label-63">[diary]mixi</a></h3><!-- RDLabel: "[diary]mixi" -->
+<p>アクセスできないな。このシステムはfedora coreを使っているのか。昼にアクセスした らいけた。しかしマーキーっていうタグはひさしぶりに見たな。まだ存在していたのか、あのタグ。</p>
+<h3><a name="label-64" id="label-64">[diary]着うたフル</a></h3><!-- RDLabel: "[diary]着うたフル" -->
+<p>なんとなく気になる単語だ。着うたフルって、ようするに1曲全部ってことよね。それと もサビ以外の部分を着うたに設定できるということなのか。それならMichael JacksonのBeat itでVan Halenのソロの部分を着うたにしたいところだ。(というかケータイもってない)</p>
+<h3><a name="label-65" id="label-65">[linux]色付きgrep</a></h3><!-- RDLabel: "[linux]色付きgrep" -->
+<p>grep --color=auto hoge hoge とい感じで色付きの出力が得られるようだ。autoはalwaysでもいいみたい。また、前後数行を見たいときはgrep -3 hoge..のように数値を指定できる。-C 3 や -A 3 -B 3のような記述よりも簡単でよい。export GREP_OPTIONS='--color=auto -r'なんて設定しておくと色付き、再帰ありがデフォルトになる。あとalias findsrc='find -name "*.[ch]" -or -name "*.java"'とか作っておいて、grep hoge `findsrc`のようにすれば全ソースを検索とかがやりやすくなる。</p>
+<h2><a name="label-66" id="label-66">20041224</a></h2><!-- RDLabel: "20041224" -->
+<h3><a name="label-67" id="label-67">[linux]VaioノートにCD-ROMドライブ</a></h3><!-- RDLabel: "[linux]VaioノートにCD-ROMドライブ" -->
+<p>つなげた。lilo.confになにやらappend="ide2=0x180,0x386"というのを設定して、PCMCIAを無理矢理IDEとして認識させる。するとcardmgrが動いたあたりでkernel panic。よくわからんので、rc2.dからpcmciaを消してやった。</p>
+<h3><a name="label-68" id="label-68">[linux][music]jack</a></h3><!-- RDLabel: "[linux][music]jack" -->
+<p>cdparanoiaとoggencを使って自動でogg変換アンドCDDBから曲名取ってくるソフト。jack と打つだけであとは全自動でラクチン。jack -qとか-Qを指定すればCDDBにアクセスしてタグ打ちとファイル名変換を行ってくれる。cdparanoia以外のripperやoggenc以外のエンコーダーも使えるようだ。ogg変換している人は少数派かもしれない。デフォルトでは192kbpsでエンコードするようで、ちょっとサイズが大きくなるけど音質はよいな。このまま使うか。suして実行はできたけど、userでは実行できなかった。どう設定すればいいのやら。cdparanoiaは一応userでも実行できるところまでは調べたのだが。とりあえず面倒なのでsuして実行することにする。それと日本語の曲名が"?"になってしまう。これも設定の問題なのだろうか。そもそも日本語には対応していないのかもしれない。関係ないけど、これはマイナーだと思うCDがCDDBに登録されていなかったときは、なんとなくうれしい。</p>
+<h2><a name="label-69" id="label-69">20041227</a></h2><!-- RDLabel: "20041227" -->
+<h3><a name="label-70" id="label-70">[diary]津波</a></h3><!-- RDLabel: "[diary]津波" -->
+<p>こわいなぁ。死者が10,000人を超えたらしい。モルディブには行ったことがあるので、身近に感じる。</p>
+<h3><a name="label-71" id="label-71">[diary]有名人</a></h3><!-- RDLabel: "[diary]有名人" -->
+<p>mixiに(あいのりに出てた)ハオロンさん(一応敬称を付けてみたw)が居るらしい。探してみようかな。</p>
+<h3><a name="label-72" id="label-72">[linux][zaurus]GNU screen</a></h3><!-- RDLabel: "[linux][zaurus]GNU screen" -->
+<p>CUI使いとしてはscreenも使えないとダメだろうと思い、チャレンジしてみる。使ってみると、とても便利。これならzaurusのjfbterm上だけでかなりのことができる。</p>
+<h3><a name="label-73" id="label-73">[uim][zaurus]uim-fep</a></h3><!-- RDLabel: "[uim][zaurus]uim-fep" -->
+<p>最新のソースでlibuim.soとuim-fepをビルドした。無事zaurusで動作した。ビルド手順とインストール手順を整理せなあかんなぁ。それとipkgにしてみたい。ipkg化はまだやったことないな。IMKitとの組み合わせで動作しなくなってしまったので独立させるか、IMKitでも動作するようにがんばるか、構わずipkg化するのどれかだな。</p>
+<h3><a name="label-74" id="label-74">[uim]screen-uim</a></h3><!-- RDLabel: "[uim]screen-uim" -->
+<p>昔はscreen-uimというGNU screenと組み合わせて使うアプリが存在していたのか。と、今頃気付く。確かにscreen上で動作させたら、プロセスは1つだけで済みそうなので色々メ リットがあるかも。逆にuim-fepを各仮想screenで動作させたら変換途中の状態を保持し たりできるというメリットがあるな。でも、そういうシチュエーションはあるのだろうか。</p>
+<h2><a name="label-75" id="label-75">20041228</a></h2><!-- RDLabel: "20041228" -->
+<h3><a name="label-76" id="label-76">[linux][uim][mlterm]mlterm+uim</a></h3><!-- RDLabel: "[linux][uim][mlterm]mlterm+uim" -->
+<p>kmutoさんがパッケージを作られたみたいなのでapt-getしてみよう。mlterm-tinyは試された方がいらっしゃるようなので、普通のmltermの方を試した。mlterm, mlterm-common, mlterm-im-uim 2.9.1-2 をインストール。問題なくuimが使えた。uim-ximとほとんど見 分けがつかないので、最初はちゃんと動いていない(=uim-ximが動いている)のかと思った。uimを有効にするとmltermの立ち上げが遅くなるな。uim-ximの方がいいかも。ただ、mlterm --im=uim:primeといった感じで変換エンジンが指定できるのは、ちょっと試してみ るときにはいいかも。あ、それと変換候補がmltermと同じフォント・色を使うので高速動作、見た目の統一感、といったメリットがあるな。</p>
+
+</body>
+</html>

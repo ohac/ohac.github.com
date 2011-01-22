@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20060105</a></h2><!-- RDLabel: "20060105" -->
+<h3><a name="label-1" id="label-1">[game]NDS品切れ</a></h3><!-- RDLabel: "[game]NDS品切れ" -->
+<p>NDSを買おうと思って、店を回るが、どこも品切れ。仕方なく、Mr.ドリラーfor PS1を購入してお茶を濁しておく。</p>
+<h3><a name="label-2" id="label-2">[windows]teraterm macro</a></h3><!-- RDLabel: "[windows]teraterm macro" -->
+<p>TeraTermのマクロで定期的に現在時刻をログに記録したいときは次のようなマクロを実行すればよいのかなぁ。ググっても、ほとんど情報がないなぁ。手元にWindows機もないので試せない。</p>
+<pre>while 1
+  getdate timestr
+  logwrite timestr
+  pause 60
+endwhile</pre>
+<h2><a name="label-3" id="label-3">20060106</a></h2><!-- RDLabel: "20060106" -->
+<h3><a name="label-4" id="label-4">[linux]anacron</a></h3><!-- RDLabel: "[linux]anacron" -->
+<p>anacronに変えたのはいいけど、PCの電源を入れてすぐにupdatedbが動くのはちょっといやだなぁ。昼休みに動いてほしい。</p>
+<h2><a name="label-5" id="label-5">20060110</a></h2><!-- RDLabel: "20060110" -->
+<h3><a name="label-6" id="label-6">[game]CGoban2(KGS)</a></h3><!-- RDLabel: "[game]CGoban2(KGS)" -->
+<p>ホスト名・ポート番号は設定画面にて設定変更可能であった。以前にややこしい手順を書いたけど、あれは不要と判明。しかし、どこに保存されているのか分からんなぁ。あ、~/.javaの中か。</p>
+<h3><a name="label-7" id="label-7">[game]KGS+Skype</a></h3><!-- RDLabel: "[game]KGS+Skype" -->
+<p>この前、KGSでチャットしていたらSkypeでボイスチャットしているから参加して、と言われ、最初は断わったが、やはり気になるのでリッスンオンリーで参加させてもらった。3名のグループチャットを初めて体感した。実はうちのPC、マイク入力が壊れているのです。コンパクトなUSB Audio変換が欲しいな。もう1つある修理用VAIOからパーツを取ってもいいけど、ちょっと面倒。</p>
+<h3><a name="label-8" id="label-8">[debian]Skype</a></h3><!-- RDLabel: "[debian]Skype" -->
+<p>http://debian.fam.cx/index.php?uploader にあるskype-staticqt(現在1.2.0.18)を使えばsidでもskypeがインストールできるようだ。</p>
+<h3><a name="label-9" id="label-9">[uim][debian]uim 1.0.0-1</a></h3><!-- RDLabel: "[uim][debian]uim 1.0.0-1" -->
+<p>新しいパッケージがsidに降りてきたようだ。またビルドしなければ。ついにバージョン1かぁ。MLでリリースされたのは知っていたけど、使ってませんでした。これで簡単に使うことができるなぁ。</p>
+<h2><a name="label-10" id="label-10">20060111</a></h2><!-- RDLabel: "20060111" -->
+<h3><a name="label-11" id="label-11">[diary]鼻うがい</a></h3><!-- RDLabel: "[diary]鼻うがい" -->
+<p>「鼻うがい」っぽいことができるようになった。</p>
+<h3><a name="label-12" id="label-12">[diary]キーボードにねり消し2</a></h3><!-- RDLabel: "[diary]キーボードにねり消し2" -->
+<p>Kのキーを押すと爪と指の間にカドが当たりちょっと痛かったが、ねり消しを少しだけキーにはりつけることで少し解消した。すごいぞ、ねり消し。</p>
+<h3><a name="label-13" id="label-13">[debian]firefox 1.5へ移行</a></h3><!-- RDLabel: "[debian]firefox 1.5へ移行" -->
+<p>Java AppletとFlashを有効にするために /usr/lib/mozilla-firefox/plugins にあるシンボリックリンクを /usr/lib/firefox/plugins に移す必要があった。まあ、それぞれを再インストールしてもいいのですが、この方が手軽かと。</p>
+<h3><a name="label-14" id="label-14">[linux]screen -S hoge</a></h3><!-- RDLabel: "[linux]screen -S hoge" -->
+<p>起動時の-Sでセッション名を指定できる。例えばscreen -S hogeで1つ立ち上げておき、もう1つのターミナルからscreen -x hogeでそのセッションに入ることができる。</p>
+<h3><a name="label-15" id="label-15">[linux]screen -cとsource</a></h3><!-- RDLabel: "[linux]screen -cとsource" -->
+<p>共通設定を~/.screenrcに持っておき、別の設定ファイルを~/.screenrc_hogeとして作り、.screenrc_hogeにはsource .screenrcと書いておく。起動はscreen -c $HOME/.screenrc_hogeで。</p>
+<h3><a name="label-16" id="label-16">[linux]screen -X</a></h3><!-- RDLabel: "[linux]screen -X" -->
+<p>例えば screen -X wall hoge とすると全ウィンドウにメッセージhogeを表示させることができる。screen -S hoge -X wall hoge のような感じでセッションを指定することもできる。make ; screen -X wall done みたいに使えるかな。</p>
+<h3><a name="label-17" id="label-17">[linux]screenと$WINDOW</a></h3><!-- RDLabel: "[linux]screenと$WINDOW" -->
+<p>screenの中で動作しているときは$WINDOWにウィンドウ番号が入っている。スクリプトでこの値をみて、screenの内と外で動作を変えたりすることができそう。</p>
+<h3><a name="label-18" id="label-18">[linux]ttyrecとscreen(メモ)</a></h3><!-- RDLabel: "[linux]ttyrecとscreen(メモ)" -->
+<p>ttyrecしたものをscreenで分割したウィンドウでttyplayしながら解説を書き込んだものをttyrecする。というアイデア。長い日本語だ。どこまでが主語なんだ。</p>
+<h2><a name="label-19" id="label-19">20060112</a></h2><!-- RDLabel: "20060112" -->
+<h3><a name="label-20" id="label-20">[zaurus][game]VNCで囲碁</a></h3><!-- RDLabel: "[zaurus][game]VNCで囲碁" -->
+<p>zaurusにvncviewerをインストールして、debianサーバにvncserverをインストールしてみた。これでcgobanがタッチパネルで打てる。mltermは何故か動作しないようだ。xtermは問題なさそう。</p>
+<h3><a name="label-21" id="label-21">[debian]Hiki</a></h3><!-- RDLabel: "[debian]Hiki" -->
+<p>Hikiへの移行できるように使い方やPukiWikiとの違いを勉強中。attachのプラグインの設定方法に悩んだが、なんとかうまく動作させることができた。</p>
+<h3><a name="label-22" id="label-22">[game][debian]mixi囲碁部とmixi棋院用のWiki</a></h3><!-- RDLabel: "[game][debian]mixi囲碁部とmixi棋院用のWiki" -->
+<p>http://ohac.sytes.net/mixigo にHikiで構築した。まだ初期ページのままですが、これからいろいろ編集していきたいと思います。ハンドル名とかIDとかを公開していいかどうかを確認していかないといけないなぁ。</p>
+<h3><a name="label-23" id="label-23">[music]パッシブスピーカーとMD</a></h3><!-- RDLabel: "[music]パッシブスピーカーとMD" -->
+<p>ヘッドホン端子に接続するパッシブスピーカーを買ってみた。古いラジオのような感じの音がする。コンパクトでなかなかいいかも。</p>
+<h3><a name="label-24" id="label-24">[linux]screenでmonitor on</a></h3><!-- RDLabel: "[linux]screenでmonitor on" -->
+<p>screen で monitor on とすると、そのウィンドウがバックグラウンドになっていて、何か出力があったときに1回だけ知らせてくれるが、screen -x を使い、複数のscreenで共有して使っているときは少し注意が必要である。説明が難しいので省略。</p>
+<h3><a name="label-25" id="label-25">[linux]長い中指とキーボード</a></h3><!-- RDLabel: "[linux]長い中指とキーボード" -->
+<p>中指は長いから、キーボードの中指の列はちょっと上にシフトさせた方がいいと思う。そんなキーボードがあったらいいのになぁ。ただしコンパクトキーボードに限る。「,」のキーなんて、「J」に人差し指を置いた状態ではとても押せない。</p>
+<h2><a name="label-26" id="label-26">20060113</a></h2><!-- RDLabel: "20060113" -->
+<h3><a name="label-27" id="label-27">[debian]gs-esp defoma 続き2</a></h3><!-- RDLabel: "[debian]gs-esp defoma 続き2" -->
+<p>apt-get upgrade をしたためか、またe2psでの.psで日本語が印字できない状態が再現していた。 /etc/cups/cupsd.conf /etc/cups/cupsd.conf.dpkg-old を diff すると FontPath の行が変更されていた。いつもdiffして確認してたつもりだったけど、確認を忘れていたみたいだ。FontPath /usr/share/fontsを定義して、/etc/init.d/cupsys restart して完了。</p>
+<h2><a name="label-28" id="label-28">20060118</a></h2><!-- RDLabel: "20060118" -->
+<h3><a name="label-29" id="label-29">[debian]zsh全角対応</a></h3><!-- RDLabel: "[debian]zsh全角対応" -->
+<p>全角文字がちゃんと使えるようになったみたい。これはうれしい。</p>
+<h3><a name="label-30" id="label-30">[uim](゜∀゜)</a></h3><!-- RDLabel: "[uim](゜∀゜)" -->
+<p>SKKでは/allで∀に変換される。grep "^[:alpha:].*\/.\/" /usr/share/skk/SKK-JISYO.L と実行すれば他にもいろいろ出てくる。д=de, Д=De, ゜=はんだくてんorまる。つまり顔文字をSKKにリアルタイム辞書登録したいらしい。</p>
+<h2><a name="label-31" id="label-31">20060119</a></h2><!-- RDLabel: "20060119" -->
+<h3><a name="label-32" id="label-32">[debian]dpkg hold(メモ)</a></h3><!-- RDLabel: "[debian]dpkg hold(メモ)" -->
+<p>apt-getであるパッケージを保留したいときのコマンド。</p>
+<pre>$ echo  パッケージ名  hold | sudo dpkg --set-selections
+$ echo  パッケージ名  install | sudo dpkg --set-selections
+$ dpkg --get-selections | grep hold</pre>
+<h3><a name="label-33" id="label-33">[debian]invoke-rc.d hoge start</a></h3><!-- RDLabel: "[debian]invoke-rc.d hoge start" -->
+<p>いつも /etc/init.d/hoge start とかやってたけど、invoke-rc.d hoge start というやり方もあるようだ。</p>
+<h3><a name="label-34" id="label-34">[ruby][debian]rubyでterminalアプリ</a></h3><!-- RDLabel: "[ruby][debian]rubyでterminalアプリ" -->
+<p>Windows + TeraTerm + VNCでターミナルを使うのはなんか嫌だ。rubyでシリアルポートをTCP/IPへパイプするようなツールが作れたら便利かも。libtermios-ruby をインストールすれば作れそうだ。</p>
+<h2><a name="label-35" id="label-35">20060123</a></h2><!-- RDLabel: "20060123" -->
+<h3><a name="label-36" id="label-36">[english]電子辞書Canon wordtank V35</a></h3><!-- RDLabel: "[english]電子辞書Canon wordtank V35" -->
+<p>買った。学生向けの学習コンテンツが豊富なので、これで勉強してみようと思う。それにしても、受験英語って難しいな。</p>
+<h3><a name="label-37" id="label-37">[diary]VAIOのキーボード</a></h3><!-- RDLabel: "[diary]VAIOのキーボード" -->
+<p>飼い猫に壊された。瞬間接着剤が必要かなと思い購入したが、パチンとはめこむだけで直ってしまった。買う前にちゃんと確認しないと!</p>
+<h3><a name="label-38" id="label-38">[diary]東北の女子高生</a></h3><!-- RDLabel: "[diary]東北の女子高生" -->
+<p>この前、東北に出張に行ったのだが、そこで見た女子高生はむっちゃ寒いのにむっちゃ薄着。生足でミニスカート。恐れいった。</p>
+<h3><a name="label-39" id="label-39">[diary]東北の電車の扉</a></h3><!-- RDLabel: "[diary]東北の電車の扉" -->
+<p>東北のJR仙石線の電車は扉に開閉ボタンが付いていた。東北はみんなあんなボタンが付いているのかな。</p>
+<h3><a name="label-40" id="label-40">[game]ヒカルの碁(院生頂上決戦)</a></h3><!-- RDLabel: "[game]ヒカルの碁(院生頂上決戦)" -->
+<p>ツタヤで新品が500YENでタタき売られていたので、買ってみた。前作(平安なんちゃら)よりは棋力が上がっているようだ。油断すると負けることがある。最初は19路でやっていたが、相手が遅いので今は13路。最後の判定がおかしいことがあるので、事前に形勢判断機能を実行しておいて、不当な判定をされないように注意しながら終局しなければならない。この点はイマイチだが、全体としてはまあまあ面白い。GCやGBAのヒカルの碁はどのぐらいの棋力なんだろうか。</p>
+<h2><a name="label-41" id="label-41">20060124</a></h2><!-- RDLabel: "20060124" -->
+<h3><a name="label-42" id="label-42">[linux]tarの--numeric-owner</a></h3><!-- RDLabel: "[linux]tarの&shy;&shy;numeric-owner" -->
+<p>tarで展開時にこのオプションを付けていないと、その展開したシステムにあるUID/GIDに書き変わってしまう。別システムのイメージを作成するときは注意が必要である。</p>
+<h3><a name="label-43" id="label-43">[linux]chownやchgrpとsビット</a></h3><!-- RDLabel: "[linux]chownやchgrpとsビット" -->
+<p>chownでsビットが消えるので付け直すことを忘れないようにしないと。</p>
+<h3><a name="label-44" id="label-44">[diary]DELLのキーボード</a></h3><!-- RDLabel: "[diary]DELLのキーボード" -->
+<p>DELLの黒いキーボードがなかなか良さげな感じだ。親指に配置されているキーが縦に大きくなっている。また、変換、空白、無変換が押しやすい位置にある。これでテンキーが付いてなければ欲しいかも。</p>
+<h2><a name="label-45" id="label-45">20060129</a></h2><!-- RDLabel: "20060129" -->
+<h3><a name="label-46" id="label-46">[game][ruby]ボード碁の開発</a></h3><!-- RDLabel: "[game][ruby]ボード碁の開発" -->
+<p>webrickの勉強を兼ねて、 http://ohac.pun.jp/hg/bbsigo/ を開発中。スローペースですが。</p>
+<h2><a name="label-47" id="label-47">20060130</a></h2><!-- RDLabel: "20060130" -->
+<h3><a name="label-48" id="label-48">[game][java][linux]iGo棋院をappletviewerで動かす</a></h3><!-- RDLabel: "[game][java][linux]iGo棋院をappletviewerで動かす" -->
+<p>firefoxでのJava AppletでiGo棋院にログインするとチャットのところで発言した途端にブラウザが固まってしまう。原因はよく分からないが、とりあえずappletviewerなら問題ないだろうと思い、appletviewerで動作させる方法を調べてみた。どうやら以下のようなスクリプトで動作可能っぽいことが分かった。</p>
+<pre>#!/bin/sh
+if ! [ -a room.html ]; then
+wget http://kawa.igo.cc/club/room.php "--post-data=name=$1&amp;passwd=$2" -O room.html
+wget http://kawa.igo.cc/club/`grep -o '[^ ]*\.jar' room.html`
+fi
+nc -l -p 1586 -c 'nc kawa.igo.cc 1586' &amp;
+appletviewer room.html</pre>
+<p>$1 $2にはユーザIDとパスワードを入力すればよい。なお、ssh経由でポートフォワーディングするには次のようなのをバックグラウンドで動作させとけばよい。(この場合は上記のncの行は不要となる。)</p>
+<pre>ssh -L 1586:kawa.igo.cc:1586 hoge.hoge.jp</pre>
+<h3><a name="label-49" id="label-49">[linux]netcatでポートフォワーディング</a></h3><!-- RDLabel: "[linux]netcatでポートフォワーディング" -->
+<p>ポートフォワーディングするのにsshを使うほどでもないときはnetcatがいいかもしれない。こんな感じ→ nc -l -p 12345 -c 'nc hostname 23'</p>
+<h3><a name="label-50" id="label-50">[debian]srecord</a></h3><!-- RDLabel: "[debian]srecord" -->
+<p>S-Record形式のファイルを扱いたいときに使えそうなパッケージ。srec_cat input -o output -binary みたいな感じでいけるみたい。OS-9/68Kのbinexを使う場合は-s=3オプショ ンを付けないとうまくいかなかった。</p>
+<h3><a name="label-51" id="label-51">[linux]screenでログを取る</a></h3><!-- RDLabel: "[linux]screenでログを取る" -->
+<p>logfile "/home/hoge/screen%d_%m(%y).log" を .screenrc に書いておき、:logでログ記録開始、もう一度:logで終了。logfileの定義がなくても使えるが、書いておくと便利と 思う。</p>
+<h3><a name="label-52" id="label-52">[music]上原ひろみlive on NHK BS2</a></h3><!-- RDLabel: "[music]上原ひろみlive on NHK BS2" -->
+<p>http://www3.nhk.or.jp/omoban/main0205.html#20060205011 2/22らしい。</p>
+<h2><a name="label-53" id="label-53">20060131</a></h2><!-- RDLabel: "20060131" -->
+<h3><a name="label-54" id="label-54">[game][java][linux]iGo棋院をappletviewerで動かす2</a></h3><!-- RDLabel: "[game][java][linux]iGo棋院をappletviewerで動かす2" -->
+<p>ときどき固まるようだ。ncでワンタイムのソケット接続にしているのがまずいかもしれない。sshでのポートフォワーディングならソケット切断してもリトライ可能なので、sshを使うようにしてみて、安定性を見てみたいと思う。あ、それとアイコン化してしまうとアプレットが停止してしまうようなので注意。</p>
+<h3><a name="label-55" id="label-55">[game][java][linux]iGo棋院をappletviewerで動かす3</a></h3><!-- RDLabel: "[game][java][linux]iGo棋院をappletviewerで動かす3" -->
+<p>今のところ安定している。昨日と違うのはsshでポート転送していることと、碁盤を開いていない状態で放置していることぐらいかな。</p>
+<h3><a name="label-56" id="label-56">[game][java][ruby]Hiki用 GoodShapeプラグイン開発</a></h3><!-- RDLabel: "[game][java][ruby]Hiki用 GoodShapeプラグイン開発" -->
+<p>playgo.to の GoodShape アプレットをHiki用のプラグインにしてみました。(goban.rb)</p>
+<pre>def goban( str )
+str = &lt;&lt;END
+&lt;applet codebase="http://playgo.to/java/" code=mori.go.GoodShapeApplet width=450 height=450&gt;
+&lt;param name=size value=19&gt;
+&lt;param name=moves value="#{str}"&gt;
+&lt;param name=advancemoves value=true&gt;
+&lt;param name=language value=Japanese&gt;
+&lt;/applet&gt;
+END
+end</pre>
+<h3><a name="label-57" id="label-57">[game][ruby]Hiki用 KGS SGFプラグイン開発</a></h3><!-- RDLabel: "[game][ruby]Hiki用 KGS SGFプラグイン開発" -->
+<p>KGSからSGFをダウンロードして表示するプラグインも作ってみました。GoodShapeAppletとも連携させたいなぁ。(kgs_sgf.rb)</p>
+<pre>require 'net/http'
+require 'iconv'
+def kgs_sgf( str )
+rv = nil
+Net::HTTP.version_1_2
+Net::HTTP.start('kgs.kiseido.com', 80) { |http|
+res = http.get("/games/#{str}.sgf")
+rv = res.body
+iconv = Iconv.new('EUC-JP', 'UTF-8')
+rv = iconv.iconv(rv)
+}
+"&lt;pre&gt;\n#{rv}\n&lt;/pre&gt;"
+end</pre>
+
+</body>
+</html>

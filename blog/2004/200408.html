@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20040802</a></h2><!-- RDLabel: "20040802" -->
+<h3><a name="label-1" id="label-1">[Ruby] バイナリファイル</a></h3><!-- RDLabel: "[Ruby] バイナリファイル" -->
+<p>pack(), unpack() を使えばバイナリファイルも扱うことができるようだ。
+http://kansai.anesth.or.jp/gijutu/ruby/man-z1/refm0250.html とか参考になる。</p>
+<p>リトルエンディアン・ビッグエンディアンの指定も可能なのはありがたい。</p>
+<h2><a name="label-2" id="label-2">20040809</a></h2><!-- RDLabel: "20040809" -->
+<h3><a name="label-3" id="label-3">[linux] ユーザ・グループ管理</a></h3><!-- RDLabel: "[linux] ユーザ・グループ管理" -->
+<p>「adduser ユーザ名 グループ名」で既存のユーザを既存のグループに追加できる。
+ただし、この設定が反映されるのはこの後にログインしてからのようだ。「su - ユーザ名」でログインすればOK。linuxを何年も触ってきたが、今ごろになってこんな基本的なことを知る自分。</p>
+<h2><a name="label-4" id="label-4">20040811</a></h2><!-- RDLabel: "20040811" -->
+<h3><a name="label-5" id="label-5">[linux] a2psjで倍率指定印字</a></h3><!-- RDLabel: "[linux] a2psjで倍率指定印字" -->
+<p>a2psj に -fx0.5 のようにオプションを指定すれば50%の縮小モードとなる。-fx0.75 のような指定もできるようだ。</p>
+<h3><a name="label-6" id="label-6">[linux] debian package作成</a></h3><!-- RDLabel: "[linux] debian package作成" -->
+<p>debianのパッケージ作りに挑戦。</p>
+<p>http://debian.fam.cx/?AptGet</p>
+<p>ここを参考にした。</p>
+<p>debuildというコマンドがいるらしいので、</p>
+<pre>apt-get install devscripts</pre>
+<p>で取ってくる。</p>
+<pre>apt-get source skkinput
+cd skkinput-2.06.4
+debuild -uc -us</pre>
+<p>で試しに skkinput をビルドしてみる。debuildのオプションの意味はよくわかっていない。</p>
+<p>エラーがでたので、apt-get build-dep skkinput としてみる。しかし、とくにこれといって何かが変わった感じはしない。再度debuildしてもやはりエラー。</p>
+<pre>cc1: Invalid option `32'</pre>
+<p>だそうだ。gcc への -m32 というオプションが悪いようだ。とりあえず今日はあきらめるか。</p>
+<p>http://namazu.org/~tsuchiya/debian/</p>
+<p>このへんも参考になるかも。</p>
+<ul>
+<li>おっとtypo発見。debialではなくdebianです。 -- ohac 2004-08-12 (木) 19:22:25</li>
+</ul>
+<h2><a name="label-7" id="label-7">20040812</a></h2><!-- RDLabel: "20040812" -->
+<h3><a name="label-8" id="label-8">[linux] dpkg-buildpackage</a></h3><!-- RDLabel: "[linux] dpkg-buildpackage" -->
+<p>dpkg-buildpackage -rfakeroot -us -uc で gzip を build してみるが、texiがどうのこうの言われて失敗。unzip を build するとこれは成功した。</p>
+<pre>dpkg-buildpackage: binary and diff upload (original source NOT included)</pre>
+<p>というメッセージが出るが、なんだろうか。どこかにuploadされたのか。まさかそんなことないとは思うが。</p>
+<p>あるページには apt-get 用のやり方を書いていたので、メモ。</p>
+<pre>自作パッケージ置場に移し、
+$ apt-ftparchive packages . | gzip -c9 &gt; Packages.gz
+$ apt-ftparchive sources . | gzip -c9 &gt; Sources.gz</pre>
+<p>だそうだ。また今度やってみよう。</p>
+<p>dpkg-buildpackage -rfakeroot -uc -b というオプションの例もあった。 -b と -us ってどう違うのかな。</p>
+<h3><a name="label-9" id="label-9">[linux] libc6の依存関係</a></h3><!-- RDLabel: "[linux] libc6の依存関係" -->
+<p>sargeの環境で作成したdebパッケージをwoodyに持っていくとlibc6が古いとか言われ、インストールできない。そこで debian/control の Depends: ${shlibs:Depends} を消してとりあえずの対策を行った。</p>
+<h3><a name="label-10" id="label-10">[linux] 新規でdebパッケージを作る</a></h3><!-- RDLabel: "[linux] 新規でdebパッケージを作る" -->
+<p>いろいろ教えてもらいながらチャレンジしてみる。</p>
+<pre>mkdir hoge-1.0
+cd hoge-1.0</pre>
+<p>ここで Makefile を作っておく。 clean: と install: も定義しておく必要がある。
+install: は ${DESTDIR} を使い、そこにインストールされるように書けばよいみたい。</p>
+<p>そして、dh_make を実行。とりあえず single binary を選ぶ。</p>
+<p>debian ディレクトリにいろいろできるが不要なものが多いので</p>
+<pre>README.Debian
+changelog
+control
+copyright
+rules</pre>
+<p>を残して、あとは削除。</p>
+<pre>dpkg-buildpackage -rfakeroot -us -uc</pre>
+<p>で完成。-us -uc は電子署名をしないオプションのようだ。</p>
+<h2><a name="label-11" id="label-11">20040825</a></h2><!-- RDLabel: "20040825" -->
+<h3><a name="label-12" id="label-12">[linux] ncftpは便利</a></h3><!-- RDLabel: "[linux] ncftpは便利" -->
+<p>ncftpというftpクライアント。なかなか便利だ。
+なにが便利かというと</p>
+<ul>
+<li>補完が効く</li>
+<li>ブックマークを保存できる(ユーザ名、パスワードも)</li>
+<li>デフォルトが anonymous 動作である</li>
+</ul>
+<p>さすがにOS-9マシンへのFTPでは補完が効かないようだ。残念。 -- ohac 2004-08-26 (木) 09:21:59</p>
+<h2><a name="label-13" id="label-13">20040830</a></h2><!-- RDLabel: "20040830" -->
+<h3><a name="label-14" id="label-14">[linux] dpkg -x</a></h3><!-- RDLabel: "[linux] dpkg -x" -->
+<p>debファイルの解凍のやり方</p>
+<pre>mkdir dirname
+dpkg -x arekore.deb dirname</pre>
+<p>dpkg --help ってやっても出てこないので注意。</p>
+<h3><a name="label-15" id="label-15">[linux] symoops</a></h3><!-- RDLabel: "[linux] symoops" -->
+<p>ぐはあ。よく見ると Debian に乗り換えた後、/var/log/ksymoops/ にログがたまり続
+けていたらしい。du -sh /var/log/ksymoops で 74M と表示されている。
+なんだろうか。このログは。</p>
+
+</body>
+</html>

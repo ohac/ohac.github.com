@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20050404</a></h2><!-- RDLabel: "20050404" -->
+<h3><a name="label-1" id="label-1">[linux]ブラウザでハングル</a></h3><!-- RDLabel: "[linux]ブラウザでハングル" -->
+<p>mlterm+w3mmeeだとeuc-krなページが普通に見れる。でもfirefoxでハングルの表示がうまくいかない。どのフォントを使えばいいのかな。いろいろ試しているとttf-unfonts, ttf-baekmuk, ttf-alee, mozilla-firefox-locale-ko, xfonts-baekmukあたりを適当にインストールしたら表示されるようになった。たぶん入れなくてもいいやつも入れてしまったと思うが、まあいいか。uimでの入力もできてそうな感じだ。</p>
+<h2><a name="label-2" id="label-2">20050406</a></h2><!-- RDLabel: "20050406" -->
+<h3><a name="label-3" id="label-3">[diary]太陽系外惑星の写真(mixiの星空好きコミュより)</a></h3><!-- RDLabel: "[diary]太陽系外惑星の写真(mixiの星空好きコミュより)" -->
+<p>http://www.uchutaiken.com/ ここのトピックスよりリンクされている。すごいな。</p>
+<h3><a name="label-4" id="label-4">[english]NHK</a></h3><!-- RDLabel: "[english]NHK" -->
+<p>テレビ英語講座がリニューアルされたのでちょっと見た。</p>
+<h3><a name="label-5" id="label-5">[english]Ally McBeal</a></h3><!-- RDLabel: "[english]Ally McBeal" -->
+<p>レンタルDVD 3本目に突入。他のドラマと比べると収録時間が長いのでお得。</p>
+<h2><a name="label-6" id="label-6">20050407</a></h2><!-- RDLabel: "20050407" -->
+<h3><a name="label-7" id="label-7">[linux]EUC-KRなmlterm</a></h3><!-- RDLabel: "[linux]EUC-KRなmlterm" -->
+<p>/etc/locale.genにko_KR.EUC-KRを追加し、/usr/sbin/locale-genを実行。LANG=ko_KR.EUC-KR mltermで実行すればOK。</p>
+<h3><a name="label-8" id="label-8">[english]NHKイギリス英語</a></h3><!-- RDLabel: "[english]NHKイギリス英語" -->
+<p>ドラマ。若者のイギリス英語がさっぱり聞きとれない。がっくし。</p>
+<h3><a name="label-9" id="label-9">[linux]firefoxでCtrl+h</a></h3><!-- RDLabel: "[linux]firefoxでCtrl+h" -->
+<p>Ctrl+hをBSとして動作させたい。/usr/lib/mozilla-firefox/res/builtin/platformHTMLBindings.xmlに handler event="keypress" key="h" modifiers="accel" command="cmd_deleteCharBackward"のようなタグをinputFieldsとtextAreasに追加するといいらしい。ユーザ別の設定ファイルにしたいんだけど、まあいいか。</p>
+<h2><a name="label-10" id="label-10">20050408</a></h2><!-- RDLabel: "20050408" -->
+<h3><a name="label-11" id="label-11">[uim]0.4.6final1-2</a></h3><!-- RDLabel: "[uim]0.4.6final1-2" -->
+<p>バージョンアップされていたようだ。後で入れ替えてみよう。</p>
+<h3><a name="label-12" id="label-12">[uim]uim-skk辞書登録が遅い</a></h3><!-- RDLabel: "[uim]uim-skk辞書登録が遅い" -->
+<p>別のインスタンス(例えばuim-ximとuim-fep)で同じ単語(「帰る」と「返る」など)を繰り返し辞書登録(優先順位変更)すると登録処理にとても時間がかかることがある。またインスタンスを終了するときも遅いときがある。新しいバージョンで直ってたらうれしいけど、直ってなかったら報告しないといけないなぁ。</p>
+<h3><a name="label-13" id="label-13">[uim]0.4.6final1-2続き</a></h3><!-- RDLabel: "[uim]0.4.6final1-2続き" -->
+<p>directしか選べなくなって、大変苦労した。結局、uim-m17nlibというパッケージをインストールすることで解決。原因はよくわからない。お隣りさんのdebianにはuim-m17nlibがなくてもちゃんと動作しているようだ。うーん。ちなみにuim-skkの辞書登録が遅い問題はどうやら解決していたようだ。</p>
+<h3><a name="label-14" id="label-14">[vim]set encoding</a></h3><!-- RDLabel: "[vim]set encoding" -->
+<p>今までは set encoding=japan と set termencoding=EUC-JP を .vimrc に設定していたが、これは設定しない方がよいということがわかった。設定していなければ、LANGの設定に合わせて自動設定してくれるようだ。これでLANGがja_JP.UTF-8になっていてもちゃんと動作するようになった。ちなみに LANG=ko_KR.EUC-KR mlterm --im=uim:hangul2 で立ち上げた mlterm だと EUC-KR なファイルが vim で編集できるようだ。</p>
+<h3><a name="label-15" id="label-15">[mutt][debian]文字化け</a></h3><!-- RDLabel: "[mutt][debian]文字化け" -->
+<p>apt-get dist-upgradeしたら、muttがまた文字欠けするようになった。ということでまたwoodyのパッケージに戻した。mutt-utf8というのも入れて、UTF-8のmltermで動作することを確認した。使うことはあまりないと思うけど。</p>
+<h2><a name="label-16" id="label-16">20050411</a></h2><!-- RDLabel: "20050411" -->
+<h3><a name="label-17" id="label-17">[diary]花粉症</a></h3><!-- RDLabel: "[diary]花粉症" -->
+<p>金曜ぐらいから花粉症がひどい。目、鼻、喉がつらい。マスクをせずに花見なんかに参加したのが悪かったのかも。ということでマスクを購入。</p>
+<h3><a name="label-18" id="label-18">[diary]HDDレコーダ</a></h3><!-- RDLabel: "[diary]HDDレコーダ" -->
+<p>ようやく購入することになった。東芝のやつにした。</p>
+<h2><a name="label-19" id="label-19">20050414</a></h2><!-- RDLabel: "20050414" -->
+<h3><a name="label-20" id="label-20">[diary]高速かけ算メソッド</a></h3><!-- RDLabel: "[diary]高速かけ算メソッド" -->
+<p>http://adunion.cocolog-nifty.com/column/2004/03/post_9.html これを見て、以下の式を考えてしまった私は変だろうか。</p>
+<pre>729 * 639
+= (730 - 1) * (640 - 1)
+= 73 * 64 * 100 - 730 - 640 + 1
+= (70 + 3) * (60 + 4) * 100 - 1370 + 1
+= (7 * 6 * 100 + 180 + 280 + 12) * 100 - 1370 + 1
+= (4200 + 460 + 12) * 100 - 1370 + 1
+= 467200 - 1370 + 1
+= 465200 + 630 + 1
+= 465831</pre>
+<p>ちなみに九九を間違えて、予想以上に時間がかかってしまったことは内緒だ。</p>
+<h2><a name="label-21" id="label-21">20050419</a></h2><!-- RDLabel: "20050419" -->
+<h3><a name="label-22" id="label-22">[linux]stty erase ^H</a></h3><!-- RDLabel: "[linux]stty erase ^H" -->
+<p>CTRL+HがBS(Back Space)と同じ動作になるようにするコマンド。実際には stty erase [CTRL+V][CTRL+H] と入力する必要がある。画面上は stty erase ^H と見える。</p>
+<h3><a name="label-23" id="label-23">[ruby]libreadline-ruby</a></h3><!-- RDLabel: "[ruby]libreadline-ruby" -->
+<p>というか、rubyから1行入力を行うときはgets()ではなく、libreadline-rubyをinstallして、Readline.readline()を呼べばいいのか。これで日本語入力がやりやすくなる。</p>
+<h3><a name="label-24" id="label-24">[diary]w.p.m.</a></h3><!-- RDLabel: "[diary]w.p.m." -->
+<p>www.kojima.netより引用『キー入力のスピードを現わす国際的な単位は、このように「1分間に単語(アルファベットの文字を5文字打つと1つの単語となるという約束事を覚えてください)をいくつ打てます」という意味でw.p.m.が使われています。一つの目安として、世界基準(Global standard)は20w.p.m.です。外資系の秘書なら50w.p.m.を要求されます。』</p>
+<h2><a name="label-25" id="label-25">20050420</a></h2><!-- RDLabel: "20050420" -->
+<h3><a name="label-26" id="label-26">[linux]/usr/bin/mozilla-suite</a></h3><!-- RDLabel: "[linux]/usr/bin/mozilla-suite" -->
+<p>隣の席から/usr/bin/mozilla-suiteがエラーになるとのことで調査。どうやらif,elif,fiの対応がおかしいようだ。fiを一箇所消したら直った。</p>
+<h3><a name="label-27" id="label-27">[im]KZIKとタイピング練習</a></h3><!-- RDLabel: "[im]KZIKとタイピング練習" -->
+<p>Wikiページを作成。 http://ohac.sytes.net/pukiwiki.php?kzik</p>
+<h3><a name="label-28" id="label-28">[im]scim-skk</a></h3><!-- RDLabel: "[im]scim-skk" -->
+<p>パッケージができたようだ。まだ試していないけど。uim-skkと比べて、どうなんだろうか。AZIK(KZIK)に対応できそうかどうか調べてみたいところだが、また今度。</p>
+<h3><a name="label-29" id="label-29">[diary]風来のシレン2</a></h3><!-- RDLabel: "[diary]風来のシレン2" -->
+<p>友人よりNINTENDO 64を借りたので、再開。鬼ヶ島の最後で鬼に囲まれてやられる。今思えば、皮の盾のまま戦ったのが間違いだった。それと杖や巻物が未識別のまま、鬼の部屋に突入してしまったのも問題があった。何階まであるのか知らんかったからしゃーないかな。</p>
+<h2><a name="label-30" id="label-30">20050421</a></h2><!-- RDLabel: "20050421" -->
+<h3><a name="label-31" id="label-31">[diary]ルータ入れ替え</a></h3><!-- RDLabel: "[diary]ルータ入れ替え" -->
+<p>無線LANルータを購入し、セットアップした。無線APが2箇所になったので、全ての部屋で無線LANが使えるようになった。これはうれしい。だんだんシステムが複雑になってきたなぁ。東芝のHDDレコーダやPS2もLAN接続されているし。サーバのHDDがヤバい音を発していた。そろそろ交換せなやばいかな。でもノートPCのHDDって、交換したことないなぁ。GWにやってしまうか。</p>
+<h3><a name="label-32" id="label-32">[music][english]80's</a></h3><!-- RDLabel: "[music][english]80's" -->
+<p>ツタヤで80年代の洋楽の懐しいアルバムとかベストとか借りた。</p>
+<h3><a name="label-33" id="label-33">[uim]libuim-ruby</a></h3><!-- RDLabel: "[uim]libuim-ruby" -->
+<p>rubyからlibuimが使えるらしい。</p>
+<h3><a name="label-34" id="label-34">[xp]何のために見積るか</a></h3><!-- RDLabel: "[xp]何のために見積るか" -->
+<p>「開発効率を向上させたい。そのためには実績を客観的に判断できるものさしが必要。見積りと実績を比較して、開発効率が向上したかどうかが見えるようにしたいので何か考えて。」との命令。はっきり言って大反対。まず疑問がいっぱいある。</p>
+<ul>
+<li>見積りの誤差が大きいと評価にならない。
+<ul>
+<li>誤差の大きいもので仕事を評価されてはたまらない。</li>
+</ul></li>
+<li>そもそも見積り可能なのか。
+<ul>
+<li>例えばスピードなどの性能を10%向上させるには何工数必要か。</li>
+<li>それは現在のスピードがいくらかによって大きく変わる。</li>
+<li>カールルイスに「あと1秒速く走れ」といってもそれは無理だ。</li>
+</ul></li>
+<li>実績の方では割り込みの時間をちゃんと考慮されるのか。
+<ul>
+<li>実績も正確に記録されていなければ意味がない。</li>
+<li>結果がよくなるように見せるためにウソの実績を報告される可能性もある。</li>
+</ul></li>
+<li>で、開発効率が向上していたら(または向上していなかったら)どうするのか。
+<ul>
+<li>そこのプランが見えないとやる気がしない。</li>
+</ul></li>
+</ul>
+<p>結局、手間ばかりが増えて、ほとんどメリットがないように思える。今日の定時後に打ち合わせらしいので、このあたりを聞いてみることにする。</p>
+<h2><a name="label-35" id="label-35">20050425</a></h2><!-- RDLabel: "20050425" -->
+<h3><a name="label-36" id="label-36">[ruby]getopts is deprecated</a></h3><!-- RDLabel: "[ruby]getopts is deprecated" -->
+<p>optparseを使えとのこと。</p>
+<h3><a name="label-37" id="label-37">[diary]PRIDE</a></h3><!-- RDLabel: "[diary]PRIDE" -->
+<p>吉田vsシウバ。いい試合だった。</p>
+<h3><a name="label-38" id="label-38">[linux][game]碁</a></h3><!-- RDLabel: "[linux][game]碁" -->
+<p>碁関連のパッケージ。gnugo,mgtはコンソールアプリのようだ。</p>
+<pre>cgoban - complete Go board
+gnugo - play the game of Go
+gtkgo - Skinable version of the game "Go"
+mgt - a game record display/editor for the oriental game of go
+uligo - tsumego (go problems) practice tool
+qgo - Go client and full featured SGF editor</pre>
+<h2><a name="label-39" id="label-39">20050426</a></h2><!-- RDLabel: "20050426" -->
+<h3><a name="label-40" id="label-40">[linux][game]碁</a></h3><!-- RDLabel: "[linux][game]碁" -->
+<p>gnugo は cgoban のエンジンとして使用できるようだ。これらはとあるプロトコルでやりとりされているらしい。エンジンとGUIを分離しているのはとてもUNIXらしい設計だと思う。gnugoのテキスト表示はモノクロの半角文字なので見にくい。表示用のフィルタを自作し、これを通すことでカラーの全角表示が実現できた。これは gnugo | ./gnugo.rb のように使用する。ヘルプが乱れるなどの不具合があるが、もうちょっと工夫したらなんとかなりそうだ。ちなみに碁は超初心者です。「ヒカルの碁」に影響されて、ちょっとルールを覚えた程度。</p>
+<pre>#!/usr/bin/ruby -n
+$backcolor = "34"
+if $_  =~ /^[^ ]/ then
+  gsub(/\(x,o\)/, '(△,▲)')
+elsif $_  =~ /A B C/ then
+elsif $_  =~ /White/ then
+  gsub(/\(O\)/, "\033[0m●\033[" + $backcolor + "m")
+elsif $_  =~ /Black/ then
+  gsub(/\(X\)/, "\033[0m○\033[" + $backcolor + "m")
+elsif $_  =~ /^ *[0-9]/ then
+  gsub(/\../, '・')
+  gsub(/\+./, '＋')
+  gsub(/O\)/, "\033[0m■\033[" + $backcolor + "m")
+  gsub(/X\)/, "\033[0m□\033[" + $backcolor + "m")
+  gsub(/O./, "\033[0m●\033[" + $backcolor + "m")
+  gsub(/X./, "\033[0m○\033[" + $backcolor + "m")
+  gsub(/o./, "\033[0m▲\033[" + $backcolor + "m")
+  gsub(/x./, "\033[0m△\033[" + $backcolor + "m")
+end
+$_ = $_.chop
+puts "\033[" + $backcolor+ "m" + $_ + "\033[0m"</pre>
+<h3><a name="label-41" id="label-41">[vim]grep</a></h3><!-- RDLabel: "[vim]grep" -->
+<p>nnoremap &lt;silent&gt; gr :grep &lt;cword&gt; *&lt;CR&gt; のように定義しておけばgrでカーソル上の単語をgrepできる。</p>
+
+</body>
+</html>

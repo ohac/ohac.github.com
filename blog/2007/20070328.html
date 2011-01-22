@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">2007-03-28</a></h2><!-- RDLabel: "2007-03-28" -->
+<h3><a name="label-1" id="label-1">English diary</a></h3><!-- RDLabel: "English diary" -->
+<h4><a name="label-2" id="label-2">Spam mail and bsfilter</a></h4><!-- RDLabel: "Spam mail and bsfilter" -->
+<p>Recently I've been receiving a lot of spam mails.
+It's really annoying.</p>
+<p>I decided to use spam filter. I chose bsfilter which is written in ruby.
+I researched how to use bsfilter with procmail.
+Now I've setuped .procmailrc like this.</p>
+<pre># spam filter
+:0 fw
+| bsfilter -a --pipe --insert-flag --insert-probability --mark-spam-subject
+
+:0
+* ^X-Spam-Flag: Yes
+spam/</pre>
+<p>bsfilter doesn't have initial spam/ham database.
+So I had to prepare some spam/ham mails.
+I put them into bsfilter database as below.</p>
+<pre>bsfilter -s Mail/spam/cur/*
+bsfilter -c Mail/ham/cur/*
+bsfilter -u</pre>
+<p>Now I get less spams than before.
+But I get a few spams.
+I've been putting them into db almost everyday.</p>
+<pre>bsfilter -Cs Mail/spam/cur/*
+bsfilter -u</pre>
+<p>I misunderstood about "-a" option.
+It means that judgement updates db automatically.
+So if you use "-a" option, you have to use "-C" to remove it from clean database.
+If you don't use, your spam have remained to your clean mail database.</p>
+
+</body>
+</html>

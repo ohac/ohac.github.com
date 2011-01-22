@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20051201</a></h2><!-- RDLabel: "20051201" -->
+<h3><a name="label-1" id="label-1">[c][debian]STL</a></h3><!-- RDLabel: "[c][debian]STL" -->
+<p>STLの勉強もしといた方がいいよなぁ。libstlport4.6*をインストールすれば使えるのかな。あれ?でもg++だけでもlist.hとか使えるなぁ。うーむ標準のg++でもある程度は使えるということなのかな。というかまずはC++をもっと勉強せなアカンかな。</p>
+<h3><a name="label-2" id="label-2">[chinese]中日辞書が100円</a></h3><!-- RDLabel: "[chinese]中日辞書が100円" -->
+<p>ダイソーで売っていたのを買った。100円の辞書ってすごいなぁ。収録語数が少ないので逆に勉強にはいいかも。ピンインとカタカナの両方あるので、初心者にとっては分かりやすい。</p>
+<h2><a name="label-3" id="label-3">20051202</a></h2><!-- RDLabel: "20051202" -->
+<h3><a name="label-4" id="label-4">[debian]ssh-askpass</a></h3><!-- RDLabel: "[debian]ssh-askpass" -->
+<p>ssh-askpassをインストールして、.xsessionにssh-add &lt;/dev/nullと書いておけばよいみたい。</p>
+<h3><a name="label-5" id="label-5">[diary]OpenPNE(オープンピーネ)</a></h3><!-- RDLabel: "[diary]OpenPNE(オープンピーネ)" -->
+<p>ほほう。オープンソースなSNSですか。パッケージにはまだなっていないみたい。</p>
+<h3><a name="label-6" id="label-6">[ruby]riとReFe</a></h3><!-- RDLabel: "[ruby]riとReFe" -->
+<p>riとReFeをインストール。riはaptで取ってきた。ReFeはWebにある手順を見ながらインストール。RubyGemsっていうのもあるのですね。debianパッケージとの共存がややこしそう。</p>
+<h2><a name="label-7" id="label-7">20051205</a></h2><!-- RDLabel: "20051205" -->
+<h3><a name="label-8" id="label-8">[game]KGSデビュー</a></h3><!-- RDLabel: "[game]KGSデビュー" -->
+<p>ついにネット碁をやってしまいました。botと対局し、棋力は最初18kぐらいで決定したが、対人戦を何回か行い、今は20k。オンラインのGnuGoには6子で勝てたけど、5子では勝てなかった。</p>
+<h3><a name="label-9" id="label-9">[game][debian][java]DebianでKGS(CGoban2)</a></h3><!-- RDLabel: "[game][debian][java]DebianでKGS(CGoban2)" -->
+<p>KGSからlinux用のtar.gzをダウンロードしてきて、展開し、JavaVMを入れて、日本語フォントを設定して、java -jar cgoban.jarでOK。文字化けするときは export JAVA_FONTS=/var/lib/defoma/x-ttcidfont-conf.d/dirs/TrueType をしておくと X Window に依存しなくていいかも。あるPCではX.orgに変えたことが原因かどうか分からないけど、フォントがちゃんと表示されなくなっていたのでJAVA_FONTSを設定したところ、ちゃんと表示されるようになった。ところでSunのVMしか試してないけど、freeなVMだとどうなるのかな。tちなみに英語モードで起動したいときはLANG=C java -jar cgoban.jarでOK。</p>
+<h3><a name="label-10" id="label-10">[game][debian][java]DebianでKGS(CGoban2)続き</a></h3><!-- RDLabel: "[game][debian][java]DebianでKGS(CGoban2)続き" -->
+<p>フォントの問題は /etc/X11/xorg.conf を /etc/X11/XF86Config-4 と同じように設定すればちゃんと表示されるようになった。ただし、JAVA_FONTSを設定した場合と比較するとフォントの大きさが違う。DPIの設定か何かの違いだろうか。</p>
+<h3><a name="label-11" id="label-11">[game][debian]KGSにsshトンネル経由で接続</a></h3><!-- RDLabel: "[game][debian]KGSにsshトンネル経由で接続" -->
+<p>java -jar cgoban.jar -helpで説明が表示されるが、ぱっと見たところサーバのホスト名とかポート番号とか変えられそうにない。jarの中にはそれっぽい設定ファイルがあるけど、jarの再構築なんて面倒臭いのでやりたくない(やりかけたけど...)。で、/etc/hostsにgoserver.igoweb.orgを127.0.0.1として登録し、SSHで自宅サーバへのトンネルを作る。こんな感じで→「ssh -L 2379:goserver.igoweb.orgのIP:2379 自宅サーバのホスト名」。この状態でjava -jar cgoban.jarとすれば見事に接続された。</p>
+<h3><a name="label-12" id="label-12">[game][debian]KGSにsshトンネル経由で接続(続き)</a></h3><!-- RDLabel: "[game][debian]KGSにsshトンネル経由で接続(続き)" -->
+<p>ポート2379だけでなくhttpもトンネルしておかないと棋譜のダウンロードができなさそう。でもポート80はapacheが使っている。やはりconfig.propertiesを変更しないとだめかな。あ、そうかjarはそのままでconfig.propertiesだけ別のを優先にすればいいのかな。ということで以下のような手順でいけそう。</p>
+<pre>$ unzip cgoban.jar org/igoweb/igoweb/config.properties
+$ vi org/igoweb/igoweb/config.properties (defaultHostをlocalhostに変更)
+$ java -cp .:cgoban.jar org.igoweb.cgoban.CGoban</pre>
+<h3><a name="label-13" id="label-13">[c]fork()とfflush()</a></h3><!-- RDLabel: "[c]fork()とfflush()" -->
+<p>fork()する前にfflush(stdout)しておかないと変なことになるなぁ。数分だけハマった。</p>
+<h2><a name="label-14" id="label-14">20051206</a></h2><!-- RDLabel: "20051206" -->
+<h3><a name="label-15" id="label-15">[debian]w3m UTF-8</a></h3><!-- RDLabel: "[debian]w3m UTF-8" -->
+<p>w3mmeeを使っていたが、普通のw3mでもUTF-8のページが表示できることを今頃気付いた。タブブラウザとしての機能も使いたいので、w3mmeeをやめてw3mに戻そうかな。これはUTF-8のテストページ http://www.w3.org/2001/06/utf-8-test/UTF-8-demo.html 。すごい、UTF-8なmlterm上のw3mで韓国や中国のYahooとかがちゃんと表示される。ページによっては、ページ切り替えのときにちょっとゴミが残るときがあるけど、まあ使えるレベル。たぶんUTF-8だと●とかが半角のフォントで表示されるのが原因と思われる。</p>
+<h2><a name="label-16" id="label-16">20051207</a></h2><!-- RDLabel: "20051207" -->
+<h3><a name="label-17" id="label-17">[uim]KZIK</a></h3><!-- RDLabel: "[uim]KZIK" -->
+<p>みのりさんのページ http://taffy632.blog24.fc2.com/ でKZIKについて紹介されていた。どうもありがとうございます。がんばってKZIKを完成させないと...。</p>
+<h2><a name="label-18" id="label-18">20051208</a></h2><!-- RDLabel: "20051208" -->
+<h3><a name="label-19" id="label-19">[vim]TABや改行を見た目で分かるようにする</a></h3><!-- RDLabel: "[vim]TABや改行を見た目で分かるようにする" -->
+<p>set listでいける。set listchars=でカスタマイズ可能。例えばset listchars=eol:$,tab:+-のような感じ。</p>
+<h3><a name="label-20" id="label-20">[vim]vim --servername vim</a></h3><!-- RDLabel: "[vim]vim &shy;&shy;servername vim" -->
+<p>vim --servername vimでvimを立ち上げておき、vim --remote filenameでそのファイルを編集できる。</p>
+<h2><a name="label-21" id="label-21">20051209</a></h2><!-- RDLabel: "20051209" -->
+<h3><a name="label-22" id="label-22">[game][ajax]スーパーマリョ</a></h3><!-- RDLabel: "[game][ajax]スーパーマリョ" -->
+<p>Ajaxとは関係ないかもしれないけど、こんなの http://www.janis.or.jp/users/segabito/JavaScriptMaryo.html を見つけた。</p>
+<h3><a name="label-23" id="label-23">[c]シグナル</a></h3><!-- RDLabel: "[c]シグナル" -->
+<p>signal(SIGPIPE, sighandle) ... すぐ忘れるのでメモ。</p>
+<h2><a name="label-24" id="label-24">20051212</a></h2><!-- RDLabel: "20051212" -->
+<h3><a name="label-25" id="label-25">[uim][debian]uim 0.4.9.1-1</a></h3><!-- RDLabel: "[uim][debian]uim 0.4.9.1-1" -->
+<p>sidでリリースされた。またもやKZIK版のuimをビルドしないと...。ちなみにMLの方では1.0.0がリリースされたとのメールがあった。SKKの打ち間違い対策は非常にありがたい。しかし、自分でdebianパッケージ作るのも大変なのでしばらく待つことにする。</p>
+<h3><a name="label-26" id="label-26">[debian]デバイスドライバ確認ページ</a></h3><!-- RDLabel: "[debian]デバイスドライバ確認ページ" -->
+<p>メモ http://kmuto.jp/debian/hcl/</p>
+<h2><a name="label-27" id="label-27">20051213</a></h2><!-- RDLabel: "20051213" -->
+<h3><a name="label-28" id="label-28">[tDiary]Refererスパム</a></h3><!-- RDLabel: "[tDiary]Refererスパム" -->
+<p>キター。これか。とりあえずRefererを非表示にしておこう。</p>
+<h3><a name="label-29" id="label-29">[game]掲示板囲碁</a></h3><!-- RDLabel: "[game]掲示板囲碁" -->
+<p>自分で作らなくても、すでに存在していたみたい。あすなろ碁会所 http://ichigoweb.zive.net/~asunaro/ のボード碁ダウンロード http://ichigoweb.zive.net/~boardgo/ にある。将棋、オセロ、麻雀もあるようだ。でもあまり打たれていないなぁ。</p>
+<h3><a name="label-30" id="label-30">[vim][chinese][english]発音記号</a></h3><!-- RDLabel: "[vim][chinese][english]発音記号" -->
+<p>vimでC-kのあと、"a-"とか打てば発音記号が入力できる。詳しくは:help digraphsに。</p>
+<h3><a name="label-31" id="label-31">[vim]マウスの中クリックでペースト</a></h3><!-- RDLabel: "[vim]マウスの中クリックでペースト" -->
+<p>の代わりに、「"*p」が使える。「"+p」だとfirefox等でコピーしたテキストがペーストできる。</p>
+<h3><a name="label-32" id="label-32">[vim]仮想上書き</a></h3><!-- RDLabel: "[vim]仮想上書き" -->
+<dl>
+<dt><a name="label-33" id="label-33">help vreplace-mode。要はgRと押すと全角文字はちゃんと2文字として扱ってくれるというもの。日本人はRをgRにマッピングしてしまってもいいかもしれない。</a></dt><!-- RDLabel: "help vreplace-mode。要はgRと押すと全角文字はちゃんと2文字として扱ってくれるというもの。日本人はRをgRにマッピングしてしまってもいいかもしれない。" -->
+</dl>
+<h3><a name="label-34" id="label-34">[vim][debian]辞書補完、シソーラス補完</a></h3><!-- RDLabel: "[vim][debian]辞書補完、シソーラス補完" -->
+<p>パッケージになっているフリーの辞書やスペルチェックデータと組み合わせると便利かもしれない。プログラミング言語ごとの辞書とかもあると便利かも。適当に単語を抽出するスクリプトを書いて、それを使えばいいかな。いや、でも誰かがすでに作ってそうだなぁ。お、あるある。ここ http://members.jcom.home.ne.jp/advweb/build/howto/dictionary.html とかここ http://www.vim.org/ とか。</p>
+<h2><a name="label-35" id="label-35">20051214</a></h2><!-- RDLabel: "20051214" -->
+<h3><a name="label-36" id="label-36">[debian][uim]uim-0.4.9 KZIK版</a></h3><!-- RDLabel: "[debian][uim]uim-0.4.9 KZIK版" -->
+<p>debパッケージを作った。</p>
+<h3><a name="label-37" id="label-37">[debian]自分用ファイル</a></h3><!-- RDLabel: "[debian]自分用ファイル" -->
+<p>複数のPCで共有しておきたいファイルは自分用のdebパッケージを作って管理すればラクになるかも。パッケージを作る練習にもなるし、やってみるかな。</p>
+<h2><a name="label-38" id="label-38">20051216</a></h2><!-- RDLabel: "20051216" -->
+<h3><a name="label-39" id="label-39">[diary]漢字出現頻度</a></h3><!-- RDLabel: "[diary]漢字出現頻度" -->
+<p>2ちゃんねる板別スレッド一覧漢字出現頻度ランキング http://www.madin.jp/diary/?date=20051121 というのがあったのでメモ。</p>
+<h3><a name="label-40" id="label-40">[debian]新規でパッケージ作成</a></h3><!-- RDLabel: "[debian]新規でパッケージ作成" -->
+<p>前にもやったけど、もう忘れていたのでメモ。</p>
+<pre>$ sudo apt-get install dh-make
+$ mkdir hoge-1.0
+$ cd hoge-1.0
+$ touch hoge
+$ cat &gt;Makefile
+DESTDIR=debian/hoge
+clean:
+    rm -fr $(DESTDIR)
+install:
+    mkdir -p $(DESTDIR)/usr/bin
+    cp hoge $(DESTDIR)/usr/bin
+[CTRL+D]
+$ dh_make -n -s
+[Enter]
+$ cd debian
+$ rm *.ex *.EX README*
+$ cd ..
+$ dpkg-buildpackage -us -uc -rfakeroot</pre>
+<h2><a name="label-41" id="label-41">20051220</a></h2><!-- RDLabel: "20051220" -->
+<h3><a name="label-42" id="label-42">[linux]LILO LBA</a></h3><!-- RDLabel: "[linux]LILO LBA" -->
+<p>L 04 04 ...というメッセージが出て立ち上がらないと言われ呼ばれた。悩んだ結果、どうやら-lオプションが必要なことが分かった。今まではこの手順でいけてたのに、なんで
+かなぁ。</p>
+<h3><a name="label-43" id="label-43">[diary]タイピングKZIK</a></h3><!-- RDLabel: "[diary]タイピングKZIK" -->
+<p>「たまにはKZIKの漢字を覚えないと」と思い、ちょっとタイピング練習。タイプウェルのlinux版が欲しいなぁ。AZIKにネイティブで対応してたらさらにいいかも。</p>
+<h3><a name="label-44" id="label-44">[debian]firefox-1.5</a></h3><!-- RDLabel: "[debian]firefox-1.5" -->
+<p>sidに降りてきたのでインストール。おおー、速い。日本語のメニューがないけど自分が使う分には特に問題はない。パッケージ名はmozilla-firefoxだったのが今回からfirefoxに変わったようだ。</p>
+<h2><a name="label-45" id="label-45">20051221</a></h2><!-- RDLabel: "20051221" -->
+<h3><a name="label-46" id="label-46">[linux]今日初めて知ったコマンド集</a></h3><!-- RDLabel: "[linux]今日初めて知ったコマンド集" -->
+<p>人に教えるには自分も勉強しなければならない。ということでメモ。</p>
+<pre>newgrp 別のグループに切り替えるコマンド。
+watch 定期的にコマンドを実行するコマンド。watch -n 1 date みたいな感じで。
+whatis コマンドの要約表示。whatis -w "oo*" みたいに。</pre>
+<h2><a name="label-47" id="label-47">20051222</a></h2><!-- RDLabel: "20051222" -->
+<h3><a name="label-48" id="label-48">[diary]吹雪</a></h3><!-- RDLabel: "[diary]吹雪" -->
+<p>今日はすごい吹雪。さむいさむい。</p>
+<h3><a name="label-49" id="label-49">[linux]screen</a></h3><!-- RDLabel: "[linux]screen" -->
+<dl>
+<dt><a name="label-50" id="label-50">title hogeでウィンドウタイトルを変更、:number 0とかでウィンドウ番号を変更。:otherで1つ前のウィンドウに切り替え。</a></dt><!-- RDLabel: "title hogeでウィンドウタイトルを変更、:number 0とかでウィンドウ番号を変更。:otherで1つ前のウィンドウに切り替え。" -->
+</dl>
+<h2><a name="label-51" id="label-51">20051226</a></h2><!-- RDLabel: "20051226" -->
+<h3><a name="label-52" id="label-52">[music]上原ひろみ・トップランナー</a></h3><!-- RDLabel: "[music]上原ひろみ・トップランナー" -->
+<p>12月29日(木)24時からNHKであるらしい。12/25にもあったのだが総集編と書いてあったのでてっきりただの再放送かと思っていたが、前回放送しなかった曲をオンエアしていたらしい。ということで12/29は忘れずに録画しておかないと。</p>
+<h3><a name="label-53" id="label-53">[game]gnugoに5子で勝つ</a></h3><!-- RDLabel: "[game]gnugoに5子で勝つ" -->
+<p>gnugo-3.7.7に5子のハンデをもらい2回勝てた。次は4子にチャレンジ。</p>
+<h2><a name="label-54" id="label-54">20051228</a></h2><!-- RDLabel: "20051228" -->
+<h3><a name="label-55" id="label-55">[game][debian]qgo</a></h3><!-- RDLabel: "[game][debian]qgo" -->
+<p>qgoがdebian sidにあったので入れてみた。碁盤が美しい。コウになったときの着手禁止点の処理がちょっとおかしいような気がするが、まあそんなに気にする問題でもないかも。</p>
+<h3><a name="label-56" id="label-56">[game]gnugo level 10</a></h3><!-- RDLabel: "[game]gnugo level 10" -->
+<p>level 10、19路5子で対局してみたが、ボロ負けした。</p>
+<h3><a name="label-57" id="label-57">[linux]anacron</a></h3><!-- RDLabel: "[linux]anacron" -->
+<p>cronの代わりにanacronを使ってみる。サーバじゃないときはこっちの方が便利っぽい。</p>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">2007-08-16</a></h2><!-- RDLabel: "2007-08-16" -->
+<h3><a name="label-1" id="label-1">patch for ttyrec-1.0.6</a></h3><!-- RDLabel: "patch for ttyrec-1.0.6" -->
+<p>ttyrec does't work well. So I created this patch. It's kind of ad hoc though.</p>
+<pre>diff -u ttyrec-1.0.6/Makefile ttyrec-1.0.6-1/Makefile
+--- ttyrec-1.0.6/Makefile	2002-10-22 19:01:23.000000000 +0900
++++ ttyrec-1.0.6-1/Makefile	2007-08-16 09:21:49.000000000 +0900
+@@ -10,7 +10,7 @@
+ all: $(TARGET)
+
+ ttyrec: ttyrec.o io.o
+-	$(CC) $(CFLAGS) -o ttyrec ttyrec.o io.o
++	$(CC) $(CFLAGS) -lutil -o ttyrec ttyrec.o io.o
+
+ ttyplay: ttyplay.o io.o
+ 	$(CC) $(CFLAGS) -o ttyplay ttyplay.o io.o
+diff -u ttyrec-1.0.6/ttyrec.c ttyrec-1.0.6-1/ttyrec.c
+--- ttyrec-1.0.6/ttyrec.c	2002-10-22 19:01:23.000000000 +0900
++++ ttyrec-1.0.6-1/ttyrec.c	2007-08-16 09:21:21.000000000 +0900
+@@ -69,8 +69,12 @@
+
+ #define _(FOO) FOO
+
++#define HAVE_openpty 1
+ #ifdef HAVE_openpty
+-#include &lt;libutil.h&gt;
++#include &lt;termios.h&gt;
++#include &lt;unistd.h&gt;
++#include &lt;pty.h&gt;
++#include &lt;utmp.h&gt;
+ #endif
+
+ #if defined(SVR4) &amp;&amp; !defined(CDEL)</pre>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">2007-06-13</a></h2><!-- RDLabel: "2007-06-13" -->
+<h3><a name="label-1" id="label-1">Setting for Mercurial and Gmail</a></h3><!-- RDLabel: "Setting for Mercurial and Gmail" -->
+<p>Like this.</p>
+<pre>[email]
+from = My Name &lt;my_account.at.gmail.com&gt;
+to = target_mail_address.at.domain
+method = smtp
+
+[smtp]
+host = smtp.gmail.com
+port = 587
+tls = True
+username = my_account.at.gmail.com
+password = my_password</pre>
+<p>Now I can use 'hg email' command.</p>
+<h3><a name="label-2" id="label-2">My Mercurial repository</a></h3><!-- RDLabel: "My Mercurial repository" -->
+<p>I have created repository for Mercurial.</p>
+<ul>
+<li><a href="http://ohac.sytes.net/hgwebdir.cgi/mercurial/">&lt;URL:http://ohac.sytes.net/hgwebdir.cgi/mercurial/&gt;</a></li>
+</ul>
+<p>You can pull and clone from this repository.</p>
+<h3><a name="label-3" id="label-3">Mercurial character encoding setting patch</a></h3><!-- RDLabel: "Mercurial character encoding setting patch" -->
+<p>I have created patch for Mercurial. This patch provides character encoding setting in each repository. After this patch, You can use multi encoding repositories with one mercurial server.</p>
+<pre># HG changeset patch
+# User OHASHI Hideya &lt;ohachige at gmail.com&gt;
+# Date 1181718644 -32400
+# Node ID cc6b6505cf1bd7e7fa5c369e3c25f440524c4e04
+# Parent  050fa240db9cebc0fb6238c09de40fcfb867bb95
+enable to select encoding in hgrc web section
+
+diff -r 050fa240db9c -r cc6b6505cf1b mercurial/hgweb/hgweb_mod.py
+--- a/mercurial/hgweb/hgweb_mod.py      Mon Jun 11 21:09:24 2007 -0500
++++ b/mercurial/hgweb/hgweb_mod.py      Wed Jun 13 16:10:44 2007 +0900
+@@ -103,6 +103,7 @@ class hgweb(object):
+             self.maxshortchanges = int(self.config("web", "maxshortchanges", 60))
+             self.maxfiles = int(self.config("web", "maxfiles", 10))
+             self.allowpull = self.configbool("web", "allowpull", True)
++            self.encoding = self.config("web", "encoding", util._encoding)
+
+     def archivelist(self, nodeid):
+         allowed = self.configlist("web", "allow_archive")
+@@ -655,7 +656,7 @@ class hgweb(object):
+     def run_wsgi(self, req):
+         def header(**map):
+             header_file = cStringIO.StringIO(
+-                ''.join(self.t("header", encoding=util._encoding, **map)))
++                ''.join(self.t("header", encoding=self.encoding, **map)))
+             msg = mimetools.Message(header_file, 0)
+             req.header(msg.items())
+             yield header_file.read()</pre>
+<p>An example setting is as follows.</p>
+<pre>[web]
+encoding = EUC-JP
+#encoding = SHIFT_JIS
+#encoding = UTF-8</pre>
+<p>You can use this example for $HOME/.hgrc and .hg/hgrc.</p>
+
+</body>
+</html>

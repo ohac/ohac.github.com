@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20060202</a></h2><!-- RDLabel: "20060202" -->
+<h3><a name="label-1" id="label-1">[game][java][linux]iGo棋院をappletviewerで動かす4</a></h3><!-- RDLabel: "[game][java][linux]iGo棋院をappletviewerで動かす4" -->
+<p>sshでポート転送してみると安定動作しているようだ。しかし、棋譜検索して、その棋譜を表示したくても表示されない。これはブラウザと連動させているのであろうか。appletviewerの限界かな。</p>
+<h3><a name="label-2" id="label-2">[game][java][ruby]Hiki用 KGS GoodShapeプラグイン開発</a></h3><!-- RDLabel: "[game][java][ruby]Hiki用 KGS GoodShapeプラグイン開発" -->
+<p>KGSからSGFをダウンロードして、それをGoodShapeで表示するプラグインも作ってみました。ソースは省略。そのうち自分のCVSにでも入れとこうかな。</p>
+<h3><a name="label-3" id="label-3">[ruby]StringIO</a></h3><!-- RDLabel: "[ruby]StringIO" -->
+<p>Stringの+=で文字列をどんどん追加していくと、サイズが増えるに従って極端に遅くなってくる。大きな文字列を作るときはStringIOクラスを使った方がよい。これはJavaで言うところのStringBufferみたいなものであろう。</p>
+<h3><a name="label-4" id="label-4">[linux]newgrp &amp; groups</a></h3><!-- RDLabel: "[linux]newgrp & groups" -->
+<p>グループを変えるコマンドって、何やったかな...。ああ、newgrpか。groupsというコマンドも覚えとかなアカンな。</p>
+<h2><a name="label-5" id="label-5">20060206</a></h2><!-- RDLabel: "20060206" -->
+<h3><a name="label-6" id="label-6">[debian]ttyplayerとhiki</a></h3><!-- RDLabel: "[debian]ttyplayerとhiki" -->
+<p>ttyplayer appletをhiki pluginにして、パッケージを作ってみた。</p>
+<h3><a name="label-7" id="label-7">[linux]ttyrecしたデータを編集</a></h3><!-- RDLabel: "[linux]ttyrecしたデータを編集" -->
+<p>時間がかかっているところを短くするようなことができたらいいのにな。作れるかな?</p>
+<h3><a name="label-8" id="label-8">[linux]firefox調子悪い</a></h3><!-- RDLabel: "[linux]firefox調子悪い" -->
+<p>firefoxがときどき調子悪くなる。googleツールバーとの相性が悪いのかもしれないと思って、これを外してみた。...が、関係なかったようだ。</p>
+<h3><a name="label-9" id="label-9">[linux][zaurus]firefox用 All-in-One Gestures</a></h3><!-- RDLabel: "[linux][zaurus]firefox用 All-in-One Gestures" -->
+<p>入れてみた。これは便利かも。ザウルスでvncviewerの窓からfirefoxを開いているときは左クリックでジェスチャーできるようにしておけば快適かも。まだ試してないけど。</p>
+<h3><a name="label-10" id="label-10">[linux][debian]firefoxとFlashGotとd4x</a></h3><!-- RDLabel: "[linux][debian]firefoxとFlashGotとd4x" -->
+<p>詳細で Downloader 4 X というのを選べば使えるようだ。</p>
+<h3><a name="label-11" id="label-11">[debian]hikisetup(メモ)</a></h3><!-- RDLabel: "[debian]hikisetup(メモ)" -->
+<p>/usr/bin/hikisetupのFile.makedirsをFileUtils.makedirsに書き換え。hikisetup実行。/usr/share/hiki/misc/plugin/attach/attach.cgi を /usr/share/hiki/ にコピー。hikisetup でできた hiki.cgi をマネして、 /usr/share/hiki/attach.cgi を load するような attach.cgi をhikisetupでできたディレクトリに作成。 .htaccessは消す(mv)</p>
+<pre>sudo adduser username www-data
+newgrp www-data
+chgrp www-data hiki/data
+chmod g+w hiki/data -R</pre>
+<h3><a name="label-12" id="label-12">[debian]apache2とuserdir(メモ)</a></h3><!-- RDLabel: "[debian]apache2とuserdir(メモ)" -->
+<p>apache2インストール。a2enでuserdirを有効に。/etc/apache2/sites-available/hikiを作る。a2ensiteでこれを有効に。</p>
+<pre>DirectoryIndex hiki.cgi
+AddHandler cgi-script .cgi
+&lt;Directory "/home/*/public_html"&gt;
+Options +ExecCGI -Indexes
+&lt;/Directory&gt;
+&lt;Directory "/home/*/public_html/data"&gt;
+Deny from all
+&lt;/Directory&gt;
+&lt;Files "hikiconf.rb"&gt;
+deny from all
+&lt;/Files&gt;</pre>
+<h2><a name="label-13" id="label-13">20060207</a></h2><!-- RDLabel: "20060207" -->
+<h3><a name="label-14" id="label-14">[debian]FreeMind</a></h3><!-- RDLabel: "[debian]FreeMind" -->
+<p>Mind Mapというのを作るソフト。なかなかいいかも。普通のメモとしても使える。</p>
+<h3><a name="label-15" id="label-15">[debian]ArgoUML</a></h3><!-- RDLabel: "[debian]ArgoUML" -->
+<p>UMLを作成するツール。まだ画面をちょっと見たぐらい。UMLの書き方をあまり知らないので、そこから勉強しないといけない。</p>
+<h2><a name="label-16" id="label-16">20060208</a></h2><!-- RDLabel: "20060208" -->
+<h3><a name="label-17" id="label-17">[diary]del.icio.us</a></h3><!-- RDLabel: "[diary]del.icio.us" -->
+<p>http://del.icio.us/ に登録したので、ブックマークを移動。自宅PCのブックマークは移動完了。会社PCのブックマークは...かなり多い。</p>
+<h3><a name="label-18" id="label-18">[xp][wiki]FreeMind Applet</a></h3><!-- RDLabel: "[xp][wiki]FreeMind Applet" -->
+<p>Java Appletがあるようだ。HikiとかCVSとかと接続できるようにしてみたいなぁ。</p>
+<h3><a name="label-19" id="label-19">[xp]VNCでFreeMind</a></h3><!-- RDLabel: "[xp]VNCでFreeMind" -->
+<p>社内IRCでChatしながらFreeMindの画面をホワイトボードのようにみんなで見る、というのを実験してみた。参加者がFreeMindの使い方を知らないので、あまり大したことはできなかったが、今後いろいろ試していきたいと思う。</p>
+<h3><a name="label-20" id="label-20">[xp]UML練習</a></h3><!-- RDLabel: "[xp]UML練習" -->
+<p>ユースケース図を書いてみた。慣れてないのでなかなか進まない。というか、勉強してから書けよ、と言われそうだ。気がつくとユースケースっぽくない実装を意識したような図が出来ていた。いかんいかん。</p>
+<h2><a name="label-21" id="label-21">20060209</a></h2><!-- RDLabel: "20060209" -->
+<h3><a name="label-22" id="label-22">[xp][debian]ArgoUML+J2SDK1.5</a></h3><!-- RDLabel: "[xp][debian]ArgoUML+J2SDK1.5" -->
+<p>ArgoUMLのクラス図でattributeとかoperationが表示されない問題があり、使い方が悪いのかといろいろ試していたが、J2SDK1.4を使っていたのが悪かったようだ。J2SDK1.5に入れ替えるとちゃんと表示されるようになった。おまけにLook&amp;Feelもかっこよくなり、日本語入力の表示位置も改善された。</p>
+<h3><a name="label-23" id="label-23">[xp]ArgoUML</a></h3><!-- RDLabel: "[xp]ArgoUML" -->
+<p>ユースケースとかTODOとかの使い方が少しずつ分かってきた。でも、やっぱりちゃんとした本を一つ欲しいなぁ。Webでの入門記事だと目が疲れてしゃーない。今度買いに行こう。</p>
+<h3><a name="label-24" id="label-24">[diary]三菱i</a></h3><!-- RDLabel: "[diary]三菱i" -->
+<p>デザインが好みだ。ミッドシップというのもいいなぁ。</p>
+<h2><a name="label-25" id="label-25">20060220</a></h2><!-- RDLabel: "20060220" -->
+<h3><a name="label-26" id="label-26">[xp]IRCbotとscreenとttyrec/play</a></h3><!-- RDLabel: "[xp]IRCbotとscreenとttyrec/play" -->
+<p>チャットしながら、screenで画面共有しながら、コードレビューして指導とかしており、画面操作の状況をttyrecすれば後で見直しができるので便利。しかし、チャットは別画面になっているので、チャットの内容がttyrecに記録されない。これを解決するにはIRCbotをscreenのマルチウィンドウで動作させておき、チャット内容を表示させるといった方法が考えられる。いつかやってみたい。</p>
+<h3><a name="label-27" id="label-27">[xp][ruby][debian][vim]rbotとnadoka</a></h3><!-- RDLabel: "[xp][ruby][debian][vim]rbotとnadoka" -->
+<p>RubyでのIRC botのようだ。これを使うかな。いや、proxyならnadokaの方がいいのかな。nadokaの方がよさそう。ログをtail -fでリアルタイム表示しておけばttyrecできるな。vimircとは相性が悪いような気がする。とりあえずxchatでproxyに接続してみた。</p>
+<h3><a name="label-28" id="label-28">[ruby][vim]nadokaでVimIRC</a></h3><!-- RDLabel: "[ruby][vim]nadokaでVimIRC" -->
+<p>VimIRCはnadokaのbacklogbotと相性が悪いみたい。 DefaultBotFiles = [] で空にしてやれば普通に動作するようだ。いや、そうでもないか...。ちょっと挙動がおかしい。</p>
+<h3><a name="label-29" id="label-29">[diary]すごいCUI</a></h3><!-- RDLabel: "[diary]すごいCUI" -->
+<p>すごいGUIというのを同僚から教えてもらった。http://www.youtube.com/watch?v=iVI6xw9Zph8 自分としてはすごいCUIというのを考えてみたいな。例えばカーソルが2つあるとか、複数の人で画面をあちこち触れるとか、メッセージがポップアップするとか、それでいてシンプル設計とか。</p>
+<h3><a name="label-30" id="label-30">[diary]トリノモーグル男子決勝</a></h3><!-- RDLabel: "[diary]トリノモーグル男子決勝" -->
+<p>やっとこさ、録画してあったモーグルを見た。いやー、決勝は感動しました。印象に残ったのは2位の人のスピード・アグレッシブさ。そして、1位の人の綺麗なフォーム。あと1080を決めてきた人もすごかった。スコアは伸びなかったけど、まあしゃあないかな。そして、なんといっても三浦豪太の解説。「あー、この舌の動きは....微妙ですね。」って、そんな解説いらんねん(笑)。</p>
+<h3><a name="label-31" id="label-31">[game][debian]ボンバーマン</a></h3><!-- RDLabel: "[game][debian]ボンバーマン" -->
+<p>bombercloneというパッケージ。ついついハマってしまった。</p>
+<h3><a name="label-32" id="label-32">[game][debian]カタン</a></h3><!-- RDLabel: "[game][debian]カタン" -->
+<p>pioneersというパッケージがあり、これがあればカタンができる。一人でプレイするにはpioneers-ai, pioneers-client, pioneers-server-gtk あたりをインストールしておけばOK。対戦したコンピュータはやたら速いので流れが掴めないデメリットがあるが、まあ楽しめるレベルか。Windows用のクライアントはあるのかな。あればWindowsユーザと対戦して遊べそうだが。</p>
+<h2><a name="label-33" id="label-33">20060222</a></h2><!-- RDLabel: "20060222" -->
+<h3><a name="label-34" id="label-34">[debian]weechat (IRC)</a></h3><!-- RDLabel: "[debian]weechat (IRC)" -->
+<p>VimIRCがnadoka経由だとうまく動かないので別のCUIのIRCを探す。irssiというのを試すが、日本語をどう扱うのか分からず断念。weechat-curses を試すと画面が乱れたが、TERMCAPのせいだろうか、GNU screenの中で動作させると乱れがなくなった。 .weechat/weechat.rc にlook_charset_decode_utf = "ISO-2022-JP"と設定してやれば日本語が使えるようになった。日本語入力をBack Spaceで消すと1byteずつしか消えないという問題があるが、まあ我慢できるレベルである。</p>
+<h3><a name="label-35" id="label-35">[debian]weechat (IRC) 続き</a></h3><!-- RDLabel: "[debian]weechat (IRC) 続き" -->
+<p>あー、ダメだ。行を折り返すと文字が乱れる。うーん。軽くてよさそうだったのに。しかも server_charset_encode = "ISO-2022-JP"としておけばサーバへ送るメッセージがJISになるけど、JISモード終了のEscape sequenceが抜けてるし。うーん。nadokaのプラグインとしてCUIを作った方が早いかも。</p>
+<h2><a name="label-36" id="label-36">20060224</a></h2><!-- RDLabel: "20060224" -->
+<h3><a name="label-37" id="label-37">[music]上原ひろみlive</a></h3><!-- RDLabel: "[music]上原ひろみlive" -->
+<p>NHK BSでやってた。感動しました。やっぱり天才ですこの人。巨匠と呼ばれる日も近いでしょう。</p>
+<h2><a name="label-38" id="label-38">20060228</a></h2><!-- RDLabel: "20060228" -->
+<h3><a name="label-39" id="label-39">[diary]スキー</a></h3><!-- RDLabel: "[diary]スキー" -->
+<p>奥伊吹にいってきた。デジカメで動画をとってもらったが、自分のO脚具合に愕然とした。これじゃあ足が揃っているように見えないよ...。モーグル用コースはコブが深くて斜度がきつかったので難しかった。それに雪質が悪くてバランスが崩れまくり。筋力は落ちてるし。まあ、でも楽しかった。</p>
+<h3><a name="label-40" id="label-40">[debian][ruby]IRC nadoka用CUIプラグイン</a></h3><!-- RDLabel: "[debian][ruby]IRC nadoka用CUIプラグイン" -->
+<p>とりあえず作ってみた。readlineのライブラリが必要です。http://ohac.sytes.net/cgi-bin/viewcvs.cgi/ohac-files/ ここのtermclient.nb ってやつを /usr/share/nadoka/plugins にコピーして、nadokaの設定ファイルで 'termclient' をプラグインに加えたらOK。</p>
+
+</body>
+</html>

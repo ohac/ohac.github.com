@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20060308</a></h2><!-- RDLabel: "20060308" -->
+<h3><a name="label-1" id="label-1">[game]pioneers(gnocatan)</a></h3><!-- RDLabel: "[game]pioneers(gnocatan)" -->
+<p>どうやらWindows用のクライアントもあるようだ。やってる人いるのかな。</p>
+<h3><a name="label-2" id="label-2">[english]DSえいご漬け日記</a></h3><!-- RDLabel: "[english]DSえいご漬け日記" -->
+<p>AAAを取った次の日、Sを取るが、また次の日AAAに戻る。</p>
+<h3><a name="label-3" id="label-3">[debian]quiz(bsdgames)</a></h3><!-- RDLabel: "[debian]quiz(bsdgames)" -->
+<p>quizというソフトでテストができそうだ。他にもeducationとかlearning、practiceとかでapt-cache searchするといろいろありそう。全部試すのは時間がかかるだろうけど。ググってみてヒット数が多いやつから試してみるかな。</p>
+<h2><a name="label-4" id="label-4">20060310</a></h2><!-- RDLabel: "20060310" -->
+<h3><a name="label-5" id="label-5">[java][debian][english][chinese]Flashcardでいろいろ暗記</a></h3><!-- RDLabel: "[java][debian][english][chinese]Flashcardでいろいろ暗記" -->
+<p>Granule (Debian packageにある)、 jMemorize http://www.riad.de/jmemorize/ 、 Pauker http://pauker.sourceforge.net/ というのを試してみた。なんとなく記憶するための出題スケジューリングについて分かったような気がする。CUIなソフトはなさそうなのは残念。作るしかないかな。辞書ツールと連動できたら便利かも。</p>
+<h2><a name="label-6" id="label-6">20060317</a></h2><!-- RDLabel: "20060317" -->
+<h3><a name="label-7" id="label-7">[debian][english]sufaryとsdic-eijiro</a></h3><!-- RDLabel: "[debian][english]sufaryとsdic-eijiro" -->
+<p>英辞郎をarrayコマンドで検索できるようにした。自作辞書アプリ(CUI)からも使えるようにしてみた。</p>
+<h3><a name="label-8" id="label-8">[debian][english]sufary-tcltk</a></h3><!-- RDLabel: "[debian][english]sufary-tcltk" -->
+<p>kwicviewコマンドでコーパス検索ができる。コーパスはどこかからダウンロードしてきて、mkaryしておく必要がある。前後の単語でランキング表示するようなスクリプトを書けば便利かも。</p>
+<h3><a name="label-9" id="label-9">[debian][english]festival</a></h3><!-- RDLabel: "[debian][english]festival" -->
+<p>英文を読み上げてくれるソフト。単語によってはかなり正確に発音してくれる。これも自作辞書アプリから使えるようにした。</p>
+<h2><a name="label-10" id="label-10">20060327</a></h2><!-- RDLabel: "20060327" -->
+<h3><a name="label-11" id="label-11">[music]上原ひろみのFF7</a></h3><!-- RDLabel: "[music]上原ひろみのFF7" -->
+<p>mixi上原ひろみトピより。 http://www.daisukekunita.com/ , http://www.daisukekunita.com/mp3/ff7_128.mp3 家に帰ったら聞いてみよう。</p>
+<h3><a name="label-12" id="label-12">[debian][linux]VAIOでkernel 2.6</a></h3><!-- RDLabel: "[debian][linux]VAIOでkernel 2.6" -->
+<p>立ち上げのhotplugあたりがなんか重いので、とりあえずhotplugをuninstallして立ち上げるようにしてみた。これだけだとUSBとかいろいろと初期化されていないので/etc/modulesに必要なmoduleを書いておく。立ち上げは少し速くなったが、やはり重いのは変わらず。2.6系のkernelで何か新しい機能が増えて、それがVAIOのハードと相性が悪いのはないかと思われる。</p>
+<h3><a name="label-13" id="label-13">[debian]ndiswrapperでBUFFALOの無線LAN</a></h3><!-- RDLabel: "[debian]ndiswrapperでBUFFALOの無線LAN" -->
+<p>kernel 2.6に上げたのでndiswrapperに挑戦。いろいろあったが何とかインストールまで完了。ところがNDIS.SYSがないとか表示されてうまく認識しない。ググってみるとどうやら余計な*.sysがインストールされているのが原因らしい。余計な*.sysを/etc/ndiswrapper/hoge/から削除すると、見事に成功。しかし、kernel 2.6で全体的に重い現象は解決せず。</p>
+<h3><a name="label-14" id="label-14">[debian][linux]VAIOでkernel 2.6(続き)</a></h3><!-- RDLabel: "[debian][linux]VAIOでkernel 2.6(続き)" -->
+<p>VAIOのBIOS設定で「Plug-inに対応しているOSがどうのこうの」というのがあったので、これをOFFにしてみると問題が解決した。うーん、なんなんだろうか。まあとにかく、これで無事kernel 2.4とおさらばできそうである。hotplugも元に戻しておこうかな。</p>
+<h3><a name="label-15" id="label-15">[linux]VAIO君の今後の野望</a></h3><!-- RDLabel: "[linux]VAIO君の今後の野望" -->
+<p>私のVAIOは古いのでUSB1.1しかついていないけど、IDEをUSB2.0に変換するアダプタを購入して、これでDVD-R系ドライブを使おうかと考え中。アダプタは1500円ぐらいで手に入るようだ。DVD-Rドライブは5000円ぐらいかな。ケースをどうするか考えないと。ダンボールで工作するかな。</p>
+<h2><a name="label-16" id="label-16">20060329</a></h2><!-- RDLabel: "20060329" -->
+<h3><a name="label-17" id="label-17">[debian]stellarium - real-time photo-realistic sky generator</a></h3><!-- RDLabel: "[debian]stellarium - real-time photo-realistic sky generator" -->
+<p>面白そうなソフトを発見。kstarよりも綺麗。 http://stellarium.sourceforge.net/ 家のPCで実行すると遅いながらもちゃんと動作した。会社のPCではなぜかエラー終了してしまうな。</p>
+<h3><a name="label-18" id="label-18">[debian]stars</a></h3><!-- RDLabel: "[debian]stars" -->
+<p>starsってのもあるなぁ。</p>
+
+</body>
+</html>

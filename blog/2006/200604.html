@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20060406</a></h2><!-- RDLabel: "20060406" -->
+<h3><a name="label-1" id="label-1">[debian]smartmontools - control and monitor storage systems using S.M.A.R.T.</a></h3><!-- RDLabel: "[debian]smartmontools - control and monitor storage systems using S.M.A.R.T." -->
+<p>HDD等の寿命、品質をモニタするツール。smartctl -a /dev/hda みたいな感じで使用するらしい。</p>
+<h3><a name="label-2" id="label-2">[linux]NFSでumount</a></h3><!-- RDLabel: "[linux]NFSでumount" -->
+<p>NFSでmountしたままサーバがいなくなり、umountできなくなったときは、fuser [mount point]で表示されたPIDをkillすればumountができるらしい。famdをkillすればいいらしい。</p>
+<h3><a name="label-3" id="label-3">[vim]上下の行をコピー</a></h3><!-- RDLabel: "[vim]上下の行をコピー" -->
+<p>Insert or Replace ModeでCTRL+Y or E 。たまに便利なときがある。</p>
+<h3><a name="label-4" id="label-4">[linux]zImageのLinux versionを調べる</a></h3><!-- RDLabel: "[linux]zImageのLinux versionを調べる" -->
+<p>zcat zImage | grep "Linux version.*" -o -a</p>
+<h2><a name="label-5" id="label-5">20060407</a></h2><!-- RDLabel: "20060407" -->
+<h3><a name="label-6" id="label-6">[debian]gs-cjk-resource</a></h3><!-- RDLabel: "[debian]gs-cjk-resource" -->
+<p>派遣社員のPCで印刷がうまくいかないとの問い合わせあり。次の手順で解決。/etc/apt/sources.listにnon-freeを追加、apt-get updateし、gs-cjk-resource, cmap-adobe-japan1と2をインストール。あと、/etc/cups/cupsd.confにFontPath /usr/share/fontsを追加してリスタート。</p>
+<h2><a name="label-7" id="label-7">20060418</a></h2><!-- RDLabel: "20060418" -->
+<h3><a name="label-8" id="label-8">[debian]NTPサーバ</a></h3><!-- RDLabel: "[debian]NTPサーバ" -->
+<p>openntpd, ntp, chronyの3種類、パッケージがあるようだ。ググるとchornyが簡単そうでいいかもしれない。ntpdateをcronで定期的に動作させる手もありそうだけど、今回のケースではchronyの方がいいかも。</p>
+<h3><a name="label-9" id="label-9">[debian]ntpdate adjtimex</a></h3><!-- RDLabel: "[debian]ntpdate adjtimex" -->
+<p>いや、やっぱり複雑なのでやめ。ntpdateとadjtimexの2つのパッケージでなんとかなりそう。</p>
+<h3><a name="label-10" id="label-10">[diary]no-ipへの更新通知</a></h3><!-- RDLabel: "[diary]no-ipへの更新通知" -->
+<p>no-ipで登録してあったIPがいつの間にか更新されなくなっていたようだ。調べると2006/01/13の更新が最後。とりあえずWebページでre-activateしておいた。うーむ。</p>
+<h3><a name="label-11" id="label-11">[vim]フリーカーソルモード</a></h3><!-- RDLabel: "[vim]フリーカーソルモード" -->
+<dl>
+<dt><a name="label-12" id="label-12">set virtualedit=allでOK。横長の文章を見るときなどに便利かも。zlとzhで左右スクロールと組み合わせて使う。</a></dt><!-- RDLabel: "set virtualedit=allでOK。横長の文章を見るときなどに便利かも。zlとzhで左右スクロールと組み合わせて使う。" -->
+</dl>
+
+</body>
+</html>

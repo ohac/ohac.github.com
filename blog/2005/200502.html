@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20050202</a></h2><!-- RDLabel: "20050202" -->
+<h3><a name="label-1" id="label-1">[linux]screenでプレフィクス+s</a></h3><!-- RDLabel: "[linux]screenでプレフィクス+s" -->
+<p>間違えてプレフィクスの後にsをタイプするとCTRL+Sがそこに送られてしまい、現在の状態がよくわからないようになってしまうことがあった。このようなキーは使うことがなさそうなので、キーマップを変更してしまった。ついでにプレフィクス+qも。それぞれsplitとonlyに割り当てた。これで大文字SとQと同じ機能となる。</p>
+<h3><a name="label-2" id="label-2">[english]英語でソースコードのコメント</a></h3><!-- RDLabel: "[english]英語でソースコードのコメント" -->
+<p>linux kernelのソースからライティングの勉強をしてみよう。</p>
+<ul>
+<li>AのときはB。 B if A</li>
+<li>AはB用に予約されていたけど...  A used to be reserved for B, but ...</li>
+<li>AはB用に予約されている。 A is reserved for B</li>
+<li>Aはセグフォールトを発生させる。 A causes a seg fault.</li>
+<li>Aしない方がいい。 Should never A</li>
+<li>Aするな。 Don't A</li>
+<li>必要ならAしよう。 if necessary we A.</li>
+<li>このルーチンはA。 This routine A.</li>
+<li>これなしではAはちゃんと動かない。 A doesn't work correctly without this.</li>
+<li>AはBをCに送る。 A sends B to C</li>
+</ul>
+<p>あかん。ソースが難しいからコメントの意味がよくわからんことが多い。kernelよりもアプリケーションのソースコードの方が参考になるかなぁ。</p>
+<h3><a name="label-3" id="label-3">[english]コメントアウトの反対語は?</a></h3><!-- RDLabel: "[english]コメントアウトの反対語は?" -->
+<p>アンコメント(uncomment)らしい。</p>
+<h3><a name="label-4" id="label-4">[diary]特許って</a></h3><!-- RDLabel: "[diary]特許って" -->
+<p>一太郎が特許侵害しているとのこと。そんなに大したアイデアでもなさそうなことが特許になっていることに驚く。発明と呼べるほどのアイデアなのかあれは。つまりKDEやGNOMEとかもそのようなヘルプ機能を作ってはいけないということなのね。しばらく松下の製品は買わないことにしよう。同様な問題としては音楽の盗作問題もあるな。大したメロディでもないのに「盗作だ」とか騒ぐのはやめてほしいよ。こんなにたくさんの曲が作曲され続けたら、そりゃ同じようなメロディも出てきますがな。</p>
+<h3><a name="label-5" id="label-5">[linux]indentで整形</a></h3><!-- RDLabel: "[linux]indentで整形" -->
+<p>ペアプログラミングを実施するにはコーディング基準が必要。そこでC言語用にindentコマンドを調べてみた。自分のスタイルに近いのはK&amp;Rをベースにして、 -kr -ut -nce -i4 -ts4 -ip4 -ncs といったところか。</p>
+<h2><a name="label-6" id="label-6">20050203</a></h2><!-- RDLabel: "20050203" -->
+<h3><a name="label-7" id="label-7">[linux]write()</a></h3><!-- RDLabel: "[linux]write()" -->
+<p>「countバイト書き込む保証はない」か。ミスしてそうなのでレビューするときは注意しよう。</p>
+<h3><a name="label-8" id="label-8">[english]ソースのコメント勉強</a></h3><!-- RDLabel: "[english]ソースのコメント勉強" -->
+<p>flacのソースより。</p>
+<ul>
+<li>必要なら後でAを決めるつもり。we will determine A later if necessary.</li>
+</ul>
+<h3><a name="label-9" id="label-9">[diary]Pair Programming</a></h3><!-- RDLabel: "[diary]Pair Programming" -->
+<p>いきなり導入するのも難しい。一回、実験的に実施してみたいな。いきなり席の横にはりつくのは目立つし、場所も狭い。そこで自分の席でconsoleを共有することを考えた。例えば同じ開発サーバの同じユーザにssh等でお互いに2つログインし、screenをお互い1つずつ立ち上げておく。screen -x [pid]でお互いに相手のscreenに接続。また、IRC Clientも用意しておきコミュニケーションはそこで行う。どうだろう。ペアプロの趣旨から少し外れるかもしれないが、コーディングしている相手が何か調べて欲しことを相手に頼めば、もう1つのコンソールでgrepやらTAG Jumpやらで探してくれる(かもしれない)。うーん、人間マルチタスクだ。</p>
+<h3><a name="label-10" id="label-10">[diary]xchat</a></h3><!-- RDLabel: "[diary]xchat" -->
+<p>とりあえず社内IRCに接続してみた。設定でJISにしてやる必要があるみたい。</p>
+<h3><a name="label-11" id="label-11">[vim]VimIRC.vim</a></h3><!-- RDLabel: "[vim]VimIRC.vim" -->
+<p>こんなのもあるのか http://www.vim.org/scripts/script.php?script_id=931 日本語も使えるな。creditsにKoRoNさんもいるみたいなので安心だ。というか、最初に作った人が日本人みたい。</p>
+<h3><a name="label-12" id="label-12">[linux]screen multiuser</a></h3><!-- RDLabel: "[linux]screen multiuser" -->
+<p>こんな感じか。</p>
+<pre># chmod +s /usr/bin/screen
+
+user1側
+$ (prefix): multiuser on
+$ (prefix): acladd user2
+
+user2側
+$ screen -ls username/
+$ screen -x username/(pid)</pre>
+<h2><a name="label-13" id="label-13">20050204</a></h2><!-- RDLabel: "20050204" -->
+<h3><a name="label-14" id="label-14">[vim][english]spell check</a></h3><!-- RDLabel: "[vim][english]spell check" -->
+<p>vimから!spell %|sort|uniqでスペルミスの単語一覧が表示できる。</p>
+<h3><a name="label-15" id="label-15">[diary]screenでe-learning</a></h3><!-- RDLabel: "[diary]screenでe-learning" -->
+<p>派遣社員の指導をscreenとIRCを使ってやってみた。なかなか快適に説明できる。これは使えるかも。</p>
+<h3><a name="label-16" id="label-16">[linux]ssh and screen</a></h3><!-- RDLabel: "[linux]ssh and screen" -->
+<p>sshで自宅へ繋げるときはscreenを実行しといた方がよいな。いつ切れるかわからんし。実際、vim立ち上げたまま切れたし。</p>
+<h3><a name="label-17" id="label-17">[linux]UNIX FAQ</a></h3><!-- RDLabel: "[linux]UNIX FAQ" -->
+<p>http://www.nurs.or.jp/~asada/FAQ/UNIX/section3.9.html メモ。</p>
+<h2><a name="label-18" id="label-18">20050207</a></h2><!-- RDLabel: "20050207" -->
+<h3><a name="label-19" id="label-19">[linux]sshが途中で切断される</a></h3><!-- RDLabel: "[linux]sshが途中で切断される" -->
+<p>メモ。キーワードはnullパケット、VaraTerm (Guevala)、puttyとのこと。puttyは日本語の設定がよくわからんので断念。vara(vala?)なんとかはapt-cache searchで出てこなかったので断念。なので~/.ssh/configを変更することにした。</p>
+<pre>Host *.hogehoge.hoge
+    TCPKeepAlive yes
+    ServerAliveInterval 10
+    ServerAliveCountMax 6</pre>
+<h3><a name="label-20" id="label-20">[vim]VimIRCコマンドメモ</a></h3><!-- RDLabel: "[vim]VimIRCコマンドメモ" -->
+<pre>/join #channel
+/part
+/op nickname
+/list
+/nick nickname
+/mode #channel +s
+/invite nickname #channel
+/whois nickname</pre>
+<h3><a name="label-21" id="label-21">[vim]立ち上げが変</a></h3><!-- RDLabel: "[vim]立ち上げが変" -->
+<p>Enterを押さないと立ち上がらない現象が時々再現する。vim --nopluginなら立ち上がる。別の窓なら問題ないのに。色々やってると再現しなくなってしまい、調査できず。</p>
+<h3><a name="label-22" id="label-22">[english]アルマゲドン</a></h3><!-- RDLabel: "[english]アルマゲドン" -->
+<p>二ヶ国語放送の英語で見てみる。叫んでるシーンが多く、ほとんど聞きとれず。ツタヤ半額だったので、ロードオブサリング2つの塔を借りる。今度見るつもり。</p>
+<h3><a name="label-23" id="label-23">[c][unittest]assert()</a></h3><!-- RDLabel: "[c][unittest]assert()" -->
+<p>大げさなユニットテストフレームワークを使わなくても、今はassert()だけでよさそうな気がしてきた。プリント文もわかりやすいし。</p>
+<h2><a name="label-24" id="label-24">20050208</a></h2><!-- RDLabel: "20050208" -->
+<h3><a name="label-25" id="label-25">[linux]vimircでログ保存とURLリンク</a></h3><!-- RDLabel: "[linux]vimircでログ保存とURLリンク" -->
+<dl>
+<dt><a name="label-26" id="label-26">w! ~/irclog みたいな感じで保存できる。これを別screenでw3mmeeとかで開いておき、Rでreload、:でURLをlink化すればチャット中にでてきたURLをすぐに確認することができる。: C-P [Enter] [prefix] C-N R : の7ストロークちょいか。zaurusで操作すると少し面倒かも。botを作るしかないかな。フルキーボードなら全然問題ない操作感ではあるが。</a></dt><!-- RDLabel: "w! ~/irclog みたいな感じで保存できる。これを別screenでw3mmeeとかで開いておき、Rでreload、:でURLをlink化すればチャット中にでてきたURLをすぐに確認することができる。: C-P [Enter] [prefix] C-N R : の7ストロークちょいか。zaurusで操作すると少し面倒かも。botを作るしかないかな。フルキーボードなら全然問題ない操作感ではあるが。" -->
+</dl>
+<h3><a name="label-27" id="label-27">[linux]TIME_WAITがなかなか消えない</a></h3><!-- RDLabel: "[linux]TIME_WAITがなかなか消えない" -->
+<p>echo '1' &gt;/proc/sys/net/ipv4/tcp_tw_recycle で解決。サーバ側のデバッグをするときは便利だ。</p>
+<h3><a name="label-28" id="label-28">[c]gccで-O -Wall</a></h3><!-- RDLabel: "[c]gccで-O -Wall" -->
+<p>初期化されていない変数をチェックするには-Wallだけではダメで、-Oも付ける必要があることに気付く。</p>
+<h3><a name="label-29" id="label-29">[linux]screenでprefix+?</a></h3><!-- RDLabel: "[linux]screenでprefix+?" -->
+<p>キーバインドが表示されるようだ。prefix+:helpと同じ機能。</p>
+<h3><a name="label-30" id="label-30">[linux]nadoka</a></h3><!-- RDLabel: "[linux]nadoka" -->
+<p>ruby版IRC proxyをちょっとだけ試してみた。</p>
+<h2><a name="label-31" id="label-31">20050209</a></h2><!-- RDLabel: "20050209" -->
+<h3><a name="label-32" id="label-32">[diary]共有ホワイトボード</a></h3><!-- RDLabel: "[diary]共有ホワイトボード" -->
+<p>みたいなソフトないかな。VNCでお絵描きソフトでも立ち上げておくしかないのか。</p>
+<h3><a name="label-33" id="label-33">[linux]screen共有の書き込みロック</a></h3><!-- RDLabel: "[linux]screen共有の書き込みロック" -->
+<p>.screenrcに以下を記述。screen 1で1つ生成してからaclchgを行うのがミソ。screen&gt;立ち上げてからprefix+mでmultiuser onとなる。</p>
+<pre>screen 1
+aclchg guest -wx "#?"
+aclchg guest +x "detach"
+bind m multiuser on
+bind r aclchg guest -w "#"
+bind w aclchg guest +w "#"</pre>
+<h3><a name="label-34" id="label-34">[linux]screenとircで指示を</a></h3><!-- RDLabel: "[linux]screenとircで指示を" -->
+<p>screenとircのみで派遣社員2名を同時に指示・教育してみる。結構使えるかも。自分のコーディングは進まないけど、教育が進めば..</p>
+<h2><a name="label-35" id="label-35">20050214</a></h2><!-- RDLabel: "20050214" -->
+<h3><a name="label-36" id="label-36">[diary]SKI</a></h3><!-- RDLabel: "[diary]SKI" -->
+<p>スキージャム勝山に行ってきた。エキスパートコースに1回も行けなかったのが悔いに残る。あのコースに行くと元のゲレンデに戻ってしまうのでしゃーないか。コブは前よりは少し滑れるようになったような気がする。コブでは1回もコケなかった。しかし、なんでもないところで何回かコケた。これは筋力がついていかなくなったためだと思われる。エアには2回挑戦。1回目は減速しまくりでストレートジャンプ。ちょっと後傾ギミ。2回目はもうちょっと速度を早めてストレートジャンプ。まあまあ後傾ではなくなったかな。もうちょっと高く安定して飛べるようになったら、スプレッドやツイスターに挑戦してみたい。今までは無理矢理スプレッドをしたりしてたが、やはり基礎のストレートジャンプを安定することをまずやりたいと思う。って、次はいつスキーに行けるのか。</p>
+<h2><a name="label-37" id="label-37">20050216</a></h2><!-- RDLabel: "20050216" -->
+<h3><a name="label-38" id="label-38">[xp]pair programming</a></h3><!-- RDLabel: "[xp]pair programming" -->
+<p>screenとIRCだと相手の表情が見えないし、独り言のようなつぶやきも聞けないので、やっぱり席が近い方がいいんだろうなぁ。相手が今なにを考えているのかが見えてこない。IRCに独り言をどんどん書いてくれる人ならいいんだけど、そこまでのタイピングスピー
+ドを要求するのも酷だし。それと、そろそろペア交代のことも考えていかないといけないな。</p>
+<h3><a name="label-39" id="label-39">[vim]vimirc.vim autojoin失敗</a></h3><!-- RDLabel: "[vim]vimirc.vim autojoin失敗" -->
+<p>422: MOTD File is missingのときにうまくautojoinできていなかったのでパッチを当てた。</p>
+<dl>
+<dt><a name="label-40" id="label-40"><code>vimirc.vim.orig     <var>2005</var>-<var>02</var>-<var>15</var> <var>09</var>:<var>18</var>:<var>27</var>.<var>000000000</var> +<var>0900</var></code></a></dt><!-- RDLabel: "vimirc.vim.orig     2005-02-15 09:18:27.000000000 +0900" -->
+</dl>
+<pre>+++ vimirc.vim  2005-02-15 09:18:33.000000000 +0900
+@@ -6518,7 +6518,7 @@
+          irc_chan_line('', $mesg);
+        }
+     }
+-  elsif ($comd == 376) # RPL_ENDOFMOTD
++  elsif ($comd == 376 || $comd == 422) # RPL_ENDOFMOTD
+     {
+       unless ($Current_Server-&gt;{'conn'} &amp; $CS_RECON)
+        {</pre>
+<h2><a name="label-41" id="label-41">20050218</a></h2><!-- RDLabel: "20050218" -->
+<h3><a name="label-42" id="label-42">[vim]howm-vim不具合</a></h3><!-- RDLabel: "[vim]howm-vim不具合" -->
+<p>vimがEnter押すまで立ち上がらなくなる症状がまた再現した。~/.vimrcのhowm-mode vimの初期化部分をコメントアウトすると直った。vimをいくつか立ち上げていると再現するような感じがする。</p>
+<h3><a name="label-43" id="label-43">[vim]howm-vimバージョンアップ</a></h3><!-- RDLabel: "[vim]howm-vimバージョンアップ" -->
+<p>したようだ。</p>
+<h2><a name="label-44" id="label-44">20050221</a></h2><!-- RDLabel: "20050221" -->
+<h3><a name="label-45" id="label-45">[uim]uim-fep Added -S option (GNU screen mode)</a></h3><!-- RDLabel: "[uim]uim-fep Added -S option (GNU screen mode)" -->
+<p>uim-0.4.6beta1のリリースノートにこんな説明があった。何だろう。今度試してみるか。</p>
+<h3><a name="label-46" id="label-46">[diary]筋トレ</a></h3><!-- RDLabel: "[diary]筋トレ" -->
+<p>スキーブーツで筋トレ、バランスボールでバランストレーニングをちょっとやっておいた。またスキーにいきたいなぁ。もうちょっと痩せなきゃな。</p>
+<h3><a name="label-47" id="label-47">[game]SUPER XEVIOUS 30万点</a></h3><!-- RDLabel: "[game]SUPER XEVIOUS 30万点" -->
+<p>ひさびさにプレステ1をセッティングしてみた。うーん静かだ。ファンレスはいいねぇ。SUPER XEVIOUSはどうしてもAREA14が突破できない。ブラグザカートの3連発はひどすぎる。攻略およびリンク集サイトメモ http://qtchicks.hp.infoseek.co.jp/namco_xevious.html</p>
+<h3><a name="label-48" id="label-48">[music]柴咲コウ</a></h3><!-- RDLabel: "[music]柴咲コウ" -->
+<p>結構歌うまい。ジャジーな曲。6/8拍子。</p>
+<h2><a name="label-49" id="label-49">20050223</a></h2><!-- RDLabel: "20050223" -->
+<h3><a name="label-50" id="label-50">[game]SUPER XEVIOUS 38万点</a></h3><!-- RDLabel: "[game]SUPER XEVIOUS 38万点" -->
+<p>ようやくAREA 14をクリア。AREA 15はたいしたことなかった。AREA 16も運よく1回でクリアできた。初めてギャラクシアンに出会えた。しかし、ループ後、集中力が切れたのと難易度が上がったことで点数はあまり出なかった。ちなみにEASY設定の50000点でEXTENDする設定。EASY設定なのに全然EASYじゃないよ。今後の目標としてはAREA 14を安定してクリアできる実力をつけ100万点を目指す。あわよくばジェミニ誘導ができるようになること。ブラグザカートは左下で必死でよけたらなんとかなる確率が高いことがわかった。ザッパーで破壊すべきかどうかはよく考えてから実行するとよい。よく考える時間は与えてはくれないけれども。あまり早く破壊してしまうと次のブラグザカートが出現してしまうから、ぎりぎりまで粘ったほうがよい。それから破裂するまではあんまり動かないようにして、破裂した時点で少し軸をずらすとうまくいく可能性が高い。</p>
+<h2><a name="label-51" id="label-51">20050224</a></h2><!-- RDLabel: "20050224" -->
+<h3><a name="label-52" id="label-52">[diary]眠い</a></h3><!-- RDLabel: "[diary]眠い" -->
+<p>昨日はなぜか妙に眠くて、すぐに寝てしまった。というわけでハイスコアアタックはしていない。</p>
+<h3><a name="label-53" id="label-53">[linux]GNU Arch</a></h3><!-- RDLabel: "[linux]GNU Arch" -->
+<p>tlaというパッケージ。分散リポジトリに興味があり、ちょっとだけ仕事にも関連していたので試してみた。しかし、結構複雑でまだ全てを理解できていない。公開するにはftpとかWebDAVとかの書き込み可能プロトコルがないと面倒な感じがする。よくわかってないので間違っているかもしれないが。</p>
+<h2><a name="label-54" id="label-54">20050225</a></h2><!-- RDLabel: "20050225" -->
+<h3><a name="label-55" id="label-55">[linux]cvs ann</a></h3><!-- RDLabel: "[linux]cvs ann" -->
+<p>svnやtlaにcvs annのような機能ってないのかな。annはかなり便利なので、これがないと移行する気にならないかも。</p>
+<h3><a name="label-56" id="label-56">[game]SUPER XEVIOUS 36万点</a></h3><!-- RDLabel: "[game]SUPER XEVIOUS 36万点" -->
+<p>うーん。AREA14で5機ほどやられたが、なんとかAREA16へ。しかし、AREA16で全滅。やっぱりAREA16は難しかった。2回目はAREA14をワープしてしまい、まあラッキーかなと思ったが、やはりAREA16で全滅。ジェミニ誘導は何度か成功したが、安定せず。点数もあまり稼げなかった。EASYからNORMALやHARDに変えてみたところ、「やはりEASYはEASYである」ということがわかった。100万点なんて突破できるのだろうか。ちょっと自信がなくなってきた。ノーマルXEVIOUSの1000万点にでもチャレンジしてみようかな。すごい時間かかりそうだけど。</p>
+<h2><a name="label-57" id="label-57">20050228</a></h2><!-- RDLabel: "20050228" -->
+<h3><a name="label-58" id="label-58">[uim]uim-0.4.6beta2-3</a></h3><!-- RDLabel: "[uim]uim-0.4.6beta2-3" -->
+<p>debian unstableのuimがバージョンアップしているようだ。隣の席で日本語が入力できなくなったとのことで見てみるとバージョンアップしていたようだ。~/.uimをリネームして、再起動。さてどうなるかな。私も昼休みぐらいにバージョンアップしてみようっと。最近は自分でビルドしてないからありがたい。その後、anthy側がバージョンアップされていなかったらしいと聞いた。apt-get upgradeでuimもanthyもバージョンアップするのではないのかなぁ。あれ、自分のところではapt-get install uimできないなぁ。404 Not Foundになる。あ、 http://ring.asahi-net.or.jp/archives/linux/debian/debian/pool/main/u/uim/ ここに無いなぁ。まあ、また今度にするか。</p>
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20041101</a></h2><!-- RDLabel: "20041101" -->
+<h3><a name="label-1" id="label-1">[game]MHでHR20に</a></h3><!-- RDLabel: "[game]MHでHR20に" -->
+<p>やっと全クエクリアしてHR20になった。黒龍クエがいきなり出現していた。レイア・レウスを倒しまくったからかな。</p>
+<h3><a name="label-2" id="label-2">[english]ロードオブザリング</a></h3><!-- RDLabel: "[english]ロードオブザリング" -->
+<p>今更ながら第1作目を見る。やはり3つ見ないと話が完結しないようだ。RPGのルーツなので世界観が結構面白かった。</p>
+<h3><a name="label-3" id="label-3">[english]オズの魔法使い</a></h3><!-- RDLabel: "[english]オズの魔法使い" -->
+<p>95%読破。もうちょっとだ。</p>
+<h3><a name="label-4" id="label-4">[c]変数は初期化しよう</a></h3><!-- RDLabel: "[c]変数は初期化しよう" -->
+<p>変数を初期化してない箇所があり、そのまま初期化されずに使用される可能性のあるコードがあった。やはりwarning levelを上げてちゃんとチェックするようにせなアカンね。しかし誰の仕業か、と調べたところ、あ、オレか。ごめんごめん。でも初期化せずに使うようにしたのは私じゃないですからー、斬り。(うーん。言い訳にしかならんなorz)</p>
+<h3><a name="label-5" id="label-5">[linux]FDのMBRにウィルスがないか確認</a></h3><!-- RDLabel: "[linux]FDのMBRにウィルスがないか確認" -->
+<p>dd if=/dev/fd0 bs=512 count=1|xxd みたいな感じ。</p>
+<h3><a name="label-6" id="label-6">[linux]lspci via unichrome</a></h3><!-- RDLabel: "[linux]lspci via unichrome" -->
+<p>lspciでハードウェアの構成を調べる。via/s3g unichromeのビデオカードって、どのドライバなのか。via_drv.oか? xfree86の4.4.0で使えるようになる? とりあえずvesa_drv.oで逃げておこう。</p>
+<h2><a name="label-7" id="label-7">20041102</a></h2><!-- RDLabel: "20041102" -->
+<h3><a name="label-8" id="label-8">[linux]gaim</a></h3><!-- RDLabel: "[linux]gaim" -->
+<p>gaimというのを入れてみる。MSNメッセンジャのプロトコルとかが使えるらしい。社内からも使えるのだろうか。うーん、使えないようだ。Windowsからだと使えるみたいなのになんでかな。</p>
+<h3><a name="label-9" id="label-9">[uim,english]本家のMLに参加せねば</a></h3><!-- RDLabel: "[uim,english]本家のMLに参加せねば" -->
+<p>Anthy-dev MLで反応があった。英語のMLを講読しないとだめかな。読むだけならなんとかなるかな。</p>
+<h3><a name="label-10" id="label-10">[english]オズの魔法使い</a></h3><!-- RDLabel: "[english]オズの魔法使い" -->
+<p>100% やっと読み終えた。</p>
+<h3><a name="label-11" id="label-11">[mutt]インデックス作成</a></h3><!-- RDLabel: "[mutt]インデックス作成" -->
+<p>メールが多いフォルダだとインデックス作成に時間がかかるな。これはSylpheedの方がよいかも。mewとかだとどうなんだろうか。</p>
+<h3><a name="label-12" id="label-12">[linux]fileの移動</a></h3><!-- RDLabel: "[linux]fileの移動" -->
+<p>受信側で nc -l -p 12345 &gt;foo.afio とかやっといて、送信側のホームディレクトリで find | afio -Zo - | nc -q 60 hostip 12345 みたいにする。終わったら受信側で afio -iZ foo.afio みたいな感じで。</p>
+<h3><a name="label-13" id="label-13">[linux]qkc ack</a></h3><!-- RDLabel: "[linux]qkc ack" -->
+<p>qkc はパッケージになってないので、ack -A を使うべし。qkcという名のaliasかshellスクリプトを作るか。</p>
+<h2><a name="label-14" id="label-14">20041104</a></h2><!-- RDLabel: "20041104" -->
+<h3><a name="label-15" id="label-15">[mutt]mutt 1.5.6</a></h3><!-- RDLabel: "[mutt]mutt 1.5.6" -->
+<p>muttでときどき日本語の文字が抜けたりするな。なんでかな。mutt + mutt-utf8 1.3.28-2.2 を mutt 1.5.6-20040722 に上げたのが悪いのかな。1行ずつスクロールしたときにおかしくなりやすい。CTRL+Lで再描画すれば問題なくなる。</p>
+<h3><a name="label-16" id="label-16">[linux]新PCへ移行</a></h3><!-- RDLabel: "[linux]新PCへ移行" -->
+<p>会社で使っていたPCが不調となったので、新しいPCへ移行中。以下を順番に処理すること。</p>
+<pre>未 muttの文字消え問題
+未 debian-jp の qkc
+未 uim-* を開発バージョンに上げる
+未 愛用キーボードに繋ぎかえる
+未 マウスのスクロールボタン(?)に対応させる
+未 j2sdkのインストール
+未 java関連パッケージ(tomcat3 woody等)のインストール
+未 SH-4用コンパイラのインストール
+未 rpm3構築環境
+未 ランレベルエディタで普段いらんやつを消す
+未 w3m(w3mmee?)でなぜかTABキーが効かない
+済 印刷(CUPS)
+済 lha, dosemu, dosemu-freedos (non-free)
+済 gs-cjk-resource とか cmap-adobe1 とか gs-esp とか (non-free系が多い)</pre>
+<h3><a name="label-17" id="label-17">[linux]clamav with nullmailer</a></h3><!-- RDLabel: "[linux]clamav with nullmailer" -->
+<p>clamavインストールするときにeximがちゃんと設定されてないとアカンとか言われたので、とりあえずnullmailerをインストールして適当な設定をしておいた。こんなんでええのかw。</p>
+<h3><a name="label-18" id="label-18">[diary]頭痛</a></h3><!-- RDLabel: "[diary]頭痛" -->
+<p>頭が痛い。頭痛薬のむか。</p>
+<h3><a name="label-19" id="label-19">[linux]Cups</a></h3><!-- RDLabel: "[linux]Cups" -->
+<p>ほとんど理解していないが、教えてもらった通りにやってみる。印字できた。</p>
+<ul>
+<li>プリンタのインストール  Canon LBP-930EX</li>
+<li>参考ページ</li>
+<li>http://www.e-aiyama.com/~toshi/Computer/Linux/Cups.html</li>
+<li>apt-get install cupsys foomatic-bin foomatic-db cupsys-bsd cupsys-driver-gimpprint foomatic-db-gimp-print foo2zjs foomatic-gui hpoj</li>
+<li>apt-get install foomatic-filters-ppds</li>
+<li>cp /usr/share/ppd/Canon/Canon-LIPS-IVv-lips4v.ppd.gz /usr/share/cups/model/</li>
+<li>gunzip /usr/share/cups/model/Canon-LIPS-IVv-lips4v.ppd.gz</li>
+<li>/etc/init.d/cupsys restart</li>
+<li>lpadmin -p lp0 -E -v lpd://IPアドレス/p1 -m Canon-LIPS-IVv-lips4v.ppd</li>
+<li>http://localhost:631 でプリンタの設定の確認ができる</li>
+</ul>
+<h3><a name="label-20" id="label-20">[diary]RTCへの書き込み</a></h3><!-- RDLabel: "[diary]RTCへの書き込み" -->
+<p>うーん。割り込み処理中に重い処理があるようだ。これが原因か?(謎)</p>
+<h3><a name="label-21" id="label-21">[linux,java] jdk-1_5_0-linux-i586.bin</a></h3><!-- RDLabel: "[linux,java] jdk-1_5_0-linux-i586.bin" -->
+<p>試してみたが、debパッケージを作るところが動かない。とりあえず1.4.2-06でがまんする。unstable contribにあるjava-packageでmake-jpkgを実行。</p>
+<h3><a name="label-22" id="label-22">[linux]rcconf</a></h3><!-- RDLabel: "[linux]rcconf" -->
+<p>で、いらないサービスを停止してみる。これって全runlevelで同じ設定になるのかな。</p>
+<h3><a name="label-23" id="label-23">[java].antrc with tomcat4</a></h3><!-- RDLabel: "[java].antrc with tomcat4" -->
+<p>tomcat3ではなくtomcat4でコンパイルできるようにしてみた。(コメントアウトされているのがtomcat3版)</p>
+<pre>ANT_OPTS="-Drpmdir=/home/ohashi/build/rpm"
+ANT_ARGS="${ANT_ARGS}:${ANT_HOME}/lib"
+#ANT_ARGS="${ANT_ARGS}:/usr/share/tomcat/lib/common/servlet.jar"
+#ANT_ARGS="${ANT_ARGS}:/usr/share/tomcat/lib/common/core_util.jar"
+#ANT_ARGS="${ANT_ARGS}:/usr/share/tomcat/lib/container/jasper.jar"
+ANT_ARGS="${ANT_ARGS}:/usr/share/tomcat4/common/lib/servlet.jar"
+ANT_ARGS="${ANT_ARGS}:/usr/share/tomcat4/common/lib/jasper-compiler.jar"
+ANT_ARGS="${ANT_ARGS}:/usr/share/tomcat4/common/lib/jasper-runtime.jar"
+ANT_ARGS="${ANT_ARGS}:/usr/share/java/junit.jar"
+ANT_ARGS="${ANT_ARGS}:/usr/share/java/struts-1.1.jar"
+ANT_ARGS="-lib ${ANT_ARGS}"</pre>
+<h3><a name="label-24" id="label-24">[java]tomcat4</a></h3><!-- RDLabel: "[java]tomcat4" -->
+<p>うーん。なかなかtomcat3から4に上げるのは大変だなぁ。でももうちょっとで動きそうだ。お、cactus+StrutsTestCaseがやっと通るようになった。</p>
+<h2><a name="label-25" id="label-25">20041105</a></h2><!-- RDLabel: "20041105" -->
+<h3><a name="label-26" id="label-26">[linux]新PCへ移行</a></h3><!-- RDLabel: "[linux]新PCへ移行" -->
+<p>ふう。これでほぼ問題はなくなったな。</p>
+<pre>未 SH-4用コンパイラのインストール
+未 rpm3構築環境(chroot必要)
+未 ターゲットのRAMディスクイメージ作成環境(mknod root権限必要)
+未 自分専用のPukiWikiをインストール(apache2を入れる)
+未 社内用アンテナ(cronの設定)
+済 CD-R作成できるようにする(grubでscsi)
+済 愛用キーボードに繋ぎかえる(.Xmodmap)
+済 AMF受信用ftpユーザの設定
+済 ntpdateの設定(/etc/default/ntpdate)
+済 muttの文字消え問題(woodyのやつを入れる)
+済 openofficeのfont置換設定
+済 mozilla-firefoxのブックマークを移動
+済 sshdの設定(社内用なのでとりあえずpassword認証でよしとする)
+済 マウスのスクロールホイールに対応させる
+済 java関連パッケージ(ant, tomcat4等)のインストール
+済 j2sdkのインストール
+済 ランレベルエディタ(rcconf)で普段いらんやつを消す
+済 Sylpheed (news reader)
+済 w3mmeeでなぜかTABキーが効かない .w3mmee/keymap に keymap TAB NEXT_LINK追加
+済 uim-* を開発バージョンに上げる
+済 debian-jp の qkc</pre>
+<h3><a name="label-27" id="label-27">[linux]ホイールマウス</a></h3><!-- RDLabel: "[linux]ホイールマウス" -->
+<p>なんだかよくわからんが、Protocolの部分を ImPS/2, GlidePointPS/2, MouseManPlusPS/2, ExplorerPS/2 と順番に変えてみると ExplorerPS/2 でホイールが使えるようになった。もっと賢く見分ける方法はないものか。</p>
+<h3><a name="label-28" id="label-28">[linux]OpenOfficeフォント置換</a></h3><!-- RDLabel: "[linux]OpenOfficeフォント置換" -->
+<p>以下のフォントをsazanamiなどに置換するとよい。</p>
+<pre>Gothic
+Mincho
+MS Gothic
+MS Mincho
+ゴシック
+明朝
+ＭＳ ゴシック
+ＭＳ 明朝
+ＭＳ Ｐゴシック
+ＭＳ Ｐ明朝</pre>
+<h3><a name="label-29" id="label-29">[linux]sshd UsePAM</a></h3><!-- RDLabel: "[linux]sshd UsePAM" -->
+<p>UsePAM yesになっているとPasswordAuthentication noにしていてもパスワード認証が可能になるようだ。PAM任せということか。</p>
+<h3><a name="label-30" id="label-30">[linux,mutt]mutt文字化け</a></h3><!-- RDLabel: "[linux,mutt]mutt文字化け" -->
+<p>sargeやsidのmutt(1.5.6-20040722と20040907)はだめだ、日本語が文字化けする。ということでwoodyのmuttをinstallした。libdb3-util, libsasl7 は最新を使用。mutt, mutt-utf8はwoodyのものを使用した。mutt-utf8は不要かもしれないが一応入れた。</p>
+<h3><a name="label-31" id="label-31">[linux]cdrecord grub</a></h3><!-- RDLabel: "[linux]cdrecord grub" -->
+<p>dmesg|grep CDとするとどうやらCD-Rドライブはhdcのようだ。/boot/grub/menu.lstを編集し、kernel /boot/vmlinuz... の行に hdc=scsiを追加する。grubはliloみたいに書き込まなくてもいいのか、こりゃ便利だ。
+rebootして、cdrecord -scanbus。2,0,0 200) 'MATSHITA' と表示されたので、 /etc/default/cdrecord を編集、 CDR_DEVICE=matshita と書き換え matshita=	2,0,0	-1	-1	"" を追加。cdrecord -eject で反応があることを確認して完了。</p>
+<h2><a name="label-32" id="label-32">20041108</a></h2><!-- RDLabel: "20041108" -->
+<h3><a name="label-33" id="label-33">[linux]新PCへ移行</a></h3><!-- RDLabel: "[linux]新PCへ移行" -->
+<p>よく見ると新PCにはFDドライブがないじゃないか。これは不便。ということで移植。</p>
+<pre>未 SH-4用コンパイラのインストール
+未 rpm3構築環境(chroot必要)
+未 ターゲットのRAMディスクイメージ作成環境(mknod root権限必要)
+未 自分専用のPukiWikiをインストール(apache2を入れる)
+未 社内用アンテナ(cronの設定)
+未 /etc/fstab
+済 /etc/hosts
+済 FDドライブ移植</pre>
+<h3><a name="label-34" id="label-34">[linux]gaimでMSN</a></h3><!-- RDLabel: "[linux]gaimでMSN" -->
+<p>gaimのMSNオプションでログインサーバmessenger.hotmail.com、ポート番号443にして、HTTPメソッドを利用する。で接続できるようになりました。どうもありがとう。ん!?急にエラーがでるようになって使えなくなった。よーわからん。</p>
+<h3><a name="label-35" id="label-35">[linux]液晶モニタ</a></h3><!-- RDLabel: "[linux]液晶モニタ" -->
+<p>どうやら液晶モニタが壊れていたのではなくて、本体側のビデオカード(というかマザーボード)が壊れていて画面が見にくくなっていたようだ。人間っていうのは不思議なもので、自分にとって都合の良い方に判断しがちである。ということで新液晶モニタを支給してもらったのでウハウハである。</p>
+<h3><a name="label-36" id="label-36">[linux]qkc -O</a></h3><!-- RDLabel: "[linux]qkc -O" -->
+<p>Antのexecやapplyタスクから呼ばれたときは標準出力がリダイレクトされていて、-Oオプションが付いたときの動作となってしまう。これを防ぐためにシェルスクリプトをかまして、そこで /dev/tty にリダイレクトしてやればOK。</p>
+<h3><a name="label-37" id="label-37">[music]Baby Boo</a></h3><!-- RDLabel: "[music]Baby Boo" -->
+<p>朝ラジオでBaby Booというアーティストの曲がかかっていた。ちょっといいかもしれん。1曲しか聴いてないからなんとも言えんけど。</p>
+<h2><a name="label-38" id="label-38">20041109</a></h2><!-- RDLabel: "20041109" -->
+<h3><a name="label-39" id="label-39">[linux]ack -cで漢字コード判定</a></h3><!-- RDLabel: "[linux]ack -cで漢字コード判定" -->
+<p>pipeを通して使えるのでfile2より便利。</p>
+<h3><a name="label-40" id="label-40">[linux]仮想デスクトップ</a></h3><!-- RDLabel: "[linux]仮想デスクトップ" -->
+<p>いままで仮想デスクトップっていうのを使ってなかったけど、使ってみると便利かもしれない。Alt+TABでウィンドウの巡回を行っていたけど、Alt+数字で各仮想デスクトップに移動できるようにしておけばAlt+TABを何回も押さなくて済む。ついでにAlt+Fでフルスクリーンに、Alt+Tでタイトルバーなしに、Alt+Pで前面に、Alt+Vで縦に最大化、Alt+Xで最大化、てな感じにしてみるとかなり快適になった。GUIなアプリではAltでメニューを選択できるけど、私はGUIをあまり使わないのでこれでいいのかもしれない。</p>
+<h2><a name="label-41" id="label-41">20041110</a></h2><!-- RDLabel: "20041110" -->
+<h3><a name="label-42" id="label-42">[linux]新PCへ移行</a></h3><!-- RDLabel: "[linux]新PCへ移行" -->
+<p>まだやることが少し残っているな。</p>
+<pre>未 SH-4用コンパイラのインストール
+未 rpm3構築環境(chroot必要)
+未 ターゲットのRAMディスクイメージ作成環境(mknod root権限必要)
+未 自分専用のPukiWikiをインストール(apache2を入れる)
+未 社内用アンテナ(cronの設定)
+未 改ページ印刷がおかしい
+済 sambaサーバ
+済 /etc/fstab</pre>
+<h3><a name="label-43" id="label-43">[linux]mp3spltというアプリ</a></h3><!-- RDLabel: "[linux]mp3spltというアプリ" -->
+<p>テープやMDをmp3化するのには便利かも。</p>
+<h3><a name="label-44" id="label-44">[linux]改ページ印刷</a></h3><!-- RDLabel: "[linux]改ページ印刷" -->
+<p>が変だ。改ページが認識されていないのか? e2ps側の問題か? 前は e2ps 4.30-2 、今は e2ps 4.34-3。戻してみたが、問題は解決せず。CUPS周りの問題かな。前はgs側でLIPS4vへ変換してたからいけてたのかな。</p>
+<h3><a name="label-45" id="label-45">[linux]mount smbfs user</a></h3><!-- RDLabel: "[linux]mount smbfs user" -->
+<p>sambaで文字コード変換がうまくいかない件、やっと原因がわかった。/etc/fstabのuserオプションをONにしているとsmbfsでiocharsetやcodepageがうまく動作しないようだ。む、noautoを付けてもダメっぽいな。</p>
+<h3><a name="label-46" id="label-46">[linux]apache2 userdir</a></h3><!-- RDLabel: "[linux]apache2 userdir" -->
+<p>なんだかよくわからないが、/etc/apache2/mods-available/userdir.confのOptionsにExecCGIを追加すればCGIが動くようになった。あとは、/etc/apache2/apache2.confのDirectoryIndexにいろいろ追加したり、AddHandlerに.rbや.phpを追加したり。</p>
+<h3><a name="label-47" id="label-47">[linux]apache2 + php4</a></h3><!-- RDLabel: "[linux]apache2 + php4" -->
+<p>php4-cgiとか libapache2-mod-php4 が必要っぽい。pukiwiki.phpの先頭に #!/usr/bin/php4-cgi を追加し、chmod a+x pukiwiki.php とすれば実行できたが、こんなんでいいのかな。よくわからん。</p>
+<h3><a name="label-48" id="label-48">[wiki]wema</a></h3><!-- RDLabel: "[wiki]wema" -->
+<p>http://www.mikihoshi.com/wema/
+ローカルのapache2で動くように入れてみた。こりゃ面白いな。なんかに使えそうだけど、何に使おうか。</p>
+<h3><a name="label-49" id="label-49">[vim]chalice</a></h3><!-- RDLabel: "[vim]chalice" -->
+<p>自宅のPCに入れてみた。会社のPCにも入れてみよう。</p>
+<h3><a name="label-50" id="label-50">[linux]sambaメモ</a></h3><!-- RDLabel: "[linux]sambaメモ" -->
+<p>smbclient -L localhost で自サーバの状態がわかる。smbpassword username でpasswordの設定。/etc/samba/smb.confに以下追加。あと、いらん共有を外して完了。</p>
+<pre>[global]
+   #client code page = 932 ←前はこれでいけてた。
+   #coding system = EUC    ←前はこれでいけてた。
+   unix charset = EUCJP-MS
+   display charset = CP932
+   dos charset = CP932
+..snip..
+[samba]
+   comment = for samba
+   browseable = yes
+   writable = yes
+   path = /hoge/hoge</pre>
+<h2><a name="label-51" id="label-51">20041111</a></h2><!-- RDLabel: "20041111" -->
+<h3><a name="label-52" id="label-52">[diary]ののちゃん</a></h3><!-- RDLabel: "[diary]ののちゃん" -->
+<p>最近、朝日新聞の「ののちゃん」の様子がおかしい。お化けネタばっかりになっている。</p>
+<h3><a name="label-53" id="label-53">[linux]Z80のコンパイラ</a></h3><!-- RDLabel: "[linux]Z80のコンパイラ" -->
+<p>sdccというパッケージ。sdcc -mz80 foo.c のようにコンパイルするようだ。</p>
+<h3><a name="label-54" id="label-54">[uim,im]prime suikyo</a></h3><!-- RDLabel: "[uim,im]prime suikyo" -->
+<p>primeはlibsuikyo-ruby1.8に依存、これはsuikyo-tableに依存というかんじ。キーテーブルはこのsuikyo-tableから生成できるようにすればよいということか。/usr/share/suikyo/conv-tableにいろいろあるな。さすがにnicolaはなさそげ。「nx27=ん」というのはここからきているのか。 http://taiyaki.org/suikyo/</p>
+<h3><a name="label-55" id="label-55">[linux]rpm strip</a></h3><!-- RDLabel: "[linux]rpm strip" -->
+<p>rpmにすると毎回実行ファイルのmd5が変わる。たぶんstripして、サイズを減らしているのだと思う。</p>
+<h3><a name="label-56" id="label-56">[linux]ide-scsi /dev/scd0</a></h3><!-- RDLabel: "[linux]ide-scsi /dev/scd0" -->
+<p>CD-R焼くところまではセットアップしていたけど、マウントする設定を忘れていた。/dev/cdromのシンボリックリンクを/dev/scd0に向け、/etc/fstabを/dev/hdcを/dev/cdromに修正。マウントポイントは/media/cdrom0。</p>
+<h2><a name="label-57" id="label-57">20041112</a></h2><!-- RDLabel: "20041112" -->
+<h3><a name="label-58" id="label-58">[linux]XMLで検証記録を</a></h3><!-- RDLabel: "[linux]XMLで検証記録を" -->
+<p>kxmleditorを試す。XMLをHTMLに変換するには何がいいかな。xalanというのがあるらしい。おお、Antからxalanを呼べるではないか。DTDの書きかたを知らないのでDTDなしで試してみた。DTDを書けばルールを定義できるので便利かも。</p>
+<h3><a name="label-59" id="label-59">[vim]chalice</a></h3><!-- RDLabel: "[vim]chalice" -->
+<p>会社のPCにも入れてみよう。必要なのは vim curl gzip qkc(debian-jp) といったところか。とりあえず ~/vim_macros/chalice にインストール。 plugin/chalice.vimの「〜」の文字を取り除けば一応動作した。自宅で使っているときに日本語が変になったときがあったが、.vim/chalice を消してもう一度取り直せば問題がなくなった。今思えばRキーを押せばリロードされて直ったのかもしれない。ちなみに半角カナが読める設定でないと乱れる。自分の環境ではmltermで見るとOK。rxvtはmplusフォントで設定しているのでダメっぽい。板によっては文字化けするなあ。あ、fileencodingsにcp932を含める必要があるのか。sjisだとダメみたい。 let s:cmd_conv = 'nkf -e -Z' とすれば半角カナとか機種依存文字を変換できるのかな。</p>
+<h2><a name="label-60" id="label-60">20041115</a></h2><!-- RDLabel: "20041115" -->
+<h3><a name="label-61" id="label-61">[linux]新PCへ移行</a></h3><!-- RDLabel: "[linux]新PCへ移行" -->
+<pre>未 SH-4用コンパイラのインストール
+未 rpm3構築環境(chroot必要)
+未 自分専用のPukiWikiをインストール(apache2を入れる)
+未 社内用アンテナ(cronの設定)
+未 改ページ印刷がおかしい
+済 1280x1024での表示
+済 ターゲットのRAMディスクイメージ作成環境(mknod root権限必要)
+済 CD-Rをmount可能に</pre>
+<h3><a name="label-62" id="label-62">[uim,im]T-Code</a></h3><!-- RDLabel: "[uim,im]T-Code" -->
+<p>最新でdebを作成してインストール。あと自分用(実験用)のパッチが少し入っている。"]"+T-CodeシーケンスでT-Codeの入力ができるようにしてみた。T-Codeの漢字を9文字ほど覚えた。ひらがなとカタカナはAZIKで入力するので覚える予定はない。"]"は親指で押せるように.Xmodmapを変えてみた。"]"だとSKKの変換開始として処理できないのでqにでも割り当てた方がよいかも。あ、よく考えたら"]"だと"「"の閉じが打てないな。qに割り当てたら交ぜ書きで"仕よう"を"仕様"に変換とかできるし、いいかも。"ん"はあきらめるか。</p>
+<h3><a name="label-63" id="label-63">[uim,im]nicola</a></h3><!-- RDLabel: "[uim,im]nicola" -->
+<p>nicolaで入力できるようにテーブルを作ってみた。でもprefixタイプなので同時打鍵はサポートしていない。それにしても1ストローク系(というかローマ字ベースでない系)はSKKとの相性が悪いな。しばらくはAZIKから抜けだせそうにない。</p>
+<h3><a name="label-64" id="label-64">[uim,im]mlterm ハングル入力</a></h3><!-- RDLabel: "[uim,im]mlterm ハングル入力" -->
+<p>mltermでハングルなどを打つにはexport LANG=ja_JP.UTF-8にした状態でmltermを立ち上げ、uim-im-switcherで切り替えるとよいみたい。SHIFT+SPACEを押して適当にタイピングすればハングルが表示される。これでヨン様もばっちりということか(意味不明)。ちなみに私はハングルは読めません。</p>
+<h3><a name="label-65" id="label-65">[linux]1280x1024 vesa</a></h3><!-- RDLabel: "[linux]1280x1024 vesa" -->
+<p>vesaでは1024x768しか使えないのかと勘違いしていた。HorizSync 28-50 ってなっていたところを HorizSync 28-75 と範囲を広げると見事に1280x1024で表示された。ずっと1024x768で使っていたので、むっちゃ広く感じる。/var/log/XFree86.0.logを見ると (II) VESA(0): #0: hsize: 1280  vsize 1024  refresh: 60  vid: 32897 と残っていたので、これ(refresh: 60の部分)がヒントとなった。</p>
+<h2><a name="label-66" id="label-66">20041116</a></h2><!-- RDLabel: "20041116" -->
+<h3><a name="label-67" id="label-67">[mutt]重要メールは色を変える</a></h3><!-- RDLabel: "[mutt]重要メールは色を変える" -->
+<p>さすがに左端に"!"と表示されるだけだと判りにくいので、色を付けてみる。~/.mutt/muttrc に color index yellow default ~F を追加。</p>
+<h3><a name="label-68" id="label-68">[uim]uim-xim</a></h3><!-- RDLabel: "[uim]uim-xim" -->
+<p>rxvtなどをリサイズしたときにuim-ximの変換窓が追従しないという問題がようやく解決できた。デバッグのやり方もちょっとわかってきたような気がする。差分を整理してMLへ報告するか。svn diffしようとしたけど、svnサーバが死んでるようだ。</p>
+<h3><a name="label-69" id="label-69">[linux,uim]fluxbox + uim-toolbar-gtk-systray</a></h3><!-- RDLabel: "[linux,uim]fluxbox + uim-toolbar-gtk-systray" -->
+<p>KDEは重いのでfluxboxに乗り換えてみた。uim-toolbar-gtk-systrayはやはりサイズが変だが、.fluxbox/initでsession.screen0.toolbar.height: 40といった具合に大きくしてやれば使えないこともない。これも直したいな。もしかして、fluxbox側の問題なのかな。</p>
+<h3><a name="label-70" id="label-70">[debian]debuildとdpkg-buildpackage</a></h3><!-- RDLabel: "[debian]debuildとdpkg-buildpackage" -->
+<p>違いがよくわからん。-nc -b のオプションをつけると高速にビルドできるようだ。(cleanをしない。バイナリのみ生成。)</p>
+<h2><a name="label-71" id="label-71">20041117</a></h2><!-- RDLabel: "20041117" -->
+<h3><a name="label-72" id="label-72">[linux]flashplugin-nonfree</a></h3><!-- RDLabel: "[linux]flashplugin-nonfree" -->
+<p>このパッケージをインストールするとプラグインのインストールを半自動でやってくれる。これは便利だな。</p>
+<h3><a name="label-73" id="label-73">[vim]置換</a></h3><!-- RDLabel: "[vim]置換" -->
+<p>2ch の KoRoNさんのノウハウより、* でカーソル上のキーワードを拾って、:%s//hoge/g で置換できるとのこと。確かにできる。これは便利かも。</p>
+<h3><a name="label-74" id="label-74">[diary]postcards.com</a></h3><!-- RDLabel: "[diary]postcards.com" -->
+<p>グリーティングカードが来ていると英語のメールが来た。怪しいなあ、と思いつつもそのURLをコピーしてみるとCard Not Foundのエラーが表示された。HTMLメールを見直してみると、アンカータグのhref=の部分と表示されているURLが違っていた。hrefの方はIPアドレスを直接書いてあり、ポート番号も80ではなく8180となっている。怪しすぎる。</p>
+<h2><a name="label-75" id="label-75">20041118</a></h2><!-- RDLabel: "20041118" -->
+<h3><a name="label-76" id="label-76">[uim]uim-xim問題続き</a></h3><!-- RDLabel: "[uim]uim-xim問題続き" -->
+<p>MLに投げてみたところ、uim-ximの問題ではないとのこと。rxvtやmlterm側の問題らしい。mlterm 2.9.0ではこの問題が修正されているとのこと。しかし、Debian sargeにはmlterm 2.9.0 が入るかどうかわからないし、rxvtも修正されているかどうか不明だ。uim-ximユーザとして考えるとadhocでもいいから対策版が欲しいのではないかと思う。さて、どうしたものか。uim-ximの起動オプションでadhocモードを作るとかかなあ。ktermはどうなんだろうか。それにしてもuimの開発チームはみんなどんなターミナルを使っているのだろう。常に最新版を追い掛けているのかな。</p>
+<h3><a name="label-77" id="label-77">[linux]rxvt + w3mmee-img</a></h3><!-- RDLabel: "[linux]rxvt + w3mmee-img" -->
+<p>スクロールすると画像が乱れるな。mltermに乗り換えるか。</p>
+<h3><a name="label-78" id="label-78">[linux,uim]mlterm</a></h3><!-- RDLabel: "[linux,uim]mlterm" -->
+<p>しゃーないのでこれも独自でCVS版最新のdebを作るか。だんだんハマってきた感じがするな。uimも組み込みで使えそうな感じがするし、まあいいか。</p>
+<h3><a name="label-79" id="label-79">[diary]アンテナ</a></h3><!-- RDLabel: "[diary]アンテナ" -->
+<p>たださんのアンテナに登録されたみたい、どうもありがとうございます。これでアクセス数が増えるかな。</p>
+<h2><a name="label-80" id="label-80">20041119</a></h2><!-- RDLabel: "20041119" -->
+<h3><a name="label-81" id="label-81">[uim]nicola対応に挑戦</a></h3><!-- RDLabel: "[uim]nicola対応に挑戦" -->
+<p>skk.scm の skk-sokuon-shiin-char? を改造。こんな感じか。</p>
+<pre>(define skk-sokuon-shiin-char?
+  (lambda (c)
+    (and (alphabet-char? c)
+      (and
+      (&lt; c 97)      ;; a
+      (&gt; c 122)     ;; z
+        ))))</pre>
+<h3><a name="label-82" id="label-82">[linux]SJIS環境へtelnet</a></h3><!-- RDLabel: "[linux]SJIS環境へtelnet" -->
+<p>mlterm -km=sjis -e telnet hoge みたいな感じでSJISの表示はできるのだが、漢字入力ができない。...と思ったら、mshell(OS-9/68Kのshell)が対応していないだけだった。umacs(OS-9/68Kのエディタ)で入力したらいけたよ。</p>
+<h2><a name="label-83" id="label-83">20041122</a></h2><!-- RDLabel: "20041122" -->
+<h3><a name="label-84" id="label-84">[linux]SH-4 linuxとbusybox</a></h3><!-- RDLabel: "[linux]SH-4 linuxとbusybox" -->
+<p>仕事で開発中の装置で使う。busyboxは最新にアップデートしておいた。</p>
+<h3><a name="label-85" id="label-85">[diary]</a></h3><!-- RDLabel: "[diary]" -->
+<p>お、アンテナが1つ増えたな。最近はゲームネタをほとんど書いてなくてすんません。</p>
+<h2><a name="label-86" id="label-86">20041124</a></h2><!-- RDLabel: "20041124" -->
+<h3><a name="label-87" id="label-87">[game]モンスターハンターG</a></h3><!-- RDLabel: "[game]モンスターハンターG" -->
+<p>4990YENで2005/01/20発売らしい。この値段なら買ってもいいかも。</p>
+<h3><a name="label-88" id="label-88">[mutt]mutt+imputでBCC</a></h3><!-- RDLabel: "[mutt]mutt+imputでBCC" -->
+<p>うまく送信されないな。mutt側かimput側か切り分けねば。</p>
+<h3><a name="label-89" id="label-89">[java]html:〜というタグ</a></h3><!-- RDLabel: "[java]html:〜というタグ" -->
+<p>を使うとソースがでかくなり、動作も重たいな。普通のHTMLタグで書いた方がよさそうだ。html:linkとかhtml:formはjsessionidを引き継ぐために必要なのかな。あとhtml:linkを普通のaタグに変更した場合、ベースとなるサーブレット名(foo.warなら"foo/"の部分)も必要っぽい。汎用性がなくなるが、高速化されるなら、html:〜を使わないほうがよさそうだ。</p>
+<h2><a name="label-90" id="label-90">20041125</a></h2><!-- RDLabel: "20041125" -->
+<h3><a name="label-91" id="label-91">[java]jsessionid</a></h3><!-- RDLabel: "[java]jsessionid" -->
+<p>やっとわかった。"/サーブレット名/foo.do;jsessionid=xxx"という文字列を得るには response.encodeURL(request.getContextPath() + "/foo.do") とすればよいのか。これで html:link, html:form タグとおさらばできそうだ。あ、もっといい方法があった。response.encodeRedirectURL("foo.do") とすればよいみたい。しかし、Struts風に書けば、重くなるというのはいやだな。Strutsの利点が台無しだ。Struts1.1系では改善されているのだろうか。(今は1.0系を使ってる。)</p>
+<h2><a name="label-92" id="label-92">20041129</a></h2><!-- RDLabel: "20041129" -->
+<h3><a name="label-93" id="label-93">[game,ruby]るびろぐ</a></h3><!-- RDLabel: "[game,ruby]るびろぐ" -->
+<p>Rubyでのlogライブラリかと思ってたら、実はネットワーク対応のrogueらしい。mangbandみたいなやつですな。angband系じゃないので、好みかも。今度やってみようかな。</p>
+<h3><a name="label-94" id="label-94">[diary]Windowsをサーバとして使用した場合のライセンス</a></h3><!-- RDLabel: "[diary]Windowsをサーバとして使用した場合のライセンス" -->
+<p>ややこしいな。できればこんなややこしいOSは使いたくない。でも仕事だからしょうがないか。</p>
+<h3><a name="label-95" id="label-95">[diary]Yahoo路線情報</a></h3><!-- RDLabel: "[diary]Yahoo路線情報" -->
+<p>よく使う駅を50まで登録できるみたい。登録しておくと便利かも。</p>
+<h3><a name="label-96" id="label-96">[linux]telnetとnc</a></h3><!-- RDLabel: "[linux]telnetとnc" -->
+<p>echo 'GET /'|telnet host 80とかやるとダメで、echo 'GET /'|nc host 80ならいける。telnetしか入ってないから、telnetでやりたいのだが...</p>
+<h2><a name="label-97" id="label-97">20041130</a></h2><!-- RDLabel: "20041130" -->
+<h3><a name="label-98" id="label-98">[diary]車検証にQRコード</a></h3><!-- RDLabel: "[diary]車検証にQRコード" -->
+<p>よく見ると付いているな。なんの情報が入っているのだろうか。これって軽自動車だけなのかなぁ。ググってみると車台番号や型式などが入っているとのこと。</p>
+<h3><a name="label-99" id="label-99">[linux]gonzuiソースコードのサーチエンジン</a></h3><!-- RDLabel: "[linux]gonzuiソースコードのサーチエンジン" -->
+<p>http://namazu.org/~satoru/gonzui/
+ソースコードのサーチエンジンとのこと。</p>
+
+</body>
+</html>

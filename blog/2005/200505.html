@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20050510</a></h2><!-- RDLabel: "20050510" -->
+<h3><a name="label-1" id="label-1">[english]速聴</a></h3><!-- RDLabel: "[english]速聴" -->
+<p>CDが2枚入った英語の本を買う。片方のCDは2倍速と3倍速で収録されている。聞いてみたが、確かに脳が聞きとろうとがんばっている感じがする。日本語の3倍速なら聞きとれるようになるような気がした。自分でお手軽に倍速CD-Rが作れたら面白いかも。ツールを組
+み合わせたらできそうな気がするが、今はやり方がわからない。</p>
+<h3><a name="label-2" id="label-2">[game]シレン2</a></h3><!-- RDLabel: "[game]シレン2" -->
+<p>鬼ヶ島25階、鬼にやられる。</p>
+<h3><a name="label-3" id="label-3">[game]囲碁</a></h3><!-- RDLabel: "[game]囲碁" -->
+<p>かんたんな手筋の本を買った。打倒GnuGo。手筋と詰碁の違いがいまいちわからない。</p>
+<h3><a name="label-4" id="label-4">[xp]ttyrecによるプログラミングトレーニング</a></h3><!-- RDLabel: "[xp]ttyrecによるプログラミングトレーニング" -->
+<p>ができないか考えてみたい。質のよいトレーニングビデオができたら、それを渡して自習してもらうといったことが可能かも。社内資産が社外に流出したらちょっと悲しいが。それかオープンな教材として、有志が集まって教材を増やすという手法も考えられるなぁ。</p>
+<p>http://namazu.org/~satoru/tty/index.html.ja ここにある Introduction to Debian packaging というのは考えているものに近いなあ。</p>
+<h2><a name="label-5" id="label-5">20050511</a></h2><!-- RDLabel: "20050511" -->
+<h3><a name="label-6" id="label-6">[linux][english][music]速聴と耳コピとsox</a></h3><!-- RDLabel: "[linux][english][music]速聴と耳コピとsox" -->
+<p>soxでスピード変更とピッチシフトができそうだ。"cents"って何だろう。1200 centsで 1 octaveということなのかな。 sox infile.ogg outfile.ogg speed -c 1200 pitch -1200 みたいな感じかな。聴くには sox infile.ogg -t ossdsp -w -s /dev/dsp みたいな感じか。これを使って速聴用のCD-R Audioをいっぱい作ろうかな。遅くすれば耳コピ用にも使えるなぁ。</p>
+<h3><a name="label-7" id="label-7">[xp]ttyplayネタ</a></h3><!-- RDLabel: "[xp]ttyplayネタ" -->
+<p>なるべくttyrecで保存して役に立ちそうかどうか考えてから行動するようにしようと思う。せっかくタイピングするのだから、録画しておいて損はないと思うので。(ttyrecはxpカテゴリではないような気もするが、まあいいか。)</p>
+<h3><a name="label-8" id="label-8">[linux]zsh</a></h3><!-- RDLabel: "[linux]zsh" -->
+<p>zshよさげだなぁ。bashから乗り換えようかな。</p>
+<h2><a name="label-9" id="label-9">20050512</a></h2><!-- RDLabel: "20050512" -->
+<h3><a name="label-10" id="label-10">[linux][english]速聴用データ作成</a></h3><!-- RDLabel: "[linux][english]速聴用データ作成" -->
+<p>英会話CDをリッピングして、速聴用データを作成していみた。しかし、なぜか3トラックまでしかリッピングできず。2倍と4倍のoggに変換してみた。市販の倍速CDと比べると少し音質が悪くなるな。effectは stretch .5 とすればピッチを変えずにスピードが2倍になるようだ。speedとpitchの組み合わせよりもこっちの方が簡単だ。再生もsoxコマンドを使わずにplayを使う方が簡単だ。</p>
+<h3><a name="label-11" id="label-11">[linux]cdparanoia</a></h3><!-- RDLabel: "[linux]cdparanoia" -->
+<p>jack経由でしか使ったことなかったが、会社のPCにjack(というかpython)がうまくapt-get install できなかったので、とりあえずcdparanoiaを単体で使ってみることに。cdparanoiaでヘルプが表示され、それのexamplesによるとcdparanoia -vsQ でCDのトラック構成を確認、cdparanoia -B で全トラックをリッピング、という感じみたい。自宅でリッピングできなかったCDは会社ではリッピングできた。家でもjackを経由しなければリッピングできるのかもしれない。</p>
+<h3><a name="label-12" id="label-12">[english]2-paraのmp3</a></h3><!-- RDLabel: "[english]2-paraのmp3" -->
+<p>お、サーバに残るようになったのか。wget -i URLs.txt でGETしておいた。</p>
+<h3><a name="label-13" id="label-13">[linux]zshと日本語</a></h3><!-- RDLabel: "[linux]zshと日本語" -->
+<p>bashで日本語を入力したときはBSで1文字ずつ消せるが、zshだと乱れるようだ。まあ大した問題ではないのだけれど。</p>
+<h2><a name="label-14" id="label-14">20050513</a></h2><!-- RDLabel: "20050513" -->
+<h3><a name="label-15" id="label-15">[linux]zsh tips</a></h3><!-- RDLabel: "[linux]zsh tips" -->
+<p>zshは便利だ。ということで、いろいろメモ。</p>
+<pre>bindkey -e               # emacsライクに
+bindkey '^]' vi-cmd-mode # でも CTRL+] でviモードへ
+KEYTIMEOUT=1             # (ESCに割り当てると ESC の機能が使えないので...)
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[-_./]=* r:|=*'
+# ↑これは便利! AaaBbb.java.orig なら a.j.o&lt;TAB&gt; で補間可能に!
+autoload -U compinit
+compinit
+_cache_users=(guest ohac)
+_cache_hosts=(hoge foo)  # ssh o&lt;TAB&gt;f&lt;TAB&gt; で ohac@foo に補間される</pre>
+<h2><a name="label-16" id="label-16">20050518</a></h2><!-- RDLabel: "20050518" -->
+<h3><a name="label-17" id="label-17">[vim]特定ディレクトリのみSJIS判別</a></h3><!-- RDLabel: "[vim]特定ディレクトリのみSJIS判別" -->
+<p>普段は副作用のあるSJIS判別を止めておきたいが、あるディレクトリ以下にはSJISのファイルが大量にあるときは以下のような設定をしておけば便利。カレントディレクトリに依存するため完璧ではないけど、結構実用的だと思う。</p>
+<pre>if getcwd() =~ 'hoge'
+  set fileencodings=sjis
+endif</pre>
+<h3><a name="label-18" id="label-18">[linux]アスキーアート</a></h3><!-- RDLabel: "[linux]アスキーアート" -->
+<p>convert hoge.png hoge.pbm してから pbmtoascii hoge.pbm でアスキーアートが作成できる。メールのx-faceヘッダをターミナルに表示したりするときに便利(便利なのか?)。</p>
+<h2><a name="label-19" id="label-19">20050520</a></h2><!-- RDLabel: "20050520" -->
+<h3><a name="label-20" id="label-20">[diary]フーリエの冒険</a></h3><!-- RDLabel: "[diary]フーリエの冒険" -->
+<p>http://www.pro.or.jp/~fuji/otherbooks/fft.hippo.html (kzkさんの日記より)。仕事柄、フーリエ変換を使うのでメモ。</p>
+<h3><a name="label-21" id="label-21">[game]glGo</a></h3><!-- RDLabel: "[game]glGo" -->
+<p>http://www.pandanet.co.jp/English/glgo/ debパッケージもあるようだ。libsdl-ttf2.0-0とlibsdl-image1.2をインストールすると動いた。3Dでも一応動作した。遅いけど。これはビデオカードのセッティングの問題であろう。</p>
+<h2><a name="label-22" id="label-22">20050525</a></h2><!-- RDLabel: "20050525" -->
+<h3><a name="label-23" id="label-23">[vim]TABをspaceに</a></h3><!-- RDLabel: "[vim]TABをspaceに" -->
+<p>":set expandtab" した後に ":%retab" する。前にもメモしたような気がするが、まあいいか。</p>
+<h3><a name="label-24" id="label-24">[linux]e2psで改ページしない</a></h3><!-- RDLabel: "[linux]e2psで改ページしない" -->
+<p>http://lists.debian.or.jp/debian-users/200409/msg00260.html これかな? e2ps hoge.txt | sed -e '1s/ EPSF-1.2//' &gt;hoge.ps でうまく改ページされる ps が生成された。めでたし。</p>
+<h2><a name="label-25" id="label-25">20050527</a></h2><!-- RDLabel: "20050527" -->
+<h3><a name="label-26" id="label-26">[diary]Search IRC</a></h3><!-- RDLabel: "[diary]Search IRC" -->
+<p>http://searchirc.com/ こういうのを使えば便利かも。</p>
+<h2><a name="label-27" id="label-27">20050530</a></h2><!-- RDLabel: "20050530" -->
+<h3><a name="label-28" id="label-28">[diary]Skype</a></h3><!-- RDLabel: "[diary]Skype" -->
+<p>使ってみた。相手がいないので、echo123にcallして終了。自分の声が返ってくるのが遅いけど、こんなものなのかなぁ。ヘッドセットマイクは390円だった。安いなぁ。</p>
+<h3><a name="label-29" id="label-29">[english]英語chat</a></h3><!-- RDLabel: "[english]英語chat" -->
+<p>仕事で上海の人と英語で(Skypeで)チャットすることになった。うーん大変。練習になっていいけど。</p>
+
+</body>
+</html>

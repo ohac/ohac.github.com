@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">2007-08-18</a></h2><!-- RDLabel: "2007-08-18" -->
+<h3><a name="label-1" id="label-1">ajaxterm UTF-8 patch</a></h3><!-- RDLabel: "ajaxterm UTF-8 patch" -->
+<p>This patch is not perfect yet. But I can use some Japanese characters with it.</p>
+<pre>#
+--- ajaxterm.py.orig	2007-08-18 03:34:08.000000000 +0900
++++ ajaxterm.py	2007-08-18 03:34:15.000000000 +0900
+@@ -87,9 +87,9 @@
+ 			if i==0x0a or (i&gt;32 and i&lt;127) or i&gt;160:
+ 				self.trhtml+=chr(i)
+ 			elif i&lt;=32:
+-				self.trhtml+="\xa0"
++				self.trhtml+=" "
+ 			else:
+-				self.trhtml+="?"
++				self.trhtml+=chr(i)
+ 	def reset(self,s=""):
+ 		self.scr=array.array('i',[0x000700]*(self.width*self.height))
+ 		self.st=0
+@@ -342,7 +342,7 @@
+ 			span+=chr(c)
+ 			if i%w==w-1:
+ 				span+='\n'
+-		r='&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;&lt;pre class="term"&gt;%s&lt;/pre&gt;'%r
++		r='&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;pre class="term"&gt;%s&lt;/pre&gt;'%r
+ 		if self.last_html==r:
+ 			return '&lt;?xml version="1.0"?&gt;&lt;idem&gt;&lt;/idem&gt;'
+ 		else:</pre>
+
+</body>
+</html>

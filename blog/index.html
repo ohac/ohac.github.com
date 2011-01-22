@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<p><link rel="alternate" type="application/rss+xml" title="RSS" href="http://ohac.pun.jp/blog/rss.rdf">
+<a href="rss.rdf">RSS</a></p>
+<h1><a name="label-0" id="label-0">OhaC's Creative Studio</a></h1><!-- RDLabel: "OhaC's Creative Studio" -->
+<p>This is OhaC's blog. (OhaC = oh-ha-see)
+I record what I thought and what I want to memorize.</p>
+<h2><a name="label-1" id="label-1">2008-03-02</a></h2><!-- RDLabel: "2008-03-02" -->
+<h3><a name="label-2" id="label-2">はてなダイアリーに移動</a></h3><!-- RDLabel: "はてなダイアリーに移動" -->
+<p>日記は<a href="http://d.hatena.ne.jp/ohac/">はてなダイアリー</a>で書くことに決めましたので、よろしくお願いします。ADAM Rental Web はリポジトリ、過去の日記、実験用とします。</p>
+<h2><a name="label-3" id="label-3">2007-12-30</a></h2><!-- RDLabel: "2007-12-30" -->
+<h3><a name="label-4" id="label-4">ohac.pun.jp に引越し</a></h3><!-- RDLabel: "ohac.pun.jp に引越し" -->
+<p>自宅サーバーが不安定なのでレンタルサーバーをずっと調べていました。
+sshが使えてCGIでpythonとrubyが使えるという条件で調べた結果、
+<a href="http://adam.ne.jp/">ADAM Rental Web</a> に落ち着きました。</p>
+<p>このサーバーはFreeBSDらしく、MercurialのCGIを動作させるのにちょっと苦労
+しましたが、MercurialのFreeBSD用バイナリを展開して、*.soを拝借すればちゃんと
+動きました。</p>
+<h2><a name="label-5" id="label-5">2007-08-18</a></h2><!-- RDLabel: "2007-08-18" -->
+<h3><a name="label-6" id="label-6">ajaxterm UTF-8 patch</a></h3><!-- RDLabel: "ajaxterm UTF-8 patch" -->
+<p>This patch is not perfect yet. But I can use some Japanese characters with it.</p>
+<pre>#
+--- ajaxterm.py.orig	2007-08-18 03:34:08.000000000 +0900
++++ ajaxterm.py	2007-08-18 03:34:15.000000000 +0900
+@@ -87,9 +87,9 @@
+ 			if i==0x0a or (i&gt;32 and i&lt;127) or i&gt;160:
+ 				self.trhtml+=chr(i)
+ 			elif i&lt;=32:
+-				self.trhtml+="\xa0"
++				self.trhtml+=" "
+ 			else:
+-				self.trhtml+="?"
++				self.trhtml+=chr(i)
+ 	def reset(self,s=""):
+ 		self.scr=array.array('i',[0x000700]*(self.width*self.height))
+ 		self.st=0
+@@ -342,7 +342,7 @@
+ 			span+=chr(c)
+ 			if i%w==w-1:
+ 				span+='\n'
+-		r='&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;&lt;pre class="term"&gt;%s&lt;/pre&gt;'%r
++		r='&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;pre class="term"&gt;%s&lt;/pre&gt;'%r
+ 		if self.last_html==r:
+ 			return '&lt;?xml version="1.0"?&gt;&lt;idem&gt;&lt;/idem&gt;'
+ 		else:</pre>
+<h2><a name="label-7" id="label-7">2007-08-16</a></h2><!-- RDLabel: "2007-08-16" -->
+<h3><a name="label-8" id="label-8">patch for ttyrec-1.0.6</a></h3><!-- RDLabel: "patch for ttyrec-1.0.6" -->
+<p>ttyrec does't work well. So I created this patch. It's kind of ad hoc though.</p>
+<pre>diff -u ttyrec-1.0.6/Makefile ttyrec-1.0.6-1/Makefile
+--- ttyrec-1.0.6/Makefile	2002-10-22 19:01:23.000000000 +0900
++++ ttyrec-1.0.6-1/Makefile	2007-08-16 09:21:49.000000000 +0900
+@@ -10,7 +10,7 @@
+ all: $(TARGET)
+
+ ttyrec: ttyrec.o io.o
+-	$(CC) $(CFLAGS) -o ttyrec ttyrec.o io.o
++	$(CC) $(CFLAGS) -lutil -o ttyrec ttyrec.o io.o
+
+ ttyplay: ttyplay.o io.o
+ 	$(CC) $(CFLAGS) -o ttyplay ttyplay.o io.o
+diff -u ttyrec-1.0.6/ttyrec.c ttyrec-1.0.6-1/ttyrec.c
+--- ttyrec-1.0.6/ttyrec.c	2002-10-22 19:01:23.000000000 +0900
++++ ttyrec-1.0.6-1/ttyrec.c	2007-08-16 09:21:21.000000000 +0900
+@@ -69,8 +69,12 @@
+
+ #define _(FOO) FOO
+
++#define HAVE_openpty 1
+ #ifdef HAVE_openpty
+-#include &lt;libutil.h&gt;
++#include &lt;termios.h&gt;
++#include &lt;unistd.h&gt;
++#include &lt;pty.h&gt;
++#include &lt;utmp.h&gt;
+ #endif
+
+ #if defined(SVR4) &amp;&amp; !defined(CDEL)</pre>
+<h2><a name="label-9" id="label-9">2007-08-09</a></h2><!-- RDLabel: "2007-08-09" -->
+<h3><a name="label-10" id="label-10">synchronizing with MoinMoin pages</a></h3><!-- RDLabel: "synchronizing with MoinMoin pages" -->
+<p>I'm trying to develop MoinMoin pages synchronizer.
+Because I don't think browser's edit form is convenient.
+And also I want to edit draft pages.</p>
+<h2><a name="label-11" id="label-11">2007-06-17</a></h2><!-- RDLabel: "2007-06-17" -->
+<h3><a name="label-12" id="label-12">Mercurialでchangelog</a></h3><!-- RDLabel: "Mercurialでchangelog" -->
+<p>hg log --style=changelog でいけるみたい。vimでsyntax onにしてみるとcolorfulで見やすい。</p>
+<h3><a name="label-13" id="label-13">linux and Mercurial</a></h3><!-- RDLabel: "linux and Mercurial" -->
+<p><a href="http://www.kernel.org/hg/">&lt;URL:http://www.kernel.org/hg/&gt;</a> こんなのがあるのか。いつかlinuxもgitからMercurialに移行するかもしれないなぁ。Mattさんはlinuxのcommitterみたいだし。</p>
+<h2><a name="label-14" id="label-14">2007-06-15</a></h2><!-- RDLabel: "2007-06-15" -->
+<h3><a name="label-15" id="label-15">Mercurial links into trac or redMine</a></h3><!-- RDLabel: "Mercurial links into trac or redMine" -->
+<p>Mercurialのソースコード(及びPython)の勉強中。まだリリースには遠い。</p>
+<pre>diff -r 29ec36fb50a3 mercurial/hgweb/hgweb_mod.py
+--- a/mercurial/hgweb/hgweb_mod.py	Thu Jun 14 12:58:05 2007 +0900
++++ b/mercurial/hgweb/hgweb_mod.py	Fri Jun 15 22:09:16 2007 +0900
+@@ -318,6 +318,11 @@ class hgweb(object):
+         def diff(**map):
+             yield self.diff(p1, n, None)
+
++        tickets = []
++        baseurl = "http://hoge/"
++        tickets.append(self.t("ticketlink", node="12", baseurl=baseurl))
++        tickets.append(self.t("ticketlink", node="13", baseurl=baseurl))
++
+         yield self.t('changeset',
+                      diff=diff,
+                      rev=ctx.rev(),
+@@ -328,6 +333,7 @@ class hgweb(object):
+                      author=ctx.user(),
+                      desc=ctx.description(),
+                      date=ctx.date(),
++                     tickets=tickets,
+                      files=files,
+                      archives=self.archivelist(hex(n)),
+                      tags=self.nodetagsdict(n),
+diff -r 29ec36fb50a3 templates/changeset.tmpl
+--- a/templates/changeset.tmpl	Thu Jun 14 12:58:05 2007 +0900
++++ b/templates/changeset.tmpl	Fri Jun 15 21:57:20 2007 +0900
+@@ -36,6 +36,10 @@
+  &lt;th class="description"&gt;description:&lt;/th&gt;
+  &lt;td class="description"&gt;#desc|strip|escape|addbreaks#&lt;/td&gt;
+ &lt;/tr&gt;
++&lt;tr&gt;
++ &lt;th class="tickets"&gt;tickets:&lt;/th&gt;
++ &lt;td class="tickets"&gt;#tickets#&lt;/td&gt;
++&lt;/tr&gt;
+ &lt;/table&gt;
+
+ &lt;div id="changesetDiff"&gt;
+diff -r 29ec36fb50a3 templates/map
+--- a/templates/map	Thu Jun 14 12:58:05 2007 +0900
++++ b/templates/map	Fri Jun 15 22:09:48 2007 +0900
+@@ -54,3 +54,4 @@ error = error.tmpl
+ error = error.tmpl
+ urlparameter = '#separator##name#=#value|urlescape#'
+ hiddenformentry = '&lt;input type="hidden" name="#name#" value="#value|escape#" /&gt;'
++ticketlink = '&lt;a href="#baseurl##node|short#"&gt;##node|escape#&lt;/a&gt; '</pre>
+<h3><a name="label-16" id="label-16">redMine links into Mercurial repository</a></h3><!-- RDLabel: "redMine links into Mercurial repository" -->
+<p>こんなの作ってみました。</p>
+<pre>Index: app/helpers/application_helper.rb
+===================================================================
+--- app/helpers/application_helper.rb	(revision 564)
++++ app/helpers/application_helper.rb	(working copy)
+@@ -137,6 +137,12 @@
+     #   [[link|title]] -&gt; "title":link
+     text = text.gsub(/\[\[([^\]\|]+)(\|([^\]\|]+))?\]\]/) {|m| "\"#{$3 || $1}\":" + format_wiki_link.call(Wiki.titleize($1)) }
+
++    # turn Mercurial links into textile links: 
++    # example:
++    #   hg:tip -&gt; "hg:tip":http://foo/hoge/rev/tip
++    urlbase = "http://foo/hoge/rev/"
++    text = text.gsub(/hg:([^\s]+)/) { |m| "\"hg:#{$1}\":#{urlbase}" + $1 }
++
+     # turn issue ids into links
+     # example:
+     #   #52 -&gt; &lt;a href="/issues/show/52"&gt;#52&lt;/a&gt;</pre>
+<h2><a name="label-17" id="label-17">2007-06-14</a></h2><!-- RDLabel: "2007-06-14" -->
+<h3><a name="label-18" id="label-18">planet (mixed RSS)</a></h3><!-- RDLabel: "planet (mixed RSS)" -->
+<p>複数RSSを1つにまとめてくれるツール。</p>
+<h3><a name="label-19" id="label-19">liferea (RSS reader)</a></h3><!-- RDLabel: "liferea (RSS reader)" -->
+<p>複数のRSSを時系列で表示したりできる。
+Mercurial repositoriesとtracやredMineのticketsと同時に表示させたりすると
+便利かも。</p>
+<h2><a name="label-20" id="label-20">2007-06-13</a></h2><!-- RDLabel: "2007-06-13" -->
+<h3><a name="label-21" id="label-21">Setting for Mercurial and Gmail</a></h3><!-- RDLabel: "Setting for Mercurial and Gmail" -->
+<p>Like this.</p>
+<pre>[email]
+from = My Name &lt;my_account.at.gmail.com&gt;
+to = target_mail_address.at.domain
+method = smtp
+
+[smtp]
+host = smtp.gmail.com
+port = 587
+tls = True
+username = my_account.at.gmail.com
+password = my_password</pre>
+<p>Now I can use 'hg email' command.</p>
+<h3><a name="label-22" id="label-22">My Mercurial repository</a></h3><!-- RDLabel: "My Mercurial repository" -->
+<p>I have created repository for Mercurial.</p>
+<ul>
+<li><a href="http://ohac.sytes.net/hgwebdir.cgi/mercurial/">&lt;URL:http://ohac.sytes.net/hgwebdir.cgi/mercurial/&gt;</a></li>
+</ul>
+<p>You can pull and clone from this repository.</p>
+<h3><a name="label-23" id="label-23">Mercurial character encoding setting patch</a></h3><!-- RDLabel: "Mercurial character encoding setting patch" -->
+<p>I have created patch for Mercurial. This patch provides character encoding setting in each repository. After this patch, You can use multi encoding repositories with one mercurial server.</p>
+<pre># HG changeset patch
+# User OHASHI Hideya &lt;ohachige at gmail.com&gt;
+# Date 1181718644 -32400
+# Node ID cc6b6505cf1bd7e7fa5c369e3c25f440524c4e04
+# Parent  050fa240db9cebc0fb6238c09de40fcfb867bb95
+enable to select encoding in hgrc web section
+
+diff -r 050fa240db9c -r cc6b6505cf1b mercurial/hgweb/hgweb_mod.py
+--- a/mercurial/hgweb/hgweb_mod.py      Mon Jun 11 21:09:24 2007 -0500
++++ b/mercurial/hgweb/hgweb_mod.py      Wed Jun 13 16:10:44 2007 +0900
+@@ -103,6 +103,7 @@ class hgweb(object):
+             self.maxshortchanges = int(self.config("web", "maxshortchanges", 60))
+             self.maxfiles = int(self.config("web", "maxfiles", 10))
+             self.allowpull = self.configbool("web", "allowpull", True)
++            self.encoding = self.config("web", "encoding", util._encoding)
+
+     def archivelist(self, nodeid):
+         allowed = self.configlist("web", "allow_archive")
+@@ -655,7 +656,7 @@ class hgweb(object):
+     def run_wsgi(self, req):
+         def header(**map):
+             header_file = cStringIO.StringIO(
+-                ''.join(self.t("header", encoding=util._encoding, **map)))
++                ''.join(self.t("header", encoding=self.encoding, **map)))
+             msg = mimetools.Message(header_file, 0)
+             req.header(msg.items())
+             yield header_file.read()</pre>
+<p>An example setting is as follows.</p>
+<pre>[web]
+encoding = EUC-JP
+#encoding = SHIFT_JIS
+#encoding = UTF-8</pre>
+<p>You can use this example for $HOME/.hgrc and .hg/hgrc.</p>
+<h2><a name="label-24" id="label-24">2007-05-27</a></h2><!-- RDLabel: "2007-05-27" -->
+<h3><a name="label-25" id="label-25">PukiWikiとtdiaryのスパム</a></h3><!-- RDLabel: "PukiWikiとtdiaryのスパム" -->
+<p>スパム攻撃がひどいのでPukiWikiをread-onlyに、tdiaryのツッコミをOFFにした。</p>
+<p>あう、Hikiが動かなくなっている。hikiconf.rbとhiki.confを今のバージョンに合わせて変更しないといけないみたい。</p>
+<p>WikiはMoinMoinを入れてみたいが、今はちょっと面倒なのでまた今度。</p>
+<h2><a name="label-26" id="label-26">2007-04-18</a></h2><!-- RDLabel: "2007-04-18" -->
+<h3><a name="label-27" id="label-27">words from LOST S01E01-02 transcripts</a></h3><!-- RDLabel: "words from LOST S01E01-02 transcripts" -->
+<ul>
+<li>debris
+<ul>
+<li>A big piece of burning debris lands near Charlie.</li>
+<li>dэbri': デブリー</li>
+<li>n : the remains of something that has been destroyed or broken up
+    [syn: {dust}, {junk}, {rubble}, {detritus}]</li>
+</ul></li>
+</ul>
+<h3><a name="label-28" id="label-28">LOST S01E01-02 transcripts Japanese translation</a></h3><!-- RDLabel: "LOST S01E01-02 transcripts Japanese translation" -->
+<p>ジャック: 深呼吸して、息をして。</p>
+<p>(金属の音。ジャックが見上げると大きな高い金属の破片(翼)が高いところ機体の残
+骸の上で揺れ始めている。クレアとハーリーは丁度その破片が落ちてきそうな場所
+にいる。ジャックは彼等のところに走る。)</p>
+<h3><a name="label-29" id="label-29">Chinese words</a></h3><!-- RDLabel: "Chinese words" -->
+<p>Let me try to use Chinese words in my blog.</p>
+<p>你好。再见。</p>
+<h2><a name="label-30" id="label-30">2007-04-12</a></h2><!-- RDLabel: "2007-04-12" -->
+<h3><a name="label-31" id="label-31">words from LOST S01E01-02 transcripts</a></h3><!-- RDLabel: "words from LOST S01E01-02 transcripts" -->
+<ul>
+<li>fume
+<ul>
+<li>n : a cloud of fine particles suspended in a gas [syn: {smoke}]</li>
+</ul></li>
+<li>wobble
+<ul>
+<li>n : an unsteady rocking motion</li>
+<li>v 1: move unsteadily; "His knees wobbled"; "The old cart wobbled down
+    the street" [syn: {coggle}]</li>
+</ul></li>
+<li>unsteady
+<ul>
+<li>adj 1: subject to change or variation especially in behavior; "her
+    unsteady walk"; "his hand was unsteady as he poured the wine";
+    "an unsteady voice" [ant: {steady}]</li>
+</ul></li>
+</ul>
+<h3><a name="label-32" id="label-32">LOST S01E01-02 transcripts Japanese translation</a></h3><!-- RDLabel: "LOST S01E01-02 transcripts Japanese translation" -->
+<p>ジャック: よく聞いて、僕らは。君は大丈夫だ、信じて。
+ただ、今は絶対に座っておかないといけない。</p>
+<p>(ジャックはローズにマウストゥマウスをしているブーンの方を見ている。)</p>
+<p>ジャック(ハーリーに): おい、君。来てくれ。この女性をこのへんの煙から遠くに
+移動させてほしい。彼女を見ておいてくれ。もし陣痛が3分以内に起きるようなら
+私を呼んで。</p>
+<p>ハーリー: おい、冗談だろ。(ジャックはどこかへ走っていく) おい、君の名前は?</p>
+<p>ジャック: ジャック</p>
+<p>(ジャックはブーンとローズのところへ駆け寄る)</p>
+<p>ジャック: やめろ。頭をもっと傾けないと。それでは胃に息を送っているぞ。</p>
+<p>ブーン: そうなのか?</p>
+<p>(ジャックはマウストゥマウスを始める)</p>
+<p>ブーン: それと同じようにやっていたんだ。僕はライフガードだ。免許もある。</p>
+<p>ジャック: そうか。じゃあ、免許を返すことを考えた方がいいな。</p>
+<p>ブーン: たぶん何かで空気を通るようにした方がいいかも。ペンを喉に入れるとか?</p>
+<p>ジャック: ああ、いい考えだ。ペンを取ってきてくれ。</p>
+<p>(ブーンはペンを取りに走る)</p>
+<p>ジャック(応急処置をしながら): さあ、息を。</p>
+<p>(ローズが息をする)</p>
+<h2><a name="label-33" id="label-33">2007-04-11</a></h2><!-- RDLabel: "2007-04-11" -->
+<h3><a name="label-34" id="label-34">words from LOST S01E01-02 transcripts</a></h3><!-- RDLabel: "words from LOST S01E01-02 transcripts" -->
+<ul>
+<li>suck
+<ul>
+<li>吸い込む</li>
+<li>The guy gets sucked into the engine and the engine explodes.</li>
+</ul></li>
+</ul>
+<h3><a name="label-35" id="label-35">LOST S01E01-02 transcripts Japanese translation</a></h3><!-- RDLabel: "LOST S01E01-02 transcripts Japanese translation" -->
+<p>彼は残骸を避けてクレアの元へ走った。</p>
+<p>クレア: お願い助けて。陣痛なの。</p>
+<p>ジャック: 妊娠して何ヶ月?</p>
+<p>クレア: 8ヶ月ぐらい</p>
+<p>(ジャックは周りを見渡し、ブーンがローズに応急処置をしているのを見る。)</p>
+<p>ジャック(クレアに): どのぐらい経つ?</p>
+<p>クレア: 分からない。起こってから少し。</p>
+<p>(ロックと赤いシャツの男が足の悪い男を運び出している映像。他の男がエンジンの前を歩き始めた。ロックはそれを見る。)</p>
+<p>ロック: おい、君。離れろ。</p>
+<p>(その男はエンジンに吸い込まれ、エンジンは爆発する。人々が走っている映像。ジャックはクレアをかばう。)</p>
+<h2><a name="label-36" id="label-36">2007-04-10</a></h2><!-- RDLabel: "2007-04-10" -->
+<h3><a name="label-37" id="label-37">英語・日本語勉強用のリソース</a></h3><!-- RDLabel: "英語・日本語勉強用のリソース" -->
+<p>教育用途としてならアメリカのドラマや映画の字幕なら法的に問題なく素材として使えることに気付いた。なお、洋楽の歌詞とかはちょっとややこしそうなので避けておいた方がよさげ。</p>
+<p>日本語の勉強用には自分で訳したものを用意すればきっと問題ないだろう。日本語吹替とは一致しないけど。もちろん自分の翻訳練習にもなる。ということで少しやってみた。今、ハマっているLOSTから。(以下ネタバレ注意)</p>
+<p>なお、単語は辞書の結果をコピペすると、これまた著作権的に問題がありそうなのでフリーの英英辞書(dictコマンド使用)の結果から一致してそうな説明文をピックアップした。</p>
+<h3><a name="label-38" id="label-38">words from LOST S01E01-02 transcripts</a></h3><!-- RDLabel: "words from LOST S01E01-02 transcripts" -->
+<ul>
+<li>limp
+<ul>
+<li>walk impeded by some physical limitation or injury</li>
+</ul></li>
+<li>wreckage
+<ul>
+<li>the remaining parts of something that has been wrecked</li>
+</ul></li>
+<li>wreck
+<ul>
+<li>The destruction or injury of a vessel by being cast on shore, or on rocks,
+    or by being disabled or sunk by the force of winds or waves; shipwreck.</li>
+</ul></li>
+<li>tourniquet
+<ul>
+<li>bandage that stops the flow of blood from an artery by applying pressure</li>
+</ul></li>
+<li>contraction
+<ul>
+<li>a shortening or tensing of a part or organ (especially of a muscle or
+    muscle fiber)</li>
+<li>Claire is pregnant. She said "I'm having contractions."</li>
+</ul></li>
+<li>CPR
+<ul>
+<li>cardiopulmonary resuscitation</li>
+<li>an emergency procedure consisting of external cardiac massage and
+    artificial respiration</li>
+<li>the first treatment for a person who has collapsed and has no pulse and has
+    stopped breathing</li>
+</ul></li>
+</ul>
+<h3><a name="label-39" id="label-39">LOST S01E01-02 transcripts Japanese translation</a></h3><!-- RDLabel: "LOST S01E01-02 transcripts Japanese translation" -->
+<p>(ジャックの目が開くところの映像。竹薮を見上げる。頭上からの映像でパンアウトするとジャックが地面に怪我をして横になっている。ジャックは犬を見る。ゆっくりと起き上がり、痛みが走る。小さな酒瓶がポケットにあるのに気付く。そして、竹薮を走り抜け、海岸にたどり着く。人々が叫んでいる。彼は機体の残骸を見る。人々は怪我をした状態で歩き、助けを呼んでいる。エンジンがまだ回っている映像。チャーリーがそれに近づく。ジンが叫んでいる。マイケルはウォルトを呼んでいる。)</p>
+<p>赤いシャツの人: ガスから離れろ、そこを離れろ</p>
+<p>(シャノンは叫んでいる。ジャックは飛行機の翼を見上げる。)</p>
+<p>赤いシャツの人2(まだ動いているエンジンのついた残骸の下にはさまっている): 助けて。誰か助けてくれ。ああ、足が。</p>
+<p>ジャック: 手を掴んで。君、来てくれ。手を。(赤いシャツのグループが集まってきて、男の上にある金属の残骸を持ち上げる。)1、2の3でいくぞ。1、2の3。</p>
+<p>(ジャックは男を下からひきずり出す。片足は血だらけだ。ジャックは怪我を見るために男のズボンを取ろうとする。ジャックは彼のネクタイを止血用に使う。)</p>
+<p>クレア: 助けて、誰か助けて。お願い、助けて。</p>
+<p>(クレアは妊婦に見える。手と膝で押さえている。ジャックは彼女を見る。)</p>
+<p>ジャック(赤いシャツとロックに向かって): よし、彼をこのあたりから出して、エンジンから離れて。ここから離れて。</p>
+<h2><a name="label-40" id="label-40">2007-03-28</a></h2><!-- RDLabel: "2007-03-28" -->
+<h3><a name="label-41" id="label-41">English diary</a></h3><!-- RDLabel: "English diary" -->
+<h4><a name="label-42" id="label-42">Spam mail and bsfilter</a></h4><!-- RDLabel: "Spam mail and bsfilter" -->
+<p>Recently I've been receiving a lot of spam mails.
+It's really annoying.</p>
+<p>I decided to use spam filter. I chose bsfilter which is written in ruby.
+I researched how to use bsfilter with procmail.
+Now I've setuped .procmailrc like this.</p>
+<pre># spam filter
+:0 fw
+| bsfilter -a --pipe --insert-flag --insert-probability --mark-spam-subject
+
+:0
+* ^X-Spam-Flag: Yes
+spam/</pre>
+<p>bsfilter doesn't have initial spam/ham database.
+So I had to prepare some spam/ham mails.
+I put them into bsfilter database as below.</p>
+<pre>bsfilter -s Mail/spam/cur/*
+bsfilter -c Mail/ham/cur/*
+bsfilter -u</pre>
+<p>Now I get less spams than before.
+But I get a few spams.
+I've been putting them into db almost everyday.</p>
+<pre>bsfilter -Cs Mail/spam/cur/*
+bsfilter -u</pre>
+<p>I misunderstood about "-a" option.
+It means that judgement updates db automatically.
+So if you use "-a" option, you have to use "-C" to remove it from clean database.
+If you don't use, your spam have remained to your clean mail database.</p>
+<h2><a name="label-43" id="label-43">2007-03-27</a></h2><!-- RDLabel: "2007-03-27" -->
+<h3><a name="label-44" id="label-44">English diary</a></h3><!-- RDLabel: "English diary" -->
+<h4><a name="label-45" id="label-45">wrist pain</a></h4><!-- RDLabel: "wrist pain" -->
+<p>Recently, I have a pain in my left wrist when I'm typing keyboard.</p>
+<p>I tried to find a special keyboard, like ergonomics type one or something like that. but I couldn't find a good one for me.</p>
+<p>I just want separated type keyboard. If I get that, I can move these to proper position.</p>
+<p>I found some keyboards like that. But those are very expensive.
+I wonder if I could customize my cheep keyboard.</p>
+<h4><a name="label-46" id="label-46">cron</a></h4><!-- RDLabel: "cron" -->
+<p>I've setuped crontab for my web server.
+It will update and execute rake command automatically.</p>
+<h2><a name="label-47" id="label-47">2007-03-21</a></h2><!-- RDLabel: "2007-03-21" -->
+<h3><a name="label-48" id="label-48">English diary</a></h3><!-- RDLabel: "English diary" -->
+<h4><a name="label-49" id="label-49">writing English</a></h4><!-- RDLabel: "writing English" -->
+<p>I have been reading English learner's book.
+It says, "you should write English diary, but you don't have to try to write perfectly. you should use only simple words."
+So, I am trying to write this diary with simple words.
+I think I make many mistakes, but I don't care.
+This is my private diary.</p>
+<h4><a name="label-50" id="label-50">install into USB memory</a></h4><!-- RDLabel: "install into USB memory" -->
+<p>I bought USB memory, that has 1GB memory.
+I installed Debian GNU/Linux etch into it. success.
+But I had to remove some packages, because 1GB is too small to install all I want.
+So I made some symbolic links to HDD. such as /usr/share/doc, man, /usr/share/games, /var/games, /var/cache/apt.</p>
+<p>USB's boot up speed is a little faster than HDD's one. HDD is 35 seconds. USB is 30 seconds.</p>
+<h2><a name="label-51" id="label-51">2007-03-04</a></h2><!-- RDLabel: "2007-03-04" -->
+<h3><a name="label-52" id="label-52">wodim</a></h3><!-- RDLabel: "wodim" -->
+<p>cdrecordはなくなってwodimというのになったようだ。</p>
+<ul>
+<li>wodim -scanbus</li>
+<li>genisoimage -o foo.iso dirname</li>
+<li>wodim foo.iso</li>
+</ul>
+<p>全部ユーザーモードでできた。えらい簡単だな。
+/etc/group のdiskに自ユーザーを追加していたからかもしれない。</p>
+<p>と思ったらmount /media/cdromでマウントできない。</p>
+<ul>
+<li>wodim blank=all でDVD-RWを消去。やたら時間がかかる。allにしたのが間違いか?</li>
+</ul>
+<p>ううむ。</p>
+<ul>
+<li>wodim -dummy -v speed=2 -pad foo.iso</li>
+</ul>
+<p>これでどうだ? むむダメか。-dummyはテスト用かな?</p>
+<ul>
+<li>wodim -v speed=2 -pad foo.iso</li>
+</ul>
+<p>今度こそどうだ? いやダメみたい。</p>
+<ul>
+<li>wodim blank=fast で消して...</li>
+</ul>
+<p>debianのisoイメージでやってみよう。</p>
+<ul>
+<li>wodim -v speed=2 -pad ~/azureus/debian-31r5-i386-businesscard.iso</li>
+</ul>
+<p>-daoか-saoがいるのかも。</p>
+<ul>
+<li>wodim -v speed=2 -dao ~/azureus/debian-31r5-i386-businesscard.iso</li>
+</ul>
+<p>ダメだ...</p>
+<p>driver=mmc_mdvd
+ダメ...</p>
+<p>CD-RWなら問題なく焼けた。DVD-RWは何か特殊なのかな。</p>
+<h3><a name="label-53" id="label-53">cryptmount</a></h3><!-- RDLabel: "cryptmount" -->
+<p>なんとか暗号化ファイルシステムの構築に成功。
+iceweaselのパスワード保存ファイルとかgnupgとかsshの鍵とかを入れて、
+シンボリックリンクにしてみた。</p>
+<p>鍵とループバック用ファイルをUSBメモリ、HDD等の3箇所以上に分散させて、
+Mercurialで同期させることで紛失・故障時の対策としている。</p>
+<h3><a name="label-54" id="label-54">起動直後のalsaが変</a></h3><!-- RDLabel: "起動直後のalsaが変" -->
+<p>なぜか毎回 alsaconf の再実行を行わないといけない。
+とりあえずsudoで実行可能にして、fluxbox/menuにalsaconfを追加しておいた。</p>
+<h3><a name="label-55" id="label-55">USB 80GB HDD購入</a></h3><!-- RDLabel: "USB 80GB HDD購入" -->
+<p>音楽データを入れて、IO DataのDVDプレーヤーのUSB端子に接続して使用する予定。
+あとバックアップ用にも使う。</p>
+<h3><a name="label-56" id="label-56">LOST シーズン3</a></h3><!-- RDLabel: "LOST シーズン3" -->
+<p>AXNで5月から放送開始らしい。
+そして来週からシーズン1,2を平日に毎日放送する。
+シーズン2は見たけど1がまだなので見ようと思う。</p>
+<h2><a name="label-57" id="label-57">2007-02-28</a></h2><!-- RDLabel: "2007-02-28" -->
+<h3><a name="label-58" id="label-58">vim "[f" is deprecated</a></h3><!-- RDLabel: "vim "[f" is deprecated" -->
+<p>"[f"はもう古いらしい。"gf"を使えとのこと。"gf"でファイルがなかったら、作っ
+てくれるモードがあったらいいのになぁ。</p>
+<h3><a name="label-59" id="label-59">Mercurial .hgrc</a></h3><!-- RDLabel: "Mercurial .hgrc" -->
+<p>よく使うパターンをメモっておく。</p>
+<pre>[ui]
+username = HOGE Hoge
+
+[encode]
+**.rd = pipe: nkf -w
+
+[decode]
+**.rd = pipe: nkf -e</pre>
+<h3><a name="label-60" id="label-60">最近使ってみたソフト</a></h3><!-- RDLabel: "最近使ってみたソフト" -->
+<ul>
+<li>imwheel
+<ul>
+<li>マウスホイールでキーイベントを発生させたりできる。</li>
+</ul></li>
+<li>fortune-mod
+<ul>
+<li>占い。英語なのでちょっとした勉強にもなるかも。</li>
+</ul></li>
+<li>azureus
+<ul>
+<li>BitTorrent client。Javaで動く。sun-java6-jreを入れておいた方が安定する。</li>
+</ul></li>
+<li>qtparted
+<ul>
+<li>パーティションエディタ</li>
+</ul></li>
+</ul>
+<h3><a name="label-61" id="label-61">mlterm, mlclient with Alt+key</a></h3><!-- RDLabel: "mlterm, mlclient with Alt+key" -->
+<p>~/.mlterm/keyに以下のような定義をするとAltキー+任意のキーで文字列を送ることが
+できる。</p>
+<pre>Mod+a="^La"</pre>
+<p>GNU screenのprefixキーと組み合わせるとAltキーを使っていろいろとscreenを制御で
+きる。(^Lはvim上ではCTRL+V CTRL+Lで入力できる。)</p>
+<p>しかし、mlclient上だと現状ではダメみたい。</p>
+<h2><a name="label-62" id="label-62">2007-02-25</a></h2><!-- RDLabel: "2007-02-25" -->
+<h3><a name="label-63" id="label-63">firefox + ALSA</a></h3><!-- RDLabel: "firefox + ALSA" -->
+<ul>
+<li><a href="http://www.rubyist.net/~matz/20070124.html">&lt;URL:http://www.rubyist.net/~matz/20070124.html&gt;</a></li>
+</ul>
+<p>この日記の追記(3)を見て解決しました。</p>
+<ul>
+<li>/var/lib/alsa/asound.state を削除</li>
+<li>alsaconf の再実行</li>
+</ul>
+<h2><a name="label-64" id="label-64">2007-02-21</a></h2><!-- RDLabel: "2007-02-21" -->
+<h3><a name="label-65" id="label-65">firefox</a></h3><!-- RDLabel: "firefox" -->
+<p>長いことfirefox(iceweasel)のFORMの挙動が変だったが、
+最近のupgradeで直ったようだ。これはうれしい。</p>
+<h3><a name="label-66" id="label-66">uim-skk動的補完機能</a></h3><!-- RDLabel: "uim-skk動的補完機能" -->
+<p>動的補完機能が追加されているようだ。</p>
+<p>設定を有効にすると数文字打っただけで補完候補が表示される。</p>
+<p>そのときにTabを何回か押すことでどの補完候補を使うかを決定したり、Alt+Spaceを押すとその補完した単語で変換まで行う、といった操作が可能。これは便利かも。</p>
+<h2><a name="label-67" id="label-67">2007-02-06</a></h2><!-- RDLabel: "2007-02-06" -->
+<h3><a name="label-68" id="label-68">mercurial + rake + rdtool + tdiary-theme</a></h3><!-- RDLabel: "mercurial + rake + rdtool + tdiary-theme" -->
+<p>なんとなくMercurialでページを管理してみようと思い、作ってみた。</p>
+<h1><a name="label-69" id="label-69">Log</a></h1><!-- RDLabel: "Log" -->
+<ul>
+<li><a href="2008/20080302.html">2008-03-02</a></li>
+<li><a href="2007/20071230.html">2007-12-30</a></li>
+<li><a href="2007/20070818.html">2007-08-18</a></li>
+<li><a href="2007/20070816.html">2007-08-16</a></li>
+<li><a href="2007/20070809.html">2007-08-09</a></li>
+<li><a href="2007/20070617.html">2007-06-17</a></li>
+<li><a href="2007/20070615.html">2007-06-15</a></li>
+<li><a href="2007/20070614.html">2007-06-14</a></li>
+<li><a href="2007/20070613.html">2007-06-13</a></li>
+<li><a href="2007/20070527.html">2007-05-27</a></li>
+<li><a href="2007/20070418.html">2007-04-18</a></li>
+<li><a href="2007/20070412.html">2007-04-12</a></li>
+<li><a href="2007/20070411.html">2007-04-11</a></li>
+<li><a href="2007/20070410.html">2007-04-10</a></li>
+<li><a href="2007/20070328.html">2007-03-28</a></li>
+<li><a href="2007/20070327.html">2007-03-27</a></li>
+<li><a href="2007/20070321.html">2007-03-21</a></li>
+<li><a href="2007/20070304.html">2007-03-04</a></li>
+<li><a href="2007/20070228.html">2007-02-28</a></li>
+<li><a href="2007/20070225.html">2007-02-25</a></li>
+<li><a href="2007/20070221.html">2007-02-21</a></li>
+<li><a href="2007/20070206.html">2007-02-06</a></li>
+<li><a href="2006/">2006</a></li>
+<li><a href="2005/">2005</a></li>
+<li><a href="2004/">2004</a></li>
+<li><a href="../old_pages/diary2002.html">2001-2002</a></li>
+</ul>
+<h1><a name="label-70" id="label-70">TODO</a></h1><!-- RDLabel: "TODO" -->
+<ul>
+<li>Mercurial
+<ul>
+<li>character encoding patch</li>
+<li>handle CR as line feed character</li>
+<li>link to ticket, such as Trac, redMine</li>
+<li>merged RSS page (several repository and other RSS pages)</li>
+<li>merged ical page (e.g. Google Calendar)</li>
+<li>search changeset in all repositories</li>
+</ul></li>
+<li>uim
+<ul>
+<li>KZIK patch</li>
+</ul></li>
+</ul>
+<h1><a name="label-71" id="label-71">Words</a></h1><!-- RDLabel: "Words" -->
+<ul>
+<li><a href="english.html">English</a></li>
+<li><a href="chinese.html">Chinese</a></li>
+</ul>
+<p><img src="http://giraffe.adam.ne.jp/_count/Count.cgi?df=ohac.dat&dd=E"></p>
+
+</body>
+</html>

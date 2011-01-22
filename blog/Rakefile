@@ -1,0 +1,92 @@
+require "rake/clean"
+require "rss/maker"
+theme_name = "cross"
+#theme_dir = "/usr/share/tdiary/theme"
+#theme_dir = "/var/www/tdiary/theme"
+#sh "ln -sf #{theme_dir}/#{theme_name}"
+
+#rd2options = "-r rd/rd2html-lib.rb"
+rd2options = "-r rd/rd2html-ext-lib.rb"
+rd2options += " --out-code=utf8"
+rd2options += " --html-charset=utf8"
+rd2options += " --native-inline"
+rd2options += " --html-title=\"OhaC's Creative Studio\""
+rd2options += " --with-css=/css/#{theme_name}/#{theme_name}.css"
+#rd2options += " --with-css=#{theme_name}/#{theme_name}.css"
+
+CLEAN.include("**/*.html")
+SRC = FileList[ "**/*.rd" ]
+rm_f "index.html"
+HTML = SRC.ext("html")
+
+task :default => :all
+
+rule ".html" => [ ".rd" ] do |t|
+  if t.source =~ /chinese/ || t.source =~ /english/
+    sh "./rd2tree #{t.source} >#{t}"
+  else
+    sh "rd2 #{rd2options} #{t.source} >#{t}"
+  end
+end
+
+#task :all => HTML
+task :all => :rss
+
+task :rss => HTML
+
+task :rss do |t|
+  rss = RSS::Maker.make("2.0") do |maker|
+    maker.channel.about = "http://ohac.pun.jp/blog/rss"
+    maker.channel.title = "OhaC's Creative Studio"
+    maker.channel.description = "Hello RSS"
+    maker.channel.link = "http://ohac.pun.jp/blog/"
+  
+    maker.items.do_sort = true
+  
+    Dir.glob("200?/*.html") do |file|
+      item = maker.items.new_item
+      item.link = "http://ohac.pun.jp/blog/#{file}"
+      item.title = "#{file}"
+      #item.date = Time.now
+      item.date = File.mtime(file)
+    end
+  end
+  
+  File.open("rss.rdf", "w") {|file|
+      file.puts(rss.to_s)
+  }
+end
+
+task :new do |t|
+  now = Time.now
+  base = "%04d/%04d%02d%02d" % [ now.year, now.year, now.month, now.day ]
+  rd = "#{base}.rd"
+  datestr = "%04d-%02d-%02d" % [now.year, now.mon, now.day]
+  unless File.exists?(rd)
+
+    template = <<TEMPLATE
+# back: ../index.rd
+# <<<#{rd}
+# * ((<#{datestr}|URL:#{base}.html>))
+=begin
+
+== #{datestr}
+
+=== 
+
+=end
+# vim:ft=rd:foldmethod=marker
+TEMPLATE
+
+    open(rd, "w") do |f|
+      f.write template
+    end
+    sh "hg add #{rd}"
+  end
+end
+
+task :push do |t|
+  sh "hg ci -m update"
+  sh "hg push"
+  sh "ssh ohashi@ohac.sytes.net ./hg_update.sh"
+end

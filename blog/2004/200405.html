@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>OhaC's Creative Studio</title>
+<link href="/css/cross/cross.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h2><a name="label-0" id="label-0">20040510</a></h2><!-- RDLabel: "20040510" -->
+<h3><a name="label-1" id="label-1">[ゲーム] Mangband build</a></h3><!-- RDLabel: "[ゲーム] Mangband build" -->
+<p>mangbandのビルドメモ。</p>
+<p>mangband-070-dsb-20040306.tar.bz2 に mangband070.01-xim.diff.gz のパッチを当てる。</p>
+<pre>$ cd mangband-070-dsb-20040306/
+$ zcat ../mangband070.01-xim.diff.gz | patch -p1</pre>
+<p>すると src/Makefile でエラーが出るが CFLAGS と LIBS を以下のようにすれば OK のようだ。</p>
+<pre>CFLAGS = -Wall -g -pipe -D"USE_XAW" -D"USE_GCU" -D"USE_XIM" -I/usr/include/ncursesw
+LIBS = -L/usr/X11R6/lib -lX11 -lXaw -lncursesw</pre>
+<p>apt-get で libncursesw5-dev, xlibs-dev, libxaw7-dev あたりをインストールしておく必要あり。最後に src に cd して make で完了。./mangclient で実行できる。</p>
+<p>入手先メモ:</p>
+<ul>
+<li>本体: http://dsb.to/~yakina/mangband/</li>
+<li>パッチ(Patch for Originalの方): http://homepage2.nifty.com/vgdfm/</li>
+</ul>
+<h3><a name="label-2" id="label-2">[ゲーム] モンスターハンター</a></h3><!-- RDLabel: "[ゲーム] モンスターハンター" -->
+<p>オンラインゲームがやりたくてモンスターハンターを買ってしまった。(まだ届いてないけど。)</p>
+<p>誰がやってる人いるかな。</p>
+<h2><a name="label-3" id="label-3">20040511</a></h2><!-- RDLabel: "20040511" -->
+<h3><a name="label-4" id="label-4">[ゲーム] mangband設定ファイル</a></h3><!-- RDLabel: "[ゲーム] mangband設定ファイル" -->
+<p>mangbandの設定ファイルはカレントディレクトリにlib/user/options.prfというファイルを作ればよいみたい。</p>
+<pre>Y:rogue_like_commands
+X:always_pickup</pre>
+<p>とりあえずこんなかんじ。</p>
+<ul>
+<li>mang-j022-dsb.zipにWindows版の初期設定ファイルがあるのでこれを利用するとよさそう。またreadme*もあるので読んでおくこと。 -- ohac 2004-05-12 (水) 12:03:28</li>
+</ul>
+<h2><a name="label-5" id="label-5">20040514</a></h2><!-- RDLabel: "20040514" -->
+<h3><a name="label-6" id="label-6">[ゲーム] PS2をネットに</a></h3><!-- RDLabel: "[ゲーム] PS2をネットに" -->
+<p>昨日、繋げてみた。</p>
+<p>特に問題もなくすんなり繋がった。</p>
+<p>そしてUSBキーボードもテスト。PS/2をUSBに変換するCoregaの装置を使い、IBMのキーボードを接続、これも問題なく動作した。しかし、テンキーは使えないようだ。そういうものなのかな。</p>
+<p>モンスターハンターをするための契約処理をPS2上で行った。日本語入力に苦労するがなんとか完了。すぐにゲーム自体の登録も終り、早速街へ。</p>
+<p>ネットワークゲームはMangbandを除くと初めてなので緊張した。クエストレベル1の人がいる街へ入り、その人と2人でレベル1のクエストを2つやってみた。チャットとキャラの操作の切り替えに手間取ったり、途中、砥石や食料がなくなり苦労したが、なんとかクリア。</p>
+<p>その後、ログアウトしてオフラインでレベル2のクエストを1つクリア。1人だと気楽だ。慣れたらオンラインでもリラックスしてできるだろうか。</p>
+<h2><a name="label-7" id="label-7">20040520</a></h2><!-- RDLabel: "20040520" -->
+<h3><a name="label-8" id="label-8">[ゲーム] モンスターハンター</a></h3><!-- RDLabel: "[ゲーム] モンスターハンター" -->
+<p>オンラインにも慣れてきて、だいぶ面白くなってきた。
+序盤で手に入りやすい素材での調合についてまとめてみた。</p>
+<ul>
+<li>回復薬* (薬草, アオキノコ, ハチミツ)</li>
+<li>ペイントボール (ペイントの実, ネンチャク草)</li>
+<li>*タル爆弾 (火炎草, *タル, ニトロダケ)</li>
+<li>毒生肉 (生肉, 毒テングダケ)</li>
+<li>シビレ生肉 (生肉, マヒダケ)</li>
+<li>眠り生肉 (生肉, ネムリ草)</li>
+<li>けむり玉 (ツタの葉, 石ころ, ネンチャク草)</li>
+<li>閃光玉 (光蟲, 石ころ, ネンチャク草)</li>
+<li>こやし玉 (モンスターのフン, 石ころ, ネンチャク草)</li>
+<li>強走薬  (にが虫, ハチミツ, 生焼け肉)</li>
+<li>落とし穴 (ツタの葉, クモの巣, トラップツール)</li>
+<li>解毒笛 (角笛, にが虫, 大地の結晶)</li>
+<li>音爆弾 (火炎草, ニトロダケ, 鳴き袋)</li>
+</ul>
+<h2><a name="label-9" id="label-9">20040521</a></h2><!-- RDLabel: "20040521" -->
+<h3><a name="label-10" id="label-10">[ゲーム] MH地図</a></h3><!-- RDLabel: "[ゲーム] MH地図" -->
+<p>地図。</p>
+<p>http://www.geocities.jp/web_monsterhunter/hoka_2/saisyu/index.html</p>
+<p>これが欲しかった!</p>
+<h3><a name="label-11" id="label-11">[ソフト開発] tcpdumpメモ</a></h3><!-- RDLabel: "[ソフト開発] tcpdumpメモ" -->
+<p>tcpdumpの使い方メモ。</p>
+<pre>tcpdump -s 128 -vvv -X -N "tcp and src host hoge and tcp[13] &amp; 8 != 0"</pre>
+<p>この例だと、</p>
+<pre>|-s 128|snaplen を 128 bytes に|
+|-vvv  |詳しく表示|
+|-X    |16進ダンプとASCII表示|
+|-N    |ドメインは表示しない|
+|tcp   |TCPを表示|
+|src host hoge|ホストhogeから送信されたパケットを表示|
+|tcp[13] &amp; 8 != 0|PSH (push) フラグの立っているパケット表示|</pre>
+<p>となる。</p>
+<h2><a name="label-12" id="label-12">20040525</a></h2><!-- RDLabel: "20040525" -->
+<h3><a name="label-13" id="label-13">[linux] a2psj使い方</a></h3><!-- RDLabel: "[linux] a2psj使い方" -->
+<p>a2psj のメモ。</p>
+<ul>
+<li>a2psj -p で段組みなしの印刷(portrait)</li>
+<li>a2psj -nh -nt でヘッダフッタがなくなる(no header, no tail)</li>
+<li>a2psj -ns で枠がなくなる(no scale), 右下のページ印字もなくなる。</li>
+<li>a2psj -m でパンチ穴のガイドを印刷(punch Mark)</li>
+</ul>
+<p>よく使うと思われるのは</p>
+<ul>
+<li>a2psj -nh -nt -ns    hoge.txt &gt;hoge.ps (段組み)</li>
+<li>a2psj -nh -nt -ns -p hoge.txt &gt;hoge.ps (段組みなし)</li>
+</ul>
+<p>こんな感じか。aliasでも作っておいた方がいいかも。</p>
+<h2><a name="label-14" id="label-14">20040526</a></h2><!-- RDLabel: "20040526" -->
+<h3><a name="label-15" id="label-15">[linux] Sylpheedでメールの印刷</a></h3><!-- RDLabel: "[linux] Sylpheedでメールの印刷" -->
+<p>全般の設定、その他、印刷のところを、</p>
+<pre>a2psj %s | lpr</pre>
+<p>と設定すればOK。a2psjのオプションはお好みに合わせて変更。</p>
+
+</body>
+</html>

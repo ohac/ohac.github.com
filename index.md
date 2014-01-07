@@ -16,6 +16,8 @@ title: ohac.github.io
 * [Mercurial Repositories (bitbucket)](https://bitbucket.org/ohac)
 * [Git Repositories (github)](https://github.com/ohac)
 * gh-pages
+  * [sha1coin](http://ohac.github.io/sha1coin)
+  * [sakuracoin](http://ohac.github.io/sakuracoin)
   * [mochaconsole](http://ohac.github.io/mochaconsole)
   * [notmailto](http://ohac.github.io/notmailto)
   * [ditz-ja](http://ohac.github.io/ditz-ja)

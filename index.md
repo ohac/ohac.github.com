@@ -1,9 +1,9 @@
 ---
 layout: default
-title: ohac.github.com
+title: ohac.github.io
 ---
 
-# ohac.github.com
+# ohac.github.io
 
 <ul>
 {% for post in site.posts limit:10 %}
@@ -16,9 +16,9 @@ title: ohac.github.com
 * [Mercurial Repositories (bitbucket)](https://bitbucket.org/ohac)
 * [Git Repositories (github)](https://github.com/ohac)
 * gh-pages
-  * [mochaconsole](http://ohac.github.com/mochaconsole)
-  * [notmailto](http://ohac.github.com/notmailto)
-  * [ditz-ja](http://ohac.github.com/ditz-ja)
+  * [mochaconsole](http://ohac.github.io/mochaconsole)
+  * [notmailto](http://ohac.github.io/notmailto)
+  * [ditz-ja](http://ohac.github.io/ditz-ja)
 * [はてなダイアリー](http://d.hatena.ne.jp/ohac/)
 * [blog(old)](blog/index.html)
 * [jsgoban](jsgoban/)

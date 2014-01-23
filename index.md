@@ -27,3 +27,6 @@ title: ohac.github.io
 * [text with hyperlink converter](txt2link/)
 * [Twitter](http://twitter.com/ohac)
 * [old_pages](old_pages/front.html)
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="ohac">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

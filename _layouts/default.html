@@ -5,9 +5,6 @@
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
     <link href="http://ohac.github.io/atom.xml" rel="alternate" title="atom" type="application/atom+xml" />
     <link href='/css/cross/cross.css' rel='stylesheet' type='text/css' />
-  </head>
-  <body>
-    <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
@@ -15,6 +12,9 @@
       js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
+  </head>
+  <body>
+    <div id="fb-root"></div>
     {{ content }}
   </body>
 </html>
